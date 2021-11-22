@@ -1,0 +1,64 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Configuration de votre book - Nom de domaine | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	<div class="d-flex flex-column flex-xl-row">
+		<div class="flex-column flex-lg-row-auto w-100 w-xl-350px mb-10">
+			{% include 'dashboard/partial/sidebars/book.html.twig' %}
+		</div>
+		<div class="flex-lg-row-fluid ms-lg-15">
+			{% include 'dashboard/partial/menus/book.html.twig' %}
+			<div class="card pt-4 mb-6 mb-xl-9">
+				<div class="card-header border-0">
+					<div class="card-title">
+						<h2>{{ 'Nom de domaine' | trans }}</h2>
+					</div>
+				</div>
+				{{ form_start(form, {'action': path('domain_check'),'attr': {'class':'form needs-validation'}}) }}
+				<div class="card-body py-0">
+					<p>{{"Votre book est pour le moment accessible via l'url" | trans}}
+						http://{{ app.user.book.getName()}}.book-folio.fr.<br>{{"Il vous est désormais possible de réserver votre propre nom de domaine. En effet nous proposons ce service pour que vous puissiez choisir vous même votre nom de site (url) et ceci pour une durée de 1 an. Votre book sera donc accessible via l'adresse (url) que vous aurez créée." | trans}}</p>
+
+					{% if not app.user.hasActiveSubscription %}
+						<div class="notice bg-light-warning rounded border-warning border border-dashed p-6 mt-6 mb-6">
+							<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+								<div class="mb-3 mb-md-0 fw-bold">
+									<div class="fs-6 text-gray-700">
+										{{ "Vous devez disposer d'une formule Awesome ou Pro pour utiliser cette fonctionnalité." | trans}}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+					<div class="row mb-6">
+						{{ form_label(form.url, 'Quel nom de domaine souhaitez-vous pour votre book ?' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{% if app.user.hasActiveSubscription %}
+								{{ form_widget(form.url, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{% else %}
+								{{ form_widget(form.url, {'attr': {'disabled':'disabled','class': 'form-control form-control-lg form-control-solid'}}) }}
+							{% endif %}
+							{{ form_errors(form.url) }}
+							{{ form_help(form.url) }}
+						</div>
+					</div>
+				</div>
+				<div class="card-footer d-flex justify-content-end py-6 px-9">
+					{% if app.user.hasActiveSubscription %}
+						<button type="submit" class="btn btn-primary btn-hover-rise">{{"Enregistrer" | trans}}</button>
+					{% else %}
+						<button type="submit" class="btn btn-primary disabled">{{"Enregistrer" | trans}}</button>
+					{% endif %}
+
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+{% endblock javascripts %}

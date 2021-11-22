@@ -1,0 +1,47 @@
+<form action="{{ formAction|default('') }}" method="POST" class="js-checkout-form checkout-form">
+
+	<div class="row">
+		<div class="col-md-6 mb-3">
+			<label for="cc-name" class="mb-2">Titulaire de la carte</label>
+			<input data-stripe="name" class="form-control" type="text" autocomplete="off" id="card-name" required placeholder="Card Holder Name"/>
+			<small class="text-muted">Full name as displayed on card</small>
+			<div class="invalid-feedback">
+				Name on card is required
+			</div>
+		</div>
+		<div class="col-md-6 mb-3">
+			<label for="cc-number" class="mb-2">Numéro de carte</label>
+			<input data-stripe="number" type="text" autocomplete="off" class="form-control js-cc-number" id="card-number" required placeholder="Card Number"/>
+			<div class="invalid-feedback">
+				Credit card number is required
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 mb-3">
+			<label for="cc-expiration" class="mb-2">Date d'expiration</label>
+			<input data-stripe="exp" type="text" size="4" autocomplete="off" class="form-control js-cc-exp" id="card-expiration" required="required" placeholder="mm/yy"/>
+			<div class="invalid-feedback">
+				Expiration date required
+			</div>
+		</div>
+		<div class="col-md-3 mb-3">
+			<label for="cc-cvv" class="mb-2">CVC</label>
+			<input data-stripe="cvc" type="text" size="4" autocomplete="off" class="form-control js-cc-cvc" id="card-cvc" required="required" placeholder="CVC"/>
+			<div class="invalid-feedback">
+				Security code required
+			</div>
+		</div>
+		<div class="col-md-3 mb-3">
+			<label for="cc-cvv" class="mb-2">Code postal</label>
+			<input type="text" autocomplete="off" class="form-control" id="card-zip" placeholder="Zip"/>
+			<div class="invalid-feedback">
+				Security code required
+			</div>
+		</div>
+	</div>
+	<button class="btn btn-primary btn-lg btn-block js-submit-button" type="submit">
+		<i class="fe-lock"></i>
+		{{ buttonText|default('Checkout') }}</button>
+</form>

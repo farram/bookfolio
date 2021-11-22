@@ -1,0 +1,69 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		Galeries -
+		{{ book.getTitle() }}
+	{% else %}
+		Galeries -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	Galeries -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container inner">
+		<div class="tiles">
+			<div class="items row row-offset-0">
+
+				{% for gallery in galleries %}
+					<div class="item col-xs-6 col-sm-6 col-md-4">
+						<figure class="overlay">
+							<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">
+								<div class="text-overlay caption">
+									<div class="info">
+										<h2 class="post-title">{{ gallery.list.getName() }}</h2>
+										<div class="meta">
+											<span class="count">{{ gallery.list.getImages() | length }}
+												{{ (gallery.list.getImages() | length > 1) ? 'photos':'photo' }}</span>
+										</div>
+									</div>
+								</div>
+								{% if gallery.list.isProtect %}
+									<img src="{{ gallery.list.getLocked() }}" alt="" class="">
+								{% else %}
+									{% if gallery.list.coverImage %}
+										<img src="{{ gallery.list.coverImage.imagePath | imagine_filter('thumbnail_card') }}" alt="" class="">
+									{% else %}
+										<img src="{{ ((gallery.list.getLastImage() != null) ? gallery.cover.imagePath | imagine_filter('thumbnail_card') : gallery.list.getNoThumb() ) }}" alt="" class="">
+									{% endif %}
+								{% endif %}
+							</figure>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+	{% block stylesheets %}
+		<link href="{{ asset('assets/css/front/vuetify-custom.css') }}" rel="stylesheet"/>
+		{{ parent() }}
+	{% endblock %}
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script src="https://unpkg.com/vue-masonry-css"></script>
+		<script src="{{ asset('assets/js/dashboard/vuejs/v-img.min.js') }}"></script>
+		<script src="{{ asset('assets/js/dashboard/vuejs/vue-go-top.min.js') }}"></script>
+		<script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script>
+		<script src='{{ asset('assets/tpl/'~ design ~'/js/v-infinite.js') }}'></script>
+
+	{% endblock %}

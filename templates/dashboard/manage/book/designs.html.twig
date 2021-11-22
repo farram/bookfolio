@@ -1,0 +1,32 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Annuaire des books en ligne | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	<div class="d-flex flex-column flex-xl-row">
+		<div class="flex-column flex-lg-row-auto w-100 w-xl-350px mb-10">
+			{% include 'dashboard/partial/sidebars/book.html.twig' %}
+		</div>
+		<div class="flex-lg-row-fluid ms-lg-15">
+			{% include 'dashboard/partial/menus/book.html.twig' %}
+			<div class="card pt-4 mb-6 mb-xl-9">
+				<div class="card-header border-0">
+					<div class="card-title">
+						<h2 class="fw-bolder">{{"Designs" | trans}}</h2>
+					</div>
+				</div>
+				<div class="card-body pt-0">
+					<p class="mb-10">{{"Voici les designs que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure."| trans}}</p>
+					{% if designs %}
+						<div id="app-designs"></div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+{% endblock javascripts %}

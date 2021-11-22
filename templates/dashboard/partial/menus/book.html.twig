@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
+	<li class="nav-item">
+		<a class="nav-link text-active-primary pb-4 {% if current_path == 'dashboard_manage_book_settings' %} active {% endif %}" href="{{ path('dashboard_manage_book_settings') }}">{{"Configuration" | trans}}</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-active-primary pb-4 {% if current_path == 'domain_index' %} active {% endif %}" href="{{ path('domain_index') }}">{{"Nom de domaine" | trans}}</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-active-primary pb-4 {% if current_path == 'manage_book_design' %} active {% endif %}" href="{{ path('manage_book_design') }}">{{"Designs" | trans}}</a>
+	</li>
+</ul>

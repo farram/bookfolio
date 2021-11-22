@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Templates des books - Modèles de sites web – Bookfolio" | trans }}
+{% endblock %}
+{% block body_class %}grey-body
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-753bf6c80bd0-f7ec6531" class="content6-headline-grid">
+					<div id="w-node-753bf6c80bd1-f7ec6531" class="content6-headline-wrap">
+						<h1 class="text-center top-clear">{{"Templates" | trans}}</h1>
+						<h6 class="text-center top-clear">{{"Voici les templates que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure." | trans}}</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper m0-100">
+		<div class="section">
+			<div class="collection-list-wrapper-5 w-dyn-list">
+				<div class="product3-grid w-dyn-items">
+
+					{% for design in designs %}
+						<div id="w-node-628c732ec171-3ab6f168" data-w-id="76cc98d1-4cd9-1725-72f6-628c732ec171" class="w-dyn-item">
+							<div style="-webkit-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="item-masonry">
+								<div class="image-wrap">
+									<a data-w-id="76cc98d1-4cd9-1725-72f6-628c732ec173" style="opacity:0" href="{{ path('template_preview',{'slug': design.slug}) }}" target="_blank" class="item-overlay w-inline-block">
+										<div class="button-small white-small">
+											<div>{{"Aperçu"| trans}}</div>
+										</div>
+									</a>
+									<div class="product-image product-image-size-m" style="background-image:url('{{absolute_url(asset('assets/tpl/' ~ design.slug ))}}/preview.jpeg')"></div>
+
+									{% if design.isNew %}
+										<div class="label inside-label label-featured">{{"Nouveau" | trans}}</div>
+									{% endif %}
+
+
+								</div>
+								<div class="product3-content-wrap">
+									<h4 title="#" class="heading-2">
+										{{design.title}}
+									</h4>
+								</div>
+								<a data-w-id="d1c64cb0-0ef9-25a7-e2d7-dce2b7ef229b" href="{{ path('manage_book_design_choice',{'id': design.id}) }}" class="button-text button-left w-inline-block">
+									<div class="button-label text-dark">Choisir ce template</div><img src="{{ asset('assets/img/arrow-dark2x.svg') }}" alt="Choisir ce template" class="button-arrow"></a>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

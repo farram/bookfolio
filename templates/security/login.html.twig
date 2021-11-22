@@ -1,0 +1,51 @@
+{% extends 'base_metronic.html.twig' %}
+{% block title %}
+	Connexion – Bookfolio
+{% endblock %}
+{% block body %}
+	<div class="d-flex flex-column flex-lg-row-fluid py-10">
+		<div class="d-flex flex-center flex-column flex-column-fluid">
+			<div class="w-lg-500px p-10 p-lg-15 mx-auto">
+				<form class="form w-100" novalidate="novalidate" method="post">
+					<div class="text-center mb-10">
+						<h1 class="text-dark mb-3">{{"Connectez-vous" | trans}}</h1>
+						<div class="text-gray-400 fw-bold fs-4">{{"Vous ne possédez pas encore de book sur Bookfolio ?" | trans}}
+							<a href="{{ path('app_register') }}" class="link-primary fw-bolder">{{"Créez-en un !" | trans}}</a>
+						</div>
+					</div>
+					<div class="fv-row mb-10">
+						<label class="form-label fs-6 fw-bolder text-dark">{{"Adresse email" | trans}}</label>
+						<input class="form-control form-control-lg form-control-solid" type="text" name="email" autofocus autocomplete="off"/>
+					</div>
+					<div class="fv-row mb-10">
+						<div class="d-flex flex-stack mb-2">
+							<label class="form-label fw-bolder text-dark fs-6 mb-0">{{"Mot de passe" | trans}}</label>
+							<a href="{{ path('app_forgot_password_request') }}" class="link-primary fs-6 fw-bolder">{{"Mot de passe oublié ?" | trans}}</a>
+						</div>
+						<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off"/>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-lg btn-primary w-100 mb-5">
+							<span class="indicator-label">{{"Connexion" | trans}}</span>
+						</button>
+						<div class="text-center text-muted text-uppercase fw-bolder mb-5">ou</div>
+						<a href="{{ path('google_connect') }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+							<img alt="Logo" src="{{ asset('assets/dashboard/media/svg/brand-logos/google-icon.svg') }}" class="h-20px me-3"/>{{"Se connecter avec Google" | trans}}</a>
+
+						<a href="{{ path('facebook_connect') }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+							<img alt="Logo" src="{{ asset('assets/dashboard/media/svg/brand-logos/facebook-4.svg') }}" class="h-20px me-3"/>{{"Se connecter avec Facebook" | trans}}</a>
+
+
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
+			<div class="d-flex flex-center fw-bold fs-6">
+				<a href="#" class="text-muted text-hover-primary px-2" target="_blank">{{"CGU" | trans}}</a>
+				<a href="#" class="text-muted text-hover-primary px-2" target="_blank">{{"Politique de confidentialité" | trans}}</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

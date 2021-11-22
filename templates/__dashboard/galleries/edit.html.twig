@@ -1,0 +1,104 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{title}}
+	| Bookfolio
+{% endblock %}
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					{{ wo_render_breadcrumbs({separator: '', listId: 'breadcrumbs'}) }}
+				</div>
+				<h4 class="page-title">
+					{{title}}
+				</h4>
+			</div>
+		</div>
+	</div>
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/galleries_side_bar.html.twig' with {'galleries': galleries} %}
+			{% include 'dashboard/partial/_subscription.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div id="gallery">
+
+				<div class="card p-3">
+
+					<div class="p-3">
+						<h3 class="mb-2 mt-0">{{title}}</h3>
+						<hr>
+						<div class="row">
+							<div class="col-lg-12">
+								{{ form_start(form, {'attr': {'class':'needs-validation','autocomplete':'off','novalidate': 'novalidate'}}) }}
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="form-group mb-3">
+											{{ form_label(form.name, 'Nom de la galerie'|trans, {'label_attr': {'class': 'text-dark mb-2'}})  }}
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text">{{ path('portfolio_galleries', { name : app.user.book.getName() }) }}/</span>
+												</div>
+												{{ form_widget(form.name, {'attr': {'autocomplete':'off','placeholder':''},'help': 'foobar'}) }}
+											</div>
+											{{ form_help(form.name) }}
+										</div>
+									</div>
+									{{ forms.input(form.description,'Description de la galerie (facultatif)',{class:'col-lg-12'}) }}
+									<div class="col-12">
+
+										<h4 class="mb-3">Visibilité</h4>
+										<div class="row">
+											{{ forms.checkbox(form.isActive,{class:'col-lg-12'}) }}
+											{{ forms.checkbox(form.isProtect,{class:'col-lg-12'}) }}
+										</div>
+										<div id="protectPassword">
+											<p class="text-muted">
+												{{"Si vous souhaitez limiter l'accès à cette galerie, saisissez un mot de passe. Seules les personnes ayant votre mot de passe pourront y accéder !"| trans}}
+											</p>
+											<div class="row">
+												{{ forms.input(form.passwordHash,'Saisissez un mot de passe',{class:'col-lg-12'}) }}
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="text-end">
+											<button type="submit" class="btn btn-primary-color waves-effect waves-light mt-2">
+												{{'Mettre à jour' | trans}}
+											</button>
+										</div>
+									</div>
+								</div>
+								{{ form_end(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$('#addGalleryForm').attr('autocomplete', 'off');
+let tagArr = document.getElementsByTagName("input");
+for (let i = 0; i < tagArr.length; i++) {
+tagArr[i].autocomplete = 'off';
+}
+$('#protectPassword').css('display', 'none');
+function displayPassword() {
+if ($('#gallery_form_isProtect').prop('checked')) {
+$('#protectPassword').css('display', 'block');
+} else {
+$('#protectPassword').css('display', 'none');
+}
+}
+	</script>
+{% endblock javascripts %}

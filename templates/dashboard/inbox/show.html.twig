@@ -1,0 +1,131 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Messagerie - ' ~ title ~ ' | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	<div class="d-flex flex-column flex-lg-row">
+		<div class="flex-column flex-lg-row-auto w-100 w-lg-300px w-xl-400px mb-10 mb-lg-0">
+			<div class="card card-flush">
+				<div class="card-header pt-7" id="kt_chat_contacts_header">
+					<form class="w-100 position-relative" autocomplete="off">
+						<span class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+									<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+								</g>
+							</svg>
+						</span>
+						<input type="text" class="form-control form-control-solid px-15" name="search" value="" placeholder="Search by username or email..."/>
+					</form>
+				</div>
+				<div class="card-body pt-5" id="kt_chat_contacts_body">
+					<div class="scroll-y me-n5 pe-5 h-200px h-lg-auto" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_chat_contacts_header" data-kt-scroll-wrappers="#kt_content, #kt_chat_contacts_body" data-kt-scroll-offset="0px">
+						{% include 'dashboard/inbox/side_bar.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
+			<div class="card" id="kt_chat_messenger">
+				<div class="card-header" id="kt_chat_messenger_header">
+					<div class="card-title">
+						<div class="d-flex justify-content-center flex-column me-3">
+							<a href="{{ path('portfolio_index', {'name':currentMessage.user.book.name}) }}" target="_blank" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">{{currentMessage.user.fullname}}</a>
+							<div class="mb-0 lh-1">
+								<span class="fs-7 fw-bold text-muted">
+									{{ currentMessage.user.profession }}
+									-
+									{{ currentMessage.user.location }}
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="card-toolbar">
+						<div class="me-n3">
+							<button class="btn btn-sm btn-icon btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+								<i class="bi bi-three-dots fs-2"></i>
+							</button>
+							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+
+								<div class="menu-item px-3">
+									<a href="{{ path('inbox_make_report', { uuid: currentMessage.uuid }) }}" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">{{"Signaler la conversation" | trans}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body" id="kt_chat_messenger_body">
+					<div class="scroll-y me-n5 pe-5 h-300px h-lg-auto" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_chat_messenger_header, #kt_chat_messenger_footer" data-kt-scroll-wrappers="#kt_content, #kt_chat_messenger_body" data-kt-scroll-offset="-2px">
+
+						{% if currentMessage.replies %}
+							{% for reply in currentMessage.replies %}
+								{% if reply.user %}
+									{% if reply.user.getId != app.user.getId %}
+										<div class="d-flex justify-content-start mb-10">
+											<div class="d-flex flex-column align-items-start">
+												<div class="d-flex align-items-center mb-2">
+													<a href="{{ path('portfolio_index', {'name':reply.user.book.name}) }}" target="_blank" class="symbol symbol-35px symbol-circle">
+														<img alt="Pic" src="{{ reply.user.getAvatar() | imagine_filter('avatar') }}"/>
+													</a>
+													<div class="ms-3">
+														<a href="{{ path('portfolio_index', {'name':reply.user.book.name}) }}" target="_blank" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">
+															{{reply.user.getFullname}}
+														</a>
+														<span class="text-muted fs-7 mb-1">
+															{{ reply.createdAt | ago}}
+														</span>
+													</div>
+												</div>
+												<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">
+													{{ reply.text | raw | nl2br }}
+												</div>
+											</div>
+										</div>
+									{% else %}
+										<div class="d-flex justify-content-end mb-10">
+											<div class="d-flex flex-column align-items-end">
+												<div class="d-flex align-items-center mb-2">
+													<div class="me-3">
+														<span class="text-muted fs-7 mb-1">
+															{{ reply.createdAt | ago}}
+														</span>
+														<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">{{"Vous" | trans}}</a>
+													</div>
+													<div class="symbol symbol-35px symbol-circle">
+														<img alt="{{app.user.fullname}}" src="{{ reply.user.getAvatar() | imagine_filter('avatar') }}"/>
+													</div>
+												</div>
+												<div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">
+													{{ reply.text | raw | nl2br }}
+												</div>
+											</div>
+										</div>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+				{{ form_start(form, {'attr': {'class':'needs-validation','novalidate': 'novalidate'}}) }}
+				<div class="card-footer pt-4" id="kt_chat_messenger_footer">
+					{{ form_widget(form.text, { 'attr': {'class': 'form-control form-control-flush mb-3','placeholder':'Saisissez votre réponse ici' | trans} }) }}
+					{{ form_help(form) }}
+					<div class="d-flex flex-stack">
+						<div class="d-flex align-items-center me-2">
+							<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="{{"Bientôt disponible" | trans}}">
+								<i class="bi bi-paperclip fs-3"></i>
+							</button>
+							<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="{{"Bientôt disponible" | trans}}">
+								<i class="bi bi-upload fs-3"></i>
+							</button>
+						</div>
+						<button class="btn btn-primary" type="submit">{{"Envoyer" | trans}}</button>
+					</div>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

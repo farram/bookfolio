@@ -1,0 +1,117 @@
+::selection {
+    background: #e7dde2; /* Safari */
+    color: #2f2f2f;
+}
+::-moz-selection {
+    background: #e7dde2; /* Firefox */
+    color: #2f2f2f;
+}
+.tp-loader.spinner {
+    border-top: 3px solid #c989a9;
+}
+.lg-outer .lg-item:after,
+.fotorama__wrap--css3 .fotorama__spinner {
+    border-top: 3px solid #c989a9;
+}
+a {
+    color: #c989a9;
+}
+a.line:hover {
+    border-bottom: 1px solid #c989a9;
+}
+a:hover,
+a:focus {
+    color: #c989a9;
+}
+.nocolor:hover,
+.email-link:hover,
+footer a:hover {
+    color: #c989a9 !important
+}
+.post-title a:hover {
+    color: #c989a9
+}
+.meta a:hover {
+    color: #c989a9;
+}
+ul.circled li:before {
+    color: #c989a9;
+}
+blockquote {
+    border-left: 3px solid #c989a9;
+}
+.navbar .navbar-nav > li > a:focus,
+.navbar .nav > li > a:hover,
+.navbar .nav > li.current > a {
+    color: #c989a9 !important;
+}
+.navbar .dropdown-menu li a:hover,
+.navbar .dropdown-menu li a.active {
+    color: #c989a9 !important
+}
+.sidebox a:hover {
+    color: #c989a9
+}
+.widget .post-list li a:hover {
+    color: #c989a9
+}
+#comments .info h5 a:hover {
+    color: #c989a9
+}
+.tooltip-inner {
+    background-color: #c989a9;
+}
+.tooltip.top .tooltip-arrow,
+.tooltip.top-left .tooltip-arrow,
+.tooltip.top-right .tooltip-arrow {
+    border-top-color: #c989a9
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #c989a9
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: #c989a9
+}
+.tooltip.bottom .tooltip-arrow,
+.tooltip.bottom-left .tooltip-arrow,
+.tooltip.bottom-right .tooltip-arrow {
+    border-bottom-color: #c989a9
+}
+.progress.plain .bar {
+    background: #c989a9 !important
+}
+.bar-container {
+    border: 1px solid #c989a9 !important;
+}
+.social li a:hover {
+    color: #c989a9 !important;
+}
+.vanilla-form input[type="radio"]:focus + span,
+.vanilla-form input[type="checkbox"]:focus + span,
+.vanilla-form input[type="radio"]:active + span,
+.vanilla-form input[type="checkbox"]:active + span {
+    border-color: #c989a9
+}
+.vanilla-form input[type="radio"] + span::after {
+    background-color: #c989a9;
+    border-color: #c989a9;
+}
+.vanilla-form input[type="radio"]:checked + span,
+.vanilla-form input[type="checkbox"]:checked + span {
+    border: 1px solid #c989a9
+}
+.vanilla-form input[type="checkbox"] + span::after {
+    border: 0 solid #c989a9;
+}
+@media (min-width: 1271px) {
+    .navbar .navbar-nav > li .dropdown-menu {
+        border-left: 2px solid #c989a9;
+    }
+    .navbar .dropdown-menu li a:hover,
+    .navbar .dropdown-menu li a.active {
+        color: #c989a9 !important;
+    }
+    .navbar .nav > li:not(.current) > a:hover {
+        color: #c989a9 !important;
+    }
+}

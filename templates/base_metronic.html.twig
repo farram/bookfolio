@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="../../../">
+		<title>
+			{% block title %}
+				Welcome!
+			{% endblock %}
+		</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta property="og:locale" content="fr_FR"/>
+		<meta property="og:type" content=""/>
+		<meta property="og:title" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content="Bookfolio"/>
+		{% block stylesheets %}
+			<link rel="canonical" href=""/>
+			<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}"/>
+			{{ encore_entry_link_tags('dashboard') }}
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+			<link href="{{ asset('assets/dashboard/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/css/custom.css') }}" rel="stylesheet" type="text/css"/>
+		{% endblock %}
+	</head>
+	<body id="kt_body" class="bg-body">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		{% for msg in app.session.flashbag.get('notice') %}
+			<script>
+				swal({
+title: "{{ msg.title|raw }}",
+text: "{{ msg.message|raw }}",
+icon: "{{ msg.type }}",
+buttons: true,
+dangerMode: false,
+closeOnClickOutside: false,
+closeOnEsc: false,
+closeModal: true,
+buttons: {
+confirm: {
+text: "Fermer",
+value: true,
+visible: true,
+className: "btn-default text-center center",
+closeModal: true
+}
+}
+})
+			</script>
+		{% endfor %}
+		<div class="d-flex flex-column flex-root">
+			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #1e1e3f">
+					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
+							<a href="{{ path('index') }}" class="py-9 mb-5">
+								<img alt="Logo" src="{{ asset('assets/img/logo-color.png') }}" class="h-50px"/>
+							</a>
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #fff;">{{"Bienvenue sur Bookfolio" | trans}}</h1>
+							<p class="fw-bold fs-2" style="color: #fff;">{{"La plate-forme de création de <br/> book photo et portfolio en ligne."| trans | raw}}
+							</p>
+						</div>
+						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{ asset('assets/dashboard/media/illustrations/sketchy-1/13-dark.png') }}"></div>
+					</div>
+				</div>
+
+				{% block body %}{% endblock %}
+			</div>
+		</div>
+
+		{% block javascripts %}
+			<script>
+				var hostUrl = "assets/";
+			</script>
+			<script src="{{ asset('assets/dashboard/plugins/global/plugins.bundle.js') }}"></script>
+			<script src="{{ asset('assets/dashboard/js/scripts.bundle.js') }}"></script>
+			<script src="{{ asset('assets/dashboard/js/custom/authentication/sign-in/general.js') }}"></script>
+			{{ encore_entry_script_tags('dashboard') }}
+		{% endblock %}
+	</body>
+</html>

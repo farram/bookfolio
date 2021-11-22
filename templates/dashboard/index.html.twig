@@ -1,0 +1,208 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Tableau de board" | trans}}
+	| Bookfolio
+{% endblock %}
+
+{% block body %}
+
+	{% if new_books %}
+		<h3 class="fw-bolder my-2 mb-8">{{ "Nouveaux books" | trans }}</h3>
+		<div class="row gy-5 g-xl-8">
+			{% for user in new_books %}
+				<div class="col-xl-3">
+					<div class="card mb-xl-8">
+						<div class="card-body">
+							<div class="d-flex align-items-center mb-0">
+								<div class="symbol symbol-50px me-5">
+									<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="symbol">
+										{% if user.getCertified %}
+											<img src="{{ user.avatar | imagine_filter('avatar') }}" alt="{{ user.fullname }}"/>
+										{% else %}
+											<img src="{{ user.avatar | imagine_filter('avatar') }}" alt="{{ user.fullname }}"/>
+										{% endif %}
+									</a>
+								</div>
+								<div class="flex-grow-1">
+									<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="text-gray-800 fw-bolder text-hover-primary fs-6">
+										{{ user.fullname  |u.truncate(20, '...') | raw}}
+									</a>
+									<span class="text-muted d-block fw-bold">
+										{{user.profession}}
+									</span>
+									<span class="text-muted mb-1 fw-bold d-block">
+										{{ user.address.location  |u.truncate(20, '...') | raw}}
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	<div class="row gy-5 g-xl-8">
+		<div class="col-xl-4">
+			<div class="card mb-xl-8">
+				<div class="card-header pt-5 border-0 py-5">
+					<h3 class="card-title">
+						<span class="card-label fw-bolder fs-3 mb-1">{{"Vos publications" | trans}}</span>
+					</h3>
+				</div>
+				<div class="card-body p-0 d-flex flex-column" style="position: relative;">
+					<div class="card-px pb-10 flex-grow-1">
+						<div class="row g-0 mt-5 mb-10">
+							<div class="col">
+								<div class="d-flex align-items-center me-2">
+									<div class="symbol symbol-50px me-3">
+										<div class="symbol-label bg-light-primary">
+											<span class="svg-icon svg-icon-1 svg-icon-primary">
+												<i class="las la-folder-open fs-2x text-primary"></i>
+											</span>
+										</div>
+									</div>
+									<div>
+										<div class="fs-4 text-gray-800 fw-bolder">{{app.user.galleries | length }}</div>
+										<div class="fs-7 text-muted fw-bold">{{"Galeries" | trans}}</div>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="d-flex align-items-center me-2">
+									<div class="symbol symbol-50px me-3">
+										<div class="symbol-label bg-light-primary">
+											<span class="svg-icon svg-icon-1 svg-icon-primary">
+												<i class="las la-image fs-2x text-primary"></i>
+											</span>
+										</div>
+									</div>
+									<div>
+										<div class="fs-4 text-gray-800 fw-bolder">{{app.user.images | length }}</div>
+										<div class="fs-7 text-muted fw-bold">{{"Photos" | trans}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row g-0">
+							<div class="col">
+								<div class="d-flex align-items-center me-2">
+									<div class="symbol symbol-50px me-3">
+										<div class="symbol-label bg-light-primary">
+											<span class="svg-icon svg-icon-1 svg-icon-primary">
+												<i class="las la-video fs-2x text-primary"></i>
+											</span>
+										</div>
+									</div>
+									<div>
+										<div class="fs-4 text-gray-800 fw-bolder">{{app.user.videos | length }}</div>
+										<div class="fs-7 text-muted fw-bold">{{"Vidéos" | trans}}</div>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="d-flex align-items-center me-2">
+									<div class="symbol symbol-50px me-3">
+										<div class="symbol-label bg-light-primary">
+											<span class="svg-icon svg-icon-1 svg-icon-primary">
+												<i class="las la-file-alt fs-2x text-primary"></i>
+											</span>
+										</div>
+									</div>
+									<div>
+										<div class="fs-4 text-gray-800 fw-bolder">{{app.user.pages | length }}</div>
+										<div class="fs-7 text-muted fw-bold">{{"Pages" | trans}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% if annonces %}
+				<div class="card card-flush mb-xl-8">
+					<div class="card-header pt-5">
+						<h3 class="card-title">
+							<span class="fw-bolder text-dark fs-3">{{"Dernières annonces publiées" | trans}}</span>
+						</h3>
+					</div>
+					<div class="card-body">
+						{% for annonce in annonces %}
+							<div class="d-flex align-items-center">
+								<div class="symbol symbol-50px me-5">
+									<a href="{{ path('portfolio_index', {'name':annonce.user.book.name}) }}" target="_blank" class="symbol">
+										{% if annonce.user.certified %}
+											<img src="{{ annonce.user.avatar | imagine_filter('avatar') }}" alt="{{ annonce.user.fullname }}"/>
+										{% else %}
+											<img src="{{ annonce.user.avatar | imagine_filter('avatar') }}" alt="{{ annonce.user.fullname }}"/>
+										{% endif %}
+									</a>
+								</div>
+								<div class="flex-grow-1">
+									<a href="{{ path('front_annonces_show', {'slug': annonce.slug}) }}" target="_blank" class="text-gray-800 fw-bolder text-hover-primary fs-6">
+										{{annonce.title}}
+									</a>
+									<span class="text-muted d-block fw-bold">
+										{{annonce.user.fullname}}
+									</span>
+									<small class="text-muted">
+										{{annonce.createdAt | ago}}
+									</small>
+								</div>
+							</div>
+							{% if not loop.last %}
+								<div class="separator my-5"></div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="card-footer">
+						<a href="{{ path('front_annonces_index') }}" class="btn btn-custom btn-primary w-100">
+							{{"Toutes les annonces" | trans}}
+						</a>
+					</div>
+				</div>
+			{% endif %}
+
+			{% if releases %}
+				<div class="card card-flush mb-xl-8">
+					<div class="card-header pt-5 border-0">
+						<h3 class="card-title align-items-center flex-column">
+							<span class="fw-bolder text-dark">{{"Dernières actualités" | trans}}</span>
+						</h3>
+					</div>
+					<div class="card-body">
+						{% for release in releases %}
+							<div class="d-flex align-items-start">
+								<div class="symbol symbol-45px w-40px me-5">
+									<span class="symbol-label bg-lighten">
+										<i class="fas fa-newspaper fs-2x"></i>
+									</span>
+								</div>
+
+								<div class="flex-grow-1">
+									<a href="#" target="_blank" class="text-gray-800 fw-bolder text-hover-primary fs-6">
+										{{release.title}}
+									</a>
+									<span class="text-muted d-block fw-bold">
+										{{release.content |u.truncate(100, '...') | raw}}
+									</span>
+								</div>
+							</div>
+							{% if not loop.last %}
+								<div class="separator my-5"></div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="card-footer">
+						<a href="{{ path('front_annonces_index') }}" class="btn btn-custom btn-primary w-100">
+							{{"Toute l'actualité" | trans}}
+						</a>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		<div class="col-xl-8">
+			<div id="app-feed-photos"></div>
+		</div>
+	</div>
+{% endblock %}

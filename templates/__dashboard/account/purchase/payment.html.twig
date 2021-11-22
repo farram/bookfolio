@@ -1,0 +1,107 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Offre ' ~ plan.planName ~ ' | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Offre ' ~ plan.planName} %}
+<div class="row">
+	<div class="col-xl-4">
+		<div class="card p-3">
+			<h4 class="mb-3">{{ 'Récapitulons :' | trans }}</h4>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="list-group mb-3">
+						{% if plan %}
+							<li class="list-group-item d-flex justify-content-between lh-condensed">
+								<div>
+									<h5 class="my-0">{{"Offre choisie" | trans}}</h5>
+									<small class="text-muted">{{ plan.planName }}</small>
+								</div>
+								<span class="text-muted">{{ plan.planPrice / 100 }}
+									€</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between lh-condensed">
+								<div>
+									<h5 class="my-0">{{"Type d'abonnement" | trans}}</h5>
+									<small class="text-muted">{{"Abonnement de 3 mois renouvelable" | trans}}</small>
+								</div>
+
+							</li>
+						{% endif %}
+
+						<li class="list-group-item d-flex justify-content-between">
+							<span>
+								<h5 class="my-0">{{"Total à régler" | trans}}</h5>
+							</span>
+							<strong class="font-22 text-blue">{{ plan.planPrice / 100 }}
+								€</strong>
+						</li>
+					</ul>
+					<p>{{"Nous vous rappelons que ce montant sera prélevé de manière automatique tous les 3 mois." | trans}}</p>
+					<div class="mb-2">
+						<button id="checkout" class="btn btn-custom btn-lg w-100 text-white d-block">{{"Souscrire à cette offre" | trans}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-4">
+		<div class="card p-3">
+			<h4 class="mb-3">
+				{{ 'Ce que contient l\'offre :' | trans }}</h4>
+				{% if plan.planDetails %}
+									<div class="price-features mt-3">
+										{% for details in plan.planDetails %}
+											<p>
+												{% if details.value == 'no' %}
+													<i class="mdi mdi-close"></i>
+												{% else %}
+													<i class="mdi mdi-check"></i>
+												{% endif %}
+
+												{{ details.feature.getTitle() }}
+												:
+												<span class="font-weight-bold text-dark">
+													{% if details.value is null %}
+														{{"Illimité" | trans}}
+													{% elseif details.value == 'yes' %}
+														{{"Oui" | trans}}
+													{% elseif details.value == 'no' %}
+														{{"Non" | trans}}
+													{% elseif details.value == 'unlimited' %}
+														{{"Illimité" | trans}}
+													{% else %}
+														{{ details.value }}
+													{% endif %}
+
+												</span>
+											</p>
+										{% endfor %}
+									</div>
+								{% endif %}
+			</div>
+		</div>
+
+		<div class="col-xl-4">
+			<div class="card p-3">
+				<h4 class="mb-3">{{ 'Sachez aussi que :' | trans }}</h4>
+				<p class="text-muted">{{"Aucune information bancaire n'est stockée sur les serveurs de Bookfolio." | trans}}</p>
+				<p class="text-muted">{{"Les données sont envoyées de manière sécurisée au service de paiement en ligne." | trans}}</p>
+				<p class="text-muted">{{"Le service est géré et sécurisé par STRIPE (https://stripe.com)" | trans}}</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		const PriceId = '{{ plan.idPriceApi }}';
+const PlanId = '{{ plan.id }}';
+const clientSecret = '{{ clientSecret }}';
+const stripePublicKey = '{{ stripePublicKey }}';
+const redirectAfterSuccessUrl = "{{ url('purchase_payment_success', {'id': plan.id} ) }}";
+				</script>
+				<script src="{{ asset('assets/js/dashboard/plan.js') }}" defer></script>
+			{% endblock %}

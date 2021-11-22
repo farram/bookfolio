@@ -1,0 +1,10 @@
+<div class="card">
+	<div class="card-body">
+		{% if app.user.book.design %}
+			<h4 class="mb-3">{{ 'Votre design actuel' | trans }}</h4>
+			<img class="card-img-top img-fluid border" src="{{absolute_url(asset('assets/tpl/' ~ app.user.book.design.slug ))}}/preview.jpeg" alt="{{ app.user.book.design.title }}">
+			<h5 class="text-muted mt-3 mb-3">{{ app.user.book.design.title }}</h5>
+			<a href="{{ path('manage_book_design') }}" class="btn btn-primary">{{"Modifier" | trans}}</a>
+		{% endif %}
+	</div>
+</div>

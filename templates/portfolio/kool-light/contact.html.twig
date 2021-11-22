@@ -1,0 +1,57 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+
+{% block title %}
+	Contact -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Contact -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-md-9 col-md-offset-3">
+		<div class="projects">
+			<article class="post">
+				<div class="post-content">
+					<h1 class="title">Contact</h1>
+					{{ form_start(form, {'attr': {'id':'contactform','class':'','novalidate': 'novalidate'}}) }}
+					<p class="mt-2 mb-5">Veuillez utiliser le formulaire ci-dessous pour me contacter.</p>
+					<div class="contact-item">
+						{{ form_widget(form.name, {'attr': {'placeholder': "Votre nom et prénom", 'tabindex':"1"}}
+						) }}
+					</div>
+					<div class="contact-item">
+						{{ form_widget(form.society, {'attr': {'placeholder': "Votre société (facultatif)", 'tabindex':"2"}}
+						) }}
+					</div>
+					<div class="contact-item">
+						{{ form_widget(form.email, {'attr': {'placeholder': "Votre adresse e-mail", 'tabindex':"3"}}
+						) }}
+					</div>
+					<div class="contact-item">
+						{{ form_widget(form.phone, {'attr': {'placeholder': "Numéro de téléphone (facultatif)", 'tabindex':"4"}}
+						) }}
+					</div>
+					<div class="contact-item">
+						{{ form_widget(form.message, {'attr': {'placeholder': "Votre message", 'tabindex':"5"}}
+						) }}
+					</div>
+					<div class="contact-item">
+						{{ form_widget(form.recaptcha) }}
+					</div>
+					<div class="contact-item form-submit">
+						<input type="submit" class="submit" id="submit" value="Envoyer"/>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</article>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+::selection {
+    background: #d7d8db; /* Safari */
+    color: #2f2f2f;
+}
+::-moz-selection {
+    background: #d7d8db; /* Firefox */  
+    color: #2f2f2f;
+}
+.cbp:after,
+.cbp-lazyload:after,
+.cbp-popup-loadingBox:after,
+.cbp-popup-singlePageInline:after {
+    border-top: 3px solid #5d6977;
+}
+.lg-outer .lg-item:after {
+    border-top: 3px solid #5d6977;
+}
+a {
+    color: #5d6977;
+}
+a.line:hover {
+    border-bottom: 1px solid #5d6977;
+}
+a:hover,
+a:focus {
+    color: #5d6977;
+}
+.nocolor:hover,
+.email-link:hover,
+footer a:hover {
+    color: #5d6977 !important
+}
+.post-title a:hover {
+    color: #5d6977
+}
+.meta a:hover {
+    color: #5d6977;
+}
+ul.circled li:before {
+    color: #5d6977;
+}
+blockquote {
+    border-left: 3px solid #5d6977;
+}
+footer a:hover {
+    color: #5d6977;
+}
+.btn:hover,
+.btn:focus,
+
+.btn:active,
+.btn.active {
+    background: #5d6977 !important;
+}
+.pagination ul > li.active > a {
+    background: #5d6977 !important;
+}
+.sidebox a:hover {
+    color: #5d6977
+}
+.widget .post-list li a:hover {
+    color: #5d6977
+}
+#comments .info h5 a:hover {
+    color: #5d6977
+}
+.tooltip-inner {
+    background-color: #5d6977;
+}
+.tooltip.top .tooltip-arrow,
+.tooltip.top-left .tooltip-arrow,
+.tooltip.top-right .tooltip-arrow {
+    border-top-color: #5d6977
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #5d6977
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: #5d6977
+}
+.tooltip.bottom .tooltip-arrow,
+.tooltip.bottom-left .tooltip-arrow,
+.tooltip.bottom-right .tooltip-arrow {
+    border-bottom-color: #5d6977
+}
+.progress.plain .bar {
+    background: #5d6977 !important
+}
+.vanilla-form input[type="radio"]:focus + span,
+.vanilla-form input[type="checkbox"]:focus + span,
+.vanilla-form input[type="radio"]:active + span,
+.vanilla-form input[type="checkbox"]:active + span {
+    border-color: #5d6977
+}
+.vanilla-form input[type="radio"] + span::after {
+    background-color: #5d6977;
+    border-color: #5d6977;
+}
+.vanilla-form input[type="radio"]:checked + span,
+.vanilla-form input[type="checkbox"]:checked + span {
+    border: 1px solid #5d6977
+}
+.vanilla-form input[type="checkbox"] + span::after {
+    border: 0 solid #5d6977;
+}
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item.active:hover {
+    border-color: #5d6977
+}
+.social li a:hover {
+    color: #5d6977 !important;
+}
+.inverse-wrapper a:not(.btn):hover {
+    color: #5d6977 !important
+}
+@media (min-width: 992px) {
+    .navbar .nav > li:not(.current) > a:hover {
+      color: #5d6977 !important;
+    }
+}

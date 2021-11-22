@@ -1,0 +1,43 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Toutes vos photos'| trans}}
+	| Bookfolio
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Toutes vos photos'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+
+	{% if pagesCount > 0 %}
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card p-3">
+					<p class="mb-0">{{"Vous pouvez réorganiser vos photos !" | trans}}</p>
+					<p class="mb-0">{{"Sélectionner une photo (sans relâché) et faites-la glisser à l’emplacement souhaité." | trans}}</p>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div id="app-all-images"></div>
+			</div>
+		</div>
+	{% else %}
+		<div class="card p-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="row justify-content-md-center">
+						<div class="col-7 text-center">
+							<h4 class="mb-0 text-center">
+								{{"Vous avez publier aucune photo sur votre book pour l'instant."| trans }}
+							</h4>
+							<h5 class="mt-1">
+								{{"Publier dès maintenant des photos afin d'enrichir votre book." | trans}}</h5>
+							<a href="{{ path('image_add') }}" class="mt-2 d-inline-block text-center btn btn-primary-color waves-effect waves-light">{{'Publier des photos'| trans}}
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

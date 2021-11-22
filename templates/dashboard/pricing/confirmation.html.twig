@@ -1,0 +1,148 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Nos offres | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	<div class="post d-flex flex-column-fluid" id="kt_post">
+		<div id="kt_content_container" class="container-xxl">
+			<div class="card">
+				<div class="card-body p-lg-20">
+					<div class="d-flex flex-column flex-xl-row">
+						<div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
+							<div class="mt-n1">
+								<div class="d-flex flex-stack pb-0">
+									<h4 class="fw-boldest text-gray-800 fs-2qx pe-5">{{"Formule" | trans}}
+										{{plan.planName}}
+									</h4>
+								</div>
+								<div class="m-0">
+									<h5 class="fw-boldest text-primary fs-2qx pe-5">
+										{{price.unit_amount / 100}}
+										€ /
+										{% if price.recurring.interval =="year" %}
+											{{"an"}}
+										{% else %}
+											{{"mois"}}
+										{% endif %}
+									</h5>
+									<div class="fw-bolder fs-5 text-gray-800 mb-8">
+										{{"Facturation annuelle, sous forme de paiement unique." | trans}}
+									</div>
+									<div class="row g-5 mb-11">
+										<div class="col-sm-6">
+											<div class="fw-bold fs-7 text-gray-600 mb-1">{{"Début de la période de facturation :" | trans}}</div>
+											<div class="fw-bolder fs-6 text-gray-800">
+												{{ "now"|date("m/d/Y") |format_datetime('long', 'none',locale='fr') }}
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="fw-bold fs-7 text-gray-600 mb-1">{{"Date de fin :" | trans}}</div>
+											<div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+												<span class="pe-2">
+													{{ "now"|date|date_modify("+1 year")|date("m/d/Y") |format_datetime('long', 'none',locale='fr') }}
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="row g-5 mb-12">
+										<div class="col-sm-12">
+											<div class="fw-bold fs-7 text-gray-600 mb-1">{{"Facturé à :" | trans}}</div>
+											<div class="fw-bolder fs-6 text-gray-800">{{app.user.fullname}}
+											</div>
+											<div class="fw-bold fs-7 text-gray-600">{{app.user.email}}
+												<br/>{{app.user.address.location}}</div>
+										</div>
+										<div class="col-sm-12">
+											<button id="checkout" class="btn btn-lg btn-primary mt-5">{{"Continuer vers le paiement" | trans}}</button>
+										</div>
+										<div class="separator my-10"></div>
+										<div class="fw-bold fs-7 text-gray-600 mt-2">
+											Aucune information bancaire n'est stockée sur les serveurs de Bookfolio. Les données sont envoyées de manière sécurisée au service de paiement en ligne. Le service est géré et sécurisé par STRIPE (https://stripe.com)</div>
+
+										<div class="fw-bolder fs-6 text-gray-800">Renouvèlements :</div>
+										<div class="fw-bold fs-7 text-gray-600 mt-2">
+											Votre abonnement Bookfolio se renouvellera automatiquement tous les mois ou tous les ans au prix normal en fonction de la formule choisie.
+										</div>
+
+										<div class="fw-bolder fs-6 text-gray-800">Annulations & remboursements :</div>
+										<div class="fw-bold fs-7 text-gray-600 mt-2">
+											Vous pouvez annuler votre renouvellement automatique à tout moment. Vous aurez accès à votre abonnement jusqu'à la date d'expiration. Après cette date, vous serez rétrogradé à un abonnement gratuit. Les remboursements ne sont éligibles que sur les abonnements annuelles dans les 30 jours suivant l'achat initial. Après 30 jours, tous les abonnements ne sont plus remboursables.
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="m-0">
+							<div class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-200 min-w-md-450px p-9 bg-lighten">
+								<h6 class="mb-8 fw-bolder fs-3 text-gray-800">Que contient la formule
+									{{plan.planName}}
+									?</h6>
+								{% if plan.planDetails %}
+									<div class="table-responsive">
+										<table class="table align-middle table-row-dashed fs-6 fw-bold gy-4" id="kt_subscription_products_table">
+											<tbody class="text-gray-600">
+												{% for details in plan.planDetails %}
+													<tr>
+														<td>
+															<span class="fw-bold fs-5 text-gray-700 flex-grow-1">
+																<span class="fw-bold fs-5 text-gray-700 flex-grow-1">
+																	{% if (details.value != 'true') and (details.value != 'false') and (details.value) %}
+																		<span class="fs-2 fw-bolder text-dark">{{ details.value}}</span>
+																		{{ details.feature.title | lower}}
+																	{% else %}
+																		<span class="{% if details.value == 'false' %}text-muted{% endif %}">
+																			{{ details.feature.title}}
+																		</span>
+
+																		{% if details.feature.showDetails %}
+																			<i class="fas fa-exclamation-circle fs-7 ms-2" data-bs-toggle="tooltip" title="{{details.feature.details}}"></i>
+																		{% endif %}
+
+																		{% if not details.value %}
+																			{{"illimité" | trans}}
+																		{% endif %}
+																	{% endif %}
+																</span>
+															</span>
+														</td>
+														<td>
+															<span class="svg-icon svg-icon-1 svg-icon-{% if details.value == 'false' %}danger{% else %}success{% endif %}">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+																	<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+																	{% if details.value == 'false' %}
+																		<path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"/>
+																	{% else %}
+																		<path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"/>
+																	{% endif %}
+																</svg>
+															</span>
+														</td>
+													</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		const PriceId = '{{ idPrice }}';
+const PlanId = '{{ plan.id }}';
+const clientSecret = '{{ clientSecret }}';
+const stripePublicKey = '{{ stripePublicKey }}';
+const redirectAfterSuccessUrl = "{{ url('purchase_payment_success', {'id': plan.id} ) }}";
+	</script>
+	<script src="{{ asset('assets/js/dashboard/plan.js') }}" defer></script>
+{% endblock %}

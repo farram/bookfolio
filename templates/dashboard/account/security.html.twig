@@ -1,0 +1,152 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% include 'dashboard/partial/profile_head.html.twig' %}
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_signin_method">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Méthode d'authenfication" | trans}}</h3>
+			</div>
+		</div>
+		<div id="kt_account_signin_method" class="collapse show">
+			<div class="card-body border-top p-9">
+				<div class="d-flex flex-wrap align-items-center">
+					<div id="kt_signin_email">
+						<div class="fs-6 fw-bolder mb-1">{{"Adresse e-mail" | trans}}</div>
+						<div class="fw-bold text-gray-600">{{app.user.email}}</div>
+					</div>
+					<div id="kt_signin_email_edit" class="flex-row-fluid d-none">
+						{{ form_start(signinEmailEditTypeForm, {'attr': {'class':'form','id':'kt_signin_change_email','novalidate': 'novalidate'}}) }}
+
+						<div class="row mb-6">
+							<div class="col-lg-6 mb-4 mb-lg-0">
+								<div class="fv-row mb-0">
+									{{ form_label(signinEmailEditTypeForm.email, 'Saisissez la nouvelle adresse e-mail' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+									{{ form_widget(signinEmailEditTypeForm.email, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+									{{ form_errors(signinEmailEditTypeForm.email) }}
+									{{ form_help(signinEmailEditTypeForm.email) }}
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="fv-row mb-0">
+									{{ form_label(signinEmailEditTypeForm.currentPassword, 'Confirmez votre mot de passe' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+									{{ form_widget(signinEmailEditTypeForm.currentPassword, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+									{{ form_errors(signinEmailEditTypeForm.currentPassword) }}
+									{{ form_help(signinEmailEditTypeForm.currentPassword) }}
+								</div>
+							</div>
+						</div>
+						<div class="d-flex">
+							<button type="submit" class="btn btn-primary btn-hover-rise me-2 px-6">{{"Mettre à jour" | trans}}</button>
+							<button id="kt_signin_cancel" type="button" class="btn btn-color-gray-400 btn-hover-rise btn-active-light-primary px-6">{{"Annuler" | trans}}</button>
+						</div>
+						{{ form_end(signinEmailEditTypeForm) }}
+					</div>
+					<div id="kt_signin_email_button" class="ms-auto">
+						<button class="btn btn-light btn-active-light-primary">{{"Modifier mon adresse e-mail" | trans}}</button>
+					</div>
+				</div>
+				<div class="separator separator-dashed my-6"></div>
+				<div class="d-flex flex-wrap align-items-center mb-10">
+					<div id="kt_signin_password">
+						<div class="fs-6 fw-bolder mb-1">{{"Mot de passe" | trans}}</div>
+						<div class="fw-bold text-gray-600">************</div>
+					</div>
+					<div id="kt_signin_password_edit" class="flex-row-fluid d-none">
+						{{ form_start(form, {'attr': {'class':'form needs-validation','id':'kt_signin_change_password','novalidate': 'novalidate'}}) }}
+						<div class="row mb-1">
+							<div class="col-lg-4">
+								<div class="fv-row mb-0">
+									{{ form_label(form.oldPassword, 'Mot de passe actuel' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+									{{ form_widget(form.oldPassword, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+									{{ form_errors(form.oldPassword) }}
+									{{ form_help(form.oldPassword) }}
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="fv-row mb-0">
+									{{ form_label(form.plainPassword.first, 'Nouveau mot de passe actuel' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+									{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+									{{ form_errors(form.plainPassword.first) }}
+									{{ form_help(form.plainPassword.first) }}
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="fv-row mb-0">
+									{{ form_label(form.plainPassword.second, 'Confirmez le nouveau mot de passe' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+									{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+									{{ form_errors(form.plainPassword.second) }}
+									{{ form_help(form.plainPassword.second) }}
+								</div>
+							</div>
+						</div>
+						<div class="d-flex">
+							<button type="submit" class="btn btn-primary btn-hover-rise me-2 px-6">{{"Mettre à jour" | trans}}</button>
+							<button id="kt_password_cancel" type="reset" class="btn btn-hover-rise btn-color-gray-400 btn-active-light-primary px-6">{{"Annuler" | trans}}</button>
+						</div>
+						{{ form_end(form) }}
+					</div>
+					<div id="kt_signin_password_button" class="ms-auto">
+						<button class="btn btn-light btn-active-light-primary">{{"Réinitialiser mon mot de passe" | trans}}</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Désactivation du compte" | trans}}</h3>
+			</div>
+		</div>
+		<div id="kt_account_deactivate" class="collapse show">
+			{{ form_start(accountDeactivateTypeForm, {'attr': {'class':'form needs-validation','id':'kt_account_deactivate_form','novalidate': 'novalidate'}}) }}
+			<div class="card-body border-top p-9">
+				<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6">
+					<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+							<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+							<rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+							<rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+						</svg>
+					</span>
+					<div class="d-flex flex-stack flex-grow-1">
+						<div class="fw-bold">
+							<h4 class="text-gray-900 fw-bolder">{{"Vous désactivez votre compte ?" | trans}}</h4>
+							<div class="fs-6 text-gray-700">{{"Par mésure de sécurité, vous devez confirmer votre mot de passe pour désactiver votre compte." | trans}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-check-solid fv-row mb-5">
+					{{ form_label(accountDeactivateTypeForm.currentPassword, 'Mot de passe actuel' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+					{{ form_widget(accountDeactivateTypeForm.currentPassword, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+					{{ form_errors(accountDeactivateTypeForm.currentPassword) }}
+					{{ form_help(accountDeactivateTypeForm.currentPassword) }}
+				</div>
+
+				<div class="form-check form-check-solid fv-row p-0">
+					{{ form_label(accountDeactivateTypeForm.deactivate, 'Je confirme la désactivation de mon compte' | trans, {'label_attr': {'class': 'form-check-labesl fw-bold ps-2 fs-6'}})  }}
+					{{ form_widget(accountDeactivateTypeForm.deactivate, {'attr': {'class': 'form-check-input'}}) }}
+					{{ form_errors(accountDeactivateTypeForm.deactivate) }}
+					{{ form_help(accountDeactivateTypeForm.deactivate) }}
+				</div>
+			</div>
+			<div class="card-footer d-flex justify-content-end py-6 px-9">
+				<button type="submit" class="btn btn-danger btn-hover-rise fw-bold">{{"Désactiver le compte" | trans}}</button>
+			</div>
+			{{ form_end(accountDeactivateTypeForm) }}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/custom/account/settings/signin-methods.js') }}"></script>
+{% endblock javascripts %}

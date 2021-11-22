@@ -1,0 +1,116 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos annonces | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Vos annonces'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/annonces_side_bar.html.twig' %}
+			{% include 'dashboard/partial/_subscription.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div id="annonces">
+
+				<div class="card">
+					<div class="card-body">
+						<div class="row p-3">
+
+							<div class="col-12">
+								<div class="text-start">
+									<h4 class="mt-0 mb-2">{{ 'Toutes vos annonces' | trans }}
+										({{ annonces|length}})
+									</h4>
+									<p class="text-muted">
+										{{ "Bookfolio vous permet d\'élargir votre cercle de professionels grâce aux petites annonces que vous pourrez poster. 
+                                Vous pouvez donc retrouver ci-dessous la liste des annonces de recherche que vous avez déjà émises !" | trans}}
+									</p>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								{% if annonces %}
+									{% for annonce in annonces %}
+										<div class="card border project-box">
+											<div class="card-body">
+												<div class="dropdown float-end">
+													<a href="" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+														<i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+													</a>
+													<div class="dropdown-menu dropdown-menu-right">
+														<a class="dropdown-item" href="{{ path('annonce_edit', {'id': annonce.id}) }}">Edit</a>
+														<form method="post" action="{{ path('annonce_delete', {'id': annonce.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+															<input type="hidden" name="_method" value="DELETE">
+															<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annonce.id) }}">
+															<button class="dropdown-item">{{"Supprimer" | trans}}</button>
+														</form>
+													</div>
+												</div>
+
+												<h4 class="mt-0">
+													<a href="{{ path('annonce_show', {'slug': annonce.slug}) }}" class="text-dark">{{annonce.title}}</a>
+												</h4>
+												<p class="text-muted mb-1">
+													<small>{{"Publié le" | trans}}
+														{{ annonce.createdAt|ago}}</small>
+												</p>
+
+												{% if annonce.isActive == true %}
+													<div class="badge bg-soft-success text-success mb-2">{{'En ligne' | trans}}</div>
+												{% else %}
+													<div class="badge bg-soft-warning text-warning mb-2">{{'En attente de validation' | trans}}</div>
+												{% endif %}
+
+												<div class="d-block mb-0">
+													<span class="pr-2 text-nowrap mb-2 d-inline-block mr-3">
+														<i class="mdi mdi-eye-outline font-16 text-muted"></i>
+														{{ annonce.getAnnoncesViews() | length }}
+														{% if annonce.getAnnoncesComments() | length <= 1 %}
+															{{ 'vue'|trans }}
+														{% else %}
+															{{ 'vues'|trans }}
+														{% endif %}
+													</span>
+													<span class="text-nowrap mb-2 d-inline-block">
+														<i class="mdi mdi-comment-multiple-outline font-16 text-muted"></i>
+														{{ annonce.getAnnoncesComments() | length }}
+														{% if annonce.getAnnoncesComments() | length <= 1 %}
+															{{ 'commentaire'| trans }}
+														{% else %}
+															{{ 'commentaires'| trans }}
+														{% endif %}
+													</span>
+												</div>
+
+												{% if annonce.getAnnoncesComments() | length > 0 %}
+													<div class="avatar-group">
+
+														{% for comment in annonce.getAnnoncesComments() %}
+
+															<a href="#" target="_blank" class="avatar-group-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ comment.user.getFullname() }}">
+																<img src="{{ comment.user.getAvatar() }}" class="rounded-circle avatar-sm" alt="{{ comment.user.fullname }}">
+															</a>
+														{% endfor %}
+
+													</div>
+												{% endif %}
+											</div>
+
+										</div>
+									{% endfor %}
+								{% else %}
+									<div class="alert alert-warning">
+										<div>{{'Vous avez un nouveau projet ? Parlez-en !' | trans}}</div>
+									</div>
+								{% endif %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

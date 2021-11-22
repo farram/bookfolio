@@ -1,0 +1,113 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+
+{% block title %}
+	Contact -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Contact -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<section id="page-header-secion" class="alter-heading">
+		<div class="page-header-image parallax bg-image" style="background-image: url(assets/img/headings/heading-6.jpg); background-position: 50% 50%;"></div>
+		<div class="cover page-header-cover"></div>
+		<div class="container page-header-content no-padding max-width-800 text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="album-title">Contact</h1>
+					<p class="text">Veuillez utiliser le formulaire ci-dessous pour me contacter.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="content-section" class="page page-about-me">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content-wrap">
+						{{ form_start(form, {'attr': {'id':'contactform','class':'','novalidate': 'novalidate'}}) }}
+
+						<div class="contact-form">
+							<div class="row">
+								<div class="col-lg-6 margin-lg-10b">
+									<div class="form-group">
+										{{ form_widget(form.name, {'attr': {'class':'form-control','placeholder': "Votre nom et prénom", 'tabindex':"1"}}
+										) }}
+										<div class="text-danger">
+											{{ form_errors(form.name) }}
+										</div>
+									</div>
+
+								</div>
+								<div class="col-lg-6 margin-lg-10b">
+									<div class="form-group">
+										{{ form_widget(form.society, {'attr': {'class':'form-control','placeholder': "Votre société (facultatif)", 'tabindex':"2"}}
+										) }}
+										<div class="text-danger">
+											{{ form_errors(form.society) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6 margin-lg-10b">
+									<div class="form-group">
+										{{ form_widget(form.email, {'attr': {'class':'form-control','placeholder': "Votre adresse e-mail", 'tabindex':"3"}}
+										) }}
+										<div class="text-danger">
+											{{ form_errors(form.email) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 margin-lg-10b">
+									<div class="form-group">
+										{{ form_widget(form.phone, {'attr': {'class':'form-control','placeholder': "Numéro de téléphone (facultatif)", 'tabindex':"4"}}
+										) }}
+										<div class="text-danger">
+											{{ form_errors(form.phone) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12 margin-lg-10b">
+									<div class="form-group">
+										{{ form_widget(form.message, {'attr': {'class':'form-control','placeholder': "Votre message", 'tabindex':"5"}}
+										) }}
+										<div class="text-danger">
+											{{ form_errors(form.message) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12 margin-lg-10t">
+									<div class="form-group">
+										{{ form_widget(form.recaptcha) }}
+									</div>
+								</div>
+							</div>
+
+							<div class="input-wrapper clearfix">
+								<input type="submit" class="btn btn-primary btn-rounded-5x" id="submit" value="Envoyer"/>
+							</div>
+						</div>
+
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

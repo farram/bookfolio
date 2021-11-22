@@ -1,0 +1,17 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        thumbnails:
+            uri_prefix: /assets/uploads/avatar
+            upload_destination: '%kernel.project_dir%/public/assets/uploads/avatar'
+        themes:
+            uri_prefix: /assets/img/themes
+            upload_destination: '%kernel.project_dir%/public/assets/img/themes'
+        gallery_images:
+            uri_prefix: /assets/uploads/
+            upload_destination: '%kernel.project_dir%/public/assets/uploads/'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

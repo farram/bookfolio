@@ -1,0 +1,6 @@
+zenstruck_foundry:
+    faker:
+        locale: fr_FR # set the locale
+    instantiator:
+        allow_extra_attributes: true
+        always_force_properties: true

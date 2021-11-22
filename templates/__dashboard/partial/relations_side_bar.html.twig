@@ -1,0 +1,16 @@
+{% set current_path = app.request.get('_route') %}
+<div class="card p-3 text-center">
+	<div class="text-start">
+		<div class="list-group list-group-flush mt-2 font-15">
+			<a href="{{ path('relation_followers') }}" class="{% if current_path == "relation_followers" %} list-group-item-active {% endif %} list-group-item list-group-item-action border-0">
+
+				{{"Abonnés" | trans}}
+			</a>
+			<a href="{{ path('relation_following') }}" class="{% if current_path == "relation_following" %} list-group-item-active {% endif %} list-group-item list-group-item-action border-0">
+
+				{{"Abonnements" | trans}}
+			</a>
+		</div>
+	</div>
+</div>
+{% include 'dashboard/partial/_subscription.html.twig' %}

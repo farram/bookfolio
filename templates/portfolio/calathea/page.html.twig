@@ -1,0 +1,37 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{{ page.getTitle() }}
+	-
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	{{ page.getTitle() }}
+	-
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="top-single-bkg  topnoimg ">
+		<div class="inner-desc">
+			<div class="container">
+                <h1 class="post-title single-post-title">{{ page.getTitle() }}</h1>
+                <span class="post-subtitle page-subtitle"> Mis à jour {{ page.getUpdatedAt() | ago }}</span>
+			</div>
+		</div>
+	</div>
+	<div class="page-holder custom-page-template page-full fullscreen-page home-page-content clearfix">
+		<section class="section-holder">
+			<div class="container">
+                <div class="row justify-content-md-center">
+					<div class="col-8">
+						{{ page.getContent() | raw }}
+					</div>
+                </div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

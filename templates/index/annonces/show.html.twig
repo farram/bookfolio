@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Bookfolio |" | trans }}
+	{{annonce.title}}
+	à
+	{{annonce.location}}
+{% endblock %}
+{% block body %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid headline-grid">
+				<div id="w-node-fd835847564c-bbcf067a">
+
+					<h1 class="mb-0">{{annonce.title}}</h1>
+					<h4 class="mb-2">{{"Pour" | trans}}
+						<strong>{{annonce.gender.title}}</strong>
+						à
+						<strong>{{annonce.location}}</strong>
+					</h4>
+					<div class="text-label text-start">
+						{{annonce.createdAt | ago}}
+					</div>
+				</div>
+				<div id="w-node-d88b3d30a489-bbcf067a" class="rich-text-block w-richtext">
+					{{annonce.description | raw}}
+				</div>
+				<div id="w-node-ffa49cb658f7-bbcf067a" class="blog-detail-author-wrap mb-0">
+					<a href="{{ path('portfolio_index', {'name':annonce.user.book.name}) }}" target="_blank">
+						<div class="blog-detail-author-pic" style="background-image:url('{{ annonce.user.getAvatar() | imagine_filter('avatar') }}')"></div>
+					</a>
+					<div class="blog-detail-name-wrap">
+						<p class="blog-detail-name">
+							<a href="{{ path('portfolio_index', {'name':annonce.user.book.name}) }}" target="_blank">
+								{{annonce.user.fullname}}
+							</a>
+						</p>
+						<div class="text-label text-start">
+							{{annonce.user.address.location}}
+						</div>
+					</div>
+				</div>
+				<div id="w-node-cedd5bef52b3-bbcf067a" class="content mt-0">
+					<div class="blog-detail-divider"></div>
+				</div>
+				<div id="w-node-6a0057114919-bbcf067a">
+					<h2>Votre réponse</h2>
+					<div class="cta7-form w-form">
+						{{ form_start(form, {'attr': {'action': path('front_add_reaction_annonce',{'slug': annonce.slug}),'class':'cta7-form-wrap needs-validation','novalidate': 'novalidate'}}) }}
+						{{ form_widget(form.comment, { 'attr': {'placeholder':'Saisissez votre réponse ici','class' : 'text-area w-input','rows' : '3', 'cols' : '200' }}
+						) }}
+
+						<button type="submit" class="button-small w-button mt-2" name="comment-button">Répondre</button>
+						{{ form_end(form) }}
+					</div>
+
+				</div>
+				{% if reactions | length > 0 %}
+					<div id="w-node-2c4cf2bcc17b-bbcf067a" class="content mt-1">
+						<div class="blog-detail-divider"></div>
+					</div>
+					<div id="w-node-7e65b4bb25a0-bbcf067a">
+						<h2>{{"Ils ont répondu à l'annonce" | trans}}
+							({{reactions | length}})</h2>
+					</div>
+
+					<div id="w-node-24deaf2ff901-bbcf067a">
+						{% for reaction in reactions %}
+							<div class="blog-detail-author-wrap">
+								<a href="{{ path('portfolio_index', {'name':reaction.user.book.name}) }}" target="_blank" class="w-inline-block">
+									<div class="blog-detail-author-pic" style="background-image:url('{{ reaction.user.getAvatar() | imagine_filter('avatar') }}')"></div>
+								</a>
+								<div class="blog-detail-name-wrap">
+									<a href="{{ path('portfolio_index', {'name':reaction.user.book.name}) }}" class="w-inline-block" target="_blank">
+										<p class="blog-detail-name">
+											{{reaction.user.fullname}}
+										</p>
+									</a>
+									<div class="text-label text-start text-muted">
+										{{reaction.user.profession}}
+										-
+										{{reaction.createdAt | ago}}
+									</div>
+									<div class="text-label paragraph-70 text-start">
+										{{reaction.comment | raw}}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+
+		</div>
+	</div>
+</div>{% endblock %}

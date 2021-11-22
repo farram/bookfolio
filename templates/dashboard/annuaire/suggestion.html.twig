@@ -1,0 +1,23 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Annuaire des books en ligne | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	<div id="app-annuaire-suggested"></div>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		window.translations = {
+'Qui recherchez-vous ?': '{{ 'Qui recherchez-vous ?' | trans }}',
+'Commencer à saisir un lieu, puis sélectionner.': '{{ "Commencer à saisir un lieu, puis sélectionner." | trans }}',
+'Effectuer une recherche avancée': '{{ "Effectuer une recherche avancée" | trans }}',
+'Indiquez un lieu. Ex : Bordeaux, France': '{{ "Indiquez un lieu. Ex : Bordeaux, France" | trans }}',
+'Ex : Photographe, modèle, styliste, etc.': '{{ "Ex : Photographe, modèle, styliste, etc." | trans }}',
+'En fonction du type de book choisi.': '{{ "En fonction du type de book choisi." | trans }}',
+'Homme, femme ou sans importance.': '{{ "Homme, femme ou sans importance." | trans }}',
+'Trier par :': '{{ "Trier par :" | trans }}'
+};
+	</script>
+	{{ parent() }}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock %}

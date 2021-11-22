@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Ils ont donné leur avis sur Bookfolio - Avis | Book-folio.fr" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-a6473c30" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-a6473c30" class="content6-headline-wrap">
+						<h1 class="text-center">{{"Ils ont fait l'expérience Bookfolio" | trans}}</h1>
+						<h4 class="text-center top-clear">{{"C'est eux qui en parlent le mieux !" | trans}}</h4>
+						<a data-w-id="8be7544f-7c26-d975-eac4-8e6db1aab016" href="{{ path('avis_add') }}" class="button-small w-inline-block">
+							<div class="button-label">{{"Et vous, qu'en pensez-vous ?" | trans}}</div><img src="{{ asset('assets/img/arrow2x.svg') }}" alt="Et vous, qu'en pensez-vous ?" class="button-arrow"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content16-grid">
+				<div id="w-node-50012a93176e-a6473c30" class="w-dyn-list">
+					<div class="w-dyn-items">
+						{% for avis in avis %}
+							<div class="w-dyn-item product-wrap">
+								<div class="div-block-7 avis-list">
+									<div class="w-row">
+										<div class="column-15 w-col w-col-2">
+											<a href="{{ path('portfolio_index', {'name':avis.user.book.name}) }}" class="link-block w-inline-block" target="_blank">
+												<div class="author-picture image-user" style="background-image:url('{{ avis.user.getAvatar() | imagine_filter('avatar') }}')"></div>
+											</a>
+										</div>
+										<div class="column-19 w-col w-col-10">
+											<a href="{{ path('portfolio_index', {'name':avis.user.book.name}) }}" class="user-link w-inline-block" target="_blank">
+												<h4 class="heading-9">{{avis.user.fullname}}</h4>
+											</a>
+											<div class="paragraph-70 text-start w-richtext">
+												{{avis.message | raw}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="blog1-divider"></div>
+					{{ knp_pagination_render(avis, null, {}, {'align': 'center','size': 'medium','rounded': false,}) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

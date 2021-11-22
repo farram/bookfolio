@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{'Books de ' ~ profession.title | lower ~ '  | Bookfolio' | trans}}
+{% endblock %}
+{% block body %}
+	<div class="wrapper m0-100">
+
+		<div class="section mobile-only">
+			<div data-delay="0" class="dropdown w-dropdown">
+				<div class="dropdown-toggle w-dropdown-toggle">
+					<div class="icon-3 w-icon-dropdown-toggle"></div>
+					<div class="size4-text">Annuaire des books</div>
+				</div>
+				<nav class="dropdown-list w-dropdown-list">
+					<div class="w-dyn-list">
+						{{ list|join | raw }}
+					</div>
+				</nav>
+			</div>
+		</div>
+
+		<div class="wrapper">
+			<div class="section">
+				<div class="w-layout-grid product5-grid">
+					<div id="w-node-a7f330fd6d9a-559b0ad0" class="product5-nav-wrap">
+						<div class="product5-nav-items-wrap">
+							<h1 class="heading-title">Annuaire des books</h1>
+							<div class="product5-nav-lists">
+								<ul>
+									<li>
+										<a href="{{ path('front_annuaire_new_book') }}" class="product5-category-link product5-all-items">Nouveaux books</a>
+									</li>
+								</ul>
+								<hr class="separator">
+								<div class="w-dyn-list">
+									{{ list|join | raw }}
+								</div>
+							</div>
+							{{ list|join | raw }}
+						</div>
+					</div>
+					<div id="w-node-a7f330fd6d99-559b0ad0" class="w-layout-grid product5-grid">
+						<div id="w-node-8253b14526da-559b0ad0">
+							<h4 class="top-clear bot-clear">Affinez votre recherche pour :</h4>
+							<h4 class="top-clear lowercase bot-clear type-search">{{profession.title}}</h4>
+						</div>
+
+						<div id="annuaireFilter"></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		var professionSlug = '{{ profession.slug }}'
+	</script>
+	{{ parent() }}
+{% endblock %}

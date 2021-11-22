@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Mises à jour et nouveautés - News - Book-folio.fr" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-289b524c" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-289b524c" class="content6-headline-wrap">
+						<h1 class="text-center">{{"Mises à jour & nouveautés" | trans}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper m0-100">
+		<div class="section">
+			<div class="w-layout-grid content16-grid">
+				<div id="w-node-50012a93176e-289b524c" class="w-dyn-list">
+					<div class="w-dyn-items">
+
+						{% for release in releases %}
+							<div class="w-dyn-item mb-3">
+								<div class="div-block-7">
+									<p class="paragraph-70 paragraph70-bottom-clear text-start text-muted">{{release.createdAt | ago}}
+									</p>
+									<h4 class="subtitle-annonce normal">
+										{{release.title}}
+									</h4>
+									<div class="paragraph-70 text-start w-richtext">
+										{{release.content | raw}}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="blog1-divider"></div>
+					{{ knp_pagination_render(releases, null, {}, {'align': 'center','size': 'medium','rounded': false,}) }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

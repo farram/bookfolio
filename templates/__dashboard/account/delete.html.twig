@@ -1,0 +1,42 @@
+{% extends 'dashboard.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card">
+				<div class="p-3">
+					<h3 class="mb-3 mt-0">{{"Désactivation et suppression de book" | trans}}</h3>
+					<hr>
+					<p>{{app.user.firstname}},
+						{{"Nous sommes désolés d'apprendre que vous êtes sur le point de nous quitter ... Si vous vous inquiétez des changements des Conditions de service, nous avons clarifié certains problèmes que les artistes nous ont signalés." | trans}}</p>
+					<p class="mb-0">{{"Vous souhaitez tout de même supprimer votre book ?" | trans}}</p>
+					<p class="mt-0">{{"Merci de renseigner les champs ci-dessous." | trans}}</p>
+
+					{{ form_start(form, {'action': path('account_delete'),'attr': {'class':'row needs-validation','novalidate': 'novalidate'}}) }}
+					{{ forms.input(form.oldPassword,'',{class:'col-lg-12'}) }}
+					{{ forms.input(form.reason,'',{class:'col-lg-12'}) }}
+
+					<div class="col-12">
+						<div class="alert alert-danger">
+							{{"Attention ! Cette action est irréversible. Vous perdrez toutes les données de votre book." | trans}}
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="text-end">
+							<button type="submit" class="btn btn-primary-color waves-effect waves-light mt-2">{{"Confirmer la suppression" | trans}}</button>
+						</div>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

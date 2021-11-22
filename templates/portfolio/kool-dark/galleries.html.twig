@@ -1,0 +1,47 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		Galeries -
+		{{ book.getTitle() }}
+	{% else %}
+		Galeries -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	Galeries -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+{% block body %}
+	<div class="col-md-9 col-md-offset-3">
+		<div class="projects">
+			{% if galleries | length > 0 %}
+				<div class="row">
+					{% for gallery in galleries %}
+						<div class="project-item col-lg-6">
+							<h2 class="title">
+								<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">
+									{{ gallery.list.getName() }}
+								</a>
+							</h2>
+							{% if gallery.list.isProtect %}
+								<img class="img-responsive" src="{{ gallery.list.getLocked() }}" alt="">
+							{% else %}
+								{% if gallery.list.coverImage %}
+									<img class="img-responsive" src="{{ gallery.list.coverImage.imagePath | imagine_filter('thumbnail_card') }}" alt="">
+								{% else %}
+									<img class="img-responsive" src="{{ ((gallery.list.getLastImage() != null) ? gallery.cover.imagePath | imagine_filter('thumbnail_card') : gallery.list.getNoThumb() ) }}" alt="">
+								{% endif %}
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% else %}
+				<div class="alert alert-warning text-center" role="alert">Aucune galerie pour l'instant.</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

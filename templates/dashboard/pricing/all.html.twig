@@ -1,0 +1,185 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Nos formules | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+
+	<div class="card" id="kt_pricing">
+		<div class="card-body p-lg-17">
+			<div class="d-flex flex-column">
+				<div class="mb-13 text-center">
+
+					<h1 class="mb-3">{{"Nos formules" | trans}}</h1>
+					{% if app.user.hasActiveSubscription %}
+						<div class="text-muted fw-bold fs-5">{{"Vous disposez actuellement de la formule " ~ avalableCreditService.currentPlan.name ~ "." | trans}}<br>{{"Si vous souhaitez faire évoluer votre offre, faites votre choix parmi nos formules ci-dessous." | trans}}
+						</div>
+					{% else %}
+						<div class="text-muted fw-bold fs-5">{{"Vous disposez actuellement de la formule Starter" | trans}}<br>{{"Si vous souhaitez faire évoluer votre offre, faites votre choix parmi les formules ci-dessous. C'est sans engagement !" | trans}}
+						</div>
+					{% endif %}
+				</div>
+				<div class="nav-group nav-group-outline mx-auto" data-kt-buttons="true">
+					<a href="#" class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 me-2" data-kt-plan="month">{{"Mensuel" | trans}}</a>
+					<a href="#" class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 active" data-kt-plan="annual">{{"Annuel" | trans}}</a>
+				</div>
+
+				{% if plans %}
+					<div class="row mt-10">
+						{% for plan in plans %}
+							<div class="col-xl-4">
+								<div class="d-flex h-100 align-items-center">
+									<div class="ribbon ribbon-top w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 {% if  plan.isHighlight %} py-20 {% else %} py-15 {% endif %} px-10">
+										{% if app.user.hasActiveSubscription %}
+											{% if plan.getIdPriceApi == app.user.subscription.stripePlanId %}
+												<div class="ribbon-label">
+													{{"Votre formule" | trans}}
+													<span class="ribbon-inner bg-primary"></span>
+												</div>
+											{% endif %}
+										{% else %}
+											{% if plan.planPrice == 0 %}
+												<div class="ribbon-label">
+													{{"Votre formule" | trans}}
+													<span class="ribbon-inner bg-primary"></span>
+												</div>
+											{% endif %}
+										{% endif %}
+										<div class="mb-7 text-center">
+											<h1 class="text-dark mb-5 fw-boldest">{{ plan.planName}}
+												{% if plan.mostPopular %}
+													<span class="badge badge-light-success ms-2 fs-7">{{"Plus populaire" | trans}}</span>
+												{% endif %}
+											</h1>
+											<div class="text-gray-400 fw-bold mb-5">
+												{% if plan.slug == "starter" %}
+													<p>
+														{{"Formule de découverte." | trans}}
+														<br>
+														{{"Gratuite avec un accès limité." | trans}}
+													</p>
+												{% else %}
+													{% if plan.slug == "awesome" or plan.slug == "pro" %}
+
+														<p data-kt-plan-month-price-argument="{{"Économisez 20% avec un abonnement annuel" | trans}}" data-kt-plan-year-price-argument="Soit {{ plan.totalAnnual}} /an">
+															Soit
+															{{ plan.totalAnnual}}
+															{{"/an" | trans}}
+														</p>
+													{% endif %}
+												{% endif %}
+											</div>
+											<div class="text-center">
+												<span class="mb-2 text-primary">€</span>
+												<span class="fs-3x fw-bolder text-primary" data-kt-plan-price-month="{{ plan.getTotal() }}" data-kt-plan-price-annual="{{ (plan.totalAnnual / 12) |round(2, 'floor')}}">
+													{{ (plan.totalAnnual / 12) |round(2, 'floor')}}
+												</span>
+												<span class="fs-7 fw-bold opacity-50">
+													<span data-kt-element="period" data-kt-plan-period-month="/{{'mois' | trans}}" data-kt-plan-period-annual="/{{'mois' | trans}}">
+														/{{'mois' | trans}}
+													</span>
+												</span>
+											</div>
+										</div>
+										{% if plan.planDetails %}
+											<div class="w-100 mb-10">
+												{% for details in plan.planDetails %}
+													<div class="d-flex align-items-center mb-5">
+														<span class="fw-bold fs-6 text-gray-800 flex-grow-1 pe-3">
+															{% if (details.value != 'true') and (details.value != 'false') and (details.value) %}
+																{{ details.value}}
+																{{ details.feature.title | lower}}
+															{% else %}
+																{{ details.feature.title}}
+																{% if details.feature.showDetails %}
+																	<i class="fas fa-exclamation-circle fs-7 ms-2" data-bs-toggle="tooltip" title="{{details.feature.details}}"></i>
+																{% endif %}
+																{% if not details.value %}
+																	{{"illimité" | trans}}
+																{% endif %}
+															{% endif %}
+														</span>
+														<span class="svg-icon svg-icon-1 svg-icon-{% if details.value == 'false' %}danger{% else %}success{% endif %}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+																<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+																{% if details.value == 'false' %}
+																	<path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"/>
+																{% else %}
+																	<path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"/>
+																{% endif %}
+															</svg>
+														</span>
+													</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+										{% if app.user.subscription %}
+											{% if plan.getIdPriceApi == app.user.subscription.stripePlanId %}
+												<a href="#" role="button" aria-disabled="true" class="mr-0 btn btn-primary disabled">
+													<i class="mdi mdi-check mr-1"></i>
+													{{"Choisir la formule"| trans}}
+													{{ plan.planName}}
+												</a>
+											{% else %}
+												{% if plan.planPrice == 0 %}
+													<a href="#" role="button" class="btn btn-primary btn-hover-rise">
+														<i class="mdi mdi-check mr-1"></i>
+														{{"Choisir la formule"| trans}}
+														{{ plan.planName}}
+													</a>
+												{% else %}
+													<a role="button" data-kt-plan-link-month="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApi }) }}" data-kt-plan-link-annual="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApiAnnual }) }}" href="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApiAnnual }) }}" class="btn btn-md btn-primary btn-hover-rise">
+														<i class="mdi mdi-check mr-1"></i>
+														{{"Choisir la formule"| trans}}
+														{{ plan.planName}}
+													</a>
+												{% endif %}
+											{% endif %}
+										{% else %}
+											{% if plan.planPrice == 0 %}
+												<a href="#" role="button" aria-disabled="true" class="btn btn-md btn-primary disabled">
+													<i class="mdi mdi-check mr-1"></i>
+													{{"Choisir la formule"| trans}}
+													{{ plan.planName}}
+												</a>
+											{% else %}
+												<a role="button" data-kt-plan-link-month="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApi }) }}" data-kt-plan-link-annual="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApiAnnual }) }}" href="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApiAnnual }) }}" class="btn btn-md btn-primary btn-hover-rise">
+													<i class="mdi mdi-check mr-1"></i>
+													{{"Choisir la formule"| trans}}
+													{{ plan.planName}}
+												</a>
+											{% endif %}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						<div id="comparison" class="mt-5">
+							<div class="comparison month d-none">
+								<h4 class="mb-2">{{"Abonnement mensuel :" | trans}}</h4>
+								<ul class="text-muted fw-bold fs-8">
+									<li>{{"Vous payez un montant moindre, mais tous les mois." | trans}}</li>
+									<li>{{"Les tarifs mensuels sont supérieurs aux tarifs annuels (en comparaison avec les tarifs annuels)." | trans}}</li>
+									<li>{{"L’abonnement mensuel convient mieux à une utilisation à court terme des services premium." | trans}}</li>
+									<li>{{"Vous pouvez gérer la durée d'utilisation des services premium selon vos besoins." | trans}}</li>
+								</ul>
+							</div>
+							<div class="comparison annual">
+								<h4 class="mb-2">{{"Abonnement annuel :" | trans}}</h4>
+								<ul class="text-muted fw-bold fs-8">
+									<li>{{"Vous n'êtes facturé automatiquement qu'une fois par an (renouvellement automatique)." | trans}}</li>
+									<li>{{"Le tarif mensuel de l'abonnement annuel est nettement inférieur à celui de l'abonnement mensuel !" | trans}}</li>
+									<li>{{"L'abonnement annuel est donc bien plus avantageux pour une utilisation à long terme des services premium." | trans}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/custom/pages/general/pricing.js') }}"></script>
+{% endblock %}

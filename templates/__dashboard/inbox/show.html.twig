@@ -1,0 +1,195 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Messagerie - ' ~ title ~ ' | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': title |trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% set current_path = app.request.get('_route') %}
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card p-3">
+				<div class="inbox-leftbar">
+					{% include 'dashboard/partial/inbox_list.html.twig' %}
+				</div>
+				<div class="inbox-rightbar pt-0">
+
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 card p-3 mt-1">
+							<div class="card-body pt-0 px-0 border-bottom border-light">
+								<div class="media">
+									<a href="{{ lastInbox.user.url }}" target="_blank">
+										<img src="{{ lastInbox.user.avatar }}" class="mr-2 rounded-circle" height="36" alt="{{ lastInbox.user.fullname }}">
+									</a>
+									<div class="media-body">
+										<h5 class="mt-0 mb-0 font-15">
+											<a href="{{ lastInbox.user.url }}" class="text-reset">{{ lastInbox.user.fullname }}</a>
+										</h5>
+										<p class="mt-0 mb-0 text-muted font-12">
+											{{ lastInbox.user.experience }}
+											-
+											{{ lastInbox.user.location }}
+										</p>
+									</div>
+									<div>
+										{% if (lastInbox.favorites == true) %}
+											<a href="{{ path('inbox_remove_favorites', { uuid: lastInbox.uuid }) }}" class="text-warning font-19 py-1 px-2 d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{"Retirer de mes favoris" | trans}}">
+												<i class="fe-star"></i>
+											</a>
+										{% else %}
+											<a href="{{ path('inbox_make_favorites', { uuid: lastInbox.uuid }) }}" class="text-reset font-19 py-1 px-2 d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{"Ajouter dans mes favoris" | trans}}">
+												<i class="fe-star"></i>
+											</a>
+										{% endif %}
+
+										{% if (lastInbox.report == true) %}
+											<button class="text-muted disabled font-19 py-1 px-2 d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{"Vous avez déjà signaler cette conversation." | trans}}">
+												<i class="fe-alert-circle"></i>
+											</button>
+										{% else %}
+
+											<a href="{{ path('inbox_make_report', { uuid: lastInbox.uuid }) }}" class="text-reset font-19 py-1 px-2 d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{"Signaler cette conversation" | trans}}">
+												<i class="fe-alert-circle"></i>
+											</a>
+
+										{% endif %}
+
+										<!--<a href="javascript: void(0);" class="text-reset font-19 py-1 px-2 d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{"Supprimer cette conversation" | trans}}">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																			<i class="fe-trash-2"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</a>-->
+									</div>
+								</div>
+							</div>
+
+
+							{% if lastInbox.replies %}
+								<h4 class="mb-3">{{"Historique des échanges" | trans}}</h4>
+								<ul class="conversation-list" data-simplebar="init" style="max-height: 460px">
+									<div class="simplebar-wrapper" style="margin: 0px -15px;">
+										<div class="simplebar-height-auto-observer-wrapper">
+											<div class="simplebar-height-auto-observer"></div>
+										</div>
+										<div class="simplebar-mask">
+											<div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+												<div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+													<div class="simplebar-content" style="padding: 0px 15px;">
+
+														{% for reply in lastInbox.replies %}
+
+															{% if reply.user %}
+																<li class="clearfix {% if reply.user.getId == app.user.getId %}odd{% endif %}">
+																	<div class="chat-avatar">
+																		<img src="{{ reply.user.getAvatar() | imagine_filter('avatar') }}" alt="{{reply.user.getFullname}}" class="rounded">
+
+																	</div>
+																	<div class="conversation-text font-16">
+																		<div class="ctext-wrap">
+																			<p class="{% if reply.user.getId == app.user.getId %}text-light{% else %}text-dark{% endif %}">
+																				{{ reply.text | raw | nl2br }}
+
+																			</p>
+																			<small class="{% if reply.user.getId == app.user.getId %}text-light {% endif %}">{{ reply.createdAt | ago}}</small>
+																		</div>
+																	</div>
+																</li>
+															{% else %}
+																<li class="clearfix">
+																	<div class="chat-avatar">
+																		<img src="{{lastInbox.user.avatar}}" alt="{{lastInbox.user.fullname}}" class="rounded">
+																	</div>
+																	<div class="conversation-text font-16">
+																		<div class="ctext-wrap">
+																			<p class="">
+																				{{ reply.text | raw | nl2br }}
+																			</p>
+																			<small class="">{{ reply.createdAt | ago}}</small>
+																		</div>
+																	</div>
+																</li>
+
+															{% endif %}
+
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="simplebar-placeholder" style="width: auto; height: 853px;"></div>
+									</div>
+									<div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+										<div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+									</div>
+									<div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+										<div class="simplebar-scrollbar" style="height: 248px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+									</div>
+								</ul>
+								<div class="row">
+									<div class="col">
+										<div class="mt-2 bg-light p-3 rounded">
+											{{ form_start(form, {'attr': {'id':'chat-form','class':'needs-validation','novalidate': 'novalidate'}}) }}
+											<div class="row">
+												<div class="col mb-2 mb-sm-0">
+													{{ form_widget(form.text, { 'attr': {'class': 'form-control border-0','placeholder':'Saisissez votre réponse' | trans} }) }}
+													{{ form_help(form) }}
+												</div>
+												<div class="col-sm-auto">
+													<button type="submit" class="btn btn-primary-color waves-effect waves-light">{{'Répondre' | trans}}</button>
+												</div>
+											</div>
+											{{ form_end(form) }}
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						</div>
+
+						<div class="col-xl-4 col-lg-4">
+							<div class="mt-3 mr-0">
+								<div class="card p-3 border text-center">
+									{% if (lastInbox.user.uuid) is not null %}
+										<div id="app-user-inbox-card"></div>
+									{% else %}
+										<div class="row">
+											<div class="col-xl-3 col-12">
+												<img src="{{lastInbox.user.avatar}}" alt="{{lastInbox.user.fullname}}" class="rounded-circle img-fluid">
+											</div>
+											<div class="text-start col-xl-8 col-12">
+												<h4 class="mb-0 mt-0">
+													{{lastInbox.user.fullname}}
+												</h4>
+												<p class="text-muted mb-0">{{lastInbox.user.experience}}</p>
+												<p class="text-muted mb-0">
+													<small>
+														{{"Email" | trans}}
+														:
+														{{lastInbox.user.location}}</small>
+												</p>
+												<p class="text-muted mb-0">
+													<small>
+														{{"Téléphone" | trans}}
+														:
+														{{lastInbox.user.phone}}</small>
+												</p>
+											</div>
+										</div>
+									{% endif %}
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+		</div>
+		<script>
+			var uuid = '{{ lastInbox.uuid }}';
+$(document).ready(function () {
+$('[data-toggle="tooltip"]').tooltip();
+});
+		</script>
+	{% endblock %}

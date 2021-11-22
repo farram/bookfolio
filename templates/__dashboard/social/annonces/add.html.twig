@@ -1,0 +1,68 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	Annonces - Ajouter
+{% endblock %}
+{% block body %}
+
+{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Vos annonces'|trans} %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+
+<div class="row">
+	<div class="col-lg-3">
+		{% include 'dashboard/partial/annonces_side_bar.html.twig' %}
+		{% include 'dashboard/partial/_subscription.html.twig' %}
+	</div>
+	<div class="col-lg-9">
+		<div id="annonces">
+
+			<div class="card p-3">
+				<div class="row p-3">
+
+					<div class="col-12">
+						<div class="text-start">
+							<h3 class="mt-0 mb-2">{{ 'Ajouter une annonce' | trans }}
+							</b>
+						</h3>
+						<p class="text-muted">
+							{{ 'Remplissez votre annonce le plus précisement possible, elle remontera correctement dans la liste de toutes les annonces.' | trans}}
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-12">
+					{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+					<div class="row">
+						{{ forms.input(form.profession,'À qui s\'adresse t-elle ?',{class:'col-lg-12'}) }}
+                            {{ forms.input(form.gender,'Vous recherchez un(e) :',{class:'col-lg-6'}) }}
+                            {{ forms.input(form.type,'Pour quel type de prestation ?',{class:'col-lg-6'}) }}
+
+                            {{ forms.inputGoogle(form.location,'Où ?',{class:'col-lg-12',id:'address_form_fullAddress'}) }}
+							{{ form_row(form.route, { 'id': 'route'}) }}
+							{{ form_row(form.locality, { 'id': 'locality' }) }}
+							{{ form_row(form.adminstrativeArea, { 'id': 'administrative_area_level_1' }) }}
+							{{ form_row(form.country, { 'id': 'country' }) }}
+							{{ form_row(form.postalCode, { 'id': 'postal_code' }) }}
+
+
+                            {{ forms.input(form.title,'Titre de votre annonce',{class:'col-lg-12'}) }}
+                            {{ forms.input(form.description,'Votre annonce',{class:'col-lg-12'}) }}
+
+                            {{ forms.buttonSubmit({class:'col-lg-12'}) }}
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{% block title %}
+	{{"Contact – Bookfolio" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-bd0e9382" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-bd0e9382" class="content6-headline-wrap mb0">
+						<h1 class="heading-15">{{"Comment pouvons-nous vous aider ?" | trans}}</h1>
+						<p class="paragraph-70 text-center">
+							{{"Vous avez une question, un commentaire ou simplement nous adresser un petit mot doux ? Nous promettons de vous répondre en moins de 24h !" | trans}}
+						</p>
+					</div>
+					<div id="w-node-6b143b24dfb5-bd0e9382">
+						<div class="cta7-form w-form">
+							{{ form_start(form, {'attr': {'action': path('contact'),'id':'contact-form','class':'cta7-form-wrap'}}) }}
+
+							<div class="w-row">
+								<div class="column-12 w-col w-col-6">
+									<div class="input-field mb-3">
+										{{ form_widget(form.subject, { 'attr': {'placeholder':'Objet du message','class' : 'text-field bottom-margin-field w-input'}}
+										) }}
+									</div>
+
+								</div>
+
+								<div class="column-14 w-col w-col-6">
+									<div class="input-field mb-3">
+										{{ form_widget(form.name, { 'attr': {'placeholder':'Nom','class' : 'text-field bottom-margin-field w-input'}}
+										) }}
+									</div>
+								</div>
+							</div>
+
+							<div class="column-14 w-col w-col-12">
+								<div class="input-field mb-3">
+									{{ form_widget(form.email, { 'attr': {'placeholder':'Adresse e-mail','class' : 'text-field bottom-margin-field w-input'}}
+									) }}
+								</div>
+							</div>
+
+							<div class="column-14 w-col w-col-12">
+								<div class="input-field">
+									{{ form_widget(form.message, { 'attr': {'placeholder':'Saisissez votre message','class' : 'text-area w-input','rows' : '3', 'cols' : '200' }}
+									) }}
+								</div>
+							</div>
+
+							<div class="column-14 w-col w-col-12 mt-2">
+								{{ form_widget(form.recaptcha) }}
+							</div>
+
+							<div class="column-14 w-col w-col-12">
+								<button type="submit" class="mt-3 button-small form-centered-button w-button" name="comment-button">Envoyer</button>
+							</div>
+
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Livre d'or | Bookfolio" | trans }}
+{% endblock %}
+{% block body %}
+
+	{% if guestBooks | length > 0 %}
+		<div class="row g-5 g-xl-8">
+			{% for guestbook in guestBooks %}
+				<div class="col-xl-4">
+					<div class="card card-flush {% if guestbook.isActive == 0 %} bg-light-primary border border-primary {% endif %} card-xl-stretch mb-xl-8">
+						<div class="card-body d-flex flex-column pb-10 pb-lg-0">
+							<div class="flex-grow-1">
+								<div class="d-flex align-items-center pe-2 mb-0">
+									<a href="#" class="flex-grow-1 text-primary fw-bolder text-hover-primary fs-4">{{ guestbook.author }}</a>
+									{% if guestbook.isActive == 0 %}
+										<span class="badge badge-primary">{{"Nouveau" | trans}}</span>
+									{% endif %}
+								</div>
+								<span class="text-muted fw-bolder fs-7">{{ guestbook.createdAt | ago }}</span>
+								<div class="d-flex align-items-center pe-2 mb-0">
+									<span class="text-muted fw-bolder fs-7 flex-grow-1">{{ guestbook.location}}</span>
+								</div>
+								{% if guestbook.website %}
+									<small>
+										<a href="{{ guestbook.website}}" target="_blank" class="text-muted">{{ guestbook.website}}</a>
+									</small>
+								{% endif %}
+								<p class="py-3">{{ guestbook.content | raw }}</p>
+
+							</div>
+						</div>
+						<div class="card-footer">
+							{% if guestbook.isActive == 2 %}
+								<form action="{{ url('guestbook_delete', { id: guestbook.id }) }}" method="post" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce message ?")'>
+									<input type="hidden" name="token" value="{{ csrf_token('delete-guestbook') }}"/>
+									<button class="btn btn-light-danger btn-sm" type="submit">{{"Supprimer" | trans({}, 'button')}}</button>
+								</form>
+							{% else %}
+								<a href="{{ url('guestbook_make_online', { id: guestbook.id }) }}" class="btn btn-primary btn-sm">Valider</a>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="navigation pagination justify-content-center">
+			{{ knp_pagination_render(guestBooks) }}
+		</div>
+
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{"Aucune signature !" | trans}}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{"Vous avez aucune signature pour l'instant !" | trans}}
+						<br/>{{"Lorsqu'un visiteur signera votre livre d'or depuis votre book, les messages s'afficheront ici." | trans}}<br>
+						{{"Un peu de patience ..."}}
+					</p>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

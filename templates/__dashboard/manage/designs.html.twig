@@ -1,0 +1,30 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Configuration de votre book - Designs | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Configuration de votre book'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/book_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div id="designs">
+				<div class="card">
+					<div class="card-body">
+						<div class="pt-0 pl-3 pr-3">
+							<h3 class="mb-2 mt-0">{{ 'Tous les designs' | trans }}</h3>
+							<hr>
+							<p>{{"Voici les designs que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure."| trans}}</p>
+							{% if designs %}
+								<div id="app-designs"></div>
+							{% endif %}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="{{col}}">
+	<hr style="margin-top:60px;display:block">
+	<p class="text-big text-center" style="font-size:18px;">
+		Certaines photos de
+		{{book.user.firstname}}
+		sont visibles uniquement depuis
+		<a href="{{ path('portfolio_galleries', { name : book.name }) }}">leur galerie</a>.
+	</p>
+</div>

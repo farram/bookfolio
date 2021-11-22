@@ -1,0 +1,83 @@
+.select-for-hovers h5{
+    display: inline-block;
+    padding: 2px 8px;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 28px;
+    font-family: "Libre Baskerville",sans-serif;
+    color: #888888;
+    margin: auto;
+    letter-spacing: 1.12px;
+
+}
+
+.select-for-hovers .hover > span{
+    position: relative;
+    padding: 1px 20px 1px 10px;
+    display: inline-block;
+    font-weight: 400;
+    border:1px solid #888888;
+    text-decoration: none;
+    min-width: 200px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 28px;
+    font-family: "Libre Baskerville",sans-serif;
+    color: #888888;
+    margin: auto;
+    letter-spacing: 1.12px;
+}
+.select-for-hovers .hover > span::after{
+    content: "\f107";
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 5px;
+}
+.select-for-hovers{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.select-for-hovers .content{
+    position: relative;
+    text-align: right;
+    width: 100%;
+}
+.select-for-hovers .hover{
+    display: inline-block;
+    position: relative;
+}
+.select-for-hovers .hover .list{
+    text-align: left;
+    position: absolute;
+    background-color: #fff;
+    margin-left: 0;
+    z-index: 10;
+    width: 100%;
+    border: 1px solid #131313;
+    display: none;
+}
+
+.select-for-hovers .hover .list li{
+    list-style: none;
+    font-weight: 400;
+    padding: 1px 8px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 350ms ease;
+    font-size: 12px;
+    line-height: 28px;
+    font-family: "Libre Baskerville",sans-serif;
+    color: #888888;
+    margin: auto;
+    letter-spacing: 1.12px;
+}
+
+.select-for-hovers .hover .list li:hover{
+    background-color: rgba(0,0,0,.1);
+}

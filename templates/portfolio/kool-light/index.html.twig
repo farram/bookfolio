@@ -1,0 +1,39 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.title %}
+		{{ book.title }}
+	{% else %}
+		{{ book.user.fullname }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<div class="col-md-9 col-md-offset-3">
+		<div class="projects">
+			{% if book.user.getAbout() %}
+				<div class="header-text">
+					<blockquote>
+						<p>
+							{{ book.user.getAbout() | raw }}
+						</p>
+						<footer>
+							{{ book.user.getFullname() }}
+							-
+							{{ book.user.getProfession() }}
+							-
+							{{ book.user.address.getLocation() }}
+						</footer>
+					</blockquote>
+				</div>
+			{% endif %}
+			<div id="portfolioImagesHome"></div>
+			<div class="row">
+				{% if showGallery %}
+					{% include 'portfolio/partial/link_gallery.html.twig' with {'book': book,'col':'col-lg-6 col-lg-offset-3'} %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

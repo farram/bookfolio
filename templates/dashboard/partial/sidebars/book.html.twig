@@ -1,0 +1,61 @@
+<div class="card mb-5 mb-xl-8">
+	<div class="card-body pt-15">
+		<div class="d-flex flex-center flex-column mb-5">
+			<div class="symbol symbol-100px symbol-circle mb-7">
+				<input type="file" name="files" data-fileuploader-default="{{ app.user.getAvatar() | imagine_filter('avatar') }}" class="profile_image" data-fileuploader-files=''>
+			</div>
+			<a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ app.user.fullname }}</a>
+			<div class="fs-5 fw-bold text-muted mb-6 text-center">{{ app.user.profession }}<br>{{ app.user.address.location }}<br>
+				<small>{{"Dernière mise à jour" | trans}}
+					:
+					{{ app.user.getUpdatedAt()|ago }}</small>
+			</div>
+			<div class="d-flex flex-wrap flex-center text-center">
+				<div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+					<div class="fs-4 fw-bolder text-gray-700">
+						<span class="w-75px">{{ app.user.getStatistics() | length }}</span>
+
+					</div>
+					<div class="fw-bold text-muted">{{"visites" | trans}}</div>
+				</div>
+				<div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
+					<div class="fs-4 fw-bolder text-gray-700">
+						<span class="w-50px">{{ app.user.guestBooks | length }}</span>
+
+					</div>
+					<div class="fw-bold text-muted">{{"Commentaires" | trans}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="separator separator-dashed my-3"></div>
+		<div id="kt_customer_view_details" class="collapse show">
+			<div class="fs-6">
+				{% if app.user.hasActiveSubscription %}
+					<span class="badge badge-pill p-1 px-2 {{ avalableCreditService.currentPlan.color }}">
+						{{ avalableCreditService.currentPlan.name }}
+					</span>
+				{% else %}
+					<span class="badge badge-pill p-1 px-2 badge-light-dark">
+						Starter
+					</span>
+				{% endif %}
+
+				<div class="fw-bolder mt-2">Date de création</div>
+				<div class="text-gray-600">{{app.user.createdAt | ago}}</div>
+				<div class="fw-bolder mt-5">{{"E-mail de contact"}}</div>
+				<div class="text-gray-600">
+					<a href="#" class="text-gray-600 text-hover-primary">{{app.user.email}}</a>
+				</div>
+				<div class="fw-bolder mt-5">Adresse postale</div>
+				<div class="text-gray-600">{{app.user.address}}
+				</div>
+				<div class="fw-bolder mt-5">Type de book</div>
+				<div class="text-gray-600">{{app.user.profession}}</div>
+				<div class="fw-bolder mt-5">Expérience</div>
+				<div class="text-gray-600">{{app.user.experience}}</div>
+				<div class="fw-bolder mt-5">Design</div>
+				<div class="text-gray-600">{{app.user.book.design.title}}</div>
+			</div>
+		</div>
+	</div>
+</div>

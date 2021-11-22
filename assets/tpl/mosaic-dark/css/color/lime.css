@@ -1,0 +1,120 @@
+::selection {
+    background: #e1e6da; /* Safari */
+    color: #2f2f2f;
+}
+::-moz-selection {
+    background: #e1e6da; /* Firefox */  
+    color: #2f2f2f;
+}
+.cbp:after,
+.cbp-lazyload:after,
+.cbp-popup-loadingBox:after,
+.cbp-popup-singlePageInline:after {
+    border-top: 3px solid #a0c274;
+}
+.lg-outer .lg-item:after {
+    border-top: 3px solid #a0c274;
+}
+a {
+    color: #a0c274;
+}
+a.line:hover {
+    border-bottom: 1px solid #a0c274;
+}
+a:hover,
+a:focus {
+    color: #a0c274;
+}
+.nocolor:hover,
+.email-link:hover,
+footer a:hover {
+    color: #a0c274 !important
+}
+.post-title a:hover {
+    color: #a0c274
+}
+.meta a:hover {
+    color: #a0c274;
+}
+ul.circled li:before {
+    color: #a0c274;
+}
+blockquote {
+    border-left: 3px solid #a0c274;
+}
+footer a:hover {
+    color: #a0c274;
+}
+.btn:hover,
+.btn:focus,
+
+.btn:active,
+.btn.active {
+    background: #a0c274 !important;
+}
+.pagination ul > li.active > a {
+    background: #a0c274 !important;
+}
+.sidebox a:hover {
+    color: #a0c274
+}
+.widget .post-list li a:hover {
+    color: #a0c274
+}
+#comments .info h5 a:hover {
+    color: #a0c274
+}
+.tooltip-inner {
+    background-color: #a0c274;
+}
+.tooltip.top .tooltip-arrow,
+.tooltip.top-left .tooltip-arrow,
+.tooltip.top-right .tooltip-arrow {
+    border-top-color: #a0c274
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #a0c274
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: #a0c274
+}
+.tooltip.bottom .tooltip-arrow,
+.tooltip.bottom-left .tooltip-arrow,
+.tooltip.bottom-right .tooltip-arrow {
+    border-bottom-color: #a0c274
+}
+.progress.plain .bar {
+    background: #a0c274 !important
+}
+.vanilla-form input[type="radio"]:focus + span,
+.vanilla-form input[type="checkbox"]:focus + span,
+.vanilla-form input[type="radio"]:active + span,
+.vanilla-form input[type="checkbox"]:active + span {
+    border-color: #a0c274
+}
+.vanilla-form input[type="radio"] + span::after {
+    background-color: #a0c274;
+    border-color: #a0c274;
+}
+.vanilla-form input[type="radio"]:checked + span,
+.vanilla-form input[type="checkbox"]:checked + span {
+    border: 1px solid #a0c274
+}
+.vanilla-form input[type="checkbox"] + span::after {
+    border: 0 solid #a0c274;
+}
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item.active:hover {
+    border-color: #a0c274
+}
+.social li a:hover {
+    color: #a0c274 !important;
+}
+.inverse-wrapper a:not(.btn):hover {
+    color: #a0c274 !important
+}
+@media (min-width: 992px) {
+    .navbar .nav > li:not(.current) > a:hover {
+      color: #a0c274 !important;
+    }
+}

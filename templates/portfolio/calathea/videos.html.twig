@@ -1,0 +1,43 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	Vidéos -
+	{{ book.title ? book.title : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Vidéos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="top-single-bkg  topnoimg ">
+		<div class="inner-desc">
+			<div class="container">
+				<h1 class="post-title single-post-title">Videos</h1>
+				<span class="post-subtitle page-subtitle">{{ videos | length }}
+					{{ (videos | length > 0) ? 'vidéos' :'vidéo' }}</span>
+			</div>
+		</div>
+	</div>
+	<div class="page-holder custom-page-template page-full fullscreen-page home-page-content clearfix">
+		<section class="section-holder">
+			<div class="container">
+				<div class="row">
+					{% for video in videos %}
+						<div class="col-lg-4 margin-b32">
+							<a href="{{ video.getUrl() }}" target="_blank">
+								<img class="img-fluid" src="{{ video.getPreview() }}" alt="{{ video.getTitle() }}">
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="navigation pagination justify-content-center">
+				{{ knp_pagination_render(videos) }}
+			</div>
+		</section>
+	</div>
+{% endblock %}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>
+			{% block title %}
+				{{ book.getTitle() }}
+			{% endblock %}
+		</title>
+		<meta name="description" content="{% block description %} {{ book.getDescription() | raw }} {% endblock %}">
+		{% if book.getKeywords() %}
+			<meta name="keywords" content="{{ book.getKeywords() | raw }}">
+		{% endif %}
+
+		{% if not book.getAllowSeo() %}
+			<meta name="robots" content="noindex">
+			<meta name="googlebot" content="noindex">
+		{% else %}
+			<meta name="robots" content="index, follow">
+		{% endif %}
+		<meta name="referrer" content="unsafe-url">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<link rel="icon" type="image/ico" href="{{ asset('assets/img/favicon.png') }}">
+		<link rel="canonical" href="{{ absolute_url('portfolio_index', { name : book.name }) }}"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		{% block stylesheets %}
+			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,300,500,700,100' rel='stylesheet' type='text/css'>
+			{{ encore_entry_link_tags('illo-dark') }}
+		{% endblock %}
+
+	</head>
+	<body id="body">
+		<div id="preloader">
+			<div class="pulse bg-main"></div>
+		</div>
+		<header id="header" class="fixed-top">
+			<div class="header-inner">
+				<div id="logo">
+					<a href="{{ path('portfolio_index', { name : book.name }) }}" class="logo-dark">
+						<div class="pull-left">
+							<img src="{{ book.user.getAvatar() | imagine_filter('avatar') }}" class="margin-top-15 img-circle img-responsive" alt="{{ book.user.getFullname() }}">
+						</div>
+						<div class="pull-right visible-lg">
+							<h5 class="no-padding margin-top-25 margin-left-15">{{ book.user.getFullname() }}</h5>
+						</div>
+						<div class="clearfix"></div>
+					</a>
+					<a href="{{ path('portfolio_index', { name : book.name }) }}" class="logo-light">
+						<div class="pull-left">
+							<img src="{{ book.user.getAvatar() | imagine_filter('avatar') }}" class="margin-top-15 img-circle img-responsive" alt="{{ book.user.getFullname() }}">
+						</div>
+						<div class="pull-right visible-lg">
+							<h5 class="no-padding margin-top-25 margin-left-15">{{ book.user.getFullname() }}</h5>
+						</div>
+						<div class="clearfix"></div>
+					</a>
+				</div>
+
+				<div class="header-tools">
+					<ul>
+						<li><a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span>menu</a></li>
+					</ul>
+				</div>
+
+				<nav class="navbar navbar-default">
+					<div class="navbar-inner">
+
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<div class="collapse navbar-collapse" id="navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+
+								<li class="{{ (app.request.get('_route') == "portfolio_index") ? 'active':'' }}">
+									<a href="{{ path('portfolio_index', { name : book.name }) }}">Accueil</a>
+								</li>
+								<li class="{{ (app.request.get('_route') == "portfolio_about") ? 'active':'' }}">
+									<a href="{{ path('portfolio_about', { name : book.name }) }}">À propos</a>
+								</li>
+								<li class="{{ (galleries | length > 0) ? 'dropdown dropdown-hover dropdown-menu-dark' }} {{ (app.request.get('_route') == "portfolio_galleries" or app.request.get('_route') == "portfolio_gallery_show" ) ? 'active':'' }}">
+									<a {{ (galleries | length > 0) ? 'class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' }} href="#">Galeries
+										{{ (galleries | length > 0) ? '<span class="caret-2"><i class="fas fa-chevron-down"></i></span>' }}
+									</a>
+									{% if galleries %}
+										<ul class="dropdown-menu">
+											{% for gallery in galleries %}
+												<li>
+													<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">{{ gallery.list.getName() }}</a>
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</li>
+								{% if book.user.getVideos | length > 0 %}
+									<li class="{{ (app.request.get('_route') == "portfolio_video") ? 'active':'' }}">
+										<a href="{{ path('portfolio_video', { name : book.name }) }}">Vidéos</a>
+									</li>
+								{% endif %}
+
+								{% if book.getAllowComments %}
+									<li class="{{ (app.request.get('_route') == "portfolio_guestbook") ? 'active':'' }}">
+										<a href="{{ path('portfolio_guestbook', { name : book.name }) }}">Commentaires</a>
+									</li>
+								{% endif %}
+
+								{% if pages %}
+									{% for page in pages %}
+										<li class="{{ (app.request.get('_route') == "portfolio_page" and app.request.get('slug') == page.getSlug() ) ? 'active':'' }}">
+											<a href="{{ path('portfolio_page', { name : book.name, slug : page.getSlug() }) }}">{{ page.getTitle }}</a>
+										</li>
+									{% endfor %}
+								{% endif %}
+
+								{% if book.showContact %}
+									<li class="{{ (app.request.get('_route') == "portfolio_contact") ? 'active':'' }}">
+										<a href="{{ path('portfolio_contact', { name : book.name }) }}">Contact</a>
+									</li>
+								{% endif %}
+
+							</ul>
+						</div>
+
+					</div>
+				</nav>
+
+			</div>
+		</header>
+
+		<nav id="cd-lateral-nav">
+			<div class="nav-inner">
+				<div class="menu-header">Qui suis-je ?</div>
+				<div class="cd-content-box margin-top-20">
+					<p class="">
+						{{ book.user.getProfession() }}
+						({{ book.user.getExperience() }})
+					</p>
+					<p>{{ book.user.address.getLocation() }}</p>
+					<a href="{{ path('portfolio_about', { name : book.name }) }}" class="link btn btn-primary btn-rounded-5x btn-sm btn-block">En savoir plus</a>
+				</div>
+			</div>
+		</nav>
+
+		<div id="body-content"> {% block body %}{% endblock %}
+			<footer id="footer">
+				<div class="footer-inner">
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col-sm-6">
+								<div class="copyright">
+									Copyright
+									{{ "now"|date("Y") }}
+									<a href="{{ path('index') }}" target="_blank">Bookfolio</a>
+									- Tous droits réservés.<br>
+									Book crée le
+									{{ book.user.getCreatedAt() | format_datetime(locale='fr', pattern="dd MMMM YYYY") }}
+									{% if book.getShowVisitorCounter %}-
+										{{ book.user.getStatistics | length }}
+										{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+									{% endif %}
+									-
+									{% if not iamFollow %}
+										<a href="{{ path('portfolio_add_follow', { name : book.name }) }}">S'abonner</a>
+									{% else %}
+										<a href="{{ path('portfolio_remove_follow', { name : book.name }) }}">Se désabonner</a>
+									{% endif %}
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<div class="social-icons">
+									<ul>
+										{% if book.user.social.getInstagram() %}
+											<li>
+												<a href="{{ book.user.social.getInstagram() }}" target="_blank">
+													<i class="fab fa-instagram"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getFacebook() %}
+											<li>
+												<a href="{{ book.user.social.getFacebook() }}" target="_blank">
+													<i class="fab fa-facebook"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getTwitter() %}
+											<li>
+												<a href="{{ book.user.social.getTwitter() }}" target="_blank">
+													<i class="fab fa-twitter"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getLinkedin() %}
+											<li>
+												<a href="{{ book.user.social.getLinkedin() }}" target="_blank">
+													<i class="fab fa-linkedin"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getTumblr() %}
+											<li>
+												<a href="{{ book.user.social.getTumblr() }}" target="_blank">
+													<i class="fab fa-tumblr"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getPinterest() %}
+											<li>
+												<a href="{{ book.user.social.getPinterest() }}" target="_blank">
+													<i class="fab fa-pinterest"></i>
+												</a>
+											</li>
+										{% endif %}
+
+										{% if book.user.social.getSkype() %}
+											<li>
+												<a href="{{ book.user.social.getSkype() }}" target="_blank">
+													<i class="fab fa-skype"></i>
+												</a>
+											</li>
+										{% endif %}
+
+
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<a href="#body" class="scrolltotop sm-scroll">
+			<i class="fas fa-chevron-up"></i>
+		</a>
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('illo-dark') }}
+
+			{% if book.getCodeAnalytics() %}
+				<script>
+					(function (i, s, o, g, r, a, m) {
+i['GoogleAnalyticsObject'] = r;
+i[r] = i[r] || function () {
+(i[r].q = i[r].q || []).push(arguments)
+},
+i[r].l = 1 * new Date();
+a = s.createElement(o),
+m = s.getElementsByTagName(o)[0];
+a.async = 1;
+a.src = g;
+m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', '{{ book.getCodeAnalytics() }}', 'auto');
+ga('send', 'pageview');
+				</script>
+			{% else %}
+				<script>
+					(function (i, s, o, g, r, a, m) {
+i['GoogleAnalyticsObject'] = r;
+i[r] = i[r] || function () {
+(i[r].q = i[r].q || []).push(arguments)
+},
+i[r].l = 1 * new Date();
+a = s.createElement(o),
+m = s.getElementsByTagName(o)[0];
+a.async = 1;
+a.src = g;
+m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-79500816-1', 'auto');
+ga('create', 'UA-79500816-1', {cookieDomain: '.book-folio.fr'});
+ga('send', 'pageview');
+				</script>
+			{% endif %}
+
+			<script type="text/javascript">
+				var name = '{{ book.name }}'
+			</script>
+
+		{% endblock %}
+	</body>
+</html>

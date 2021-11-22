@@ -1,0 +1,2120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="rA5fyTa" resname="Tableau de bord">
+        <source>Tableau de bord</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="q4DHOqz" resname="Votre annonce a bien été créée">
+        <source>Votre annonce a bien été créée</source>
+        <target>Your listing has been created</target>
+      </trans-unit>
+      <trans-unit id="xCpHWmS" resname="Votre annonce a bien été mise à jour">
+        <source>Votre annonce a bien été mise à jour</source>
+        <target>Your listing has been successfully updated</target>
+      </trans-unit>
+      <trans-unit id="k_DGP9b" resname="Votre annonce a bien été supprimées">
+        <source>Votre annonce a bien été supprimées</source>
+        <target>Your listing has been successfully deleted</target>
+      </trans-unit>
+      <trans-unit id="Q8L60gp" resname="Annuaire">
+        <source>Annuaire</source>
+        <target>Annuaire</target>
+      </trans-unit>
+      <trans-unit id="EkwyuDf" resname="Vos informations ont bien été sauvegardées">
+        <source>Vos informations ont bien été sauvegardées</source>
+        <target>Your information has been saved</target>
+      </trans-unit>
+      <trans-unit id="FX3k4hP" resname="Votre mot de passe à bien été changé !">
+        <source>Votre mot de passe à bien été changé !</source>
+        <target>Your password has been successfully changed!</target>
+      </trans-unit>
+      <trans-unit id="tt4s3kY" resname="Votre ancien mot de passe est incorrect.">
+        <source>Votre ancien mot de passe est incorrect.</source>
+        <target>The current password you entered is incorrect.</target>
+      </trans-unit>
+      <trans-unit id="qmOoWJM" resname="Le design de votre book a bien été changé.">
+        <source>Le design de votre book a bien été changé.</source>
+        <target>Your portfolio template has been successfully changed.</target>
+      </trans-unit>
+      <trans-unit id="NZXRYP2" resname="Galeries">
+        <source>Galeries</source>
+        <target>Album</target>
+      </trans-unit>
+      <trans-unit id=".IyuQcl" resname="Vos galeries">
+        <source>Vos galeries</source>
+        <target>Your Galleries</target>
+      </trans-unit>
+      <trans-unit id="QuN2BLY" resname="Modifier">
+        <source>Modifier</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="1UbsOnl" resname="Créee">
+        <source>Créee</source>
+        <target>Create</target>
+      </trans-unit>
+      <trans-unit id="MKvkv4b" resname="Privée">
+        <source>Privée</source>
+        <target>Private</target>
+      </trans-unit>
+      <trans-unit id="ZlOvWAV" resname="Publique">
+        <source>Publique</source>
+        <target>Public</target>
+      </trans-unit>
+      <trans-unit id="qcs4uvA" resname="Livre d'or">
+        <source>Livre d'or</source>
+        <target>Guest Book</target>
+      </trans-unit>
+      <trans-unit id="CzaagEh" resname="Le message a bien été validé">
+        <source>Le message a bien été validé</source>
+        <target>The message has been approved. </target>
+      </trans-unit>
+      <trans-unit id="JUK2aEf" resname="Le message a bien été supprimé">
+        <source>Le message a bien été supprimé</source>
+        <target>The message has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="qZrtk.K" resname="Votre commentaire a bien été pris en compte">
+        <source>Votre commentaire a bien été pris en compte</source>
+        <target>Your comment has been submitted.</target>
+      </trans-unit>
+      <trans-unit id="6gpCZFO" resname="Votre photo a bien été supprimée">
+        <source>Votre photo a bien été supprimée</source>
+        <target>Your photo has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="_ubMnu9" resname="Toutes vos photos">
+        <source>Toutes vos photos</source>
+        <target>All your photos</target>
+      </trans-unit>
+      <trans-unit id="q8gwpYa" resname="Votre image a bien été publiée sur votre book">
+        <source>Votre image a bien été publiée sur votre book</source>
+        <target>Your image has been successfully published to your portfolio.</target>
+      </trans-unit>
+      <trans-unit id="lf1YCsg" resname="Boite de réception">
+        <source>Boite de réception</source>
+        <target>Inbox</target>
+      </trans-unit>
+      <trans-unit id="f5TS1NY" resname="Messages favoris">
+        <source>Messages favoris</source>
+        <target>Favorites</target>
+      </trans-unit>
+      <trans-unit id="fZ99LZF" resname="Votre message a bien été envoyé.">
+        <source>Votre message a bien été envoyé.</source>
+        <target>Your message has been successfully sent.</target>
+      </trans-unit>
+      <trans-unit id="0A5XInP" resname="Votre signalement a bien été enregistré, merci à vous. Nous mettons tout en œuvre pour régler cela au plus vite !">
+        <source>Votre signalement a bien été enregistré, merci à vous. Nous mettons tout en œuvre pour régler cela au plus vite !</source>
+        <target>Your complaint (est-ce que c’est toujours négatif ? “Complaint” est negatif.) has been registered, thank you. We are doing everything we can to resolve this as quickly as possible!</target>
+      </trans-unit>
+      <trans-unit id="NxzZggC" resname="Cette conversation a été ajouté dans vos favoris.">
+        <source>Cette conversation a été ajouté dans vos favoris.</source>
+        <target>This conversation has been added to your favorites.</target>
+      </trans-unit>
+      <trans-unit id="dagi3dR" resname="Cette conversation a été retiré dans vos favoris.">
+        <source>Cette conversation a été retiré dans vos favoris.</source>
+        <target>This conversation has been removed from your favorites.</target>
+      </trans-unit>
+      <trans-unit id="A0YIzmi" resname="La page a bien été créée ! Vous pouvez à présent y ajouter du contenu.">
+        <source>La page a bien été créée ! Vous pouvez à présent y ajouter du contenu.</source>
+        <target>The page has been created! You can now add content.</target>
+      </trans-unit>
+      <trans-unit id="GdldZ2A" resname="La page a bien été supprimée">
+        <source>La page a bien été supprimée</source>
+        <target>The page has been successfully deleted.</target>
+      </trans-unit>
+      <trans-unit id="OsV5wVY" resname="Vos modifications ont bien été prises en compte.">
+        <source>Vos modifications ont bien été prises en compte.</source>
+        <target>Your changes have been made.</target>
+      </trans-unit>
+      <trans-unit id="1HhDpDp" resname="La vidéo a bien été publiée sur votre book.">
+        <source>La vidéo a bien été publiée sur votre book.</source>
+        <target>The video has been published to your portfolio.</target>
+      </trans-unit>
+      <trans-unit id="Jorjwnb" resname="La vidéo a bien été supprimée.">
+        <source>La vidéo a bien été supprimée.</source>
+        <target>The video has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="zno5c2." resname="Commencez à saisir votre ville, puis sélectionnez parmi les propositions qui apparaîtront.">
+        <source>Commencez à saisir votre ville, puis sélectionnez parmi les propositions qui apparaîtront.</source>
+        <target>Start by entering your city name, then select from the options that appear.</target>
+      </trans-unit>
+      <trans-unit id="XRcrJXs" resname="Dans quelle ville habitez-vous ?">
+        <source>Dans quelle ville habitez-vous ?</source>
+        <target>What city do you live in?</target>
+      </trans-unit>
+      <trans-unit id="Of8F5.m" resname="Ex : Le nom de l'artiste à l'origine de cette photo.">
+        <source>Ex : Le nom de l'artiste à l'origine de cette photo.</source>
+        <target>E.g. The name of the artist who took the photo.</target>
+      </trans-unit>
+      <trans-unit id="qWpkn0W" resname="Saisissez vos mots clés. Ex : Portraits, Mode, Lifestyles">
+        <source>Saisissez vos mots clés. Ex : Portraits, Mode, Lifestyles</source>
+        <target>Enter keywords here. E.g. Portrait, Fashion, Lifestyle</target>
+      </trans-unit>
+      <trans-unit id="3QiFtwL" resname="Contenu NSFW">
+        <source>Contenu NSFW</source>
+        <target>__Contenu NSFW</target>
+      </trans-unit>
+      <trans-unit id="US1pwK2" resname="Photo réservée à un public majeur. Contenu sexuellement explicite ou suggestif.">
+        <source>Photo réservée à un public majeur. Contenu sexuellement explicite ou suggestif.</source>
+        <target>Photo reserved for an adult audience. Sexually explicit or suggestive content.</target>
+      </trans-unit>
+      <trans-unit id="SWtJ29Y" resname="Visible uniquement sur mon book">
+        <source>Visible uniquement sur mon book</source>
+        <target>Visible only on my portfolio.</target>
+      </trans-unit>
+      <trans-unit id="ONdp0vW" resname="Elle n'apparaîtra pas dans le fil d'actualité de votre réseau.">
+        <source>Elle n'apparaîtra pas dans le fil d'actualité de votre réseau.</source>
+        <target>It will not appear in your network’s news feed.</target>
+      </trans-unit>
+      <trans-unit id="PM847CZ" resname="Visible uniquement depuis la galerie">
+        <source>Visible uniquement depuis la galerie</source>
+        <target>Visible only from the gallery</target>
+      </trans-unit>
+      <trans-unit id="W96dJIv" resname="Elle n'apparaîtra pas sur la page d'accueil de votre book.">
+        <source>Elle n'apparaîtra pas sur la page d'accueil de votre book.</source>
+        <target>It will not appear on the homepage of your portfolio.</target>
+      </trans-unit>
+      <trans-unit id="E.zZbS4" resname="Autoriser la mise en avant dans les coups de cœur">
+        <source>Autoriser la mise en avant dans les coups de cœur</source>
+        <target>__Autoriser la mise en avant dans les coups de cœur</target>
+      </trans-unit>
+      <trans-unit id="dw1PoqQ" resname="Elle est susceptible de faire partie de nos coups de coeur.">
+        <source>Elle est susceptible de faire partie de nos coups de coeur.</source>
+        <target>__Elle est susceptible de faire partie de nos coups de coeur.</target>
+      </trans-unit>
+      <trans-unit id="5xG2mVU" resname="Autoriser les likes">
+        <source>Autoriser les likes</source>
+        <target>Allow likes</target>
+      </trans-unit>
+      <trans-unit id="uo_e9eC" resname="Permet aux artistes (connectés) de liker cette photo">
+        <source>Permet aux artistes (connectés) de liker cette photo</source>
+        <target>Allow (connected) artists to like this photo</target>
+      </trans-unit>
+      <trans-unit id="ysEz4az" resname="Autoriser les commentaires">
+        <source>Autoriser les commentaires</source>
+        <target>Allow comments</target>
+      </trans-unit>
+      <trans-unit id="pqmj4bA" resname="Permet aux artistes (connectés) de commenter cette photo">
+        <source>Permet aux artistes (connectés) de commenter cette photo</source>
+        <target>Allow (connected) artists to comment on this photo</target>
+      </trans-unit>
+      <trans-unit id="GbqsjOI" resname="Merci de sélectionner au moins un fichier.">
+        <source>Merci de sélectionner au moins un fichier.</source>
+        <target>Please select at least one file.</target>
+      </trans-unit>
+      <trans-unit id="STJXP3x" resname="Uniquement des fichiers JPG ou JPEG. 8Mo maximum par fichier">
+        <source>Uniquement des fichiers JPG ou JPEG. 8Mo maximum par fichier</source>
+        <target>Only JPG or JPEG files. 8MB maximum per file.</target>
+      </trans-unit>
+      <trans-unit id="RT4WojY" resname="Dans quelle galerie souhaitez-vous publier ?">
+        <source>Dans quelle galerie souhaitez-vous publier ?</source>
+        <target>In which gallery do you want to publish it?</target>
+      </trans-unit>
+      <trans-unit id="TrrLP6J" resname="Sélectionner une galerie">
+        <source>Sélectionner une galerie</source>
+        <target>Choose a gallery</target>
+      </trans-unit>
+      <trans-unit id="f8q4AFg" resname="Merci de sélectionner une galerie">
+        <source>Merci de sélectionner une galerie</source>
+        <target>Please choose a gallery</target>
+      </trans-unit>
+      <trans-unit id="8t2mTNV" resname="Confidentiel. Utilisé uniquement pour de la recherche avancée">
+        <source>Confidentiel. Utilisé uniquement pour de la recherche avancée</source>
+        <target>Confidential. Used only for advanced search</target>
+      </trans-unit>
+      <trans-unit id="2wjybR3" resname="Vous pouvez ajouter plusieurs objectifs">
+        <source>Vous pouvez ajouter plusieurs objectifs</source>
+        <target>__Vous pouvez ajouter plusieurs objectifs</target>
+      </trans-unit>
+      <trans-unit id="VfaFoj7" resname="Mot de passe actuel">
+        <source>Mot de passe actuel</source>
+        <target>Current password</target>
+      </trans-unit>
+      <trans-unit id="ZF1cayK" resname="Merci de saisir votre mot de passe actuel">
+        <source>Merci de saisir votre mot de passe actuel</source>
+        <target>Please enter your current password</target>
+      </trans-unit>
+      <trans-unit id="QRJh06h" resname="Merci de définir votre nouveau mot de passe">
+        <source>Merci de définir votre nouveau mot de passe</source>
+        <target>Please set your new password</target>
+      </trans-unit>
+      <trans-unit id="o9ZcpWl" resname="Nouveau mot de passe">
+        <source>Nouveau mot de passe</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="CMizWd9" resname="7 à 16 caractères. Doit comporter au moins une lettre et un chiffre.">
+        <source>7 à 16 caractères. Doit comporter au moins une lettre et un chiffre.</source>
+        <target>7–16 characters. Must contain at least one letter and one number.</target>
+      </trans-unit>
+      <trans-unit id="_lieQ3u" resname="Confirmez le nouveau mot de passe">
+        <source>Confirmez le nouveau mot de passe</source>
+        <target>Confirm the new password</target>
+      </trans-unit>
+      <trans-unit id="9cDXvPj" resname="Les deux mots de passe doivent être identiques">
+        <source>Les deux mots de passe doivent être identiques</source>
+        <target>Both passwords must be the same</target>
+      </trans-unit>
+      <trans-unit id="0NCnPD4" resname="Mon expérience">
+        <source>Mon expérience</source>
+        <target>__Mon expérience</target>
+      </trans-unit>
+      <trans-unit id="8up2zdi" resname="La biographie s'affichera dans la page &quot;À propos&quot; de votre book et dans la page d'accueil en fonction du template que vous aurez choisi.">
+        <source>La biographie s'affichera dans la page "À propos" de votre book et dans la page d'accueil en fonction du template que vous aurez choisi.</source>
+        <target>__La biographie s'affichera dans la page "À propos" de votre book et dans la page d'accueil en fonction du template que vous aurez choisi.</target>
+      </trans-unit>
+      <trans-unit id="U.l7N8_" resname="Retour aux designs">
+        <source>Retour aux designs</source>
+        <target>__Retour aux designs</target>
+      </trans-unit>
+      <trans-unit id="4iCgdPD" resname="Choisir ce design">
+        <source>Choisir ce design</source>
+        <target>__Choisir ce design</target>
+      </trans-unit>
+      <trans-unit id="TBpugoY" resname="a commenté votre photo">
+        <source>a commenté votre photo</source>
+        <target>__a commenté votre photo</target>
+      </trans-unit>
+      <trans-unit id="n3HRLKv" resname="a répondu à votre commentaire">
+        <source>a répondu à votre commentaire</source>
+        <target>__a répondu à votre commentaire</target>
+      </trans-unit>
+      <trans-unit id="bJ2QTE6" resname="Statistiques | Bookfolio">
+        <source>Statistiques | Bookfolio</source>
+        <target>__Statistiques | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="aLzXiTC" resname="Statistiques de visites">
+        <source>Statistiques de visites</source>
+        <target>__Statistiques de visites</target>
+      </trans-unit>
+      <trans-unit id="S.ls78n" resname="Toutes les visites d'aujourd'hui">
+        <source>Toutes les visites d'aujourd'hui</source>
+        <target>__Toutes les visites d'aujourd'hui</target>
+      </trans-unit>
+      <trans-unit id="mQmbbpB" resname="Aujourd'hui">
+        <source>Aujourd'hui</source>
+        <target>Today</target>
+      </trans-unit>
+      <trans-unit id="R3oY0sD" resname="Hier">
+        <source>Hier</source>
+        <target>Yesterday</target>
+      </trans-unit>
+      <trans-unit id="h6AISTP" resname="Toutes les visites du mois en cours">
+        <source>Toutes les visites du mois en cours</source>
+        <target>__Toutes les visites du mois en cours</target>
+      </trans-unit>
+      <trans-unit id="jXIlpbQ" resname="Ce mois">
+        <source>Ce mois</source>
+        <target>This month</target>
+      </trans-unit>
+      <trans-unit id="kigKoXg" resname="Le mois dernier">
+        <source>Le mois dernier</source>
+        <target>Last month</target>
+      </trans-unit>
+      <trans-unit id="wC538o_" resname="Toutes les visites de l'année en cours">
+        <source>Toutes les visites de l'année en cours</source>
+        <target>__Toutes les visites de l'année en cours</target>
+      </trans-unit>
+      <trans-unit id="SSLiLHY" resname="Cette année">
+        <source>Cette année</source>
+        <target>__Cette année</target>
+      </trans-unit>
+      <trans-unit id="QcmDiwJ" resname="L'année dernière">
+        <source>L'année dernière</source>
+        <target>__L'année dernière</target>
+      </trans-unit>
+      <trans-unit id="1EvnokQ" resname="Toutes les visites depuis la création de votre book">
+        <source>Toutes les visites depuis la création de votre book</source>
+        <target>__Toutes les visites depuis la création de votre book</target>
+      </trans-unit>
+      <trans-unit id="wi0ouo3" resname="Total des visites">
+        <source>Total des visites</source>
+        <target>__Total des visites</target>
+      </trans-unit>
+      <trans-unit id="Pnc8kPw" resname="Depuis le">
+        <source>Depuis le</source>
+        <target>__Depuis le</target>
+      </trans-unit>
+      <trans-unit id="ghzeWsn" resname="Aucune donnée pour l'instant. Revenez un peu plus tard ...">
+        <source>Aucune donnée pour l'instant. Revenez un peu plus tard ...</source>
+        <target>__Aucune donnée pour l'instant. Revenez un peu plus tard ...</target>
+      </trans-unit>
+      <trans-unit id="jzAeU8C" resname="Classé par mois depuis le">
+        <source>Classé par mois depuis le</source>
+        <target>__Classé par mois depuis le</target>
+      </trans-unit>
+      <trans-unit id="PrYiKgJ" resname="Votre compte">
+        <source>Votre compte</source>
+        <target>__Votre compte</target>
+      </trans-unit>
+      <trans-unit id="xj3KSyQ" resname="Finalisation de la commande">
+        <source>Finalisation de la commande</source>
+        <target>__Finalisation de la commande</target>
+      </trans-unit>
+      <trans-unit id="xdmeQca" resname="J'ai un bon de réduction">
+        <source>J'ai un bon de réduction</source>
+        <target>__J'ai un bon de réduction</target>
+      </trans-unit>
+      <trans-unit id="0Qmc5qx" resname="Sachez que...">
+        <source>Sachez que...</source>
+        <target>__Sachez que...</target>
+      </trans-unit>
+      <trans-unit id="S.Es5J1" resname="| Bookfolio">
+        <source>| Bookfolio</source>
+        <target>__| Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="k11C0cK" resname="Expéditeur">
+        <source>Expéditeur</source>
+        <target>__Expéditeur</target>
+      </trans-unit>
+      <trans-unit id="L3dmip3" resname="Message">
+        <source>Message</source>
+        <target>__Message</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>__Date</target>
+      </trans-unit>
+      <trans-unit id="RRWlKPo" resname="Retirer de mes favoris">
+        <source>Retirer de mes favoris</source>
+        <target>__Retirer de mes favoris</target>
+      </trans-unit>
+      <trans-unit id="9ghPB9k" resname="Ajouter dans mes favoris">
+        <source>Ajouter dans mes favoris</source>
+        <target>__Ajouter dans mes favoris</target>
+      </trans-unit>
+      <trans-unit id="T8aMNOc" resname="Vous avez déjà signaler cette conversation.">
+        <source>Vous avez déjà signaler cette conversation.</source>
+        <target>__Vous avez déjà signaler cette conversation.</target>
+      </trans-unit>
+      <trans-unit id="TkDffpg" resname="Signaler cette conversation">
+        <source>Signaler cette conversation</source>
+        <target>__Signaler cette conversation</target>
+      </trans-unit>
+      <trans-unit id="CvSZyV3" resname="Supprimer cette conversation">
+        <source>Supprimer cette conversation</source>
+        <target>__Supprimer cette conversation</target>
+      </trans-unit>
+      <trans-unit id="v72jX5Z" resname="Historique des échanges">
+        <source>Historique des échanges</source>
+        <target>__Historique des échanges</target>
+      </trans-unit>
+      <trans-unit id="9_sJUdF" resname="Saisissez votre réponse">
+        <source>Saisissez votre réponse</source>
+        <target>__Saisissez votre réponse</target>
+      </trans-unit>
+      <trans-unit id="Ba_AOYx" resname="Répondre">
+        <source>Répondre</source>
+        <target>__Répondre</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>__Email</target>
+      </trans-unit>
+      <trans-unit id="zExCS1c" resname="Téléphone">
+        <source>Téléphone</source>
+        <target>__Téléphone</target>
+      </trans-unit>
+      <trans-unit id="hK4qD9h" resname="Suggestions des books à suivre | Bookfolio">
+        <source>Suggestions des books à suivre | Bookfolio</source>
+        <target>__Suggestions des books à suivre | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="95PGn1V" resname="Suggestions des books à suivre">
+        <source>Suggestions des books à suivre</source>
+        <target>__Suggestions des books à suivre</target>
+      </trans-unit>
+      <trans-unit id="N6b4b4m" resname="Annuaire des books en ligne | Bookfolio">
+        <source>Annuaire des books en ligne | Bookfolio</source>
+        <target>__Annuaire des books en ligne | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="jAYKfoP" resname="Annuaire des books en ligne">
+        <source>Annuaire des books en ligne</source>
+        <target>__Annuaire des books en ligne</target>
+      </trans-unit>
+      <trans-unit id="l7n1R6U" resname="Qui recherchez-vous ?">
+        <source>Qui recherchez-vous ?</source>
+        <target>__Qui recherchez-vous ?</target>
+      </trans-unit>
+      <trans-unit id="JEd7t3X" resname="Commencer à saisir un lieu, puis sélectionner.">
+        <source>Commencer à saisir un lieu, puis sélectionner.</source>
+        <target>__Commencer à saisir un lieu, puis sélectionner.</target>
+      </trans-unit>
+      <trans-unit id="1YotDzQ" resname="Effectuer une recherche avancée">
+        <source>Effectuer une recherche avancée</source>
+        <target>__Effectuer une recherche avancée</target>
+      </trans-unit>
+      <trans-unit id="xL9Mhur" resname="Indiquez un lieu. Ex : Bordeaux, France">
+        <source>Indiquez un lieu. Ex : Bordeaux, France</source>
+        <target>__Indiquez un lieu. Ex : Bordeaux, France</target>
+      </trans-unit>
+      <trans-unit id="L0DCJ7v" resname="Ex : Photographe, modèle, styliste, etc.">
+        <source>Ex : Photographe, modèle, styliste, etc.</source>
+        <target>__Ex : Photographe, modèle, styliste, etc.</target>
+      </trans-unit>
+      <trans-unit id="9AAgzov" resname="En fonction du type de book choisi.">
+        <source>En fonction du type de book choisi.</source>
+        <target>__En fonction du type de book choisi.</target>
+      </trans-unit>
+      <trans-unit id="ODKOdcu" resname="Homme, femme ou sans importance.">
+        <source>Homme, femme ou sans importance.</source>
+        <target>__Homme, femme ou sans importance.</target>
+      </trans-unit>
+      <trans-unit id="MRWIr7W" resname="Trier par :">
+        <source>Trier par :</source>
+        <target>__Trier par :</target>
+      </trans-unit>
+      <trans-unit id="G_KOFXt" resname="Boîte de réception">
+        <source>Boîte de réception</source>
+        <target>__Boîte de réception</target>
+      </trans-unit>
+      <trans-unit id="qTiDCly" resname="Favoris">
+        <source>Favoris</source>
+        <target>__Favoris</target>
+      </trans-unit>
+      <trans-unit id="xutq_e_" resname="Infos personnelles">
+        <source>Infos personnelles</source>
+        <target>__Infos personnelles</target>
+      </trans-unit>
+      <trans-unit id="ufXz2CB" resname="Connexion et sécurité">
+        <source>Connexion et sécurité</source>
+        <target>__Connexion et sécurité</target>
+      </trans-unit>
+      <trans-unit id="bjtLVhn" resname="Notifications mail">
+        <source>Notifications mail</source>
+        <target>__Notifications mail</target>
+      </trans-unit>
+      <trans-unit id="cBPqocK" resname="Abonnement">
+        <source>Abonnement</source>
+        <target>__Abonnement</target>
+      </trans-unit>
+      <trans-unit id="RZEM.Sg" resname="Offres">
+        <source>Offres</source>
+        <target>__Offres</target>
+      </trans-unit>
+      <trans-unit id="aZRLH8V" resname="Dernière mise à jour">
+        <source>Dernière mise à jour</source>
+        <target>__Dernière mise à jour</target>
+      </trans-unit>
+      <trans-unit id="noWeAHk" resname="Quota atteint !">
+        <source>Quota atteint !</source>
+        <target>__Quota atteint !</target>
+      </trans-unit>
+      <trans-unit id="x6NXwyu" resname="Votre compte sera recrédité dès le mois prochain.">
+        <source>Votre compte sera recrédité dès le mois prochain.</source>
+        <target>__Votre compte sera recrédité dès le mois prochain.</target>
+      </trans-unit>
+      <trans-unit id="lcKHr2R" resname="Toute fois, si vous ne souhaitez pas patienter, vous avez toujours la possibilité de changer votre offre d'abonnement qui vous permettra de publier plus de photos.">
+        <source>Toute fois, si vous ne souhaitez pas patienter, vous avez toujours la possibilité de changer votre offre d'abonnement qui vous permettra de publier plus de photos.</source>
+        <target>__Toute fois, si vous ne souhaitez pas patienter, vous avez toujours la possibilité de changer votre offre d'abonnement qui vous permettra de publier plus de photos.</target>
+      </trans-unit>
+      <trans-unit id="XEQHmKw" resname="Consulter nos offres">
+        <source>Consulter nos offres</source>
+        <target>__Consulter nos offres</target>
+      </trans-unit>
+      <trans-unit id="3uuAcA7" resname="galeries.">
+        <source>galeries.</source>
+        <target>__galeries.</target>
+      </trans-unit>
+      <trans-unit id="Q50q_wT" resname="Si vous souhaitez en créer d'avantage, vous pouvez changer votre offre d'abonnement en cliquant ci-dessous.">
+        <source>Si vous souhaitez en créer d'avantage, vous pouvez changer votre offre d'abonnement en cliquant ci-dessous.</source>
+        <target>__Si vous souhaitez en créer d'avantage, vous pouvez changer votre offre d'abonnement en cliquant ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="IR5YWTQ" resname="Abonnés">
+        <source>Abonnés</source>
+        <target>__Abonnés</target>
+      </trans-unit>
+      <trans-unit id="NIWwOE_" resname="Abonnements">
+        <source>Abonnements</source>
+        <target>__Abonnements</target>
+      </trans-unit>
+      <trans-unit id="Y7xJWKI" resname="Votre offre">
+        <source>Votre offre</source>
+        <target>__Votre offre</target>
+      </trans-unit>
+      <trans-unit id="jh9OFR." resname="Crédit photo">
+        <source>Crédit photo</source>
+        <target>__Crédit photo</target>
+      </trans-unit>
+      <trans-unit id="by.rHPb" resname="photos publiées ce mois.">
+        <source>photos publiées ce mois.</source>
+        <target>__photos publiées ce mois.</target>
+      </trans-unit>
+      <trans-unit id="fVuiYIa" resname="photos avant la fin du mois.">
+        <source>photos avant la fin du mois.</source>
+        <target>__photos avant la fin du mois.</target>
+      </trans-unit>
+      <trans-unit id="bybHZpc" resname="Aucun nouveau message.">
+        <source>Aucun nouveau message.</source>
+        <target>__Aucun nouveau message.</target>
+      </trans-unit>
+      <trans-unit id="yZ_t50f" resname="Les messages envoyés depuis votre book s'afficheront ici.">
+        <source>Les messages envoyés depuis votre book s'afficheront ici.</source>
+        <target>__Les messages envoyés depuis votre book s'afficheront ici.</target>
+      </trans-unit>
+      <trans-unit id="7Y0W1EP" resname="Aucun message favoris.">
+        <source>Aucun message favoris.</source>
+        <target>__Aucun message favoris.</target>
+      </trans-unit>
+      <trans-unit id="G.sl7Pt" resname="Les messages favoris s'afficheront ici.">
+        <source>Les messages favoris s'afficheront ici.</source>
+        <target>__Les messages favoris s'afficheront ici.</target>
+      </trans-unit>
+      <trans-unit id="D0u8T1d" resname="Aucun message envoyé.">
+        <source>Aucun message envoyé.</source>
+        <target>__Aucun message envoyé.</target>
+      </trans-unit>
+      <trans-unit id="cJPOUMe" resname="Les messages envoyés depuis Bookfolio s'afficheront ici.">
+        <source>Les messages envoyés depuis Bookfolio s'afficheront ici.</source>
+        <target>__Les messages envoyés depuis Bookfolio s'afficheront ici.</target>
+      </trans-unit>
+      <trans-unit id="4p_DJAv" resname="Aucun message supprimé.">
+        <source>Aucun message supprimé.</source>
+        <target>__Aucun message supprimé.</target>
+      </trans-unit>
+      <trans-unit id=".8GLmEK" resname="Les messages supprimés s'afficheront ici durant une période de 30 jours.">
+        <source>Les messages supprimés s'afficheront ici durant une période de 30 jours.</source>
+        <target>__Les messages supprimés s'afficheront ici durant une période de 30 jours.</target>
+      </trans-unit>
+      <trans-unit id="v5N.yEN" resname="Toutes vos galeries">
+        <source>Toutes vos galeries</source>
+        <target>__Toutes vos galeries</target>
+      </trans-unit>
+      <trans-unit id="z3tuWac" resname="Protégée par mot de passe">
+        <source>Protégée par mot de passe</source>
+        <target>__Protégée par mot de passe</target>
+      </trans-unit>
+      <trans-unit id="ljEF3Dk" resname="Créer une galerie">
+        <source>Créer une galerie</source>
+        <target>__Créer une galerie</target>
+      </trans-unit>
+      <trans-unit id="07NdJrI" resname="Toutes vos annonces">
+        <source>Toutes vos annonces</source>
+        <target>__Toutes vos annonces</target>
+      </trans-unit>
+      <trans-unit id="APnFM0V" resname="Ajouter">
+        <source>Ajouter</source>
+        <target>__Ajouter</target>
+      </trans-unit>
+      <trans-unit id="cdx0hz4" resname="Enregistrer">
+        <source>Enregistrer</source>
+        <target>__Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="1KAiKXh" resname="Saisissez votre texte">
+        <source>Saisissez votre texte</source>
+        <target>__Saisissez votre texte</target>
+      </trans-unit>
+      <trans-unit id="S4O9Mk1" resname="Vos abonnements | Bookfolio">
+        <source>Vos abonnements | Bookfolio</source>
+        <target>__Vos abonnements | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="kbd9Cxl" resname="Vos abonnements sont les artistes que vous suivez">
+        <source>Vos abonnements sont les artistes que vous suivez</source>
+        <target>__Vos abonnements sont les artistes que vous suivez</target>
+      </trans-unit>
+      <trans-unit id="2XZbEGU" resname="Lorsque vous suivez un artiste, cela ne veut pas dire que ce dernier vous suit aussi.">
+        <source>Lorsque vous suivez un artiste, cela ne veut pas dire que ce dernier vous suit aussi.</source>
+        <target>__Lorsque vous suivez un artiste, cela ne veut pas dire que ce dernier vous suit aussi.</target>
+      </trans-unit>
+      <trans-unit id="E7z_OTt" resname="Vos abonnés | Bookfolio">
+        <source>Vos abonnés | Bookfolio</source>
+        <target>__Vos abonnés | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="QUXoBct" resname="Les abonnés sont des artistes qui vous suivent.">
+        <source>Les abonnés sont des artistes qui vous suivent.</source>
+        <target>__Les abonnés sont des artistes qui vous suivent.</target>
+      </trans-unit>
+      <trans-unit id="E9n8FAu" resname="Lorsqu'un artiste vous suit, cela ne veut pas forcément dire que vous le suivez vous aussi.">
+        <source>Lorsqu'un artiste vous suit, cela ne veut pas forcément dire que vous le suivez vous aussi.</source>
+        <target>__Lorsqu'un artiste vous suit, cela ne veut pas forcément dire que vous le suivez vous aussi.</target>
+      </trans-unit>
+      <trans-unit id="30n2hz2" resname="Vous pouvez réorganiser vos photos !">
+        <source>Vous pouvez réorganiser vos photos !</source>
+        <target>__Vous pouvez réorganiser vos photos !</target>
+      </trans-unit>
+      <trans-unit id="xxxvJhn" resname="Sélectionner une photo (sans relâché) et faites-la glisser à l’emplacement souhaité.">
+        <source>Sélectionner une photo (sans relâché) et faites-la glisser à l’emplacement souhaité.</source>
+        <target>__Sélectionner une photo (sans relâché) et faites-la glisser à l’emplacement souhaité.</target>
+      </trans-unit>
+      <trans-unit id="x_0b8Lr" resname="Accéder">
+        <source>Accéder</source>
+        <target>__Accéder</target>
+      </trans-unit>
+      <trans-unit id="67oTy_4" resname="Titre de l'image">
+        <source>Titre de l'image</source>
+        <target>__Titre de l'image</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>__Description</target>
+      </trans-unit>
+      <trans-unit id="eyeUeCH" resname="Galerie">
+        <source>Galerie</source>
+        <target>__Galerie</target>
+      </trans-unit>
+      <trans-unit id="VgWdKDB" resname="Crédits photo">
+        <source>Crédits photo</source>
+        <target>__Crédits photo</target>
+      </trans-unit>
+      <trans-unit id="wP0vNTT" resname="Mots clés">
+        <source>Mots clés</source>
+        <target>__Mots clés</target>
+      </trans-unit>
+      <trans-unit id="JHCpSpQ" resname="Vues">
+        <source>Vues</source>
+        <target>__Vues</target>
+      </trans-unit>
+      <trans-unit id="sRGiohh" resname="Vue">
+        <source>Vue</source>
+        <target>__Vue</target>
+      </trans-unit>
+      <trans-unit id="zKBmL53" resname="Likes">
+        <source>Likes</source>
+        <target>__Likes</target>
+      </trans-unit>
+      <trans-unit id="ZPkVy4v" resname="Like">
+        <source>Like</source>
+        <target>__Like</target>
+      </trans-unit>
+      <trans-unit id="9516ize" resname="Commentaires">
+        <source>Commentaires</source>
+        <target>__Commentaires</target>
+      </trans-unit>
+      <trans-unit id="SNPoFla" resname="Commentaire">
+        <source>Commentaire</source>
+        <target>__Commentaire</target>
+      </trans-unit>
+      <trans-unit id="QSvguc1" resname="Informations">
+        <source>Informations</source>
+        <target>__Informations</target>
+      </trans-unit>
+      <trans-unit id="VjBNIek" resname="Aucune description">
+        <source>Aucune description</source>
+        <target>__Aucune description</target>
+      </trans-unit>
+      <trans-unit id="2.uDw7I" resname="Date de publication">
+        <source>Date de publication</source>
+        <target>__Date de publication</target>
+      </trans-unit>
+      <trans-unit id="u1oXnfj" resname="Aucun like pour l'instant">
+        <source>Aucun like pour l'instant</source>
+        <target>__Aucun like pour l'instant</target>
+      </trans-unit>
+      <trans-unit id="8xF94NO" resname="Aucun commentaire pour l'instant">
+        <source>Aucun commentaire pour l'instant</source>
+        <target>__Aucun commentaire pour l'instant</target>
+      </trans-unit>
+      <trans-unit id="n2i1igN" resname="Ajouter des photos">
+        <source>Ajouter des photos</source>
+        <target>__Ajouter des photos</target>
+      </trans-unit>
+      <trans-unit id="5HNJRns" resname="Publier sur mon book">
+        <source>Publier sur mon book</source>
+        <target>__Publier sur mon book</target>
+      </trans-unit>
+      <trans-unit id="GRevOy5" resname="Nouveaux books">
+        <source>Nouveaux books</source>
+        <target>__Nouveaux books</target>
+      </trans-unit>
+      <trans-unit id="tD0q8kz" resname="Suggestions pour vous">
+        <source>Suggestions pour vous</source>
+        <target>__Suggestions pour vous</target>
+      </trans-unit>
+      <trans-unit id="TTi18D1" resname="Dernières annonces">
+        <source>Dernières annonces</source>
+        <target>__Dernières annonces</target>
+      </trans-unit>
+      <trans-unit id="2iiN0qP" resname="Actualités">
+        <source>Actualités</source>
+        <target>__Actualités</target>
+      </trans-unit>
+      <trans-unit id="AD4G1v9" resname="Votre compte | Bookfolio">
+        <source>Votre compte | Bookfolio</source>
+        <target>__Votre compte | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="iKG2d56" resname="Nos offres">
+        <source>Nos offres</source>
+        <target>__Nos offres</target>
+      </trans-unit>
+      <trans-unit id="lPLR5nV" resname="Abonnement de 3 mois.">
+        <source>Abonnement de 3 mois.</source>
+        <target>__Abonnement de 3 mois.</target>
+      </trans-unit>
+      <trans-unit id="bbO5Fqn" resname="Illimité">
+        <source>Illimité</source>
+        <target>__Illimité</target>
+      </trans-unit>
+      <trans-unit id="CpBAdjn" resname="Oui">
+        <source>Oui</source>
+        <target>__Oui</target>
+      </trans-unit>
+      <trans-unit id="f2JJawy" resname="Non">
+        <source>Non</source>
+        <target>__Non</target>
+      </trans-unit>
+      <trans-unit id="qGkb264" resname="Choisir cette offre">
+        <source>Choisir cette offre</source>
+        <target>__Choisir cette offre</target>
+      </trans-unit>
+      <trans-unit id="0SKutqi" resname="Résultat de votre recherche">
+        <source>Résultat de votre recherche</source>
+        <target>__Résultat de votre recherche</target>
+      </trans-unit>
+      <trans-unit id="_aMGedJ" resname="Vos annonces">
+        <source>Vos annonces</source>
+        <target>__Vos annonces</target>
+      </trans-unit>
+      <trans-unit id="JNHqMm_" resname="Modifiez mon annonce">
+        <source>Modifiez mon annonce</source>
+        <target>__Modifiez mon annonce</target>
+      </trans-unit>
+      <trans-unit id="6XsmD8W" resname="Remplissez votre annonce le plus précisement possible, elle remontera correctement dans la liste de toutes les annonces.">
+        <source>Remplissez votre annonce le plus précisement possible, elle remontera correctement dans la liste de toutes les annonces.</source>
+        <target>__Remplissez votre annonce le plus précisement possible, elle remontera correctement dans la liste de toutes les annonces.</target>
+      </trans-unit>
+      <trans-unit id="zHyW6VC" resname="Vos annonces | Bookfolio">
+        <source>Vos annonces | Bookfolio</source>
+        <target>__Vos annonces | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="RVSWxER" resname="Bookfolio vous permet d'élargir votre cercle de professionels grâce aux petites annonces que vous pourrez poster. &#10;                                Vous pouvez donc retrouver ci-dessous la liste des annonces de recherche que vous avez déjà émises !">
+        <source>Bookfolio vous permet d'élargir votre cercle de professionels grâce aux petites annonces que vous pourrez poster. 
+                                Vous pouvez donc retrouver ci-dessous la liste des annonces de recherche que vous avez déjà émises !</source>
+        <target>__Bookfolio vous permet d'élargir votre cercle de professionels grâce aux petites annonces que vous pourrez poster. 
+                                Vous pouvez donc retrouver ci-dessous la liste des annonces de recherche que vous avez déjà émises !</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>__Supprimer</target>
+      </trans-unit>
+      <trans-unit id="e1pHRc_" resname="Publié le">
+        <source>Publié le</source>
+        <target>__Publié le</target>
+      </trans-unit>
+      <trans-unit id="FNIkMut" resname="Validé">
+        <source>Validé</source>
+        <target>__Validé</target>
+      </trans-unit>
+      <trans-unit id="8VpJepu" resname="En attente de validation">
+        <source>En attente de validation</source>
+        <target>__En attente de validation</target>
+      </trans-unit>
+      <trans-unit id="VkOCJnU" resname="vue">
+        <source>vue</source>
+        <target>__vue</target>
+      </trans-unit>
+      <trans-unit id="BF6PMuO" resname="vues">
+        <source>vues</source>
+        <target>__vues</target>
+      </trans-unit>
+      <trans-unit id="0o_ykG2" resname="commentaire">
+        <source>commentaire</source>
+        <target>__commentaire</target>
+      </trans-unit>
+      <trans-unit id="EI8yWgH" resname="commentaires">
+        <source>commentaires</source>
+        <target>__commentaires</target>
+      </trans-unit>
+      <trans-unit id="k6mbsx8" resname="Vous avez un nouveau projet ? Parlez-en !">
+        <source>Vous avez un nouveau projet ? Parlez-en !</source>
+        <target>__Vous avez un nouveau projet ? Parlez-en !</target>
+      </trans-unit>
+      <trans-unit id="HOL_P_h" resname="Ajouter une annonce">
+        <source>Ajouter une annonce</source>
+        <target>__Ajouter une annonce</target>
+      </trans-unit>
+      <trans-unit id="jAKUPf." resname="Vos vidéos | Bookfolio">
+        <source>Vos vidéos | Bookfolio</source>
+        <target>__Vos vidéos | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="yaljlGP" resname="Videos">
+        <source>Videos</source>
+        <target>__Videos</target>
+      </trans-unit>
+      <trans-unit id="EHJl.uj" resname="Ajouter des vidéos">
+        <source>Ajouter des vidéos</source>
+        <target>__Ajouter des vidéos</target>
+      </trans-unit>
+      <trans-unit id="RetK6YC" resname="Indiquez l'URL de la vidéo que vous souhaitez ajouter à votre book.">
+        <source>Indiquez l'URL de la vidéo que vous souhaitez ajouter à votre book.</source>
+        <target>__Indiquez l'URL de la vidéo que vous souhaitez ajouter à votre book.</target>
+      </trans-unit>
+      <trans-unit id="gKWTdyy" resname="Ce service est compatible avec Youtube, vimeo, Flickr, instagram. Vous pouvez également ajouter des vidéos issues des sites tels que : archive.org, github, Facebook.">
+        <source>Ce service est compatible avec Youtube, vimeo, Flickr, instagram. Vous pouvez également ajouter des vidéos issues des sites tels que : archive.org, github, Facebook.</source>
+        <target>__Ce service est compatible avec Youtube, vimeo, Flickr, instagram. Vous pouvez également ajouter des vidéos issues des sites tels que : archive.org, github, Facebook.</target>
+      </trans-unit>
+      <trans-unit id="xKD4NE6" resname="Vos vidéos">
+        <source>Vos vidéos</source>
+        <target>__Vos vidéos</target>
+      </trans-unit>
+      <trans-unit id="aQS7jCe" resname="Publiée">
+        <source>Publiée</source>
+        <target>__Publiée</target>
+      </trans-unit>
+      <trans-unit id="w0uE3Xv" resname="Aucune vidéo pour l'instant !">
+        <source>Aucune vidéo pour l'instant !</source>
+        <target>__Aucune vidéo pour l'instant !</target>
+      </trans-unit>
+      <trans-unit id="QsXcDCI" resname="Les prochaines vidéos que vous publierez sur votre book, s'afficheront ici.">
+        <source>Les prochaines vidéos que vous publierez sur votre book, s'afficheront ici.</source>
+        <target>__Les prochaines vidéos que vous publierez sur votre book, s'afficheront ici.</target>
+      </trans-unit>
+      <trans-unit id="kgaq4fJ" resname="Livre d'or | Bookfolio">
+        <source>Livre d'or | Bookfolio</source>
+        <target>__Livre d'or | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="YimwZUm" resname="Nouveaux">
+        <source>Nouveaux</source>
+        <target>__Nouveaux</target>
+      </trans-unit>
+      <trans-unit id="4gU.tot" resname="En ligne">
+        <source>En ligne</source>
+        <target>__En ligne</target>
+      </trans-unit>
+      <trans-unit id="AQ2Pe.j" resname="Nouveaux messages">
+        <source>Nouveaux messages</source>
+        <target>__Nouveaux messages</target>
+      </trans-unit>
+      <trans-unit id="YmunqJ." resname="Valider">
+        <source>Valider</source>
+        <target>__Valider</target>
+      </trans-unit>
+      <trans-unit id="vrLAu.G" resname="Publié">
+        <source>Publié</source>
+        <target>__Publié</target>
+      </trans-unit>
+      <trans-unit id="k3e2jZc" resname="Les messages laissés par vos visiteurs s'afficheront ici.">
+        <source>Les messages laissés par vos visiteurs s'afficheront ici.</source>
+        <target>__Les messages laissés par vos visiteurs s'afficheront ici.</target>
+      </trans-unit>
+      <trans-unit id="c3se8Mk" resname="Retrouvez ici tous les messages que les visiteurs auront laissés à votre intention.">
+        <source>Retrouvez ici tous les messages que les visiteurs auront laissés à votre intention.</source>
+        <target>__Retrouvez ici tous les messages que les visiteurs auront laissés à votre intention.</target>
+      </trans-unit>
+      <trans-unit id="wQtar0u" resname="N'hésitez pas à faire la pub de votre book !">
+        <source>N'hésitez pas à faire la pub de votre book !</source>
+        <target>__N'hésitez pas à faire la pub de votre book !</target>
+      </trans-unit>
+      <trans-unit id="jf_pWrJ" resname="Configuration de votre book | Bookfolio">
+        <source>Configuration de votre book | Bookfolio</source>
+        <target>__Configuration de votre book | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="MTX8TAi" resname="Configurer votre book">
+        <source>Configurer votre book</source>
+        <target>__Configurer votre book</target>
+      </trans-unit>
+      <trans-unit id="ml0Jq9i" resname="Paramètres du book">
+        <source>Paramètres du book</source>
+        <target>__Paramètres du book</target>
+      </trans-unit>
+      <trans-unit id="N2bBKzW" resname="Votre book est actuellement accessible à l'adresse :">
+        <source>Votre book est actuellement accessible à l'adresse :</source>
+        <target>__Votre book est actuellement accessible à l'adresse :</target>
+      </trans-unit>
+      <trans-unit id="gqWU2Rx" resname="Url de votre book">
+        <source>Url de votre book</source>
+        <target>__Url de votre book</target>
+      </trans-unit>
+      <trans-unit id="mThWRzz" resname="Style de photos">
+        <source>Style de photos</source>
+        <target>__Style de photos</target>
+      </trans-unit>
+      <trans-unit id="0NuLXjZ" resname="Options">
+        <source>Options</source>
+        <target>__Options</target>
+      </trans-unit>
+      <trans-unit id="lLR2PtT" resname="Référencement naturel">
+        <source>Référencement naturel</source>
+        <target>__Référencement naturel</target>
+      </trans-unit>
+      <trans-unit id="gWE2bk3" resname="Votre book est automatiquement référencé sur Google mais vous pouvez empêcher cela si vous voulez le laisser en privé. Si vous ne souhaitez pas faire apparaître votre book dans les résultats de recherche Google, décochez la case ci-dessous.">
+        <source>Votre book est automatiquement référencé sur Google mais vous pouvez empêcher cela si vous voulez le laisser en privé. Si vous ne souhaitez pas faire apparaître votre book dans les résultats de recherche Google, décochez la case ci-dessous.</source>
+        <target>__Votre book est automatiquement référencé sur Google mais vous pouvez empêcher cela si vous voulez le laisser en privé. Si vous ne souhaitez pas faire apparaître votre book dans les résultats de recherche Google, décochez la case ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="KpW1vor" resname="Titre de votre book">
+        <source>Titre de votre book</source>
+        <target>__Titre de votre book</target>
+      </trans-unit>
+      <trans-unit id="kUY_s8s" resname="De quoi parle votre book ?">
+        <source>De quoi parle votre book ?</source>
+        <target>__De quoi parle votre book ?</target>
+      </trans-unit>
+      <trans-unit id="SzDJA6C" resname="Avez-vous des mots clés en rapport avec votre book ?">
+        <source>Avez-vous des mots clés en rapport avec votre book ?</source>
+        <target>__Avez-vous des mots clés en rapport avec votre book ?</target>
+      </trans-unit>
+      <trans-unit id=".Zz5JyM" resname="Google analytics">
+        <source>Google analytics</source>
+        <target>__Google analytics</target>
+      </trans-unit>
+      <trans-unit id="Zb9OLqX" resname="Entrez votre code de suivi Google Analytics ci-dessous pour commencer à suivre le trafic de votre book à l'aide de Google Analytics. Le code de suivi de la propriété Web, également appelé numéro UA, se trouve en cliquant sur le lien &quot;Vérifier l'état&quot; sur la page de profil de votre site dans Google Analytics et devrait ressembler à ceci : UA-xxxxxx-xx.">
+        <source>Entrez votre code de suivi Google Analytics ci-dessous pour commencer à suivre le trafic de votre book à l'aide de Google Analytics. Le code de suivi de la propriété Web, également appelé numéro UA, se trouve en cliquant sur le lien "Vérifier l'état" sur la page de profil de votre site dans Google Analytics et devrait ressembler à ceci : UA-xxxxxx-xx.</source>
+        <target>__Entrez votre code de suivi Google Analytics ci-dessous pour commencer à suivre le trafic de votre book à l'aide de Google Analytics. Le code de suivi de la propriété Web, également appelé numéro UA, se trouve en cliquant sur le lien "Vérifier l'état" sur la page de profil de votre site dans Google Analytics et devrait ressembler à ceci : UA-xxxxxx-xx.</target>
+      </trans-unit>
+      <trans-unit id="RTQVeOu" resname="Une fois que vous avez installé le code de suivi Analytics, un délai de 24 heures peut être nécessaire pour que les données telles que les informations sur le trafic généré par les sites référents, les caractéristiques des utilisateurs ainsi que les informations de navigation s'affichent dans vos rapports.">
+        <source>Une fois que vous avez installé le code de suivi Analytics, un délai de 24 heures peut être nécessaire pour que les données telles que les informations sur le trafic généré par les sites référents, les caractéristiques des utilisateurs ainsi que les informations de navigation s'affichent dans vos rapports.</source>
+        <target>__Une fois que vous avez installé le code de suivi Analytics, un délai de 24 heures peut être nécessaire pour que les données telles que les informations sur le trafic généré par les sites référents, les caractéristiques des utilisateurs ainsi que les informations de navigation s'affichent dans vos rapports.</target>
+      </trans-unit>
+      <trans-unit id="5LN0ykC" resname="Pour en savoir plus sur Google Analytics, aller sur www.google.com/analytics/">
+        <source>Pour en savoir plus sur Google Analytics, aller sur www.google.com/analytics/</source>
+        <target>__Pour en savoir plus sur Google Analytics, aller sur www.google.com/analytics/</target>
+      </trans-unit>
+      <trans-unit id="Qo2rj4m" resname="Votre code analytics">
+        <source>Votre code analytics</source>
+        <target>__Votre code analytics</target>
+      </trans-unit>
+      <trans-unit id="AZI996R" resname="Paramètres">
+        <source>Paramètres</source>
+        <target>__Paramètres</target>
+      </trans-unit>
+      <trans-unit id="AHLmuTS" resname="Design">
+        <source>Design</source>
+        <target>__Design</target>
+      </trans-unit>
+      <trans-unit id="huiWJfu" resname="Dernière mise à jour :">
+        <source>Dernière mise à jour :</source>
+        <target>__Dernière mise à jour :</target>
+      </trans-unit>
+      <trans-unit id="t7ovBKp" resname="Tous les designs">
+        <source>Tous les designs</source>
+        <target>__Tous les designs</target>
+      </trans-unit>
+      <trans-unit id="zj504BZ" resname="Voici les designs que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.">
+        <source>Voici les designs que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.</source>
+        <target>__Voici les designs que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.</target>
+      </trans-unit>
+      <trans-unit id="3Mz9pFe" resname="Mon design">
+        <source>Mon design</source>
+        <target>__Mon design</target>
+      </trans-unit>
+      <trans-unit id="EVKc7FC" resname="Prévisualiser">
+        <source>Prévisualiser</source>
+        <target>__Prévisualiser</target>
+      </trans-unit>
+      <trans-unit id="JVikSW0" resname="Notifications mail | Bookfolio">
+        <source>Notifications mail | Bookfolio</source>
+        <target>__Notifications mail | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="IrLQKgI" resname="Recevoir un mail lorsque quelqu'un">
+        <source>Recevoir un mail lorsque quelqu'un</source>
+        <target>__Recevoir un mail lorsque quelqu'un</target>
+      </trans-unit>
+      <trans-unit id="qMCeO05" resname="Votre abonnement actuel">
+        <source>Votre abonnement actuel</source>
+        <target>__Votre abonnement actuel</target>
+      </trans-unit>
+      <trans-unit id="cdJe2Zm" resname="Photo de profil">
+        <source>Photo de profil</source>
+        <target>__Photo de profil</target>
+      </trans-unit>
+      <trans-unit id="8DU3i24" resname="Choisissez une photo récente de vous. Cela aide les gens à s'assurer qu'ils contactent la bonne personne.">
+        <source>Choisissez une photo récente de vous. Cela aide les gens à s'assurer qu'ils contactent la bonne personne.</source>
+        <target>__Choisissez une photo récente de vous. Cela aide les gens à s'assurer qu'ils contactent la bonne personne.</target>
+      </trans-unit>
+      <trans-unit id="Gb8X4A5" resname="Uniquement les fichiers JPG et JPEG.">
+        <source>Uniquement les fichiers JPG et JPEG.</source>
+        <target>__Uniquement les fichiers JPG et JPEG.</target>
+      </trans-unit>
+      <trans-unit id="Tyl3DI0" resname="Dimensions : 200x200 minimum. 5Mo maximum.">
+        <source>Dimensions : 200x200 minimum. 5Mo maximum.</source>
+        <target>__Dimensions : 200x200 minimum. 5Mo maximum.</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>__Nom</target>
+      </trans-unit>
+      <trans-unit id="4yW.j5A" resname="Prénom">
+        <source>Prénom</source>
+        <target>__Prénom</target>
+      </trans-unit>
+      <trans-unit id="j5qSClf" resname="Adresse e-mail">
+        <source>Adresse e-mail</source>
+        <target>__Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="WK6y1KD" resname="Quelle est votre passion ?">
+        <source>Quelle est votre passion ?</source>
+        <target>__Quelle est votre passion ?</target>
+      </trans-unit>
+      <trans-unit id="OFYmkqa" resname="Votre expérience ?">
+        <source>Votre expérience ?</source>
+        <target>__Votre expérience ?</target>
+      </trans-unit>
+      <trans-unit id="jyKxeBt" resname="Présentez-vous en quelques mots">
+        <source>Présentez-vous en quelques mots</source>
+        <target>__Présentez-vous en quelques mots</target>
+      </trans-unit>
+      <trans-unit id="eeXPIN4" resname="Adresse">
+        <source>Adresse</source>
+        <target>__Adresse</target>
+      </trans-unit>
+      <trans-unit id="pdcV84X" resname="Les informations ci-dessous n'apparaîtrons pas sur le site. Elles restent confidentielles ! Nous les utilisons uniquement pour de la recherche avancée.">
+        <source>Les informations ci-dessous n'apparaîtrons pas sur le site. Elles restent confidentielles ! Nous les utilisons uniquement pour de la recherche avancée.</source>
+        <target>__Les informations ci-dessous n'apparaîtrons pas sur le site. Elles restent confidentielles ! Nous les utilisons uniquement pour de la recherche avancée.</target>
+      </trans-unit>
+      <trans-unit id="FLBruLA" resname="Rue">
+        <source>Rue</source>
+        <target>__Rue</target>
+      </trans-unit>
+      <trans-unit id="Dr0lo0H" resname="Ville">
+        <source>Ville</source>
+        <target>__Ville</target>
+      </trans-unit>
+      <trans-unit id="NVP4wDB" resname="Région">
+        <source>Région</source>
+        <target>__Région</target>
+      </trans-unit>
+      <trans-unit id=".nU._5u" resname="Pays">
+        <source>Pays</source>
+        <target>__Pays</target>
+      </trans-unit>
+      <trans-unit id="vnBxYSs" resname="Code postal">
+        <source>Code postal</source>
+        <target>__Code postal</target>
+      </trans-unit>
+      <trans-unit id="iPoT7XA" resname="Physique">
+        <source>Physique</source>
+        <target>__Physique</target>
+      </trans-unit>
+      <trans-unit id="UuqxZEu" resname="Origine ethnique">
+        <source>Origine ethnique</source>
+        <target>__Origine ethnique</target>
+      </trans-unit>
+      <trans-unit id="drSDLSB" resname="Couleur de vos cheveux">
+        <source>Couleur de vos cheveux</source>
+        <target>__Couleur de vos cheveux</target>
+      </trans-unit>
+      <trans-unit id="BO2KeCz" resname="Couleur de vos yeux">
+        <source>Couleur de vos yeux</source>
+        <target>__Couleur de vos yeux</target>
+      </trans-unit>
+      <trans-unit id="baeVqGZ" resname="Genre">
+        <source>Genre</source>
+        <target>__Genre</target>
+      </trans-unit>
+      <trans-unit id="Rkn0tV4" resname="Date de naissance">
+        <source>Date de naissance</source>
+        <target>__Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="OItk_mK" resname="Mensurations">
+        <source>Mensurations</source>
+        <target>__Mensurations</target>
+      </trans-unit>
+      <trans-unit id="dwk_DDP" resname="Taille">
+        <source>Taille</source>
+        <target>__Taille</target>
+      </trans-unit>
+      <trans-unit id="r3UMoX_" resname="Poids">
+        <source>Poids</source>
+        <target>__Poids</target>
+      </trans-unit>
+      <trans-unit id="LbMXBi7" resname="Tour de hanche">
+        <source>Tour de hanche</source>
+        <target>__Tour de hanche</target>
+      </trans-unit>
+      <trans-unit id="fKDXAZF" resname="chest">
+        <source>chest</source>
+        <target>__chest</target>
+      </trans-unit>
+      <trans-unit id="MWYuNS1" resname="Confection">
+        <source>Confection</source>
+        <target>__Confection</target>
+      </trans-unit>
+      <trans-unit id="d4RZC7C" resname="Pointure">
+        <source>Pointure</source>
+        <target>__Pointure</target>
+      </trans-unit>
+      <trans-unit id="1xS457M" resname="Tour de poitrine">
+        <source>Tour de poitrine</source>
+        <target>__Tour de poitrine</target>
+      </trans-unit>
+      <trans-unit id="b.go4VO" resname="Tour de taille">
+        <source>Tour de taille</source>
+        <target>__Tour de taille</target>
+      </trans-unit>
+      <trans-unit id="vQQEZid" resname="Hauteur de poitrine">
+        <source>Hauteur de poitrine</source>
+        <target>__Hauteur de poitrine</target>
+      </trans-unit>
+      <trans-unit id="OGMu56h" resname="Hauteur devant du buste">
+        <source>Hauteur devant du buste</source>
+        <target>__Hauteur devant du buste</target>
+      </trans-unit>
+      <trans-unit id="VAQkYBq" resname="Hauteur du dos">
+        <source>Hauteur du dos</source>
+        <target>__Hauteur du dos</target>
+      </trans-unit>
+      <trans-unit id="FTRgexi" resname="Largeur de l'épaule">
+        <source>Largeur de l'épaule</source>
+        <target>__Largeur de l'épaule</target>
+      </trans-unit>
+      <trans-unit id="I3W4UC0" resname="Longueur du bras">
+        <source>Longueur du bras</source>
+        <target>__Longueur du bras</target>
+      </trans-unit>
+      <trans-unit id="CMAct26" resname="Tour du bras">
+        <source>Tour du bras</source>
+        <target>__Tour du bras</target>
+      </trans-unit>
+      <trans-unit id="baQcD.x" resname="Tour du cou">
+        <source>Tour du cou</source>
+        <target>__Tour du cou</target>
+      </trans-unit>
+      <trans-unit id="XanIJaE" resname="Appareil photo">
+        <source>Appareil photo</source>
+        <target>__Appareil photo</target>
+      </trans-unit>
+      <trans-unit id="OSBuh3O" resname="Objectif(s)">
+        <source>Objectif(s)</source>
+        <target>__Objectif(s)</target>
+      </trans-unit>
+      <trans-unit id="_HvFB51" resname="Réseau sociaux">
+        <source>Réseau sociaux</source>
+        <target>__Réseau sociaux</target>
+      </trans-unit>
+      <trans-unit id="7KhYJ6j" resname="Site web">
+        <source>Site web</source>
+        <target>__Site web</target>
+      </trans-unit>
+      <trans-unit id=".5yLjAZ" resname="Mot de passe">
+        <source>Mot de passe</source>
+        <target>__Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="KGDv0wg" resname="Vous pouvez changer votre mot de passe à tout moment ! Cependant, par sécurité, nous vous demandons de saisir le mot de passe actuel de votre compte afin de poursuivre.">
+        <source>Vous pouvez changer votre mot de passe à tout moment ! Cependant, par sécurité, nous vous demandons de saisir le mot de passe actuel de votre compte afin de poursuivre.</source>
+        <target>__Vous pouvez changer votre mot de passe à tout moment ! Cependant, par sécurité, nous vous demandons de saisir le mot de passe actuel de votre compte afin de poursuivre.</target>
+      </trans-unit>
+      <trans-unit id="Dst6W7n" resname="Votre abonnement">
+        <source>Votre abonnement</source>
+        <target>__Votre abonnement</target>
+      </trans-unit>
+      <trans-unit id="7UuF44g" resname="Offre">
+        <source>Offre</source>
+        <target>__Offre</target>
+      </trans-unit>
+      <trans-unit id="WFJM6B8" resname="Annulé">
+        <source>Annulé</source>
+        <target>__Annulé</target>
+      </trans-unit>
+      <trans-unit id="kjQGlYm" resname="Active">
+        <source>Active</source>
+        <target>__Active</target>
+      </trans-unit>
+      <trans-unit id="mX6ezOe" resname="Prochaine facture le">
+        <source>Prochaine facture le</source>
+        <target>__Prochaine facture le</target>
+      </trans-unit>
+      <trans-unit id="rU8v8GG" resname="Moyen de paiement">
+        <source>Moyen de paiement</source>
+        <target>__Moyen de paiement</target>
+      </trans-unit>
+      <trans-unit id="ZmZOrf3" resname="Carte bancaire">
+        <source>Carte bancaire</source>
+        <target>__Carte bancaire</target>
+      </trans-unit>
+      <trans-unit id="w4yGKi_" resname="Mettre à jour la carte bancaire">
+        <source>Mettre à jour la carte bancaire</source>
+        <target>__Mettre à jour la carte bancaire</target>
+      </trans-unit>
+      <trans-unit id="47N1_nv" resname="Mise à jour de la carte bancaire">
+        <source>Mise à jour de la carte bancaire</source>
+        <target>__Mise à jour de la carte bancaire</target>
+      </trans-unit>
+      <trans-unit id="RnmzsS3" resname="Aucun">
+        <source>Aucun</source>
+        <target>__Aucun</target>
+      </trans-unit>
+      <trans-unit id="u30npT2" resname="Gestion de votre abonnement">
+        <source>Gestion de votre abonnement</source>
+        <target>__Gestion de votre abonnement</target>
+      </trans-unit>
+      <trans-unit id="jVlNGzP" resname="Réactiver mon abonnement">
+        <source>Réactiver mon abonnement</source>
+        <target>__Réactiver mon abonnement</target>
+      </trans-unit>
+      <trans-unit id="GrtPFsT" resname="Annuler mon abonnement">
+        <source>Annuler mon abonnement</source>
+        <target>__Annuler mon abonnement</target>
+      </trans-unit>
+      <trans-unit id="rMqI1mP" resname="Indisponible avec cette offre">
+        <source>Indisponible avec cette offre</source>
+        <target>__Indisponible avec cette offre</target>
+      </trans-unit>
+      <trans-unit id="JDZlMvd" resname="Historique de factures">
+        <source>Historique de factures</source>
+        <target>__Historique de factures</target>
+      </trans-unit>
+      <trans-unit id="SlOcWTQ" resname="Aucune facture pour l'instant">
+        <source>Aucune facture pour l'instant</source>
+        <target>__Aucune facture pour l'instant</target>
+      </trans-unit>
+      <trans-unit id="ds2WdBF" resname="Nom de la galerie">
+        <source>Nom de la galerie</source>
+        <target>__Nom de la galerie</target>
+      </trans-unit>
+      <trans-unit id="kyhSkmt" resname="Si vous souhaitez limiter l'accès à cette galerie, saisissez un mot de passe. Seules les personnes ayant votre mot de passe pourront y accéder !">
+        <source>Si vous souhaitez limiter l'accès à cette galerie, saisissez un mot de passe. Seules les personnes ayant votre mot de passe pourront y accéder !</source>
+        <target>__Si vous souhaitez limiter l'accès à cette galerie, saisissez un mot de passe. Seules les personnes ayant votre mot de passe pourront y accéder !</target>
+      </trans-unit>
+      <trans-unit id="9HXoz2v" resname="Mettre à jour">
+        <source>Mettre à jour</source>
+        <target>__Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="AzVk87V" resname="Galeries | Bookfolio">
+        <source>Galeries | Bookfolio</source>
+        <target>__Galeries | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="VdReJQ2" resname="Déplacer, glisser et déposer pour réorganiser vos galeries.">
+        <source>Déplacer, glisser et déposer pour réorganiser vos galeries.</source>
+        <target>__Déplacer, glisser et déposer pour réorganiser vos galeries.</target>
+      </trans-unit>
+      <trans-unit id="GNNj0tc" resname="Seules les galeries ayant du contenu sont visibles sur votre book.">
+        <source>Seules les galeries ayant du contenu sont visibles sur votre book.</source>
+        <target>__Seules les galeries ayant du contenu sont visibles sur votre book.</target>
+      </trans-unit>
+      <trans-unit id="DVcFT1_" resname="Vous n'avez pas encore de galerie.">
+        <source>Vous n'avez pas encore de galerie.</source>
+        <target>__Vous n'avez pas encore de galerie.</target>
+      </trans-unit>
+      <trans-unit id="YosIlTd" resname="Photo de couverture">
+        <source>Photo de couverture</source>
+        <target>__Photo de couverture</target>
+      </trans-unit>
+      <trans-unit id="6X_6jQt" resname="Seules les personnes ayant ce mot de passe peuvent y accéder.">
+        <source>Seules les personnes ayant ce mot de passe peuvent y accéder.</source>
+        <target>__Seules les personnes ayant ce mot de passe peuvent y accéder.</target>
+      </trans-unit>
+      <trans-unit id="uhtTB_t" resname="Modifier la galerie">
+        <source>Modifier la galerie</source>
+        <target>__Modifier la galerie</target>
+      </trans-unit>
+      <trans-unit id="Qtq6F7b" resname="Vous pouvez réorganiser les photos de votre galerie. Il vous suffit de cliquer sur l'icon">
+        <source>Vous pouvez réorganiser les photos de votre galerie. Il vous suffit de cliquer sur l'icon</source>
+        <target>__Vous pouvez réorganiser les photos de votre galerie. Il vous suffit de cliquer sur l'icon</target>
+      </trans-unit>
+      <trans-unit id="JA9yWwN" resname="(sans relâcher) et faites-la glisser à l’emplacement souhaité.">
+        <source>(sans relâcher) et faites-la glisser à l’emplacement souhaité.</source>
+        <target>__(sans relâcher) et faites-la glisser à l’emplacement souhaité.</target>
+      </trans-unit>
+      <trans-unit id="8rl4tv9" resname="Créer la galerie">
+        <source>Créer la galerie</source>
+        <target>__Créer la galerie</target>
+      </trans-unit>
+      <trans-unit id="6p5_YFE" resname="Vos pages | Bookfolio">
+        <source>Vos pages | Bookfolio</source>
+        <target>__Vos pages | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="kEbaFq6" resname="Pages">
+        <source>Pages</source>
+        <target>__Pages</target>
+      </trans-unit>
+      <trans-unit id="_1JyZCi" resname="Ajouter des pages">
+        <source>Ajouter des pages</source>
+        <target>__Ajouter des pages</target>
+      </trans-unit>
+      <trans-unit id="LrBGpFP" resname="Lorsque vous créez une nouvelle page, celle-ci est désactivée par défaut. Pour l'activer, sélectionner votre nouvelle page dans la liste de vos pages et metter son statut sur « Activer », puis valider !">
+        <source>Lorsque vous créez une nouvelle page, celle-ci est désactivée par défaut. Pour l'activer, sélectionner votre nouvelle page dans la liste de vos pages et metter son statut sur « Activer », puis valider !</source>
+        <target>__Lorsque vous créez une nouvelle page, celle-ci est désactivée par défaut. Pour l'activer, sélectionner votre nouvelle page dans la liste de vos pages et metter son statut sur « Activer », puis valider !</target>
+      </trans-unit>
+      <trans-unit id="5ibD3FY" resname="Arborescence de votre book">
+        <source>Arborescence de votre book</source>
+        <target>__Arborescence de votre book</target>
+      </trans-unit>
+      <trans-unit id="oI93Fpp" resname="Voici comment est organisé l'arborescence de votre book. Les nouvelles pages, seront ajoutées entre la page des commentaires et contact.">
+        <source>Voici comment est organisé l'arborescence de votre book. Les nouvelles pages, seront ajoutées entre la page des commentaires et contact.</source>
+        <target>__Voici comment est organisé l'arborescence de votre book. Les nouvelles pages, seront ajoutées entre la page des commentaires et contact.</target>
+      </trans-unit>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>__Accueil</target>
+      </trans-unit>
+      <trans-unit id="MH7yhLp" resname="À propos">
+        <source>À propos</source>
+        <target>__À propos</target>
+      </trans-unit>
+      <trans-unit id="t8UljgP" resname="Vidéos">
+        <source>Vidéos</source>
+        <target>__Vidéos</target>
+      </trans-unit>
+      <trans-unit id="lA6tTm2" resname="votre nouvelle page ici">
+        <source>votre nouvelle page ici</source>
+        <target>__votre nouvelle page ici</target>
+      </trans-unit>
+      <trans-unit id="K1w9JnI" resname="Contact">
+        <source>Contact</source>
+        <target>__Contact</target>
+      </trans-unit>
+      <trans-unit id="jWT15ej" resname="Vos pages">
+        <source>Vos pages</source>
+        <target>__Vos pages</target>
+      </trans-unit>
+      <trans-unit id="XoZVQUT" resname="Aucune page pour l'instant !">
+        <source>Aucune page pour l'instant !</source>
+        <target>__Aucune page pour l'instant !</target>
+      </trans-unit>
+      <trans-unit id="EMGu_0s" resname="Retrouvez ici les pages que vous aurez ajouter à votre book.">
+        <source>Retrouvez ici les pages que vous aurez ajouter à votre book.</source>
+        <target>__Retrouvez ici les pages que vous aurez ajouter à votre book.</target>
+      </trans-unit>
+      <trans-unit id="YIerjqU" resname="Mis à jour">
+        <source>Mis à jour</source>
+        <target>__Mis à jour</target>
+      </trans-unit>
+      <trans-unit id="ef0fKkv" resname="Vos notifications | Bookfolio">
+        <source>Vos notifications | Bookfolio</source>
+        <target>__Vos notifications | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="K8FPkf9" resname="Vos notifications">
+        <source>Vos notifications</source>
+        <target>__Vos notifications</target>
+      </trans-unit>
+      <trans-unit id="0sXmzYj" resname="Toutes les notifications">
+        <source>Toutes les notifications</source>
+        <target>__Toutes les notifications</target>
+      </trans-unit>
+      <trans-unit id="yNldU.K" resname="Votre book">
+        <source>Votre book</source>
+        <target>__Votre book</target>
+      </trans-unit>
+      <trans-unit id="sYru0ag" resname="Se déconnecter">
+        <source>Se déconnecter</source>
+        <target>__Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="w2NPLt7" resname="Nouveau">
+        <source>Nouveau</source>
+        <target>__Nouveau</target>
+      </trans-unit>
+      <trans-unit id="l3rmyww" resname="Découvrir">
+        <source>Découvrir</source>
+        <target>__Découvrir</target>
+      </trans-unit>
+      <trans-unit id="slo886f" resname="L'annuaire">
+        <source>L'annuaire</source>
+        <target>__L'annuaire</target>
+      </trans-unit>
+      <trans-unit id="R571fAU" resname="Suggestion des books">
+        <source>Suggestion des books</source>
+        <target>__Suggestion des books</target>
+      </trans-unit>
+      <trans-unit id="dBGVoUW" resname="Gestion de votre book">
+        <source>Gestion de votre book</source>
+        <target>__Gestion de votre book</target>
+      </trans-unit>
+      <trans-unit id="szLDSS1" resname="Configuration">
+        <source>Configuration</source>
+        <target>__Configuration</target>
+      </trans-unit>
+      <trans-unit id="XjFHq1H" resname="Photos">
+        <source>Photos</source>
+        <target>__Photos</target>
+      </trans-unit>
+      <trans-unit id="3iFR_fy" resname="Statistiques">
+        <source>Statistiques</source>
+        <target>__Statistiques</target>
+      </trans-unit>
+      <trans-unit id="8bdQWvp" resname="Social">
+        <source>Social</source>
+        <target>__Social</target>
+      </trans-unit>
+      <trans-unit id="LBdLfTN" resname="Messagerie">
+        <source>Messagerie</source>
+        <target>__Messagerie</target>
+      </trans-unit>
+      <trans-unit id="ujmqvl2" resname="Relations">
+        <source>Relations</source>
+        <target>__Relations</target>
+      </trans-unit>
+      <trans-unit id="WpsO9Vw" resname="Tous droits réservés.">
+        <source>Tous droits réservés.</source>
+        <target>__Tous droits réservés.</target>
+      </trans-unit>
+      <trans-unit id="FwdqQPs" resname="Signaler un bug">
+        <source>Signaler un bug</source>
+        <target>__Signaler un bug</target>
+      </trans-unit>
+      <trans-unit id="jGvAmVN" resname="Blog">
+        <source>Blog</source>
+        <target>__Blog</target>
+      </trans-unit>
+      <trans-unit id="Vdr92Gx" resname="Aucun abonnement en cours">
+        <source>Aucun abonnement en cours</source>
+        <target>__Aucun abonnement en cours</target>
+      </trans-unit>
+      <trans-unit id="X6itkW9" resname="Nous vous avons redirigé sur la page de nos offres afin de choisir au mieux celui qui correspond à vos besoins.">
+        <source>Nous vous avons redirigé sur la page de nos offres afin de choisir au mieux celui qui correspond à vos besoins.</source>
+        <target>__Nous vous avons redirigé sur la page de nos offres afin de choisir au mieux celui qui correspond à vos besoins.</target>
+      </trans-unit>
+      <trans-unit id="f5fNYXr" resname="Désactivation et suppression de book">
+        <source>Désactivation et suppression de book</source>
+        <target>__Désactivation et suppression de book</target>
+      </trans-unit>
+      <trans-unit id="QykQI.B" resname="Au revoir !">
+        <source>Au revoir !</source>
+        <target>__Au revoir !</target>
+      </trans-unit>
+      <trans-unit id="BcVvDWZ" resname="Votre compte a bien été définitivement supprimé.">
+        <source>Votre compte a bien été définitivement supprimé.</source>
+        <target>__Votre compte a bien été définitivement supprimé.</target>
+      </trans-unit>
+      <trans-unit id="e_sq84o" resname="Votre mot de passe est incorrect.">
+        <source>Votre mot de passe est incorrect.</source>
+        <target>__Votre mot de passe est incorrect.</target>
+      </trans-unit>
+      <trans-unit id="Y9eIYl1" resname="Votre réaction a bien a bien été prise en compte">
+        <source>Votre réaction a bien a bien été prise en compte</source>
+        <target>__Votre réaction a bien a bien été prise en compte</target>
+      </trans-unit>
+      <trans-unit id=".uCBXBz" resname="La réaction a bien été supprimée">
+        <source>La réaction a bien été supprimée</source>
+        <target>__La réaction a bien été supprimée</target>
+      </trans-unit>
+      <trans-unit id="lmOqGpV" resname="Ce design est destiné uniquement aux artistes ayant une formule Pro ou Awesome. Changez votre offre pour utiliser ce design.">
+        <source>Ce design est destiné uniquement aux artistes ayant une formule Pro ou Awesome. Changez votre offre pour utiliser ce design.</source>
+        <target>__Ce design est destiné uniquement aux artistes ayant une formule Pro ou Awesome. Changez votre offre pour utiliser ce design.</target>
+      </trans-unit>
+      <trans-unit id="zvQlFmp" resname="Message envoyé ! Merci pour votre signalement.">
+        <source>Message envoyé ! Merci pour votre signalement.</source>
+        <target>__Message envoyé ! Merci pour votre signalement.</target>
+      </trans-unit>
+      <trans-unit id="j0HvpQg" resname="Message envoyé ! Merci pour votre suggestion.">
+        <source>Message envoyé ! Merci pour votre suggestion.</source>
+        <target>__Message envoyé ! Merci pour votre suggestion.</target>
+      </trans-unit>
+      <trans-unit id="hHTcUA0" resname="Merci beaucoup! Votre avis compte énormément pour nous. Merci d'avoir pris le temps de nous écrire :)">
+        <source>Merci beaucoup! Votre avis compte énormément pour nous. Merci d'avoir pris le temps de nous écrire :)</source>
+        <target>__Merci beaucoup! Votre avis compte énormément pour nous. Merci d'avoir pris le temps de nous écrire :)</target>
+      </trans-unit>
+      <trans-unit id="uqVjHlp" resname="Message envoyé ! Merci d'avoir pris le temps de nous contacter :)">
+        <source>Message envoyé ! Merci d'avoir pris le temps de nous contacter :)</source>
+        <target>__Message envoyé ! Merci d'avoir pris le temps de nous contacter :)</target>
+      </trans-unit>
+      <trans-unit id="kH4Xt73" resname="Votre message a bien été supprimé">
+        <source>Votre message a bien été supprimé</source>
+        <target>__Votre message a bien été supprimé</target>
+      </trans-unit>
+      <trans-unit id="zMXd4OF" resname="Votre abonnement a bien été pris en compte ! Vous allez recevoir un e-mail de confirmation d'ici quelques minutes.">
+        <source>Votre abonnement a bien été pris en compte ! Vous allez recevoir un e-mail de confirmation d'ici quelques minutes.</source>
+        <target>__Votre abonnement a bien été pris en compte ! Vous allez recevoir un e-mail de confirmation d'ici quelques minutes.</target>
+      </trans-unit>
+      <trans-unit id="v2J0OvH" resname="Félicitation ! Votre book a bien été créé.">
+        <source>Félicitation ! Votre book a bien été créé.</source>
+        <target>__Félicitation ! Votre book a bien été créé.</target>
+      </trans-unit>
+      <trans-unit id="anQzI0q" resname="Abonnement annulé :(">
+        <source>Abonnement annulé :(</source>
+        <target>__Abonnement annulé :(</target>
+      </trans-unit>
+      <trans-unit id="si87sFA" resname="Votre demande d'annulation a bien été prise en compte. Vous ne serez pas facturé à la prochaine échéance.">
+        <source>Votre demande d'annulation a bien été prise en compte. Vous ne serez pas facturé à la prochaine échéance.</source>
+        <target>__Votre demande d'annulation a bien été prise en compte. Vous ne serez pas facturé à la prochaine échéance.</target>
+      </trans-unit>
+      <trans-unit id="KgrtyeN" resname="La réactivation de votre abonnement a bien été prise en compte. Nous nous occupons du reste :)">
+        <source>La réactivation de votre abonnement a bien été prise en compte. Nous nous occupons du reste :)</source>
+        <target>__La réactivation de votre abonnement a bien été prise en compte. Nous nous occupons du reste :)</target>
+      </trans-unit>
+      <trans-unit id="5G8wSbv" resname="Pourquoi nous quittez vous ?">
+        <source>Pourquoi nous quittez vous ?</source>
+        <target>__Pourquoi nous quittez vous ?</target>
+      </trans-unit>
+      <trans-unit id="HHheCmZ" resname="N'ayez pas peur ! Vous n'allez pas nous vexer :)">
+        <source>N'ayez pas peur ! Vous n'allez pas nous vexer :)</source>
+        <target>__N'ayez pas peur ! Vous n'allez pas nous vexer :)</target>
+      </trans-unit>
+      <trans-unit id="312yQSb" resname="Prévisualisation">
+        <source>Prévisualisation</source>
+        <target>__Prévisualisation</target>
+      </trans-unit>
+      <trans-unit id="eOYiezy" resname="Annonces">
+        <source>Annonces</source>
+        <target>__Annonces</target>
+      </trans-unit>
+      <trans-unit id="VrVkt1x" resname="Templates">
+        <source>Templates</source>
+        <target>__Templates</target>
+      </trans-unit>
+      <trans-unit id="vr6flv_" resname="Coups de cœur">
+        <source>Coups de cœur</source>
+        <target>__Coups de cœur</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>__Se connecter</target>
+      </trans-unit>
+      <trans-unit id="lNaZUUX" resname="Créez votre book en ligne">
+        <source>Créez votre book en ligne</source>
+        <target>__Créez votre book en ligne</target>
+      </trans-unit>
+      <trans-unit id="R3IQZLA" resname="Créez votre book">
+        <source>Créez votre book</source>
+        <target>__Créez votre book</target>
+      </trans-unit>
+      <trans-unit id="kXLo7sm" resname="Bonjour">
+        <source>Bonjour</source>
+        <target>__Bonjour</target>
+      </trans-unit>
+      <trans-unit id="S0LGaQ6" resname="Administration">
+        <source>Administration</source>
+        <target>__Administration</target>
+      </trans-unit>
+      <trans-unit id="sO97S36" resname="Nous sommes sociables">
+        <source>Nous sommes sociables</source>
+        <target>__Nous sommes sociables</target>
+      </trans-unit>
+      <trans-unit id="vxsbX34" resname="Rejoignez-nous sur Instagram. Vous allez voir, la communauté Bookfolio vous réserve de belles découvertes.">
+        <source>Rejoignez-nous sur Instagram. Vous allez voir, la communauté Bookfolio vous réserve de belles découvertes.</source>
+        <target>__Rejoignez-nous sur Instagram. Vous allez voir, la communauté Bookfolio vous réserve de belles découvertes.</target>
+      </trans-unit>
+      <trans-unit id="a5Yc_Qu" resname="C.G.U">
+        <source>C.G.U</source>
+        <target>__C.G.U</target>
+      </trans-unit>
+      <trans-unit id="_HO33Mj" resname="Politique de confidentialité">
+        <source>Politique de confidentialité</source>
+        <target>__Politique de confidentialité</target>
+      </trans-unit>
+      <trans-unit id="L3PG0Yp" resname="Comment ça marche ?">
+        <source>Comment ça marche ?</source>
+        <target>__Comment ça marche ?</target>
+      </trans-unit>
+      <trans-unit id="_5rt1wT" resname="Signaler un abus">
+        <source>Signaler un abus</source>
+        <target>__Signaler un abus</target>
+      </trans-unit>
+      <trans-unit id="o1kkfLY" resname="Boîte à idées">
+        <source>Boîte à idées</source>
+        <target>__Boîte à idées</target>
+      </trans-unit>
+      <trans-unit id="Nyh66NL" resname="Les avis">
+        <source>Les avis</source>
+        <target>__Les avis</target>
+      </trans-unit>
+      <trans-unit id="HT8oJZl" resname="© Copyright 2020 Bookfolio. Tous droits réservés">
+        <source>© Copyright 2020 Bookfolio. Tous droits réservés</source>
+        <target>__© Copyright 2020 Bookfolio. Tous droits réservés</target>
+      </trans-unit>
+      <trans-unit id="a.5Gz_s" resname="Bienvenue sur Bookfolio">
+        <source>Bienvenue sur Bookfolio</source>
+        <target>__Bienvenue sur Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="ucXrx.0" resname="a répondu à votre annonce">
+        <source>a répondu à votre annonce</source>
+        <target>__a répondu à votre annonce</target>
+      </trans-unit>
+      <trans-unit id="Bwxo6Sd" resname="Répondre à">
+        <source>Répondre à</source>
+        <target>__Répondre à</target>
+      </trans-unit>
+      <trans-unit id="XE2LOPR" resname="a commencé à vous suivre">
+        <source>a commencé à vous suivre</source>
+        <target>__a commencé à vous suivre</target>
+      </trans-unit>
+      <trans-unit id="qXn.0In" resname="Voir son book">
+        <source>Voir son book</source>
+        <target>__Voir son book</target>
+      </trans-unit>
+      <trans-unit id="wfPMjfQ" resname="Statistiques de visites  | Bookfolio">
+        <source>Statistiques de visites  | Bookfolio</source>
+        <target>__Statistiques de visites  | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="my80VKR" resname="Abonnement de 3 mois renouvelable">
+        <source>Abonnement de 3 mois renouvelable</source>
+        <target>__Abonnement de 3 mois renouvelable</target>
+      </trans-unit>
+      <trans-unit id="WN8Sb6W" resname="Total (EUR)">
+        <source>Total (EUR)</source>
+        <target>__Total (EUR)</target>
+      </trans-unit>
+      <trans-unit id="dUwoHfR" resname="Le service est géré et sécurisé par STRIPE (https://stripe.com)">
+        <source>Le service est géré et sécurisé par STRIPE (https://stripe.com)</source>
+        <target>__Le service est géré et sécurisé par STRIPE (https://stripe.com)</target>
+      </trans-unit>
+      <trans-unit id="cbxnzGA" resname="Vous avez publier aucune photo sur votre book pour l'instant.">
+        <source>Vous avez publier aucune photo sur votre book pour l'instant.</source>
+        <target>__Vous avez publier aucune photo sur votre book pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id="mhW9JpY" resname="Publier des maintenant des photos afin d'enrichir votre book.">
+        <source>Publier des maintenant des photos afin d'enrichir votre book.</source>
+        <target>__Publier des maintenant des photos afin d'enrichir votre book.</target>
+      </trans-unit>
+      <trans-unit id="GwfmdET" resname="Publier des photos">
+        <source>Publier des photos</source>
+        <target>__Publier des photos</target>
+      </trans-unit>
+      <trans-unit id="v2RYl97" resname="Aucune donnée pour l'instant.">
+        <source>Aucune donnée pour l'instant.</source>
+        <target>__Aucune donnée pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id="iKwnrJQ" resname="Aucun like pour l'instant.">
+        <source>Aucun like pour l'instant.</source>
+        <target>__Aucun like pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id="UIc7.Im" resname="Aucun commentaire pour l'instant.">
+        <source>Aucun commentaire pour l'instant.</source>
+        <target>__Aucun commentaire pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id="0LY1.O8" resname="Nos offres | Bookfolio">
+        <source>Nos offres | Bookfolio</source>
+        <target>__Nos offres | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="M9f2ALW" resname="Gratuit pour toujours si vous ne souhaitez pas plus d'avantages.">
+        <source>Gratuit pour toujours si vous ne souhaitez pas plus d'avantages.</source>
+        <target>__Gratuit pour toujours si vous ne souhaitez pas plus d'avantages.</target>
+      </trans-unit>
+      <trans-unit id="rg9AxKL" resname="Abonnement de 3 mois renouvelable automatiquement.">
+        <source>Abonnement de 3 mois renouvelable automatiquement.</source>
+        <target>__Abonnement de 3 mois renouvelable automatiquement.</target>
+      </trans-unit>
+      <trans-unit id="Ik3Fts." resname="Votre offre actuelle">
+        <source>Votre offre actuelle</source>
+        <target>__Votre offre actuelle</target>
+      </trans-unit>
+      <trans-unit id="wZ9PtF." resname="Votre annonce">
+        <source>Votre annonce</source>
+        <target>__Votre annonce</target>
+      </trans-unit>
+      <trans-unit id="lSPZH6A" resname="Votre réponse">
+        <source>Votre réponse</source>
+        <target>__Votre réponse</target>
+      </trans-unit>
+      <trans-unit id="b7JR_Er" resname="Ils ont répondu à l'annonce">
+        <source>Ils ont répondu à l'annonce</source>
+        <target>__Ils ont répondu à l'annonce</target>
+      </trans-unit>
+      <trans-unit id="0V.vmpJ" resname="Aucune réaction pour l'instant.">
+        <source>Aucune réaction pour l'instant.</source>
+        <target>__Aucune réaction pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id=".ulDAHW" resname="Ce service est compatible uniquement avec YouTube, Vimeo, DailyMotion et Coub.">
+        <source>Ce service est compatible uniquement avec YouTube, Vimeo, DailyMotion et Coub.</source>
+        <target>__Ce service est compatible uniquement avec YouTube, Vimeo, DailyMotion et Coub.</target>
+      </trans-unit>
+      <trans-unit id="6xi.tvJ" resname="Votre design actuel">
+        <source>Votre design actuel</source>
+        <target>__Votre design actuel</target>
+      </trans-unit>
+      <trans-unit id="zpjTBEi" resname="Nous sommes désolés d'apprendre que vous êtes sur le point de nous quitter ... Si vous vous inquiétez des changements des Conditions de service, nous avons clarifié certains problèmes que les artistes nous ont signalés.">
+        <source>Nous sommes désolés d'apprendre que vous êtes sur le point de nous quitter ... Si vous vous inquiétez des changements des Conditions de service, nous avons clarifié certains problèmes que les artistes nous ont signalés.</source>
+        <target>__Nous sommes désolés d'apprendre que vous êtes sur le point de nous quitter ... Si vous vous inquiétez des changements des Conditions de service, nous avons clarifié certains problèmes que les artistes nous ont signalés.</target>
+      </trans-unit>
+      <trans-unit id="wgULiej" resname="Vous souhaitez tout de même supprimer votre book ?">
+        <source>Vous souhaitez tout de même supprimer votre book ?</source>
+        <target>__Vous souhaitez tout de même supprimer votre book ?</target>
+      </trans-unit>
+      <trans-unit id="lbzHuhi" resname="Merci de renseigner les champs ci-dessous.">
+        <source>Merci de renseigner les champs ci-dessous.</source>
+        <target>__Merci de renseigner les champs ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="5NUCwXL" resname="Attention ! Cette action est irréversible. Vous perdrez toutes les données de votre book.">
+        <source>Attention ! Cette action est irréversible. Vous perdrez toutes les données de votre book.</source>
+        <target>__Attention ! Cette action est irréversible. Vous perdrez toutes les données de votre book.</target>
+      </trans-unit>
+      <trans-unit id="6zt20vO" resname="Confirmer la suppression">
+        <source>Confirmer la suppression</source>
+        <target>__Confirmer la suppression</target>
+      </trans-unit>
+      <trans-unit id="aRXG8OL" resname="Récapitilons :">
+        <source>Récapitilons :</source>
+        <target>__Récapitilons :</target>
+      </trans-unit>
+      <trans-unit id="pV_micJ" resname="Offre choisie">
+        <source>Offre choisie</source>
+        <target>__Offre choisie</target>
+      </trans-unit>
+      <trans-unit id="oQHyPhd" resname="Type d'abonnement">
+        <source>Type d'abonnement</source>
+        <target>__Type d'abonnement</target>
+      </trans-unit>
+      <trans-unit id="DwFb24B" resname="Total à régler">
+        <source>Total à régler</source>
+        <target>__Total à régler</target>
+      </trans-unit>
+      <trans-unit id="PlK1du3" resname="Nous vous rappelons que ce montant sera prélevé de manière automatique tous les 3 mois.">
+        <source>Nous vous rappelons que ce montant sera prélevé de manière automatique tous les 3 mois.</source>
+        <target>__Nous vous rappelons que ce montant sera prélevé de manière automatique tous les 3 mois.</target>
+      </trans-unit>
+      <trans-unit id="bN7E09X" resname="Souscrire à cette offre">
+        <source>Souscrire à cette offre</source>
+        <target>__Souscrire à cette offre</target>
+      </trans-unit>
+      <trans-unit id="mOOcMsc" resname="Ce que contient l'offre :">
+        <source>Ce que contient l'offre :</source>
+        <target>__Ce que contient l'offre :</target>
+      </trans-unit>
+      <trans-unit id="K8rZZ4w" resname="Sachez aussi que :">
+        <source>Sachez aussi que :</source>
+        <target>__Sachez aussi que :</target>
+      </trans-unit>
+      <trans-unit id="ZPhxEyC" resname="Aucune information bancaire n'est stockée sur les serveurs de Bookfolio.">
+        <source>Aucune information bancaire n'est stockée sur les serveurs de Bookfolio.</source>
+        <target>__Aucune information bancaire n'est stockée sur les serveurs de Bookfolio.</target>
+      </trans-unit>
+      <trans-unit id="4eSDvq2" resname="Les données sont envoyées de manière sécurisée au service de paiement en ligne.">
+        <source>Les données sont envoyées de manière sécurisée au service de paiement en ligne.</source>
+        <target>__Les données sont envoyées de manière sécurisée au service de paiement en ligne.</target>
+      </trans-unit>
+      <trans-unit id="IY4PTgw" resname="Supprimer votre compte">
+        <source>Supprimer votre compte</source>
+        <target>__Supprimer votre compte</target>
+      </trans-unit>
+      <trans-unit id="RXqICqt" resname="Votre abonnement | Bookfolio">
+        <source>Votre abonnement | Bookfolio</source>
+        <target>__Votre abonnement | Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="TLYRQX." resname="Abonnement annulé!">
+        <source>Abonnement annulé!</source>
+        <target>__Abonnement annulé!</target>
+      </trans-unit>
+      <trans-unit id="RAEvG4T" resname="Vous avez récement annuler votre abonnement.">
+        <source>Vous avez récement annuler votre abonnement.</source>
+        <target>__Vous avez récement annuler votre abonnement.</target>
+      </trans-unit>
+      <trans-unit id="wJ_mM9Q" resname="Mais vous avez encore accès jusqu'au">
+        <source>Mais vous avez encore accès jusqu'au</source>
+        <target>__Mais vous avez encore accès jusqu'au</target>
+      </trans-unit>
+      <trans-unit id="1pymqne" resname="Prochain prélèvement le">
+        <source>Prochain prélèvement le</source>
+        <target>__Prochain prélèvement le</target>
+      </trans-unit>
+      <trans-unit id="0d5ABmO" resname="Gérer mon abonnement">
+        <source>Gérer mon abonnement</source>
+        <target>__Gérer mon abonnement</target>
+      </trans-unit>
+      <trans-unit id="uo2zz95" resname="Seules les galeries ayant du contenu seront visibles sur votre book.">
+        <source>Seules les galeries ayant du contenu seront visibles sur votre book.</source>
+        <target>__Seules les galeries ayant du contenu seront visibles sur votre book.</target>
+      </trans-unit>
+      <trans-unit id="ZcF5bqu" resname="Mise à jour">
+        <source>Mise à jour</source>
+        <target>__Mise à jour</target>
+      </trans-unit>
+      <trans-unit id="p9NZvvr" resname="Signaler-nous un bug ou des idées - Bug | Book-folio.fr">
+        <source>Signaler-nous un bug ou des idées - Bug | Book-folio.fr</source>
+        <target>__Signaler-nous un bug ou des idées - Bug | Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="RXgRN7q" resname="Nous réalisons vos idées sur Bookfolio - Boîte à idées | Book-folio.fr">
+        <source>Nous réalisons vos idées sur Bookfolio - Boîte à idées | Book-folio.fr</source>
+        <target>__Nous réalisons vos idées sur Bookfolio - Boîte à idées | Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="MzgvquC" resname="Nous réalisons vos idées !">
+        <source>Nous réalisons vos idées !</source>
+        <target>__Nous réalisons vos idées !</target>
+      </trans-unit>
+      <trans-unit id="i.qV2T2" resname="Vous avez des idées qui permettraient de vous faire gagner un temps précieux ? D'accroître votre visibilité ? On s'engage à vous écouter :)">
+        <source>Vous avez des idées qui permettraient de vous faire gagner un temps précieux ? D'accroître votre visibilité ? On s'engage à vous écouter :)</source>
+        <target>__Vous avez des idées qui permettraient de vous faire gagner un temps précieux ? D'accroître votre visibilité ? On s'engage à vous écouter :)</target>
+      </trans-unit>
+      <trans-unit id="Fe5zhZv" resname="Mises à jour et nouveautés - News - Book-folio.fr">
+        <source>Mises à jour et nouveautés - News - Book-folio.fr</source>
+        <target>__Mises à jour et nouveautés - News - Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="CaFXSOX" resname="Mises à jour &amp; nouveautés">
+        <source>Mises à jour &amp; nouveautés</source>
+        <target><![CDATA[__Mises à jour & nouveautés]]></target>
+      </trans-unit>
+      <trans-unit id="GgqHNrk" resname="Annuaire de book photo. Parcourir les meilleurs books photo en ligne">
+        <source>Annuaire de book photo. Parcourir les meilleurs books photo en ligne</source>
+        <target>__Annuaire de book photo. Parcourir les meilleurs books photo en ligne</target>
+      </trans-unit>
+      <trans-unit id="O.IELrg" resname="Annuaire des books">
+        <source>Annuaire des books</source>
+        <target>__Annuaire des books</target>
+      </trans-unit>
+      <trans-unit id="g9Vu0Pc" resname="Explorer le book">
+        <source>Explorer le book</source>
+        <target>__Explorer le book</target>
+      </trans-unit>
+      <trans-unit id="wQy2Mbs" resname="Bookfolio - Annuaire des books | Retrouvez les book photo récemment créer sur book-folio.fr">
+        <source>Bookfolio - Annuaire des books | Retrouvez les book photo récemment créer sur book-folio.fr</source>
+        <target>__Bookfolio - Annuaire des books | Retrouvez les book photo récemment créer sur book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="6gv1G3T" resname="Politique de confidentialité - Politicy | book-folio.fr">
+        <source>Politique de confidentialité - Politicy | book-folio.fr</source>
+        <target>__Politique de confidentialité - Politicy | book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="Thubnt7" resname="Conditions générales d'utilisations - CGU | book-folio.fr">
+        <source>Conditions générales d'utilisations - CGU | book-folio.fr</source>
+        <target>__Conditions générales d'utilisations - CGU | book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="1zgup2." resname="Présentation et principe">
+        <source>Présentation et principe</source>
+        <target>__Présentation et principe</target>
+      </trans-unit>
+      <trans-unit id="V8U05ZW" resname="Est désigné ci-après « utilisateur », tout internaute se connectant et utilisant le site surnommé : book-folio.fr. Le site book-folio.fr regroupe un ensemble de services, dans l'état, mis à la disposition des utilisateurs. Il est ici précisé que ces derniers doivent rester courtois et faire preuve de bonne foi tant envers les autres utilisateurs qu'envers le webmaster du site book-folio.fr. Le site book-folio.fr est mis à jour régulièrement, s’efforce de fournir les informations les plus précises possibles (sous réserve de modifications apportées depuis leur mise en ligne), mais ne saurait garantir l'exactitude, la complétude et l'actualité des informations diffusées sur son site, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations. En conséquence, l'utilisateur reconnaît utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa responsabilité exclusive.">
+        <source>Est désigné ci-après « utilisateur », tout internaute se connectant et utilisant le site surnommé : book-folio.fr. Le site book-folio.fr regroupe un ensemble de services, dans l'état, mis à la disposition des utilisateurs. Il est ici précisé que ces derniers doivent rester courtois et faire preuve de bonne foi tant envers les autres utilisateurs qu'envers le webmaster du site book-folio.fr. Le site book-folio.fr est mis à jour régulièrement, s’efforce de fournir les informations les plus précises possibles (sous réserve de modifications apportées depuis leur mise en ligne), mais ne saurait garantir l'exactitude, la complétude et l'actualité des informations diffusées sur son site, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations. En conséquence, l'utilisateur reconnaît utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa responsabilité exclusive.</source>
+        <target>__Est désigné ci-après « utilisateur », tout internaute se connectant et utilisant le site surnommé : book-folio.fr. Le site book-folio.fr regroupe un ensemble de services, dans l'état, mis à la disposition des utilisateurs. Il est ici précisé que ces derniers doivent rester courtois et faire preuve de bonne foi tant envers les autres utilisateurs qu'envers le webmaster du site book-folio.fr. Le site book-folio.fr est mis à jour régulièrement, s’efforce de fournir les informations les plus précises possibles (sous réserve de modifications apportées depuis leur mise en ligne), mais ne saurait garantir l'exactitude, la complétude et l'actualité des informations diffusées sur son site, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations. En conséquence, l'utilisateur reconnaît utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa responsabilité exclusive.</target>
+      </trans-unit>
+      <trans-unit id="c8pziaT" resname="Accessibilité">
+        <source>Accessibilité</source>
+        <target>__Accessibilité</target>
+      </trans-unit>
+      <trans-unit id="aJxBxtY" resname="Le site book-folio.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption, programmée ou non, pour les besoins de sa maintenance ou en cas de force majeure. En cas d’impossibilité d’accès au service, book-folio.fr s’engage à faire son maximum afin de rétablir l’accès au service et s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention.">
+        <source>Le site book-folio.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption, programmée ou non, pour les besoins de sa maintenance ou en cas de force majeure. En cas d’impossibilité d’accès au service, book-folio.fr s’engage à faire son maximum afin de rétablir l’accès au service et s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention.</source>
+        <target>__Le site book-folio.fr est par principe accessible aux utilisateurs 24/24h, 7/7j, sauf interruption, programmée ou non, pour les besoins de sa maintenance ou en cas de force majeure. En cas d’impossibilité d’accès au service, book-folio.fr s’engage à faire son maximum afin de rétablir l’accès au service et s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention.</target>
+      </trans-unit>
+      <trans-unit id="jrggcTo" resname="Nos coups de cœur photographique – Bookfolio">
+        <source>Nos coups de cœur photographique – Bookfolio</source>
+        <target>__Nos coups de cœur photographique – Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="upOVrTf" resname="Nos coups de cœur">
+        <source>Nos coups de cœur</source>
+        <target>__Nos coups de cœur</target>
+      </trans-unit>
+      <trans-unit id="8MvS8Rq" resname="Nous avons sélectionné pour vous, les meilleurs clichés du moment publiés par les artistes talentueux de la communauté Bookfolio.">
+        <source>Nous avons sélectionné pour vous, les meilleurs clichés du moment publiés par les artistes talentueux de la communauté Bookfolio.</source>
+        <target>__Nous avons sélectionné pour vous, les meilleurs clichés du moment publiés par les artistes talentueux de la communauté Bookfolio.</target>
+      </trans-unit>
+      <trans-unit id="qLpciVY" resname="Annuaire de book photo en ligne, création gratuit de portfolio.">
+        <source>Annuaire de book photo en ligne, création gratuit de portfolio.</source>
+        <target>__Annuaire de book photo en ligne, création gratuit de portfolio.</target>
+      </trans-unit>
+      <trans-unit id="Ic.uxRc" resname="la plate-forme de création de book photo et portfolio en ligne.">
+        <source>la plate-forme de création de book photo et portfolio en ligne.</source>
+        <target>__la plate-forme de création de book photo et portfolio en ligne.</target>
+      </trans-unit>
+      <trans-unit id="wOQVxRY" resname="Créez gratuitement votre book photo en ligne en quelques secondes.">
+        <source>Créez gratuitement votre book photo en ligne en quelques secondes.</source>
+        <target>__Créez gratuitement votre book photo en ligne en quelques secondes.</target>
+      </trans-unit>
+      <trans-unit id="kWToMUp" resname="Créez votre book gratuitement">
+        <source>Créez votre book gratuitement</source>
+        <target>__Créez votre book gratuitement</target>
+      </trans-unit>
+      <trans-unit id="Vjuy8l_" resname="Mon tableau de bord">
+        <source>Mon tableau de bord</source>
+        <target>__Mon tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="BOgXp34" resname="Pourquoi choisir Bookfolio ?">
+        <source>Pourquoi choisir Bookfolio ?</source>
+        <target>__Pourquoi choisir Bookfolio ?</target>
+      </trans-unit>
+      <trans-unit id="Ogzq.E." resname="100% gratuit">
+        <source>100% gratuit</source>
+        <target>__100% gratuit</target>
+      </trans-unit>
+      <trans-unit id="kfNlrHx" resname="Vous n’avez rien à payer pour profiter de nos services. Bookfolio est entièrement gratuit. Promis, ça ne changera pas !">
+        <source>Vous n’avez rien à payer pour profiter de nos services. Bookfolio est entièrement gratuit. Promis, ça ne changera pas !</source>
+        <target>__Vous n’avez rien à payer pour profiter de nos services. Bookfolio est entièrement gratuit. Promis, ça ne changera pas !</target>
+      </trans-unit>
+      <trans-unit id="UnNiSsG" resname="Simple et rapide">
+        <source>Simple et rapide</source>
+        <target>__Simple et rapide</target>
+      </trans-unit>
+      <trans-unit id="VtvLs3G" resname="Choisissez un template, ajoutez vos photos, publiez votre book. Tout simplement.">
+        <source>Choisissez un template, ajoutez vos photos, publiez votre book. Tout simplement.</source>
+        <target>__Choisissez un template, ajoutez vos photos, publiez votre book. Tout simplement.</target>
+      </trans-unit>
+      <trans-unit id="3UXyYp." resname="Annuaire complet">
+        <source>Annuaire complet</source>
+        <target>__Annuaire complet</target>
+      </trans-unit>
+      <trans-unit id="7.8Nsb7" resname="Parcourez l’annuaire, et prenez contact avec d’autres artistes pour débuter une belle collaboration.">
+        <source>Parcourez l’annuaire, et prenez contact avec d’autres artistes pour débuter une belle collaboration.</source>
+        <target>__Parcourez l’annuaire, et prenez contact avec d’autres artistes pour débuter une belle collaboration.</target>
+      </trans-unit>
+      <trans-unit id="lFt9kvP" resname="Voir tous les avantages">
+        <source>Voir tous les avantages</source>
+        <target>__Voir tous les avantages</target>
+      </trans-unit>
+      <trans-unit id="HEZ1IpK" resname="Un annuaire complet, riche et varié">
+        <source>Un annuaire complet, riche et varié</source>
+        <target>__Un annuaire complet, riche et varié</target>
+      </trans-unit>
+      <trans-unit id="LU9fSee" resname="Annuaire des books photo en ligne">
+        <source>Annuaire des books photo en ligne</source>
+        <target>__Annuaire des books photo en ligne</target>
+      </trans-unit>
+      <trans-unit id="tbIICBU" resname="Voir l'annuaire complet">
+        <source>Voir l'annuaire complet</source>
+        <target>__Voir l'annuaire complet</target>
+      </trans-unit>
+      <trans-unit id="fWHVY_B" resname="Si vous aimez les clichés, vous allez adorer Bookfolio">
+        <source>Si vous aimez les clichés, vous allez adorer Bookfolio</source>
+        <target>__Si vous aimez les clichés, vous allez adorer Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="K7ULVS." resname="Vous êtes photographe, modèle, comédien(ne) etc. ? Vous êtes au bon endroit ! Montrez vos photos, exposez vos galeries, révélez votre talent.">
+        <source>Vous êtes photographe, modèle, comédien(ne) etc. ? Vous êtes au bon endroit ! Montrez vos photos, exposez vos galeries, révélez votre talent.</source>
+        <target>__Vous êtes photographe, modèle, comédien(ne) etc. ? Vous êtes au bon endroit ! Montrez vos photos, exposez vos galeries, révélez votre talent.</target>
+      </trans-unit>
+      <trans-unit id="KBUKH3I" resname="Créez votre book photo gratuitement">
+        <source>Créez votre book photo gratuitement</source>
+        <target>__Créez votre book photo gratuitement</target>
+      </trans-unit>
+      <trans-unit id="74LWRwk" resname="Créez votre book photo  gratuitement">
+        <source>Créez votre book photo  gratuitement</source>
+        <target>__Créez votre book photo  gratuitement</target>
+      </trans-unit>
+      <trans-unit id="LEMv.BJ" resname="Consulter l'annuaire">
+        <source>Consulter l'annuaire</source>
+        <target>__Consulter l'annuaire</target>
+      </trans-unit>
+      <trans-unit id="bzZthSX" resname="Consulter l'annuaire des books">
+        <source>Consulter l'annuaire des books</source>
+        <target>__Consulter l'annuaire des books</target>
+      </trans-unit>
+      <trans-unit id="Rx7DFPh" resname="De beaux albums pour votre seul plaisir">
+        <source>De beaux albums pour votre seul plaisir</source>
+        <target>__De beaux albums pour votre seul plaisir</target>
+      </trans-unit>
+      <trans-unit id="qFJ3ykR" resname="Grâce à nos templates, mettez en valeur la beauté de votre art. Choisissez parmi nos différents modèles celui qui saura sublimer vos photos. Il y en a sûrement un qui vous correspond !">
+        <source>Grâce à nos templates, mettez en valeur la beauté de votre art. Choisissez parmi nos différents modèles celui qui saura sublimer vos photos. Il y en a sûrement un qui vous correspond !</source>
+        <target>__Grâce à nos templates, mettez en valeur la beauté de votre art. Choisissez parmi nos différents modèles celui qui saura sublimer vos photos. Il y en a sûrement un qui vous correspond !</target>
+      </trans-unit>
+      <trans-unit id="GoEtibq" resname="Voir tous les templates">
+        <source>Voir tous les templates</source>
+        <target>__Voir tous les templates</target>
+      </trans-unit>
+      <trans-unit id="cDInzLi" resname="Vous hésitez encore ?">
+        <source>Vous hésitez encore ?</source>
+        <target>__Vous hésitez encore ?</target>
+      </trans-unit>
+      <trans-unit id="5RJMW1Y" resname="Nos ambassadeurs sauront peut-être vous convaincre.">
+        <source>Nos ambassadeurs sauront peut-être vous convaincre.</source>
+        <target>__Nos ambassadeurs sauront peut-être vous convaincre.</target>
+      </trans-unit>
+      <trans-unit id="8nxKhfI" resname="Lire tous les avis">
+        <source>Lire tous les avis</source>
+        <target>__Lire tous les avis</target>
+      </trans-unit>
+      <trans-unit id="3nSscpD" resname="Inspiration">
+        <source>Inspiration</source>
+        <target>__Inspiration</target>
+      </trans-unit>
+      <trans-unit id="R2KPAah" resname="Voir tous les coups de cœur">
+        <source>Voir tous les coups de cœur</source>
+        <target>__Voir tous les coups de cœur</target>
+      </trans-unit>
+      <trans-unit id="5kwoIQF" resname="Le coin des petites annonces sur Book-folio.fr">
+        <source>Le coin des petites annonces sur Book-folio.fr</source>
+        <target>__Le coin des petites annonces sur Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="S8BSgWO" resname="Le coin des petites annonces">
+        <source>Le coin des petites annonces</source>
+        <target>__Le coin des petites annonces</target>
+      </trans-unit>
+      <trans-unit id="mBFy1tv" resname="Retrouvez l'intégralité des annonces postées par les artistes de la communauté Bookfolio. Vous avez un nouveau projet ?">
+        <source>Retrouvez l'intégralité des annonces postées par les artistes de la communauté Bookfolio. Vous avez un nouveau projet ?</source>
+        <target>__Retrouvez l'intégralité des annonces postées par les artistes de la communauté Bookfolio. Vous avez un nouveau projet ?</target>
+      </trans-unit>
+      <trans-unit id="1sUtifS" resname="Je recherche une collaboration">
+        <source>Je recherche une collaboration</source>
+        <target>__Je recherche une collaboration</target>
+      </trans-unit>
+      <trans-unit id="3OV8iLS" resname="Je recherche un projet rémunérer">
+        <source>Je recherche un projet rémunérer</source>
+        <target>__Je recherche un projet rémunérer</target>
+      </trans-unit>
+      <trans-unit id="qzPM.od" resname="Lire l'annonce">
+        <source>Lire l'annonce</source>
+        <target>__Lire l'annonce</target>
+      </trans-unit>
+      <trans-unit id="yVQEI9r" resname="Bookfolio |">
+        <source>Bookfolio |</source>
+        <target>__Bookfolio |</target>
+      </trans-unit>
+      <trans-unit id="V3ZmD6Y" resname="Pour">
+        <source>Pour</source>
+        <target>__Pour</target>
+      </trans-unit>
+      <trans-unit id="JW9R0_0" resname="Contact – Bookfolio">
+        <source>Contact – Bookfolio</source>
+        <target>__Contact – Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="L7zFKkf" resname="Comment pouvons-nous vous aider ?">
+        <source>Comment pouvons-nous vous aider ?</source>
+        <target>__Comment pouvons-nous vous aider ?</target>
+      </trans-unit>
+      <trans-unit id="uXOcC0N" resname="Vous avez une question, un commentaire ou simplement nous adresser un petit mot doux ? Nous promettons de vous répondre en moins de 24h !">
+        <source>Vous avez une question, un commentaire ou simplement nous adresser un petit mot doux ? Nous promettons de vous répondre en moins de 24h !</source>
+        <target>__Vous avez une question, un commentaire ou simplement nous adresser un petit mot doux ? Nous promettons de vous répondre en moins de 24h !</target>
+      </trans-unit>
+      <trans-unit id="0.HsrXa" resname="Abus – Bookfolio">
+        <source>Abus – Bookfolio</source>
+        <target>__Abus – Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="h_L2ptI" resname="Signaler un abus ou des activités illégales">
+        <source>Signaler un abus ou des activités illégales</source>
+        <target>__Signaler un abus ou des activités illégales</target>
+      </trans-unit>
+      <trans-unit id="gbcEmyw" resname="Vous rencontrez un contenu potentiellement choquant ? Signalez-le ici. Nous prendrons les mesures nécessaires.">
+        <source>Vous rencontrez un contenu potentiellement choquant ? Signalez-le ici. Nous prendrons les mesures nécessaires.</source>
+        <target>__Vous rencontrez un contenu potentiellement choquant ? Signalez-le ici. Nous prendrons les mesures nécessaires.</target>
+      </trans-unit>
+      <trans-unit id="AZDYfpU" resname="Ils ont donné leur avis sur Bookfolio - Avis | Book-folio.fr">
+        <source>Ils ont donné leur avis sur Bookfolio - Avis | Book-folio.fr</source>
+        <target>__Ils ont donné leur avis sur Bookfolio - Avis | Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="pBwBu9Q" resname="Ils ont fait l'expérience Bookfolio">
+        <source>Ils ont fait l'expérience Bookfolio</source>
+        <target>__Ils ont fait l'expérience Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="62TCBiu" resname="C'est eux qui en parlent le mieux !">
+        <source>C'est eux qui en parlent le mieux !</source>
+        <target>__C'est eux qui en parlent le mieux !</target>
+      </trans-unit>
+      <trans-unit id="3lgy8.g" resname="Et vous, qu'en pensez-vous ?">
+        <source>Et vous, qu'en pensez-vous ?</source>
+        <target>__Et vous, qu'en pensez-vous ?</target>
+      </trans-unit>
+      <trans-unit id="M.tcybJ" resname="Et vous, que pensez-vous de Bookfolio ? | Book-folio.fr">
+        <source>Et vous, que pensez-vous de Bookfolio ? | Book-folio.fr</source>
+        <target>__Et vous, que pensez-vous de Bookfolio ? | Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="T3aEWrN" resname="Et vous, que pensez-vous de Bookfolio ?">
+        <source>Et vous, que pensez-vous de Bookfolio ?</source>
+        <target>__Et vous, que pensez-vous de Bookfolio ?</target>
+      </trans-unit>
+      <trans-unit id="TgDSrp1" resname="Vous avez utilisé Bookfolio et souhaitez partager votre expérience.">
+        <source>Vous avez utilisé Bookfolio et souhaitez partager votre expérience.</source>
+        <target>__Vous avez utilisé Bookfolio et souhaitez partager votre expérience.</target>
+      </trans-unit>
+      <trans-unit id="ig_aP0L" resname="Nous serons heureux de publier votre avis !">
+        <source>Nous serons heureux de publier votre avis !</source>
+        <target>__Nous serons heureux de publier votre avis !</target>
+      </trans-unit>
+      <trans-unit id="T58F9ii" resname="Quelques bonnes raisons de nous faire confiance">
+        <source>Quelques bonnes raisons de nous faire confiance</source>
+        <target>__Quelques bonnes raisons de nous faire confiance</target>
+      </trans-unit>
+      <trans-unit id="x52xdMk" resname="Quelques bonnes raisons de nous faire confiance !">
+        <source>Quelques bonnes raisons de nous faire confiance !</source>
+        <target>__Quelques bonnes raisons de nous faire confiance !</target>
+      </trans-unit>
+      <trans-unit id="uUQHaIL" resname="Bookfolio est une plate-forme de création de book et portfolio en ligne. Vous êtes comédien, modèle, photographe ou encore illustrateur ? Créez votre propre book pour faire découvrir vos photos et illustrations. Et c’est gratuit !">
+        <source>Bookfolio est une plate-forme de création de book et portfolio en ligne. Vous êtes comédien, modèle, photographe ou encore illustrateur ? Créez votre propre book pour faire découvrir vos photos et illustrations. Et c’est gratuit !</source>
+        <target>__Bookfolio est une plate-forme de création de book et portfolio en ligne. Vous êtes comédien, modèle, photographe ou encore illustrateur ? Créez votre propre book pour faire découvrir vos photos et illustrations. Et c’est gratuit !</target>
+      </trans-unit>
+      <trans-unit id="nA3upIK" resname="Comprendre le fonctionnement de Bookfolio - Comment ça marche ? | Book-folio.fr">
+        <source>Comprendre le fonctionnement de Bookfolio - Comment ça marche ? | Book-folio.fr</source>
+        <target>__Comprendre le fonctionnement de Bookfolio - Comment ça marche ? | Book-folio.fr</target>
+      </trans-unit>
+      <trans-unit id="Eg4aaxl" resname="Templates des books - Modèles de sites web – Bookfolio">
+        <source>Templates des books - Modèles de sites web – Bookfolio</source>
+        <target>__Templates des books - Modèles de sites web – Bookfolio</target>
+      </trans-unit>
+      <trans-unit id="97Jgb1l" resname="Voici les templates que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.">
+        <source>Voici les templates que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.</source>
+        <target>__Voici les templates que nous proposons pour vos books. Nous mettons régulièrement à jour notre bibliothèque de designs. D’autres feront donc leur apparition au fur et à mesure.</target>
+      </trans-unit>
+      <trans-unit id="uyip9KT" resname="Aperçu">
+        <source>Aperçu</source>
+        <target>__Aperçu</target>
+      </trans-unit>
+      <trans-unit id="IZ_vQiF" resname="Utilisateurs actifs">
+        <source>Utilisateurs actifs</source>
+        <target>__Utilisateurs actifs</target>
+      </trans-unit>
+      <trans-unit id="CW3J9U7" resname="photos publiées">
+        <source>photos publiées</source>
+        <target>__photos publiées</target>
+      </trans-unit>
+      <trans-unit id="sMuzclf" resname="Classé par jour depuis le début du mois">
+        <source>Classé par jour depuis le début du mois</source>
+        <target>__Classé par jour depuis le début du mois</target>
+      </trans-unit>
+      <trans-unit id="yJtsPRZ" resname="sur">
+        <source>sur</source>
+        <target>__sur</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

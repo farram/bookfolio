@@ -1,0 +1,27 @@
+{% set idpage = '5e494caf08eef83a8e4fba69' %}
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	Vidéos -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Vidéos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="section">
+		<div class="container">
+			<h1 class="heading-6 title">Vidéos ({{ videos | length }})</h1>
+		</div>
+	</div>
+	<div class="videos-container">
+		<div class="container">
+			<div id="portfolioVideo"></div>
+		</div>
+	</div>
+{% endblock %}

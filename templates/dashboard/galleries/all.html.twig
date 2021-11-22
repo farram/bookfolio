@@ -1,0 +1,46 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Galeries | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+	{% if galleries %}
+		<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6 mb-10">
+			<span class="svg-icon svg-icon-primary me-4 svg-icon-2hx">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+					<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+					<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+					<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+				</svg>
+			</span>
+			<div class="d-flex flex-stack flex-grow-1">
+				<div class="fw-bold">
+					<div class="fs-6 text-gray-700">
+						{{ 'Déplacer, glisser et déposer pour réorganiser vos galeries.' | trans}}<br>
+						{{"Seules les galeries ayant du contenu seront visibles sur votre book." | trans}}
+						<br>
+						{{"Seules les galeries qui ne contiennent pas d'images peuvent être supprimés." | trans}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="app-galleries"></div>
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{'Aucune galerie.'| trans }}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{'Créez des galeries pour classer et partager vos photos.' | trans}}
+					</p>
+					<a href="{{ path('galleries_add') }}" class="btn btn-primary btn-hover-rise">{{'Créer une galerie'| trans}}</a>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+
+
+	{% endif %}
+
+{% endblock %}

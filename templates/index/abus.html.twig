@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Abus – Bookfolio" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-3bd7a4e9" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-3bd7a4e9" class="content6-headline-wrap mb0">
+						<div class="size1-text">{{"Signaler un abus ou des activités illégales" | trans}}</div>
+						<p class="paragraph-70 text-center">{{"Vous rencontrez un contenu potentiellement choquant ? Signalez-le ici. Nous prendrons les mesures nécessaires." | trans}}<br></p>
+					</div>
+					<div id="w-node-6b143b24dfb5-3bd7a4e9">
+						<div class="cta7-form w-form">
+							{{ form_start(form, {'attr': {'action': path('abus'),'id':'contact-form','class':'cta7-form-wrap'}}) }}
+							<div class="w-row">
+								<div class="column-6 w-col w-col-6">
+									<div class="input-field mb-3">
+										{{ form_widget(form.book, { 'attr': {'placeholder':'Votre book','class' : 'text-field bottom-margin-field w-input'}}
+										) }}
+									</div>
+								</div>
+								<div class="column-6 w-col w-col-6">
+									<div class="input-field mb-3">
+										{{ form_widget(form.email, { 'attr': {'placeholder':'Adresse e-mail','class' : 'text-field bottom-margin-field w-input'}}
+										) }}
+									</div>
+								</div>
+							</div>
+							<div class="w-row">
+								<div class="column-6 w-col w-col-12">
+									{{ form_row(form.type, { 'attr': {'class' : 'select-field bottom-margin-field w-select'}}
+									) }}
+
+								</div>
+							</div>
+							<div class="w-row">
+								<div class="column-6 w-col w-col-12">
+									<div class="input-field mt-3">
+										{{ form_widget(form.message, { 'attr': {'placeholder':'Saisissez votre message','class' : 'text-area w-input','rows' : '3', 'cols' : '200' }}
+										) }}
+									</div>
+								</div>
+
+								<div class="column-6 w-col w-col-12 mt-2">
+									{{ form_widget(form.recaptcha) }}
+								</div>
+							</div>
+							<div class="w-row">
+								<div class="column-6 w-col w-col-12">
+									<button type="submit" class="mt-3 button-small form-centered-button w-button" name="comment-button">Envoyer</button>
+								</div>
+							</div>
+							{{ form_end(form) }}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

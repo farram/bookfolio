@@ -1,0 +1,19 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	Résultat de votre recherche
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Résultat de votre recherche'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div id="app-result-search"></div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		let search = '{{ search }}'
+	</script>
+	{{ parent() }}
+
+{% endblock %}

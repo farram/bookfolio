@@ -1,0 +1,109 @@
+{% macro input(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group mb-3">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'col-lg-4 col-form-label required fw-bold fs-6'}})  }}
+			{{ form_widget(form, {'attr': {'class': 'form-control form-control-lg form-control-solid mb-3 mb-lg-0'}}) }}
+			{{ form_errors(form) }}
+			{{ form_help(form) }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro input_no_label(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'text-dark mb-2'}})  }}
+			{{ form_widget(form) }}
+			{{ form_errors(form) }}
+			{{ form_help(form) }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro inputGoogle(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group mb-3">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'text-dark mb-2'}})  }}
+			{{ form_widget(form, { 'id': options.id }) }}
+			{{ form_errors(form) }}
+			{{ form_help(form) }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro inputGoogleHideLabel(form,label, options) %}
+	{{ form_widget(form, { 'id': options.id }) }}
+{% endmacro %}
+
+{% macro inputAppend(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group mb-3">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'text-dark mb-2'}}) }}
+			<div class="input-group">
+				{{ form_widget(form, {'help': 'foobar'}) }}
+				<div class="input-group-append">
+					<span class="input-group-text">{{ options.unit }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endmacro %}
+
+
+{% macro inputPrependIcon(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group mb-3">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'text-dark mb-2 mb-2'}}) }}
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="{{ options.icon }}"></i>
+					</span>
+				</div>
+				{{ form_widget(form, {'help': 'foobar'}) }}
+			</div>
+		</div>
+	</div>
+{% endmacro %}
+
+
+{% macro checkbox(form,options) %}
+	<div class="{{ options.class }}">
+		<div class="checkbox checkbox-success mb-2">
+			{{ form_row(form,{
+            "params": {
+                "multiselect": true
+              }
+        }) }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro buttonSubmit(options) %}
+	<div class="{{ options.class }}">
+		<div class="d-md-flex justify-content-md-end">
+			<button type="submit" class="btn btn-primary-color waves-effect waves-light mt-2">{% trans %}Enregistrer{% endtrans %}</button>
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro buttonSubmitCustomText(options) %}
+	<div class="{{ options.class }}">
+		<div class="text-end">
+			<button type="submit" class="btn btn-primary-color waves-effect waves-light mt-2">
+				{{options.text}}
+			</button>
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro textarea(form,label, options) %}
+	<div class="{{ options.class }}">
+		<div class="form-group">
+			{{ form_label(form, label|trans, {'label_attr': {'class': 'text-dark mb-2'}})  }}
+			{{ form_widget(form, { 'attr': {'class': 'form-control-light mb-2','rows':3,'placeholder':'Saisissez votre texte' | trans} }) }}
+			{{ form_errors(form) }}
+			{{ form_help(form) }}
+		</div>
+	</div>
+{% endmacro %}

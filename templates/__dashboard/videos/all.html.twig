@@ -1,0 +1,86 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos vidéos | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					{{ wo_render_breadcrumbs({separator: '', listId: 'breadcrumbs'}) }}
+				</div>
+				<h4 class="page-title">{{ 'Videos'|trans }}</h4>
+			</div>
+		</div>
+	</div>
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card p-3 text-center">
+				<div class="text-start">
+					<h4 class="mb-3">
+						{{"Ajouter des vidéos" | trans}}
+					</h4>
+					<p class="text-muted">
+						{{"Indiquez l'URL de la vidéo que vous souhaitez ajouter à votre book." | trans}}
+						{{"Ce service est compatible uniquement avec YouTube, Vimeo, DailyMotion et Coub." | trans}}
+					</p>
+					{{ form_start(form, {'attr': {'class':'needs-validation','novalidate': 'novalidate'}}) }}
+					<div class="row">
+						{{ forms.input(form.url,'URL :',{class:'col-lg-12'}) }}
+						{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+			{% include 'dashboard/partial/_subscription.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card p-3">
+
+				<div class="p-3">
+					<h3 class="mb-2 mt-0">{{"Vos vidéos" | trans}}
+						{% if videos.getTotalItemCount > 0 %}
+							({{ videos.getTotalItemCount }})
+						{% endif %}
+					</h3>
+					<hr>
+
+					{% if videos.getTotalItemCount > 0 %}
+						<div class="row">
+							{% for video in videos %}
+								<div class="col-lg-4">
+									<div class="card border">
+										<a href="{{ video.getUrl() }}" target="_blank"><img class="card-img-top" src="{{ video.getPreview() }}" alt="{{ video.getTitle() }}"></a>
+										<div class="card-body">
+											<h5 class="card-title mb-1">{{ video.getTitle() | u.truncate(25, '...')}}</h5>
+											<p class="card-text">
+												<small>
+													{{"Publiée" | trans}}
+													{{ video.getCreatedAt() | ago }}
+												</small>
+											</p>
+											<form action="{{ url('videos_delete', { id: video.id }) }}" method="post" onclick='return confirm("Êtes-vous sûr de vouloir supprimer cette vidéo ?")'>
+												<input type="hidden" name="token" value="{{ csrf_token('delete-video') }}"/>
+												<button class="btn btn-xs btn-danger" type="submit">{{"Supprimer" | trans({}, 'button')}}</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="navigation pagination justify-content-center">
+							{{ knp_pagination_render(videos) }}
+						</div>
+					{% else %}
+						<h4 class="mb-1">{{"Aucune vidéo pour l'instant !" | trans}}</h4>
+						<p class="mb-0">{{"Les prochaines vidéos que vous publierez sur votre book, s'afficheront ici." | trans}}</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

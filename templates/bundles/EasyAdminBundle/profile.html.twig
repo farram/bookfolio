@@ -1,0 +1,409 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title user.fullname %}
+
+{% block page_content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xl-9">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-xl-6">
+							<div class="row">
+								<div class="col-12">
+
+									<div class="row">
+
+										<div class="col-3">
+											<img src="{{ user.avatar | imagine_filter('avatar') }}" alt="image" class="img-fluid avatar-xl rounded">
+										</div>
+										<div class="col-9">
+											<h4 class="mb-0">{{user.fullname}}</h4>
+											<p class="text-muted mb-0">@{{user.username}}</p>
+											<p class="text-muted mb-0">{{user.profession.title}}</p>
+											<p class="text-muted mt-0">{{user.email}}</p>
+											<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" type="button" class="btn btn-primary btn-md waves-effect mb-2 waves-light">Book</a>
+											<button type="button" class="btn btn-primary btn-md waves-effect mb-2 waves-light">Modifier</button>
+											<button type="button" class="btn btn-outline-danger btn-md waves-effect mb-2 waves-light">Désactiver</button>
+										</div>
+
+									</div>
+
+
+								</div>
+
+							</div>
+						</div>
+						<div class="col-xl-6">
+
+							<table class="mt-2 mt-xl-0 w-100">
+
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold">Localisation :</span>
+									</th>
+									<td class="pb-1 text-capitalize">
+										{{ user.address.location}}
+									</td>
+								</tr>
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold">Role :</span>
+									</th>
+									<td class="pb-1">
+										{% for role in user.roles %}
+											{{ role }}
+										{% endfor %}
+									</td>
+								</tr>
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold">Visites :</span>
+									</th>
+									<td class="pb-1 text-capitalize">
+										{{ user.getStatistics | length }}
+									</td>
+								</tr>
+
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold">Dernière activité :</span>
+									</th>
+									<td>
+										{{user.uuid}}
+									</td>
+								</tr>
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold ml-2 d-inline-block">Abonnements :</span>
+									</th>
+									<td class="pb-1">
+										{{ (user.getFollows()) ? '0': user.getFollows() | length }}
+									</td>
+								</tr>
+								<tr>
+									<th class="pb-1">
+										<span class="font-weight-bold ml-2 d-inline-block">Abonnés :</span>
+									</th>
+									<td class="pb-1">
+										{{ (following) ? '0': following | length }}
+									</td>
+								</tr>
+							</table>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3">
+			<div class="card border-primary border mb-3">
+				<div class="card-header d-flex justify-content-between align-items-center">
+					<h5 class="mb-0 mt-0">
+						Current Plan
+					</h5>
+					<span class="badge badge-light-primary">
+						Basic
+					</span>
+
+				</div>
+				<div class="card-body">
+					<ul class="list-unstyled my-1 mt-0 pt-0">
+						<li>
+							<span class="align-middle">5 Users</span>
+						</li>
+						<li class="my-25">
+							<span class="align-middle">10 GB storage</span>
+						</li>
+						<li>
+							<span class="align-middle">Basic Support</span>
+						</li>
+					</ul>
+					<button type="button" class="btn btn-primary btn-block">
+						Upgrade Plan
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-lg-6 col-xl-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-6">
+							<div class="avatar-md bg-warning rounded">
+								<i class="fe-folder avatar-title font-22 text-white"></i>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="text-end">
+								<h3 class="text-dark my-1">{{user.galleries | length}}</h3>
+								<p class="text-muted mb-0 text-truncate">Galeries publiées</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-xl-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-6">
+							<div class="avatar-md bg-success rounded">
+								<i class="fe-camera avatar-title font-22 text-white"></i>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="text-end">
+								<h3 class="text-dark my-1">
+									{{user.images | length}}
+								</h3>
+								<p class="text-muted mb-0 text-truncate">photos publiées</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-xl-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-6">
+							<div class="avatar-md bg-danger rounded">
+								<i class="fe-video avatar-title font-22 text-white"></i>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="text-end">
+								<h3 class="text-dark my-1">
+									{{user.videos | length}}
+								</h3>
+								<p class="text-muted mb-0 text-truncate">Vidéos publiées</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-6 col-xl-3">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-6">
+							<div class="avatar-md bg-blue rounded">
+								<i class="fe-users avatar-title font-22 text-white"></i>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="text-end">
+								<h3 class="text-dark my-1">
+									{{user.pages | length}}
+								</h3>
+								<p class="text-muted mb-0 text-truncate">Pages</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xl-4">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title mb-2">À propos :</h4>
+							<p class="text-muted mb-1">
+								{{user.about | raw}}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title mb-2">Style de photos :</h4>
+							<p>
+								{{ stylePhoto }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title mb-2">Critères physique :</h4>
+							<div>
+								<div class="text-start">
+									{% set arrayPhysicalCriteria = {
+                                            'Origine ethnique': { title: (user.physical.ethnicity) ? user.physical.ethnicity.title : '--'},
+                                            'Couleur de vos cheveux': { title: (user.physical.hairColor) ? user.physical.hairColor.title : '--'},
+                                            'Couleur de vos yeux': { title: (user.physical.eyesColor) ? user.physical.eyesColor.title : '--'},
+                                            'Taille': { title: (user.physical.size) ? user.physical.size : '--'},
+                                            'Poids': { title: (user.physical.weight) ? user.physical.weight : '--'},
+                                            'Tour de hanche': { title: (user.physical.hip) ? user.physical.hip : '--'},
+                                            'Confection': { title: (user.physical.confection) ? user.physical.confection : '--'},
+                                            'Pointure': { title: (user.physical.pointure) ? user.physical.pointure : '--'},
+                                            'Tour de poitrine': { title: (user.physical.chestSize) ? user.physical.chestSize : '--'},
+                                            'Tour de taille': { title: (user.physical.waistSize) ? user.physical.waistSize : '--'},
+                                            'Hauteur de poitrine': { title: (user.physical.chestHeight) ? user.physical.chestHeight : '--'},
+                                            'Hauteur devant du buste': { title: (user.physical.heightBust) ? user.physical.heightBust : '--'},
+                                            'Hauteur du dos': { title: (user.physical.backHeight) ? user.physical.backHeight : '--'},
+                                            'Largeur de l\'épaule': { title: (user.physical.shoulderWidth) ? user.physical.shoulderWidth : '--'},
+                                            'Longueur du bras': { title: (user.physical.armLength) ? user.physical.armLength : '--'},
+                                            'Tour du bras': { title: (user.physical.armsTurn) ? user.physical.armsTurn : '--'},
+                                            'Tour du cou': { title: (user.physical.roundNeck) ? user.physical.roundNeck : '--'},
+                                        } %}
+										{% for key, item in arrayPhysicalCriteria %}
+											<p class="text-muted mb-1">
+												<strong>{{key}}
+													:
+												</strong>
+												<span class="m-l-5">
+													{{item.title}}
+												</span>
+											</p>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-2">Réseaux sociaux :</h4>
+								<div>
+									<div class="text-start">
+                                        {% set arraySocialNetwork = {
+                                            'Instagram': { title: (user.social.instagram) ? user.social.instagram : '--'},
+                                            'Facebook': { title: (user.social.facebook) ? user.social.facebook : '--'},
+                                            'Twitter': { title: (user.social.twitter) ? user.social.twitter : '--'},
+                                            'Linkedin': { title: (user.social.linkedin) ? user.social.linkedin : '--'},
+                                            'Tumblr': { title: (user.social.tumblr) ? user.social.tumblr : '--'},
+                                            'Pinterest': { title: (user.social.pinterest) ? user.social.pinterest : '--'},
+                                            'Skype': { title: (user.social.skype) ? user.social.skype : '--'},
+                                            'Site web': { title: (user.social.website) ? user.social.website : '--'},
+                                        } %}
+                                        {% for key, item in arraySocialNetwork %}
+											<p class="text-muted mb-1">
+												<strong>{{key}}
+													:
+												</strong>
+												<span class="m-l-5">
+													<a href="{{item.title}}" class="text-dark" target="_blank">{{item.title}}</a>
+												</span>
+											</p>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-3">Template utilisée :</h4>
+								<div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card border">
+											<img class="card-img-top img-fluid" src="{{absolute_url(asset('assets/tpl/' ~ user.book.design.slug ))}}/preview.jpeg" alt="{{ user.book.design.title }}">
+											<div class="card-body">
+												<h4 class="card-title">{{ user.book.design.title }}</h4>
+
+											</div>
+										</div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-8">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Statistiques de visites</h4>
+								<p>Période du 1 juillet 2021 au 21 juillet 2021</p>
+                                <div id="chart_this_month"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Statistiques de visites</h4>
+								<p>Année en cours</p>
+                                <div id="chart_this_year"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-3">Publications</h4>
+								<div class="row" id="admin-app-galleries"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Vidéos</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Pages</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Commentaires reçus</h4>
+							</div>
+						</div>
+					</div>
+
+                    <div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title mb-1">Commentaires postés</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		var uuid = '{{ user.uuid }}'
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">{{ gc_draw(chartThisMonth, 'chart_this_month') }}</script>
+    <script type="text/javascript">{{ gc_draw(chartThisYear, 'chart_this_year') }}</script>
+	{{ parent() }}
+{% endblock javascripts %}

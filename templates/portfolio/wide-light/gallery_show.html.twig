@@ -1,0 +1,54 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+
+{% block title %}
+	{% if book.title %}
+		{{ gallery.name }}
+		-
+		{{ book.title }}
+	{% else %}
+		{{ gallery.name }}
+		-
+		{{ book.user.fullname }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	{{ gallery.name }}
+	-
+	{{ book.description | raw }}
+	-
+	{{ book.user.fullname }}
+{% endblock %}
+
+{% block body %}
+	<div class="container inner">
+		<div class="hero text-center">
+			<h1>{{ gallery.name }}
+				({{ images | length }})</h1>
+			<p>{{ gallery.description | raw }}</p>
+		</div>
+		<div class="items row row-offset-0">
+			{% set value = app.session.get('sessionUnlockedGalleries') %}
+			{% if gallery.isProtect %}
+				{% if not value %}
+					{% include 'portfolio/'~ design ~'/form_password.html.twig' with {'form': form} %}
+				{% else %}
+					{% if gallery.getId() in value %}
+						{% include 'portfolio/'~ design ~'/items.html.twig' %}
+					{% else %}
+						{% include 'portfolio/'~ design ~'/form_password.html.twig' with {'form': form} %}
+					{% endif %}
+				{% endif %}
+			{% else %}
+				{% include 'portfolio/'~ design ~'/items.html.twig' %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		var gallerySlug = '{{ gallery.getSlug() }}'
+	</script>
+	{{ parent() }}
+{% endblock %}

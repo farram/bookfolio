@@ -1,0 +1,64 @@
+{% set idpage = '5e494caf08eef83a8e4fba69' %}
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+
+{% block title %}
+	Contact -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Contact -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="section">
+		<div class="container">
+			<h1 class="heading-6 title">Contact</h1>
+		</div>
+	</div>
+	<div class="content">
+		<div class="container pl-140 pr-140">
+			<h2 class="heading-11">Veuillez utiliser le formulaire ci-dessous pour me contacter.</h2>
+			<div class="w-form">
+				{{ form_start(form, {'attr': {'id':'contactform','class':'','novalidate': 'novalidate'}}) }}
+				<div class="flex-row">
+					<div class="item">
+						{{ form_widget(form.name, {'attr': {'class':'text-field w-input','placeholder': "Votre nom et prénom", 'tabindex':"1"}}
+						) }}
+					</div>
+					<div class="item">
+						{{ form_widget(form.society, {'attr': {'class':'text-field w-input','placeholder': "Votre société (facultatif)", 'tabindex':"2"}}
+						) }}
+					</div>
+				</div>
+				<div class="flex-row">
+					<div class="item">
+						{{ form_widget(form.email, {'attr': {'class':'text-field w-input','placeholder': "Votre adresse e-mail", 'tabindex':"3"}}
+						) }}
+					</div>
+					<div class="item">
+						{{ form_widget(form.phone, {'attr': {'class':'text-field w-input','placeholder': "Numéro de téléphone (facultatif)", 'tabindex':"4"}}
+						) }}
+					</div>
+				</div>
+				<div class="item">
+					{{ form_widget(form.message, {'attr': {'class':'text-field textarea w-input','placeholder': "Votre message", 'tabindex':"5"}}) }}
+
+				</div>
+				<div class="item recaptcha">
+					<div class="recaptcha">
+						{{ form_widget(form.recaptcha) }}
+					</div>
+				</div>
+				<input type="submit" value="Envoyer" data-wait="Please wait..." class="button w-button">
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

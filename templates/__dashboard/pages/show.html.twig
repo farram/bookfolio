@@ -1,0 +1,166 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{ page.getTitle() }}
+{% endblock %}
+{% block body %}
+	{% set current_path = app.request.get('_route') %}
+	{% set current_path_id = app.request.get('id') %}
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					{{ wo_render_breadcrumbs({separator: '', listId: 'breadcrumbs'}) }}
+				</div>
+				<h4 class="page-title">{{ page.getTitle() }}</h4>
+			</div>
+		</div>
+	</div>
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card p-3 text-center">
+				<div class="text-start">
+					<h4 class="mb-2">
+						{{"Vos pages" | trans}}
+					</h4>
+					{% if pages | length > 0 %}
+						<div class="row">
+							{% for page in pages %}
+								<div class="col-lg-12">
+									<div class="card m-1 shadow-none border {% if current_path == 'pages_show' and current_path_id == page.id %} bg-light {% endif %}">
+										<div class="p-2">
+											<div class="row align-items-center">
+												<div class="col-auto">
+													<div class="avatar-sm">
+														<span class="avatar-title bg-light text-secondary rounded">
+															<i class="mdi mdi-file-outline font-18"></i>
+														</span>
+													</div>
+												</div>
+												<div class="col pl-0 text-start">
+													<a href="{{ url('pages_show', { id: page.id }) }}" class="text-muted font-weight-bold">{{ page.getTitle() }}</a>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% else %}
+						<div class="col-12">
+							<h4>
+								{{"Retrouvez ici les pages que vous aurez ajouter à votre book." | trans}}
+							</h4>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+			<div class="card p-3">
+				<h4 class="mb-2">
+					{{"Arborescence de votre book" | trans}}
+				</h4>
+				<p class="text-muted">
+					{{"Voici comment est organisé l'arborescence de votre book. Les nouvelles pages, seront ajoutées entre la page des commentaires et contact."}}
+				</p>
+				<ul class="sitemap">
+					<li>
+						<a href="javascript: void(0);" class="text-uppercase font-weight-bold">
+							<i class="mdi mdi-adjust mr-1"></i>
+							{{ app.user.getLinkBook() }}</a>
+						<ul>
+							<li>
+								<a href="javascript: void(0);">
+									<b>Accueil</b>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);">
+									<b>À propos</b>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);">
+									<b>Galeries</b>
+								</a>
+								{% if app.user.getGalleries() | length > 0 %}
+									<ul>
+										{% for gallery in app.user.getGalleries() %}
+											<li>
+												<a href="javascript: void(0);">
+													{{ gallery.getName() }}
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+							<li>
+								<a href="javascript: void(0);">
+									<b>Vidéos</b>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);">
+									<b>Commentaires</b>
+								</a>
+							</li>
+							{% if app.user.getPages() | length > 0 %}
+								{% for page in app.user.getPages() %}
+									<li>
+										<a href="javascript: void(0);">
+											<b>{{ page.getTitle() }}</b>
+										</a>
+									</li>
+								{% endfor %}
+							{% endif %}
+							<li>
+								<a href="javascript: void(0);">
+									<b>
+										<code>[votre nouvelle page ici]</code>
+									</b>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);">
+									<b>Contact</b>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			{% include 'dashboard/partial/_subscription.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card p-3">
+				<div class="p-3">
+					<h3 class="mb-2 mt-0">
+						{{ page.getTitle() }}
+					</h3>
+					<hr>
+					<p>
+						{{"Publiée" | trans}}
+						{{ page.getCreatedAt() | ago }}
+						|
+						{{"Mis à jour" | trans}}
+						{{ page.getUpdatedAt() | ago }}
+					</p>
+
+					{{ form_start(form, {'attr': {'class':'needs-validation','novalidate': 'novalidate'}}) }}
+					<div class="row">
+						{{ forms.input(form.title,'Titre :',{class:'col-lg-12'}) }}
+						{{ forms.textarea(form.content,'Contenu :',{class:'col-lg-12'}) }}
+						{{ forms.checkbox(form.isActive,{class:'col-lg-12'}) }}
+						{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

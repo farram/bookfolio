@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head><base href="">
+		<title>{{"Réinitialiser votre mot de passe - Book-folio.fr" | trans}}</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta property="og:locale" content="fr_FR"/>
+		<meta property="og:type" content=""/>
+		<meta property="og:title" content=""/>
+		<meta property="og:url" content=""/>
+		{% block stylesheets %}
+			<link rel="canonical" href=""/>
+			<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}"/>
+			{{ encore_entry_link_tags('dashboard') }}
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+			<link href="{{ asset('assets/dashboard/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+			<link href="{{ asset('assets/dashboard/css/custom.css') }}" rel="stylesheet" type="text/css"/>
+		{% endblock %}
+	</head>
+	<body id="kt_body" class="bg-body">
+		<div class="d-flex flex-column flex-root">
+			<div class="d-flex flex-column flex-column-fluid">
+				<div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
+					<a href="{{ path('index') }}" class="mb-10 pt-lg-10">
+						<img alt="Logo" src="{{ asset('assets/img/logo-color.png') }}" class="h-40px mb-5"/>
+					</a>
+					<div class="pt-lg-10 mb-10">
+						<h1 class="fw-bolder fs-2qx text-gray-800 mb-7">{{"Vous avez un nouveau message !" | trans}}</h1>
+						<div class="fw-bold fs-5 text-muted mb-15">
+							{{"Il est temps de consulter votre boîte email." | trans}}
+							<br>
+							{{"Nous vous avons envoyé un lien pour réinitialiser votre mot de passe.
+							Ce lien est expire dans" | trans}}
+							{{ tokenLifetime|date('g') }}
+							heure(s).
+							<br/>{{"Vérifiez vos spams. Nous l'avons envoyé de info@book-folio.fr." | trans}}</div>
+						<div class="text-center">
+							<a href="{{ path('app_login') }}" class="btn btn-primary btn-lg fw-bolder">Connexion</a>
+						</div>
+						<div class="text-gray-700 fw-bold fs-4 pt-7">{{"Vous n'avez pas reçu d'e-mail ?" | trans}}
+							<a href="{{ path('app_forgot_password_request') }}" class="text-primary fw-bolder">{{"Réessayer" | trans}}</a>
+						</div>
+					</div>
+					<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{ asset('assets/dashboard/media/illustrations/sketchy-1/17.png') }}"></div>
+				</div>
+				<div class="d-flex flex-center flex-column-auto p-10">
+					<div class="d-flex align-items-center fw-bold fs-6">
+						<a href="{{ path('cgu') }}" class="text-muted text-hover-primary px-2" target="_blank">{{"CGU" | trans}}</a>
+						<a href="{{ path('politicy') }}" class="text-muted text-hover-primary px-2" target="_blank">{{"Politique de confidentialité" | trans}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% block javascripts %}
+			<script>
+				var hostUrl = "assets/";
+			</script>
+			<script src="{{ asset('assets/dashboard/plugins/global/plugins.bundle.js') }}"></script>
+			<script src="{{ asset('assets/dashboard/js/scripts.bundle.js') }}"></script>
+			<script src="{{ asset('assets/dashboard/js/custom/authentication/sign-in/general.js') }}"></script>
+			{{ encore_entry_script_tags('dashboard') }}
+		{% endblock %}
+	</body>
+</html>

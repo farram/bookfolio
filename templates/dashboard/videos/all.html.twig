@@ -1,0 +1,135 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos vidéos | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+	{% if videos.getTotalItemCount > 0 %}
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-5">
+					<div class="d-flex flex-stack mb-5">
+						<div>
+							<h3 class="mb-5">{{ videos.getTotalItemCount }}
+								{% if videos.getTotalItemCount > 1 %}
+									vidéos publiées
+								{% else %}
+									vidéo publiée
+								{% endif %}
+							</h3>
+
+							{% if avalableCreditService.canPublishVideos %}
+								<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+									<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+											<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+											<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+											<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+										</svg>
+									</span>
+									<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+										<div class="mb-3 mb-md-0 fw-bold">
+											<div class="fs-6 text-gray-700 pe-7">
+												{% set count = avalableCreditService.avalableVideosRemaining %}
+												{{ count|pluralize('Vous pouvez encore publier {} vidéo ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}), 'Vous pouvez encore publier {} vidéos ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}) | trans) |raw}}
+											</div>
+										</div>
+									</div>
+								</div>
+							{% else %}
+								{{ block("notice_limit_videos", "dashboard/partial/alert/notice.html.twig") }}
+							{% endif %}
+						</div>
+						{% if avalableCreditService.canPublishVideos %}
+							<a href="#" class="fs-6 fw-bold btn btn-primary btn-hover-rise" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Ajouter une nouvelle vidéo</a>
+						{% else %}
+							<button class="fs-6 fw-bold btn btn-primary disabled">{{"Ajouter une nouvelle vidéo" | trans}}</button>
+						{% endif %}
+					</div>
+
+					<div class="row g-10">
+						{% for video in videos %}
+							<div class="col-md-4">
+								<div class="card-xl-stretch {% if loop.index % 3 == 1 %}me-md-6{% else %}ms-md-6{% endif %}">
+									<a class="d-block bgi-no-repeat bgi-size-cover bgi-position-center card-rounded position-relative min-h-175px mb-5" style="background-image:url('{{ video.getPreview() }}')" data-fslightbox="lightbox-video-tutorials" href="{{ video.getUrl() }}">
+										<img src="{{ asset('assets/dashboard/media/svg/misc/video-play.svg') }}" class="position-absolute top-50 start-50 translate-middle" alt=""/>
+									</a>
+									<div class="mb-4">
+										<a href="{{ video.getUrl() }}" target="_blank" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">{{ video.getTitle() | u.truncate(25, '...')}}</a>
+										<div class="fs-6 fw-bolder">
+											<span class="text-muted">{{"Publiée" | trans}}
+												{{ video.getCreatedAt() | ago }}</span>
+										</div>
+									</div>
+									<form action="{{ url('videos_delete', { id: video.id }) }}" method="post" onclick='return confirm("Êtes-vous sûr de vouloir supprimer cette vidéo ?")'>
+										<input type="hidden" name="token" value="{{ csrf_token('delete-video') }}"/>
+										<button class="btn btn-sm btn-light-danger btn-hover-rise" type="submit">{{"Supprimer" | trans({}, 'button')}}</button>
+									</form>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="navigation pagination justify-content-center">
+						{{ knp_pagination_render(videos) }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{"Aucune vidéo !" | trans}}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{"Vous avez aucune vidéo pour l'instant !" | trans}}
+						<br/>{{"Les prochaines vidéos que vous publierez sur votre book, s'afficheront ici." | trans}}</p>
+					<a href="#" class="btn btn-primary btn-hover-rise" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">{{"Ajouter une vidéo" | trans}}</a>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	{% if avalableCreditService.canPublishVideos %}
+		<div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered mw-650px">
+				<div class="modal-content">
+					{{ form_start(form, {'attr': {'id':'kt_modal_add_customer_form','class':'form needs-validation','novalidate': 'novalidate'}}) }}
+					<div class="modal-header" id="kt_modal_add_customer_header">
+						<h2 class="fw-bolder">{{"Ajouter une nouvelle vidéo"}}</h2>
+						<div data-bs-dismiss="modal" aria-label="Close" class="btn btn-icon btn-sm btn-active-icon-primary">
+							<span class="svg-icon svg-icon-1">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+									<g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+										<rect fill="#000000" x="0" y="7" width="16" height="2" rx="1"/>
+										<rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1"/>
+									</g>
+								</svg>
+							</span>
+						</div>
+					</div>
+					<div class="modal-body py-10 px-lg-17">
+						<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+							<div class="fv-row mb-7">
+								{{ form_label(form.url, 'URL de la vidéo', {'label_attr': {'class': 'fs-6 fw-bold mb-2'}})  }}
+								{{ form_widget(form.url, {'attr': {'class': 'form-control form-control-solid'}}) }}
+								{{ form_errors(form.url) }}
+								{{ form_help(form.url) }}
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer flex-center">
+						<button type="reset" data-bs-dismiss="modal" class="btn btn-light btn-hover-rise me-3">{{"Annuler" | trans}}</button>
+						<button type="submit" class="btn btn-primary btn-hover-rise">
+							{{"Ajouter la vidéo" | trans}}
+						</button>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

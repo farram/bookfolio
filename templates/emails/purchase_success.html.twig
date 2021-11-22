@@ -1,0 +1,57 @@
+{% extends 'emails/emailBaseFoundation.html.twig' %}
+{% block content %}
+	<row>
+		<columns>
+			<h3 class="text-center">Félicitations
+				{{user.firstname}}!</h3>
+			<p class="text-center">Vous êtes abonné à l'offre
+				{{subscription.name}}
+				et nous sommes heureux de vous compter parmi nos abonnés.<br>
+				Retrouvez ci-dessous les détails de votre abonnement.</p>
+			<spacer size="32"></spacer>
+
+			<table class="callout">
+				<tbody>
+					<tr>
+						<th class="callout-inner secondary">
+							<p>
+								Facturer à
+								{{user.fullname}}<br>
+								Date d’émission:
+								{{ subscription.date|date|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}
+								<br>
+								N° de facture:
+								{{subscription.invoice.number}}<br>
+								<a href="{{ relative_path(subscription.invoice.pdf) }}">Télécharger la facture</a>
+								-
+								<a href="{{ relative_path(subscription.invoice.hosted_invoice_url) }}">Télécharger le reçu</a>
+							</p>
+						</th>
+						<th class="expander"></th>
+					</tr>
+				</tbody>
+			</table>
+			<spacer size="32"></spacer>
+
+			<p>
+				<strong style="color:#000000;">Abonnement :</strong><br>
+				{{subscription.name}}
+			</p>
+
+			<p>
+				<strong style="color:#000000;">Votre offre :</strong><br>
+				{{subscription.price}}
+				tous les 3 mois sans engagement
+			</p>
+
+			<p>
+				<strong style="color:#000000;">Date du prochain prélèvement :</strong><br>
+				{{ subscription.invoice.current_period_end|date|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
+			</p>
+
+			<spacer size="32"></spacer>
+
+			<p>Merci à vous.</p>
+		</columns>
+	</row>
+{% endblock %}

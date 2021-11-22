@@ -1,0 +1,17 @@
+{% set current_path = app.request.get('_route') %}
+{% block sideBarManage %}
+	<div class="card">
+		<div class="card-body">
+			<div class="text-start">
+				<nav class="nav flex-column">
+					<a class="nav-link {% if current_path == 'annonce_all' %} active {% else %} text-dark {% endif %}" {% if current_path == 'annonce_all' %} aria-disabled="false" {% else %} aria-current="page" {% endif %} href="{{ path('annonce_all') }}">
+						{{"Toutes vos annonces" | trans}}
+					</a>
+					<a href="{{ path('annonce_add') }}" class="btn btn-primary-color btn-block mt-3 waves-effect waves-light">
+						{{"Créer une annonce" | trans}}
+					</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+{% endblock %}

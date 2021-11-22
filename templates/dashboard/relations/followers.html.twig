@@ -1,0 +1,24 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos abonnés | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% if followers.getTotalItemCount > 0 %}
+		<div id="app-followers"></div>
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{"Aucun abonné !" | trans}}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{"Encore un peu de patience ... " | trans}}
+						<br/>{{"Vous allez bientôt attirer l'attention de certains artistes." | trans}}</p>
+					<a href="{{ path('annuaire_dashboard') }}" class="btn btn-primary btn-hover-rise">{{"Parcourir les books" | trans}}</a>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

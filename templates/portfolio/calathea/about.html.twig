@@ -1,0 +1,210 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		À propos -
+		{{ book.getTitle() }}
+	{% else %}
+		À propos -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	À propos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="top-single-bkg  topnoimg ">
+		<div class="inner-desc">
+			<div class="container">
+				<h1 class="post-title single-post-title">À propos de moi</h1>
+			</div>
+		</div>
+	</div>
+	<div class="page-holder custom-page-template page-full fullscreen-page home-page-content clearfix">
+		<section class="section-holder">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 margin-bm32 aligncm">
+						<img class="img-fluid" src="{{ book.user.getAvatar() }}" alt="">
+					</div>
+					<div class="col-lg-6 aligncm">
+						<h5 class="section-title margin-b10">
+							{{ book.user.getProfession() }}
+							-
+							{{ book.user.getExperience() }}
+						</h5>
+						<h5 class="section-title margin-b32">{{ book.user.address.getLocation() }}</h5>
+						<p class="margin-b0">
+							{% if book.getShowVisitorCounter %}
+								{{ book.user.getStatistics | length }}
+								{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+							{% endif %}
+							{{ book.user.getImages | length }}
+							{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+							{{ galleries | length }}
+							{{ (galleries | length > 1) ? 'galeries':'galerie'}}<br>
+							Mis à jour
+							{{ book.user.updatedAt | ago }}<br>
+							Abonnés :
+							{{ (followBack < 0 ) ? '0': followBack | length }}<br>
+							Abonnements :
+							{{ (book.user.getFollows()) ? '0': book.user.getFollows() | length }}
+						</p>
+						{% if book.user.getAbout() %}
+							<blockquote>
+								<p>
+									{{ book.user.getAbout() | raw }}
+								</p>
+							</blockquote>
+						{% endif %}
+
+						{% if book.user.social.getWebsite() %}
+							<div class="margin-b32">
+								<h5 class="section-title margin-b10">Site web</h5>
+								<div class="text">
+									<a href="{{ book.user.social.getWebsite() }}" target="_blank">
+										{{ book.user.social.getWebsite() }}
+									</a>
+								</div>
+							</div>
+						{% endif %}
+
+						<h5 class="section-title margin-b10">Autres</h5>
+						{% if book.user.profession.getSlug() == "modele" %}
+							<div class="text">
+								<ul class="list-items">
+									{% if book.user.physical.getSize() %}
+										<li>Taille :
+											{{ book.user.physical.getSize() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getWeight() %}
+										<li>Poids :
+											{{ book.user.physical.getWeight() }}
+											kg
+										</li>
+									{% endif %}
+									{% if book.user.physical.getHip() %}
+										<li>Tour de hanche :
+											{{ book.user.physical.getHip() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getChest() %}
+										<li>chest :
+											{{ book.user.physical.getChest() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getConfection() %}
+										<li>Confection :
+											{{ book.user.physical.getConfection() }}</li>
+									{% endif %}
+									{% if book.user.physical.getPointure() %}
+										<li>Pointure :
+											{{ book.user.physical.getPointure() }}</li>
+									{% endif %}
+									{% if book.user.physical.getChestSize() %}
+										<li>Tour de poitrine :
+											{{ book.user.physical.getChestSize() }}</li>
+									{% endif %}
+									{% if book.user.physical.getWaistSize() %}
+										<li>Tour de taille :
+											{{ book.user.physical.getWaistSize() }}</li>
+									{% endif %}
+									{% if book.user.physical.getChestHeight() %}
+										<li>Hauteur de poitrine :
+											{{ book.user.physical.getChestHeight() }}</li>
+									{% endif %}
+									{% if book.user.physical.getHeightBust() %}
+										<li>Hauteur devant du buste :
+											{{ book.user.physical.getHeightBust() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getBackHeight() %}
+										<li>Hauteur du dos :
+											{{ book.user.physical.getBackHeight() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getShoulderWidth() %}
+										<li>Largeur de l'épaule :
+											{{ book.user.physical.getShoulderWidth() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getArmLength() %}
+										<li>Longueur du bras :
+											{{ book.user.physical.getArmLength() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getArmsTurn() %}
+										<li>Tour du bras :
+											{{ book.user.physical.getArmsTurn() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getRoundNeck() %}
+										<li>Tour du cou :
+											{{ book.user.physical.getRoundNeck() }}
+											cm
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+						{% endif %}
+
+						{% if book.user.profession.getSlug() == "photographe" %}
+							<div class="text">
+								<ul class="list-items">
+									{% if book.user.physical.getApnCamera() %}
+										<li>Appareil photo :
+											{{ book.user.physical.getApnCamera() }}
+										</li>
+									{% endif %}
+
+									{% if book.user.physical.getApnLenses() %}
+										<li>Objectif(s) :
+											{{ book.user.physical.getApnLenses() }}
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+						{% endif %}
+
+						{% if book.getStylePhotos() %}
+							<h5 class="section-title margin-b10">Style de photos :</h5>
+							<p>
+								{{ stylePhoto }}</p>
+						{% endif %}
+
+						<ul class="social-media margin-t32">
+							<li>
+								<a class="social-facebook" href="#" target="_blank">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a class="social-twitter" href="#" target="_blank">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a class="social-instagram" href="#" target="_blank">
+									<i class="fab fa-instagram"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

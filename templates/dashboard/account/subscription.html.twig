@@ -1,0 +1,160 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+
+{% import _self as macros %}
+{% macro currency(rawStripeAmount) %}
+	{% if rawStripeAmount < 0 %}-
+	{% endif %}€{{ (rawStripeAmount/100)|abs }}
+{% endmacro %}
+
+
+{% block body %}
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% include 'dashboard/partial/profile_head.html.twig' %}
+
+
+	{% if app.user.hasActiveSubscription %}
+		{% if app.user.subscription.isCancelled %}
+			<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-10">
+				<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+						<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+						<rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+						<rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+					</svg>
+				</span>
+				<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+					<div class="mb-3 mb-md-0 fw-bold">
+						<h4 class="text-gray-900 fw-bolder">{{"Abonnement annulé" | trans}}</h4>
+						<div class="fs-6 text-gray-700 pe-7">
+							{{"Vous avez récement annuler votre abonnement." | trans}}
+							{{"Mais vous avez encore accès jusqu'au" | trans}}
+							{{ app.user.subscription.endsAt|date|format_datetime(pattern="dd MMMM YYYY") }}.
+						</div>
+					</div>
+					<form action="{{ path('account_subscription_reactivate') }}" method="POST">
+						<button type="submit" class="btn btn-warning px-6 align-self-center text-nowrap">{{"Réactiver mon abonnement" | trans}}</button>
+					</form>
+				</div>
+			</div>
+		{% else %}
+			<div class="card mb-5 mb-xl-10">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-7">
+							<h3 class="mb-2">{{ currentPlan.name }}
+								<span class="badge badge-success">{{"Active" | trans}}</span>
+							</h3>
+							<p class="fs-6 text-gray-600 fw-bold mb-6 mb-lg-15">Nous vous enverrons une notification à l'expiration de l'abonnement.</p>
+							<div class="fs-5 mb-2">
+								<span class="text-gray-800 fw-bolder me-1">{{ currentPlan.price/100 }}€</span>
+								<span class="text-gray-600 fw-bold">{{"tous les 3 mois" | trans}}.</span>
+							</div>
+							{% if app.user.hasActiveNonCancelledSubscription %}
+								<div class="fs-6 text-gray-600 fw-bold">{{"Prochain prélèvement le" | trans}}
+									{{ app.user.subscription.billingPeriodEndsAt|date|format_datetime(pattern="EEEE dd MMMM YYYY") }}.</div>
+							{% endif %}
+						</div>
+						<div class="col-lg-5">
+							<div class="d-flex text-muted fw-bolder fs-5 mb-3">
+								<span class="flex-grow-1 text-gray-800">{{"Crédit photo restant" | trans}}
+									:</span>
+								<span class="text-gray-800">{{avalableCreditService.remaining}}
+									sur
+									{{avalableCreditService.avalable}}</span>
+							</div>
+							<div class="progress h-8px bg-light-primary mb-2">
+								<div class="progress-bar bg-primary" role="progressbar" style="width: {{ avalableCreditService.progressbar }}%" aria-valuenow="{{ avalableCreditService.progressbar }}" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+							<div class="fs-6 text-gray-600 fw-bold mb-10">
+								{{ avalableCreditService.toUsed ~ " sur " ~ avalableCreditService.avalable ~ " photos publiées ce mois." | trans}}
+								{{"Vous pouvez encore publier " ~ avalableCreditService.remaining ~ " photos avant la fin du mois." | trans}}
+								<a href="{{ path('pricing_all') }}">{{"En savoir plus" | trans}}</a>
+							</div>
+							<div class="d-flex justify-content-end pb-0 px-0">
+
+								<form method="POST" action="{{ path('dashboard_create_customer_portal_session') }}">
+									<button type="submit" class="btn btn-primary me-5">{{"Gérer mon abonnement" | trans}}</button>
+								</form>
+
+								{% if not app.user.subscription.isCancelled %}
+									<form action="{{ path('account_subscription_cancel') }}" method="POST">
+										<button type="submit" class="btn btn-light btn-active-light-primary">{{"Annuler mon abonnement" | trans}}</button>
+									</form>
+								{% endif %}
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% else %}
+		<div class="card mb-5 mb-xl-10">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-7">
+						<h3 class="mb-2">Starter
+							<span class="badge badge-success">{{"Gratuit" | trans}}</span>
+						</h3>
+						<p class="fs-6 text-gray-600 fw-bold">Vous disposez d'un abonnement stantard.</p>
+						<div class="fs-5 mb-2">
+							<a href="{{ path('pricing_all') }}" class="btn btn-primary">Consulter nos offres</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+
+	{% if app.user.hasActiveSubscription %}
+
+
+		<div class="card">
+			<div class="card-header card-header-stretch border-bottom border-gray-200">
+				<div class="card-title">
+					<h3 class="fw-bolder m-0">Historique de paiement</h3>
+				</div>
+			</div>
+			<div class="tab-content">
+				<div id="kt_billing_months" class="card-body p-0 tab-pane fade show active" role="tabpanel" aria-labelledby="kt_billing_months">
+					<div class="table-responsive">
+						<table class="table table-row-bordered align-middle gy-4 gs-9">
+							<thead class="border-bottom border-gray-200 fs-6 text-gray-600 fw-bolder bg-light bg-opacity-75">
+								<tr>
+									<td class="min-w-150px">Date</td>
+									<td class="min-w-250px">Numéro de facture</td>
+									<td class="min-w-150px">Montant</td>
+									<td class="min-w-150px">Facture</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody class="fw-bold text-gray-600">
+								{% for invoice in invoices %}
+									<tr>
+										<td>{{invoice.webhooks_delivered_at |date("d/m/Y", "Europe/Paris")}}</td>
+										<td>
+											<a href="{{invoice.invoice_pdf}}">{{invoice.number}}</a>
+										</td>
+										<td>{{ macros.currency(invoice.amount_due) }}</td>
+										<td>
+											<a href="{{invoice.invoice_pdf}}" class="btn btn-sm btn-light btn-active-light-primary">PDF</a>
+										</td>
+										<td class="text-right">
+											<a href="{{invoice.hosted_invoice_url}}" target="_blank" class="btn btn-sm btn-light btn-active-light-primary">Voir</a>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

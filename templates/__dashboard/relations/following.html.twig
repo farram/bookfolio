@@ -1,0 +1,27 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos abonnements | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Abonnements'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/relations_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card p-3">
+				<div class="p-3">
+					<h3 class="mb-2 mt-0">{{"Abonnements" | trans}}
+						({{ followings.getTotalItemCount }})</h3>
+					<hr>
+					<p class="mb-0">{{"Vos abonnements sont les artistes que vous suivez" | trans}}</p>
+					<p class="mb-0">{{"Lorsque vous suivez un artiste, cela ne veut pas dire que ce dernier vous suit aussi." | trans}}</p>
+					<div id="app-following"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

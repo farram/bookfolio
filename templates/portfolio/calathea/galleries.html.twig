@@ -1,0 +1,79 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		Galeries -
+		{{ book.getTitle() }}
+	{% else %}
+		Galeries -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	Galeries -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="top-single-bkg  topnoimg ">
+		<div class="inner-desc">
+			<div class="container">
+				<h1 class="post-title single-post-title">Galeries</h1>
+				<span class="post-subtitle page-subtitle">
+					{{ galleries | length }}
+					{{ (galleries | length > 1) ? 'galeries':'galerie' }}</span>
+			</div>
+		</div>
+	</div>
+	<div class="page-holder custom-page-template page-full fullscreen-page home-page-content clearfix">
+		<section class="section-holder">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						{% if galleries | length > 0 %}
+							<div class="page-holder custom-page-template page-full fullscreen-page clearfix">
+								<section class="section-holder">
+									<div class="container">
+										<div class="short-portfolio-grid-holder">
+											<div class="port-grid port-grid-3cols">
+												<div class="row layout-masonry">
+													{% for gallery in galleries %}
+														<div class="col-sm-6 col-lg-4 blog-item-masonry">
+															<div class="port-item-htext">
+																<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">
+																	<div class="port-img">
+																		{% if gallery.list.isProtect %}
+																			<img src="{{ gallery.list.getLocked() }}" alt="{{ gallery.list.getName() }}" class="img-fluid">
+																		{% else %}
+																			{% if gallery.list.coverImage %}
+																				<img src="{{ uploaded_asset(gallery.list.coverImage.imagePath) }}" alt="{{ gallery.list.getName() }}" class="img-fluid">
+																			{% else %}
+																				<img src="{{ ((gallery.list.getLastImage() != null) ? uploaded_asset(gallery.cover.imagePath) : gallery.list.getNoThumb() ) }}" alt="{{ gallery.list.getName() }}" class="img-fluid">
+																			{% endif %}
+																		{% endif %}
+																	</div>
+																	<div class="port-caption">
+																		<h3>{{ gallery.list.getName() }}</h3>
+																	</div>
+																	<div class="album-arrow-grid"></div>
+																</a>
+															</div>
+														</div>
+													{% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						{% else %}
+							<h3 class="text-center">Aucune galerie public pour l'instant.</h3>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

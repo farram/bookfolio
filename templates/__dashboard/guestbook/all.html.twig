@@ -1,0 +1,110 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Livre d'or | Bookfolio" | trans }}
+{% endblock %}
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					{{ wo_render_breadcrumbs({separator: '', listId: 'breadcrumbs'}) }}
+				</div>
+				<h4 class="page-title">{{ "Livre d'or"|trans }}
+					({{ app.user.getGuestBooks() | length }})</h4>
+			</div>
+		</div>
+	</div>
+
+	{% if guestBooks.getTotalItemCount() | length > 0 %}
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="card p-3 text-center">
+					<div class="text-start">
+						<div class="list-group list-group-flush mt-2 font-15">
+							<a href="{{ path('guestbook_offline') }}" class="{% if current_path == "guestbook_offline" %} list-group-item-active {% endif %} list-group-item list-group-item-action border-0">
+								{{"Nouveaux" | trans}}
+							</a>
+							<a href="{{ path('guestbook_online') }}" class="{% if current_path == "guestbook_online" %} list-group-item-active {% endif %} list-group-item list-group-item-action border-0">
+								{{"En ligne" | trans}}
+							</a>
+						</div>
+					</div>
+				</div>
+				{% include 'dashboard/partial/_subscription.html.twig' %}
+			</div>
+			<div class="col-lg-9">
+				<div class="card p-3">
+					<div class="p-3">
+
+						<h3 class="mb-3 mt-0">
+							{% if current_path == "guestbook_offline" %}
+								{{"Nouveaux messages" | trans}}
+							{% elseif current_path == "guestbook_online" %}
+								{{"En ligne" | trans}}
+							{% endif %}
+							({{ guestBooks.getTotalItemCount() }})
+						</h3>
+
+						{% if guestBooks | length > 0 %}
+							<ul class="tasklist list-unstyled">
+								{% for guestbook in guestBooks %}
+									<li id="task1">
+										<div class="dropdown float-right">
+											<a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+												<i class="mdi mdi-dots-vertical m-0 text-muted h3"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right">
+
+												{% if current_path == "guestbook_offline" %}
+													<a class="dropdown-item" href="{{ url('guestbook_make_online', { id: guestbook.id }) }}">{{"Valider" | trans}}</a>
+												{% endif %}
+
+
+												<form action="{{ url('guestbook_delete', { id: guestbook.id }) }}" method="post" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce message ?")'>
+													<input type="hidden" name="token" value="{{ csrf_token('delete-guestbook') }}"/>
+													<button class="dropdown-item" type="submit">{{"Supprimer" | trans({}, 'button')}}</button>
+												</form>
+											</div>
+										</div>
+
+										<blockquote class="blockquote mb-0 p-3">
+											<h4 class="mt-0 mb-0">{{ guestbook.getAuthor() }}
+												<small class="text-muted">({{ guestbook.getLocation() }})</small>
+											</h4>
+											{% if guestbook.getWebsite() %}
+												<small>
+													<a href="{{ guestbook.getWebsite()}}" target="_blank" class="text-muted">{{ guestbook.getWebsite()}}</a>
+												</small>
+											{% endif %}
+											<p class="mb-0 mt-2">{{ guestbook.getContent | raw }}</p>
+											<footer class="blockquote-footer mt-2">{{"Publié"| trans}}
+												{{ guestbook.createdAt | ago }}
+											</footer>
+										</blockquote>
+									</li>
+								{% endfor %}
+							</ul>
+							<div class="navigation pagination justify-content-center mt-3">
+								{{ knp_pagination_render(guestBooks) }}
+							</div>
+						{% else %}
+							<hr class="mt-0">
+							<h4 class="mb-1">Aucun message pour l'instant !</h4>
+							<p class="mb-0">{{"Les messages laissés par vos visiteurs s'afficheront ici." | trans}}</p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="row">
+			<div class="col-12">
+				<div class="card p-3">
+					<h4 class="text-center">{{"Retrouvez ici tous les messages que les visiteurs auront laissés à votre intention." | trans}}</h4>
+					<h5 class="text-center">{{"N'hésitez pas à faire la pub de votre book !" | trans}}</h5>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

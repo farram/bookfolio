@@ -1,0 +1,15 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			cool
+		</div>
+	</div>
+{% endblock %}

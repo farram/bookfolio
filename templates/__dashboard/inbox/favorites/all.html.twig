@@ -1,0 +1,135 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{ title ~ ' | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': title |trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% set current_path = app.request.get('_route') %}
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card p-3">
+				<div class="inbox-leftbar">
+					{% include 'dashboard/partial/mail_list.html.twig' %}
+				</div>
+				<div class="inbox-rightbar">
+					{% if listInboxes %}
+						<div class="">
+							<div class="row">
+								<div class="col-sm-12">
+									<table id="table" data-toggle="table" data-search="true" data-page-size="5" data-pagination="true" class="table-borderless table table-bordered table-hover">
+										<thead class="thead-light">
+											<tr>
+												<th data-field="uuid" data-visible="false">uuid</th>
+												<th data-field="fullname" data-sortable="true" data-switchable="false">{{"Expéditeur" | trans}}</th>
+												<th data-field="message">{{"Message" | trans}}</th>
+												<th data-field="date" data-sortable="true">{{"Date" | trans}}</th>
+												<th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents" data-align="center">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for inbox in listInboxes %}
+
+												<tr>
+													<td>{{ inbox.uuid }}</td>
+													<td>
+														<span class="mr-2 star-toggle far fa-star {% if (inbox.favorites == true) %}text-warning{% endif %}"></span>
+														<a href="{{ path('dashboard_social_inbox_favoris_show', { uuid: inbox.uuid }) }}" class="{% if (inbox.status == "unread") %}text-dark font-weight-bold{% else %}text-reset{% endif %} title">
+															<img src="{{ inbox.avatar }}" class="mr-2 rounded-circle" height="30" alt="{{ inbox.user.getFullname }}">
+															{{ inbox.user.getFullname }}
+														</a>
+													</td>
+													<td>
+														<a href="{{ path('dashboard_social_inbox_favoris_show', { uuid: inbox.uuid }) }}" class="{% if (inbox.status == "unread") %}text-dark font-weight-bold{% else %}text-reset{% endif %} subject">
+															{% if (inbox.status == "unread") %}
+																<span class="badge badge-soft-danger text-end">Nouveau</span>
+															{% endif %}
+															<span class="teaser">{{ inbox.message | u.truncate(60, '...', false)}}</span>
+
+														</a>
+													</td>
+													<td>
+														<small>{{ inbox.date | ago}}</small>
+													</td>
+													<td class="text-center"></td>
+												</tr>
+											{% endfor %}
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						<div class="col-lg-8">
+							{% include 'dashboard/partial/mail_empty.html.twig' with {'lastInbox': lastInbox} %}
+						</div>
+					{% endif %}
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		{{ parent() }}
+
+		<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+		<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+		<link href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css" rel="stylesheet">
+		<script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+		<script>
+
+			var $table = $('#table')
+
+function operateFormatter(value, row, index) {
+return ['<a class="remove text-danger" href="javascript:void(0)" title="           {{ "Supprimer" }}">', '<i class="fa fa-trash-alt"></i>', '</a>'].join('')
+}
+
+window.operateEvents = {
+'click .like': function (e, value, row, index) {
+alert('You click like action, row: ' + JSON.stringify(row))
+},
+'click .remove': function (e, value, row, index) {
+
+const swalWithBootstrapButtons = Swal.mixin({
+customClass: {
+confirmButton: 'btn btn-md btn-primary waves-effect waves-light',
+cancelButton: 'btn btn-light mr-2 btn-md'
+},
+buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+title: '{{ "Êtes-vous sûr de vouloir supprimer ce message ?" }}',
+footer: '<small>           {{ "Cette action est irréversible." }}</small>',
+icon: 'warning',
+showCancelButton: true,
+confirmButtonText: '{{ "Oui, supprimer" }}',
+cancelButtonText: '{{ "Annuler" }}',
+reverseButtons: true
+}).then((result) => {
+if (result.isConfirmed) {
+$.ajax({
+type: "POST",
+url: Routing.generate('dashboard_social_inbox_remove', {uuid: row.uuid}),
+success: function (data) {
+$table.bootstrapTable('remove', {
+field: 'fullname',
+values: [row.fullname]
+})
+}
+});
+swalWithBootstrapButtons.fire("{{ 'C\'est noté !' }}", '{{ "Votre message a bien été supprimé." }}', 'success')
+} else if (result.dismiss === Swal.DismissReason.cancel) {
+swalWithBootstrapButtons.fire('{{ "Bonne idée !" }}', '{{ "On vous le garde bien au chaud :)" }}', 'info')
+}
+})
+
+
+}
+}
+		</script>
+	{% endblock %}
+{% endblock %}

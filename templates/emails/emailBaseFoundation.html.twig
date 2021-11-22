@@ -1,0 +1,117 @@
+{% apply inky_to_html|inline_css(source('@styles/emails/foundation-emails.css'), source('@styles/emails/email.css')) %}
+<body>
+	<table class="body" data-made-with-foundation="">
+		<tr>
+			<td class="float-center" align="center" valign="top">
+				<table class="row header">
+					<tbody>
+						<tr>
+							<th class="small-12 large-12 columns first last">
+								<table>
+									<tr>
+										<th>
+											<table class="spacer">
+												<tbody>
+													<tr>
+														<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+													</tr>
+												</tbody>
+											</table>
+											<img class="text-center logo-header" src="http://book-folio.fr/assets/layout/logo-fr.png" alt="Bookfolio" width="50"></th>
+										<th class="expander"></th>
+									</tr>
+								</table>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+				<center data-parsed="">
+					<table class="spacer float-center">
+						<tbody>
+							<tr>
+								<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+							</tr>
+						</tbody>
+					</table>
+					<table align="center" class="container float-center">
+						<tbody>
+							<tr>
+								<td>
+									<table class="spacer float-center">
+										<tbody>
+											<tr>
+												<td height="30px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+											</tr>
+										</tbody>
+									</table>
+									{% block content %}{% endblock %}
+									<table class="row collapsed footer">
+										<tbody>
+											<tr>
+												<th class="small-12 large-12 columns first last">
+													<table>
+														<tr>
+															<th>
+																<table class="spacer">
+																	<tbody>
+																		<tr>
+																			<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<p class="text-center">
+																	<small>Bookfolio - Tous droits réservés</small><br>
+																	<a href="#">
+																		<small>info@book-folio.fr</small>
+																	</a>
+																	<a href="#">
+																		<small>
+																			- Gerer les notifications emails</small>
+																	</a>
+																</p>
+																<center data-parsed="">
+																	<table align="center" class="menu float-center">
+																		<tr>
+																			<td>
+																				<table>
+																					<tr>
+																						<th class="menu-item float-center">
+																							<a href="https://www.facebook.com/bookfolio.fr/"><img style="width:20px" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-facebook.svg" alt=""></a>
+																						</th>
+																						<th class="menu-item float-center">
+																							<a href="https://twitter.com/bookfolio_"><img style="width:20px" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-twitter.svg" alt=""></a>
+																						</th>
+																						<th class="menu-item float-center">
+																							<a href="https://www.instagram.com/bookfolio.fr/"><img style="width:20px" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-instagram.svg" alt=""></a>
+																						</th>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</center>
+															</th>
+															<th class="expander"></th>
+														</tr>
+													</table>
+												</th>
+											</tr>
+										</tbody>
+									</table>
+									<table class="spacer">
+										<tbody>
+											<tr>
+												<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</center>
+			</td>
+		</tr>
+	</table>
+</body>
+{% endapply %}

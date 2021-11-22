@@ -1,0 +1,98 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block body %}
+	<div class="col-sm-12 col-md-4 col-lg-4">
+		<div class="profil-pic">
+			<img src="{{ avatar }}" class="img-fluid lazyload mb-3" alt="{{ book.user.getFullname() }}">
+
+			<div class="stats_social">
+				<div class="row">
+					<div class="col-12 col-lg-12 text-xs-center text-muted text-lg-right">
+						{% if book.getShowVisitorCounter %}
+							{{ book.user.getStatistics | length }}
+							{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+						{% endif %}
+						{{ book.user.getImages | length }}
+						{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+						{{ galleries | length }}
+						{{ (galleries | length > 1) ? 'galeries':'galerie'}}
+						<div>Mis à jour
+							{{ book.user.updatedAt | ago }}</div>
+
+					</div>
+					<div class="col-lg-12 text-xs-center text-lg-right">
+						<div class="social mt-1">
+							{% if book.user.social.instagram %}
+								<a href="{{ book.user.social.instagram }}" target="_blank">
+									<i class="mdi mdi-instagram"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.facebook %}
+								<a href="{{ book.user.social.facebook }}" target="_blank">
+									<i class="mdi mdi-facebook"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.twitter %}
+								<a href="{{ book.user.social.twitter }}" target="_blank">
+									<i class="mdi mdi-twitter"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.linkedin %}
+								<a href="{{ book.user.social.linkedin }}" target="_blank">
+									<i class="mdi mdi-linkedin"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.tumblr %}
+								<a href="{{ book.user.social.tumblr }}" target="_blank">
+									<i class="mdi mdi-tumblr"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.pinterest %}
+								<a href="{{ book.user.social.pinterest }}" target="_blank">
+									<i class="mdi mdi-pinterest"></i>
+								</a>
+							{% endif %}
+
+							{% if book.user.social.skype %}
+								<a href="{{ book.user.social.skype }}" target="_blank">
+									<i class="mdi mdi-skype"></i>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-8 col-lg-8">
+		<div class="profil-desc pl-5 pr-5 text-start">
+			{% if book.user.getAbout() %}
+				<blockquote>
+					<p>
+						{{ book.user.getAbout() | raw }}
+					</p>
+				</blockquote>
+			{% else %}
+				<h3 class="mb-3">Me concernant :</h3>
+				<ul class="infos-user">
+					<li>{{ book.user.profession }}</li>
+					<li>{{ book.user.experience }}</li>
+					<li>
+						{% if book.getShowVisitorCounter %}
+							{{ book.user.getStatistics | length }}
+							{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+						{% endif %}
+						{{ book.user.getImages | length }}
+						{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+						{{ galleries | length }}
+						{{ (galleries | length > 1) ? 'galeries':'galerie'}}
+					</li>
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

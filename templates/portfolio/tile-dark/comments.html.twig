@@ -1,0 +1,137 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+
+
+{% block title %}
+	Commentaires -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Commentaires -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="container no-padd">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="margin-lg-30b">
+					<span class="count">{{ comments.getTotalItemCount }}</span>
+					{{ (comments.getTotalItemCount > 1) ? 'Commentaires':'Commentaire' }}</h3>
+				<div class="comments margin-lg-0t">
+					{% if comments.getTotalItemCount > 0 %}
+						{% for comment in comments %}
+							<div class="comment even thread-even depth-1 ct-part" id="li-comment-{{ comment.list.getId() }}">
+								<div id="comment-{{ comment.list.getId() }}" class="margin-lg-20b">
+									<div class="content">
+										<div class="person">
+
+											{% if comment.user %}
+												<a href="{{ path('portfolio_index', { name : comment.user.book.getName() }) }}" target="_blank">
+													<img alt='{{ comment.user.fullname }}' src='{{ comment.user.getAvatar() | imagine_filter('avatar') }}' srcset='{{ comment.user.getAvatar() | imagine_filter('avatar') }} 2x' class='avatar avatar-70 photo img-person' height='70' width='70'/>
+												</a>
+												<a href="{{ path('portfolio_index', { name : comment.user.book.getName() }) }}" target="_blank" class="author">{{ comment.user.getFullname }}</a>
+											{% else %}
+												<img alt='{{ comment.list.getAuthor }}' src='http://1.gravatar.com/avatar/1b30499332f42357c4bbce117209eb6a?s=70&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1b30499332f42357c4bbce117209eb6a?s=140&amp;d=mm&amp;r=g 2x' class='avatar avatar-70 photo img-person' height='70' width='70'/>
+												<a href="#" class="author">{{ comment.list.author }}</a>
+											{% endif %}
+
+											<span class="comment-date">{{ comment.list.getCreatedAt | ago }}
+											</span>
+										</div>
+										<div class="text">
+											<p>{{ comment.list.getContent | raw }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						<div class="text-center">
+							{{ knp_pagination_render(comments) }}
+						</div>
+					{% endif %}
+
+					<div class="comments-form">
+						<div id="respond" class="comment-respond">
+							<h3 id="reply-title" class="comment-reply-title">
+								<strong>Que pensez-vous de mon book ? votre avis m'intéresse !</strong>
+							</h3>
+							<p>Votre adresse email ne sera pas publiée.</p>
+							{{ form_start(form, {'attr': {'id':'contactform','class':'recaptcha-form comment-form','novalidate': 'novalidate'}}) }}
+
+							<div class="row">
+								<div class="col-lg-6 margin-lg-10b">
+									{{ form_widget(form.Author, {'attr': {'placeholder': "Votre nom ou prénom", 'tabindex':'1'}}
+									) }}
+									<div class="text-danger">
+										{{ form_errors(form.Author) }}
+									</div>
+								</div>
+								<div class="col-lg-6 margin-lg-10b">
+									{{ form_widget(form.location, {'attr': {'placeholder': "Indiquez un lieu", 'tabindex':"2"}}
+									) }}
+									{{ forms.inputGoogleHideLabel(form.route,'Rue',{id:'route'}) }}
+									{{ forms.inputGoogleHideLabel(form.locality,'Ville',{id:'locality'}) }}
+									{{ forms.inputGoogleHideLabel(form.adminstrative_area,'Région',{id:'administrative_area_level_1'}) }}
+									{{ forms.inputGoogleHideLabel(form.country,'Pays',{id:'country'}) }}
+									{{ forms.inputGoogleHideLabel(form.postalCode,'Code postal',{id:'postal_code'}) }}
+
+									<div class="text-danger">
+										{{ form_errors(form.location) }}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6 margin-lg-10b">
+									{{ form_widget(form.email, {'attr': {'placeholder': "Votre adresse email", 'tabindex':"3"}}
+									) }}
+									<div class="text-danger">
+										{{ form_errors(form.email) }}
+									</div>
+								</div>
+								<div class="col-lg-6 margin-lg-10b">
+									{{ form_widget(form.website, {'attr': {'placeholder': "URL de votre site", 'tabindex':"4"}}
+									) }}
+									<div class="text-danger">
+										{{ form_errors(form.website) }}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 margin-lg-10b">
+									{{ form_widget(form.content, {'attr': {'placeholder': "Saisissez votre message", 'tabindex':"5"}}
+									) }}
+									<div class="text-danger">
+										{{ form_errors(form.content) }}
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12 margin-lg-10b">
+
+									{{ form_widget(form.recaptcha) }}
+								</div>
+							</div>
+
+							<div class="input-wrapper clearfix">
+								<input type="submit" id="submit" value="Envoyer"/>
+							</div>
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src='{{ asset('assets/js/portfolio/init_autocomplete.js') }}'></script>
+	<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete'></script>
+{% endblock %}

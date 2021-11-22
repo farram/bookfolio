@@ -1,0 +1,56 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.getTitle() %}
+		{{ book.getTitle() }}
+	{% else %}
+		{{ book.user.getFullname() }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if galleries %}
+		<section id="content-section" class="album-list-carousel full-carousel">
+			<div class="content-wrap hover-zoom caption-gradient">
+				<div class="owl-carousel owl-mousewheel dots-rounded dots-right nav-rounded" data-items="5" data-nav="true" data-dots="false" data-tablet-landscape="4" data-tablet-portrait="3" data-mobile-landscape="2" data-mobile-portrait="1">
+					{% for gallery in galleries %}
+						<div class="album-list-item">
+							<a class="ali-link" href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">
+								<div class="ali-img-wrap">
+
+									{% if gallery.list.isProtect %}
+										<div class="ali-img bg-image" style="background-image: url({{ gallery.list.getLocked() }}); background-position: 50% 50%;"></div>
+
+									{% else %}
+										{% if gallery.list.coverImage %}
+											<div class="ali-img bg-image" style="background-image: url({{ uploaded_asset(gallery.list.coverImage.imagePath) }}); background-position: 50% 50%;"></div>
+
+										{% else %}
+											<div class="ali-img bg-image" style="background-image: url({{ ((gallery.list.getLastImage() != null) ? uploaded_asset(gallery.cover.imagePath) : gallery.list.getNoThumb() ) }}); background-position: 50% 50%;"></div>
+
+										{% endif %}
+									{% endif %}
+
+								</div>
+								<div class="ali-caption">
+									<h2 class="ali-title">{{ gallery.list.getName() }}</h2>
+									<div class="ali-meta">{{ gallery.list.getImages() | length }}
+										{{ (gallery.list.getImages() | length > 0) ? 'publications':'publication' }}</div>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	{% else %}
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="alert alert-warning">Aucune publication pour l'instant.</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

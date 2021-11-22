@@ -1,0 +1,99 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{gallery.getName()}}
+	- Bookfolio
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/menus/gallery_head.html.twig' %}
+	<div class="row g-6 g-xl-9">
+		<div class="col-lg-12">
+			<div id="gallery" data-folder="{{ gallery.getId() }}">
+				<div class="card card-flush h-lg-100">
+					<div class="card-body p-9 pt-5">
+						{% if gallery.isProtect %}
+							<div class="notice d-flex bg-light-danger rounded border-danger border border-dashed p-6 mt-5">
+								<span class="svg-icon svg-icon-2tx svg-icon-danger me-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+										<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
+										<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
+										<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
+									</svg>
+								</span>
+								<div class="d-flex flex-stack flex-grow-1">
+									<div class="fw-bold">
+										<h4 class="text-gray-900 fw-bolder">{{"Protégée par un mot de passe" | trans}}</h4>
+										<div class="fs-6 text-gray-700">{{"Vous avez protégé cette galerie avec un mot de passe."}}
+											<br>{{"Seules les personnes ayant ce mot de passe peuvent y accéder." | trans}}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if images| length > 0%}
+							<p class="fw-bold mb-4 fs-5 text-gray-400 pt-5 pb-5">
+								{{"Vous pouvez réorganiser les photos de votre galerie. Il vous suffit de cliquer sur l'icon" | trans}}
+								<i class="bi bi-arrows-move"></i>
+								{{ "(sans relâcher) et faites-la glisser à l’emplacement souhaité." | trans}}
+							</p>
+						{% endif %}
+
+						{% if avalableCreditService.canPublishImages %}
+							<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+								<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+										<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+										<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+										<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+									</svg>
+								</span>
+								<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+									<div class="mb-3 mb-md-0 fw-bold">
+										<div class="fs-6 text-gray-700 pe-7">
+											{% set count = avalableCreditService.remaining %}
+											{{ count|pluralize('Vous pouvez encore ajouter {} photo ce mois-ci sur votre book avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}), 'Vous pouvez encore ajouter {} photos ce mois-ci sur votre book avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}) | trans) |raw}}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed h-lg-100 p-6 mb-10">
+								<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+										<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+										<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+										<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+									</svg>
+								</span>
+								<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+									<div class="mb-3 mb-md-0 fw-bold">
+										<div class="fs-6 text-gray-700 pe-7">
+											{{"Vous avez atteint le nombre maximum de publications ce mois-ci avec votre formule actuelle." | trans}}
+											<br>
+											{{ 'Si vous souhaitez publier de nouvelles photos, consultez %pricing%'|trans({'%pricing%': '<a href="' ~ path('pricing_all') ~ '"> ' ~ ' nos formules ici.'|trans ~ '</a>'})|raw }}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+
+						{% if avalableCreditService.canPublishImages %}
+							<input type="file" name="files" class="gallery_media">
+						{% else %}
+							{# {% include 'dashboard/partial/alert/credit_images.html.twig' %} #}
+							<input type="file" name="files" class="gallery_media" disabled="">
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	<script src="{{ asset('assets/js/dashboard/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/js/dashboard/fileuploader.js') }}"></script>
+{% endblock javascripts %}

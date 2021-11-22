@@ -1,0 +1,200 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		À propos -
+		{{ book.getTitle() }}
+	{% else %}
+		À propos -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	À propos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<section id="page-header-secion" class="alter-heading">
+		<div class="page-header-image parallax bg-image" style="background-image: url(assets/img/headings/heading-6.jpg); background-position: 50% 50%;"></div>
+		<div class="cover page-header-cover"></div>
+		<div class="container page-header-content no-padding max-width-800 text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="album-title">À propos de moi</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="content-section" class="page page-about-me">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content-wrap">
+						<div class="row">
+							<div class="col-md-12">
+
+								<h3>{{ book.user.getFullname() }}</h3>
+								<h6>{{ book.user.getProfession() }}
+									/
+									{{ book.user.getExperience() }}</h6>
+
+								<p>{{ book.user.address.getLocation() }}</p>
+								<p>
+									{% if book.getShowVisitorCounter %}
+										{{ book.user.getStatistics | length }}
+										{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+									{% endif %}
+									{{ book.user.getImages | length }}
+									{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+									{{ galleries | length }}
+									{{ (galleries | length > 1) ? 'galeries':'galerie'}}
+								</p>
+								<p>Mis à jour
+									{{ book.user.updatedAt | ago }}</p>
+								<p>Abonnés :
+									{{ (followBack < 0 ) ? '0': followBack | length }}</p>
+								<p>Abonnements :
+									{{ (book.user.getFollows()) ? '0': book.user.getFollows() | length }}</p>
+
+								{% if book.user.getAbout() %}
+									<blockquote>
+										<p>
+											{{ book.user.getAbout() | raw }}
+										</p>
+									</blockquote>
+								{% endif %}
+
+								{% if book.user.social.getWebsite() %}
+									<h4>Site web</h4>
+									<div class="text">
+										<a href="{{ book.user.social.getWebsite() }}" target="_blank">
+											{{ book.user.social.getWebsite() }}
+										</a>
+									</div>
+								{% endif %}
+
+								<h4>Autres</h4>
+								{% if book.user.profession.getSlug() == "modele" %}
+									<div class="text">
+										<ul class="list-items">
+											{% if book.user.physical.getSize() %}
+												<li>Taille :
+													{{ book.user.physical.getSize() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getWeight() %}
+												<li>Poids :
+													{{ book.user.physical.getWeight() }}
+													kg
+												</li>
+											{% endif %}
+											{% if book.user.physical.getHip() %}
+												<li>Tour de hanche :
+													{{ book.user.physical.getHip() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getChest() %}
+												<li>chest :
+													{{ book.user.physical.getChest() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getConfection() %}
+												<li>Confection :
+													{{ book.user.physical.getConfection() }}</li>
+											{% endif %}
+											{% if book.user.physical.getPointure() %}
+												<li>Pointure :
+													{{ book.user.physical.getPointure() }}</li>
+											{% endif %}
+											{% if book.user.physical.getChestSize() %}
+												<li>Tour de poitrine :
+													{{ book.user.physical.getChestSize() }}</li>
+											{% endif %}
+											{% if book.user.physical.getWaistSize() %}
+												<li>Tour de taille :
+													{{ book.user.physical.getWaistSize() }}</li>
+											{% endif %}
+											{% if book.user.physical.getChestHeight() %}
+												<li>Hauteur de poitrine :
+													{{ book.user.physical.getChestHeight() }}</li>
+											{% endif %}
+											{% if book.user.physical.getHeightBust() %}
+												<li>Hauteur devant du buste :
+													{{ book.user.physical.getHeightBust() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getBackHeight() %}
+												<li>Hauteur du dos :
+													{{ book.user.physical.getBackHeight() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getShoulderWidth() %}
+												<li>Largeur de l'épaule :
+													{{ book.user.physical.getShoulderWidth() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getArmLength() %}
+												<li>Longueur du bras :
+													{{ book.user.physical.getArmLength() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getArmsTurn() %}
+												<li>Tour du bras :
+													{{ book.user.physical.getArmsTurn() }}
+													cm
+												</li>
+											{% endif %}
+											{% if book.user.physical.getRoundNeck() %}
+												<li>Tour du cou :
+													{{ book.user.physical.getRoundNeck() }}
+													cm
+												</li>
+											{% endif %}
+										</ul>
+									</div>
+								{% endif %}
+
+								{% if book.user.profession.getSlug() == "photographe" %}
+									<div class="text">
+										<ul class="list-items">
+											{% if book.user.physical.getApnCamera() %}
+												<li>Appareil photo :
+													{{ book.user.physical.getApnCamera() }}
+												</li>
+											{% endif %}
+
+											{% if book.user.physical.getApnLenses() %}
+												<li>Objectif(s) :
+													{{ book.user.physical.getApnLenses() }}
+												</li>
+											{% endif %}
+										</ul>
+									</div>
+								{% endif %}
+
+								{% if book.getStylePhotos() %}
+									<h4 class="margin-top-20">Style de photos :</h4>
+									<p>
+										{{ stylePhoto }}</p>
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

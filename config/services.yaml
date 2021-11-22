@@ -1,0 +1,134 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    upload_dir: "../public"
+    images_directory: "../public/"
+    app.locales: [fr, en]
+    locale: fr
+    uploads_base_url: "https://s3.eu-central-1.amazonaws.com/%env(AWS_S3_ACCESS_BUCKET)%"
+    aws_s3_id: '%env(AWS_S3_ACCESS_ID)%'
+    aws_s3_secret: '%env(AWS_S3_ACCESS_SECRET)%'
+    aws_s3_bucket: '%env(AWS_S3_ACCESS_BUCKET)%'
+    aws_s3_region: '%env(AWS_S3_ACCESS_REGION)%'
+    aws_s3_version: '%env(AWS_S3_ACCESS_VERSION)%'
+    PerPage: 12
+    #https://s3.eu-central-1.amazonaws.com/
+    google_recaptcha_site_key: "%env(GOOGLE_RECAPTCHA_SITE_KEY)%"
+    stripe_public_key: "%env(STRIPE_PUBLIC_KEY)%"
+    stripe_secret_key: "%env(STRIPE_SECRET_KEY)%"
+    base_host: '%env(BASE_HOST)%'
+    gandi_api_url: https://rpc.ote.gandi.net/xmlrpc/
+    gandi_api_key: "7XXIwikE6GqHYAW3qcdl4ahB"
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        public: false
+        autowire: true # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $uploadDir: "%upload_dir%"
+            $imageDirectory: "%images_directory%"
+            $publicUploadFilesystem: "@oneup_flysystem.uploads_adapter_filesystem"
+            $uploadedAssetsBaseUrl: "%uploads_base_url%"
+            $privateUploadsFilesystem: "@oneup_flysystem.uploads_adapter_filesystem"
+            $locales: '%app.locales%'
+            $defaultLocale: '%locale%'
+
+    App\Service\UploaderHelper:
+        public: true
+
+    ImageHelper:
+        class: App\Service\ImageHelper
+
+    # https://s3.eu-central-1.amazonaws.com/
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: "../src/"
+        exclude:
+            - "../src/DependencyInjection/"
+            - "../src/Entity/"
+            - "../src/Kernel.php"
+            - "../src/Tests/"
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: "../src/Controller/"
+        tags: ["controller.service_arguments"]
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    Liip\ImagineBundle\Service\FilterService:
+        alias: "liip_imagine.service.filter"
+
+    Symfony\Component\Asset\Context\RequestStackContext: "@assets.context"
+
+    Aws\S3\S3Client:
+        arguments:
+            - version: "2006-03-01"
+              region: "eu-central-1"
+              credentials:
+                  key: "%env(AWS_S3_ACCESS_ID)%"
+                  secret: "%env(AWS_S3_ACCESS_SECRET)%"
+
+    App\Service\StripeService:
+        arguments:
+            $secretKey: "%env(STRIPE_SECRET_KEY)%"
+            $publicKey: "%env(STRIPE_PUBLIC_KEY)%"
+
+    App\StripeClient:
+        #class: App\StripeClient
+        arguments:
+            $secretKey: "%env(STRIPE_SECRET_KEY)%"
+            $publicKey: "%env(STRIPE_PUBLIC_KEY)%"
+        #autowire: false
+
+    # app.command.custom_schema_update_command:
+    #     class: App\Command\MigrationDatabaseCommand
+    #     arguments: ["@doctrine.orm.entity_manager"]
+    #     tags:
+    #         -  { name: console.command }
+
+    # app.show_user_listener:
+    #     class: App\EventListener\NavbarUserListener
+    #     tags:
+    #         - { name: kernel.event_listener, event: theme.sidebar_user, method: onShowUser }
+    
+    # my_admin_bundle.menu_listener:
+    #     class: App\EventListener\MenuBuilderListener
+    #     tags:
+    #         - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
+
+    # app.setup_knp_menu_listener:
+    #     class: App\EventListener\KnpMenuBuilderListener
+    #     tags:
+    #         - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupMenu }             
+
+knp_paginator:
+    page_range: 5 # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    default_options:
+        page_name: page # page query parameter name
+        sort_field_name: sort # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true # ensure distinct results, useful when ORM queries are using GROUP BY statements
+        filter_field_name: filterField # filter field query parameter name
+        filter_value_name: filterValue # filter value query parameter name
+    template:
+        pagination: "@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig" # sliding pagination controls template
+        sortable: "@KnpPaginator/Pagination/sortable_link.html.twig" # sort link template
+        filtration: "@KnpPaginator/Pagination/filtration.html.twig" # filters template
+
+doctrine:
+     orm:
+         dql:
+             numeric_functions:
+                 rand: DoctrineExtensions\Query\Mysql\Rand
+
+
+

@@ -1,0 +1,148 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Annonces - Ajouter" | trans}}
+{% endblock %}
+{% block body %}
+	<div class="d-flex flex-column flex-lg-row">
+		<div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
+			{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+			<div class="card card-flush pt-5 mb-5 mb-lg-10">
+				<div class="card-header">
+					<div class="card-title">
+						<h2 class="fw-bolder">{{"Ajouter une annonce" | trans}}</h2>
+					</div>
+				</div>
+				<div class="card-body pt-0">
+					{% if avalableCreditService.canPublishAnnonces %}
+						<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+							<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+									<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+									<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+									<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+								</svg>
+							</span>
+							<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+								<div class="mb-3 mb-md-0 fw-bold">
+									<div class="fs-6 text-gray-700 pe-7">
+										{% set count = avalableCreditService.avalableAnnoncesRemaining %}
+										{{ count|pluralize('Vous pouvez encore ajouter {} annonce sur le site ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}), 'Vous pouvez encore ajouter {} annonces ce mois-ci sur le site avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}) | trans) |raw}}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						{{ block("notice_limit_annonces", "dashboard/partial/alert/notice.html.twig") }}
+					{% endif %}
+
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.profession, "À qui s\'adresse t-elle ?", {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.profession, {'attr': {'class': 'form-control form-control-solid rounded-3'}}) }}
+						{% else %}
+							{{ form_widget(form.profession, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3'}}) }}
+						{% endif %}
+
+						{{ form_errors(form.profession) }}
+						{{ form_help(form.profession) }}
+					</div>
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.gender, 'Vous recherchez un(e)', {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.gender, {'attr': {'class': 'form-control form-control-solid rounded-3'}}) }}
+						{% else %}
+							{{ form_widget(form.gender, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3'}}) }}
+						{% endif %}
+						{{ form_errors(form.gender) }}
+						{{ form_help(form.gender) }}
+					</div>
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.type, 'Pour quel type de prestation ?', {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.type, {'attr': {'class': 'form-control form-control-solid rounded-3'}}) }}
+						{% else %}
+							{{ form_widget(form.type, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3'}}) }}
+						{% endif %}
+						{{ form_errors(form.type) }}
+						{{ form_help(form.type) }}
+					</div>
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.location, 'Où ?', {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.location, {'attr': {'class': 'form-control form-control-solid rounded-3','id':'address_form_fullAddress'}}) }}
+							{{ form_errors(form.location) }}
+							{{ form_help(form.location) }}
+							{{ form_row(form.route, { 'id': 'route'}) }}
+							{{ form_row(form.locality, { 'id': 'locality' }) }}
+							{{ form_row(form.adminstrativeArea, { 'id': 'administrative_area_level_1' }) }}
+							{{ form_row(form.country, { 'id': 'country' }) }}
+							{{ form_row(form.postalCode, { 'id': 'postal_code' }) }}
+						{% else %}
+							{{ form_widget(form.location, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3','id':'address_form_fullAddress'}}) }}
+						{% endif %}
+					</div>
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.title, 'Titre de votre annonce', {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.title, {'attr': {'class': 'form-control form-control-solid rounded-3'}}) }}
+						{% else %}
+							{{ form_widget(form.title, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3'}}) }}
+						{% endif %}
+						{{ form_errors(form.title) }}
+						{{ form_help(form.title) }}
+					</div>
+
+					<div class="d-flex flex-column mb-10 fv-row">
+						{{ form_label(form.description, 'Votre annonce', {'label_attr': {'class': 'fs-5 fw-bolder form-label mb-3'}})  }}
+						{% if avalableCreditService.canPublishAnnonces %}
+							{{ form_widget(form.description, {'attr': {'class': 'form-control form-control-solid rounded-3'}}) }}
+						{% else %}
+							{{ form_widget(form.description, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid rounded-3'}}) }}
+						{% endif %}
+						{{ form_errors(form.description) }}
+						{{ form_help(form.description) }}
+					</div>
+				</div>
+				<div class="card-footer d-flex justify-content-end py-6 px-9">
+					{% if avalableCreditService.canPublishImages %}
+						<button type="submit" class="btn btn-primary btn-hover-rise">{{"Enregistrer" | trans}}</button>
+					{% else %}
+						<button type="submit" class="btn btn-md btn-primary disabled">{{"Enregistrer" | trans}}</button>
+					{% endif %}
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+		<div class="flex-column flex-lg-row-auto w-100 w-lg-250px w-xl-300px mb-10 order-1 order-lg-2">
+			<div class="flex-column flex-lg-row-auto w-100 w-lg-250px w-xl-300px mb-10 order-1 order-lg-2">
+				<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+					<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+							<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+							<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+							<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+						</svg>
+					</span>
+					<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+						<div class="mb-3 mb-md-0 fw-bold">
+							<div class="fs-6 text-gray-700 pe-7">
+								{{ 'Remplissez votre annonce le plus précisement possible, elle remontera correctement dans la liste de toutes les annonces.' | trans}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/dashboard/geolocate.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

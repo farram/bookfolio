@@ -1,0 +1,23 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.title %}
+		{{ book.title }}
+	{% else %}
+		{{ book.user.fullname }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<div class="container clearfix no-padd margin-lg-30b">
+		<div class="row">
+			<div class="col-12">
+				<div id="portfolioImagesHome"></div>
+			</div>
+			{% if showGallery %}
+				{% include 'portfolio/partial/link_gallery.html.twig' with {'book': book,'col':'col-lg-4 col-lg-offset-4'} %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

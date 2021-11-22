@@ -1,0 +1,132 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Configuration de votre book - Paramètres | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Configuration de votre book'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/book_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div id="settings">
+				{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+				<div class="card p-3">
+					<div class="p-3">
+						<h3 class="mb-2 mt-0">{{ 'Paramètres du book' | trans }}</h3>
+						<hr>
+
+						<div class="row mb-4">
+							<div class="col-lg-12">
+								<h4 class="mt-0">{{"Photo principale de votre book" | trans}}</h4>
+								<p class="text-muted">{{"Choisissez une photo récente de vous. Cela aide les gens à s'assurer qu'ils contactent la bonne personne." | trans}}</p>
+								<div class="row">
+									<div class="col-8">
+										<div class="row">
+											<div class="col-lg-3">
+												<input type="file" name="files" data-fileuploader-default="{{ app.user.getAvatar() | imagine_filter('avatar') }}" class="profile_image" data-fileuploader-files=''>
+											</div>
+											<div class="col-lg-9">
+												<p class="mt-3 text-dark">
+													{% trans %}Uniquement les fichiers JPG et JPEG.{% endtrans %}<br>{% trans %}Dimensions : 200x200 minimum. 5Mo maximum.{% endtrans %}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									{{ form_label(form.name, 'Url de votre book'|trans, {'label_attr': {'class': 'text-dark mb-0 d-block'}})  }}
+									<p>
+										{{"Votre book est actuellement accessible à l'adresse :" | trans}}
+										<a href="{{ path('portfolio_index', {'name':app.user.book.name}) }}" class="text-success" target="_blank">http://{{ app.user.book.getName()}}.book-folio.fr</a>
+									</p>
+									<div class="input-group mt-2">
+										<div class="input-group-prepend">
+											<span class="input-group-text">http://</span>
+										</div>
+										{{ form_widget(form.name, {'help': 'foobar'}) }}
+										<div class="input-group-append">
+											<span class="input-group-text">.book-folio.fr</span>
+										</div>
+									</div>
+									{{ form_help(form.name) }}
+								</div>
+							</div>
+
+							{{ forms.input(form.stylePhotos,'Style de photos'| trans,{class:'col-lg-12'}) }}
+
+							<div class="col-12">
+								<div class="row">
+									<div class="col-12">
+										<h4 class="mb-3">{{'Options'| trans}}</h4>
+									</div>
+									{{ forms.checkbox(form.showContact, {class:'col-lg-12'}) }}
+									{{ forms.checkbox(form.allowComments,{class:'col-lg-12'}) }}
+									{{ forms.checkbox(form.showVisitorCounter,{class:'col-lg-12'}) }}
+								</div>
+							</div>
+
+							{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card p-3">
+					<div class="p-3">
+						<h3 class="mb-2 mt-0">{{ 'Référencement naturel' | trans }}</h3>
+						<hr>
+						<p class="text-muted">{{"Votre book est automatiquement référencé sur Google mais vous pouvez empêcher cela si vous voulez le laisser en privé. Si vous ne souhaitez pas faire apparaître votre book dans les résultats de recherche Google, décochez la case ci-dessous." | trans}}</p>
+						<div class="row">
+							{{ forms.checkbox(form.allowSeo,{class:'col-lg-12'}) }}
+							{{ forms.input(form.title,'Titre de votre book' | trans,{class:'col-lg-12'}) }}
+							{{ forms.input(form.description,'De quoi parle votre book ?' | trans,{class:'col-lg-12'}) }}
+							{{ forms.input(form.keywords,'Avez-vous des mots clés en rapport avec votre book ?' | trans,{class:'col-lg-12'}) }}
+							{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="card p-3 border mt-3">
+					<div class="p-3">
+						<h3 class="mb-2 mt-0">{{ 'Google analytics' | trans }}</h3>
+						<hr>
+						<p class="text-muted">
+							{{ 'Entrez votre code de suivi Google Analytics ci-dessous pour commencer à suivre le trafic de votre book à l\'aide de Google Analytics. Le code de suivi de la propriété Web, également appelé numéro UA, se trouve en cliquant sur le lien "Vérifier l\'état" sur la page de profil de votre site dans Google Analytics et devrait ressembler à ceci : UA-xxxxxx-xx.' | trans}}
+                            </p>
+							 <p class="text-muted">
+                                {{ 'Une fois que vous avez installé le code de suivi Analytics, un délai de 24 heures peut être nécessaire pour que les données telles que les informations sur le trafic généré par les sites référents, les caractéristiques des utilisateurs ainsi que les informations de navigation s\'affichent dans vos rapports.' | trans}}
+						</p>
+						<p class="text-muted">
+							{{ 'Pour en savoir plus sur Google Analytics, aller sur www.google.com/analytics/' | trans}}
+						</p>
+						<div class="row">
+							{{ forms.input(form.codeAnalytics,'Votre code analytics' | trans,{class:'col-lg-12'}) }}
+							{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+						</div>
+					</div>
+				</div>
+
+				{{ form_end(form) }}
+
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+{% endblock javascripts %}

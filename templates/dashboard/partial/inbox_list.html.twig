@@ -1,0 +1,22 @@
+<div class="mail-list">
+	<a href="{{ path('inbox_all') }}" class="{% if (current_path == "inbox_all") or (current_path == "inbox_show") %}text-blue font-weight-bold{% endif %}">
+		<i class="dripicons-inbox mr-2"></i>
+		{{"Boîte de réception" | trans}}
+		{% if app.user.unreadinboxes | length > 0 %}
+			<span class="badge badge-soft-danger float-right ml-2">
+				{{ app.user.unreadinboxes | length }}
+			</span>
+		{% endif %}
+	</a>
+	<a href="{{ path('inbox_favorites') }}" class="{% if (current_path == "inbox_favorites") or (current_path == "inbox_favoris_show") %}text-blue font-weight-bold{% endif %}">
+		<i class="dripicons-star mr-2"></i>
+		{{"Favoris" | trans}}
+		{% if app.user.favoritesInboxes | length > 0 %}
+			<span class="badge badge-soft-warning float-right ml-2">
+				{{ app.user.favoritesInboxes | length }}
+			</span>
+		{% endif %}
+	</a>
+
+
+</div>

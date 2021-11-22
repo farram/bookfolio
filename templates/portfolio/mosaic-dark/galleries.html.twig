@@ -1,0 +1,71 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		Galeries -
+		{{ book.getTitle() }}
+	{% else %}
+		Galeries -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	Galeries -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+{% block body %}
+	<div class="dark-wrapper">
+		<div class="container inner">
+			<div class="blog row">
+				{% if galleries | length > 0 %}
+					<div class="col-sm-12 blog-content grid-view">
+						<div class="blog-content">
+							<div class="row blog-posts">
+
+								{% for gallery in galleries %}
+									<div class="post col-sm-12 col-md-4">
+										<figure class="overlay">
+											<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">
+
+												{% if gallery.list.isProtect %}
+													<img src="{{ gallery.list.getLocked() }}" alt="" class="">
+												{% else %}
+													{% if gallery.list.coverImage %}
+														<img src="{{ gallery.list.coverImage.imagePath | imagine_filter('thumbnail_card') }}" alt="" class="">
+													{% else %}
+														<img src="{{ ((gallery.list.getLastImage() != null) ? gallery.cover.imagePath | imagine_filter('thumbnail_card') : gallery.list.getNoThumb() ) }}" alt="" class="">
+													{% endif %}
+												{% endif %}
+											</a>
+
+										</figure>
+										<div class="post-content">
+											<h3 class="post-title">
+												<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}">{{ gallery.list.getName() }}</a>
+											</h3>
+											<div class="meta">
+												<span class="date">{{ gallery.list.getCreatedAt() | ago }}</span>
+												<span class="category">
+													<a href="#">{{ gallery.list.getImages() | length }}
+														{{ (gallery.list.getImages() | length > 1) ? 'photos':'photo' }}</a>
+												</span>
+											</div>
+											<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}" class="more">Voir les photos</a>
+										</div>
+									</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-12 text-center">
+						<h4>Aucune galerie public pour l'instant.</h4>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

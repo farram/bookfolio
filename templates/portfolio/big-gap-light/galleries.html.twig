@@ -1,0 +1,62 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		Galeries -
+		{{ book.getTitle() }}
+	{% else %}
+		Galeries -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	Galeries -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container clearfix no-padd portfolio-single-content margin-lg-30b ">
+		<div class="row">
+			{% if galleries | length > 0 %}
+				<div class="portfolio-wrapper">
+					<div class="portfolio simple col-4 clearfix no-padd" data-space="15">
+						<div class="col-sm-12">
+							<div class="wpb_wrapper">
+								{% for gallery in galleries %}
+									<div class="item">
+										<a href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}" class="item-link gridrotate-alb">
+											<div class="item-img">
+												<div class="images-one">
+													{% if gallery.list.isProtect %}
+														<img src="{{ gallery.list.getLocked() }}" alt="" class="s-img-switch">
+													{% else %}
+														{% if gallery.list.coverImage %}
+															<img src="{{ gallery.list.coverImage.imagePath | imagine_filter('thumbnail_card') }}" alt="{{ gallery.list.getName() }}" class="s-img-switch">
+														{% else %}
+															<img src="{{ ((gallery.list.getLastImage() != null) ? gallery.cover.imagePath | imagine_filter('thumbnail_card') : gallery.list.getNoThumb() ) }}" alt="" class="s-img-switch">
+														{% endif %}
+													{% endif %}
+												</div>
+											</div>
+											<div class="item-overlay">
+												<h5>{{ gallery.list.getName() }}</h5>
+											</div>
+										</a>
+									</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="col-12">
+					<div class="alert alert-warning text-center" role="alert">Aucune galerie public pour l'instant.</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

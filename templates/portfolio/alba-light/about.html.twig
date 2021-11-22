@@ -1,0 +1,225 @@
+{% set idpage = '5e494caf08eef83a8e4fba69' %}
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.title %}
+		À propos -
+		{{ book.title }}
+	{% else %}
+		À propos -
+		{{ book.user.fullname }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	À propos -
+	{{ book.description | raw }}
+	-
+	{{ book.user.fullname }}
+{% endblock %}
+
+{% block body %}
+	<div class="section">
+		<div class="container">
+			<h1 class="heading-6 identity-user">
+				{{ book.user.fullname }}
+			</h1>
+			<h2 class="heading-9">{{ book.user.profession }}
+				-
+				{{ book.user.address.location }}</h2>
+		</div>
+	</div>
+	<div class="about-me">
+		<div class="container">
+			<div class="flex-row">
+				<div class="item-content item-large content-image"><img src="{{ avatar }}" alt="{{ book.user.fullname }}" sizes="(max-width: 479px) 160px, 400px" class="about-me-image"></div>
+				<div class="item-content item-large">
+					<blockquote class="block-quote-3">
+						{{ book.user.about | raw }}
+					</blockquote>
+
+
+					<ul class="paragraph-4 paragraph">
+						{% if book.user.profession.getSlug() == "modele" %}
+							{% if book.user.physical.getSize() %}
+								<li>Taille :
+									{{ book.user.physical.getSize() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getWeight() %}
+								<li>Poids :
+									{{ book.user.physical.getWeight() }}
+									kg
+								</li>
+							{% endif %}
+							{% if book.user.physical.getHip() %}
+								<li>Tour de hanche :
+									{{ book.user.physical.getHip() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getChest() %}
+								<li>chest :
+									{{ book.user.physical.getChest() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getConfection() %}
+								<li>Confection :
+									{{ book.user.physical.getConfection() }}</li>
+							{% endif %}
+							{% if book.user.physical.getPointure() %}
+								<li>Pointure :
+									{{ book.user.physical.getPointure() }}</li>
+							{% endif %}
+							{% if book.user.physical.getChestSize() %}
+								<li>Tour de poitrine :
+									{{ book.user.physical.getChestSize() }}</li>
+							{% endif %}
+							{% if book.user.physical.getWaistSize() %}
+								<li>Tour de taille :
+									{{ book.user.physical.getWaistSize() }}</li>
+							{% endif %}
+							{% if book.user.physical.getChestHeight() %}
+								<li>Hauteur de poitrine :
+									{{ book.user.physical.getChestHeight() }}</li>
+							{% endif %}
+							{% if book.user.physical.getHeightBust() %}
+								<li>Hauteur devant du buste :
+									{{ book.user.physical.getHeightBust() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getBackHeight() %}
+								<li>Hauteur du dos :
+									{{ book.user.physical.getBackHeight() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getShoulderWidth() %}
+								<li>Largeur de l'épaule :
+									{{ book.user.physical.getShoulderWidth() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getArmLength() %}
+								<li>Longueur du bras :
+									{{ book.user.physical.getArmLength() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getArmsTurn() %}
+								<li>Tour du bras :
+									{{ book.user.physical.getArmsTurn() }}
+									cm
+								</li>
+							{% endif %}
+							{% if book.user.physical.getRoundNeck() %}
+								<li>Tour du cou :
+									{{ book.user.physical.getRoundNeck() }}
+									cm
+								</li>
+							{% endif %}
+						{% endif %}
+					</ul>
+
+					{% if book.user.profession.getSlug() == "photographe" %}
+						<ul class="paragraph-4 paragraph">
+							{% if book.user.physical.getApnCamera() %}
+								<li>Appareil photo :
+									{{ book.user.physical.getApnCamera() }}
+								</li>
+							{% endif %}
+
+							{% if book.user.physical.getApnLenses() %}
+								<li>Objectif(s) :
+									{{ book.user.physical.getApnLenses() }}
+								</li>
+							{% endif %}
+						</ul>
+					{% endif %}
+
+					{% if book.getStylePhotos() %}
+						<h4 class="margin-top-20">Style de photos :</h4>
+						<p>
+							{{ stylePhoto }}</p>
+					{% endif %}
+
+					<div class="status-location about">
+						{% if book.getShowVisitorCounter %}
+							{{ book.user.getStatistics | length }}
+							{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+						{% endif %}
+						{{ book.user.getImages | length }}
+						{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+						{{ galleries | length }}
+						{{ (galleries | length > 1) ? 'galeries':'galerie'}}
+
+						<div>
+							Abonnés :
+							{{ (followBack < 0 ) ? '0': followBack | length }}
+						</div>
+						<div>
+							Abonnements :
+							{{ (book.user.follows) ? '0': book.user.follows | length }}
+						</div>
+
+
+						<div>Mis à jour
+							{{ book.user.updatedAt | ago }}</div>
+						<br>
+						{% if book.user.social.website %}
+							<a href="{{ book.user.social.website }}" target="_blank" class="link-4 link-text">{{ book.user.social.website }}</a>
+						{% endif %}
+
+
+					</div>
+					<div class="social-link">
+						{% if book.user.social.instagram %}
+							<a href="{{ book.user.social.getInstagram() }}" target="_blank" class="link-text">
+								Instagram
+							</a>
+						{% endif %}
+
+						{% if book.user.social.facebook %}
+							<a href="{{ book.user.social.facebook }}" target="_blank" class="link-text">
+								Facebook
+							</a>
+						{% endif %}
+
+						{% if book.user.social.twitter %}
+							<a href="{{ book.user.social.twitter }}" target="_blank" class="link-text">
+								Twitter
+							</a>
+						{% endif %}
+
+						{% if book.user.social.linkedin %}
+							<a href="{{ book.user.social.linkedin }}" target="_blank" class="link-text">
+								Linkedin
+							</a>
+						{% endif %}
+
+						{% if book.user.social.tumblr %}
+							<a href="{{ book.user.social.tumblr }}" target="_blank" class="link-text">
+								Tumblr
+							</a>
+						{% endif %}
+
+						{% if book.user.social.pinterest %}
+							<a href="{{ book.user.social.pinterest }}" target="_blank" class="link-text">
+								Pinterest
+							</a>
+						{% endif %}
+
+						{% if book.user.social.skype %}
+							<a href="{{ book.user.social.skype }}" target="_blank" class="link-text">
+								Skype
+							</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% set idpage = '5e494503a90a2c4f793d5a82' %}
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.getTitle() %}
+		{{ book.getTitle() }}
+	{% else %}
+		{{ book.user.getFullname() }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+
+{% block body %}
+	<div class="section">
+		<div class="container">
+			<h1 class="heading-6">
+				{{ book.user.getAbout() | raw }}
+			</h1>
+			<div class="status-location">
+				{{ book.user.getProfession() }}
+				-
+				{{ book.user.getExperience() }}
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="w-dyn-list">
+
+			{% if galleries %}
+				<div class="w-dyn-items">
+
+					{% for gallery in galleries %}
+						<div data-w-id="cb5f52f3-9402-fce6-8291-f5198acd3cfe" style="opacity:0;-webkit-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 50PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="items w-dyn-item">
+							<a data-w-id="40f7be26-9345-ba67-2da9-7d32edb86eed" href="{{ path('portfolio_gallery_show', { name : book.name, slug : gallery.list.getSlug() }) }}" class="project-large w-inline-block">
+								<div class="project-large-title-container">
+									<h6 class="subtitle-infos">Galerie</h6>
+									<h3 class="project-large-title">{{ gallery.list.getName() }}</h3>
+								</div>
+								<div class="project-large-image-container">
+									<div class="projet-image">
+
+										{% if gallery.list.isProtect %}
+											<img src="{{ gallery.list.getLocked() }}" alt="" class="project-image-element">
+										{% else %}
+											{% if gallery.list.coverImage %}
+												<img src="{{ uploaded_asset(gallery.list.coverImage.imagePath) }}" alt="" class="project-image-element">
+											{% else %}
+												<img src="{{ ((gallery.list.getLastImage() != null) ? uploaded_asset(gallery.cover.imagePath) : gallery.list.getNoThumb() ) }}" alt="" class="project-image-element">
+											{% endif %}
+										{% endif %}
+
+										<div class="overlay"></div>
+										<div class="project-large-title-container">
+											<h6 class="subtitle-infos">Galerie</h6>
+											<h3 class="project-large-title text-large text-color-white">{{ gallery.list.getName() }}</h3>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+
+
+				</div>
+			{% else %}
+				<div class="empty-state w-dyn-empty">
+					<div>Aucune publication pour l'instant.</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

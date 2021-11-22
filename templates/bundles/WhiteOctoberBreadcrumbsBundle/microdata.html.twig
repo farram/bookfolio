@@ -1,0 +1,33 @@
+{% if wo_breadcrumbs()|length %}
+
+	{%- apply spaceless -%}
+	<ul id="{{ listId }}" class="{{ listClass }}" itemscope itemtype="http://schema.org/BreadcrumbList">
+		{% for b in breadcrumbs %}
+
+			<li {% if itemClass is defined and itemClass|length %} class="{{ itemClass }} {% if separator is not null and loop.last %}active{% endif %}" {% endif %} itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				{% if b.url and not loop.last %}
+					<a href="{{ b.url }}" itemprop="item" class="text-muted text-hover-primary" {% if linkRel is defined and linkRel|length %} rel="{{ linkRel }}" {% endif %}>
+					{% endif %}
+					<span itemprop="name" class="{% if separator is not null and loop.last %}text-dark{% endif %}">
+						{% if b.translate is defined and b.translate == true %}
+							{{- b.text | trans(b.translationParameters, translation_domain, locale) -}}
+						{% else %}
+							{{- b.text -}}
+						{% endif %}
+					</span>
+					{% if b.url and not loop.last %}
+					</a>
+				{% elseif b.url %}
+					<meta itemprop="item" content="{{ b.url }}"/>
+				{% endif %}
+				<meta itemprop="position" content="{{ loop.index }}"/>
+			</li>
+			{% if separator is not null and not loop.last %}
+				<li class="breadcrumb-item">
+					<span class='{{ separatorClass }}'>{{ separator }}</span>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+	{% endapply %}
+{% endif %}

@@ -1,0 +1,25 @@
+<div class="card p-3">
+	<h4>{{"Votre offre" | trans}}</h4>
+	<div class="">
+		{% if app.user.hasActiveSubscription %}
+			<span class="badge badge-pill p-1 px-2 {{ avalableCreditService.currentPlan.color }}">
+				{{ avalableCreditService.currentPlan.name }}
+			</span>
+		{% else %}
+			<span class="badge badge-pill p-1 px-2 badge-soft-secondary">
+				Starter
+			</span>
+		{% endif %}
+
+		<h6 class="text-uppercase mt-3">{{"Crédit photo" | trans}}</h6>
+		<h2>{{ avalableCreditService.remaining }}</h2>
+		<div class="progress my-2 progress-sm">
+			<div class="progress-bar progress-lg bg-success" role="progressbar" style="width: {{ avalableCreditService.progressbar }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+		<p class="text-muted mb-0">{{ avalableCreditService.toUsed ~ " sur " ~ avalableCreditService.avalable ~ " photos publiées ce mois." | trans}}</p>
+		<p class="text-muted mb-0">
+			{{"Vous pouvez encore publier " ~ avalableCreditService.remaining ~ " photos avant la fin du mois." | trans}}
+			<a href="{{ path('pricing_all') }}">{{"En savoir plus" | trans}}</a>
+		</p>
+	</div>
+</div>

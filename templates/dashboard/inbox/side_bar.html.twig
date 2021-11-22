@@ -1,0 +1,19 @@
+{% for inbox in listInboxes %}
+	<div class="d-flex flex-stack py-4">
+		<div class="d-flex align-items-center">
+			<div class="symbol symbol-45px symbol-circle">
+				<img alt="{{ inbox.fullname }}" src="{{ inbox.avatar }}"/>
+			</div>
+			<div class="ms-5">
+				<a href="{{ path('inbox_show', { uuid: inbox.uuid }) }}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">{{ inbox.fullname }}</a>
+				<div class="fw-bold text-muted">{{ inbox.profession }}</div>
+			</div>
+		</div>
+		<div class="d-flex flex-column align-items-end ms-2">
+			<span class="text-muted fs-7 mb-1">
+				{{inbox.date | ago}}
+			</span>
+		</div>
+	</div>
+	<div class="separator separator-dashed d-none"></div>
+{% endfor %}

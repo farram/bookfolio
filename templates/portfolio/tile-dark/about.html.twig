@@ -1,0 +1,189 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% block title %}
+	{% if book.getTitle() %}
+		À propos -
+		{{ book.getTitle() }}
+	{% else %}
+		À propos -
+		{{ book.user.getFullname() }}
+	{% endif %}
+{% endblock %}
+
+{% block description %}
+	À propos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container about margin-lg-70b margin-sm-45b margin-xs-30b padding-sm-30t padding-xs-0t">
+		<div class="row">
+			<div class="col-12 no-padd">
+				<div class="about-details">
+					<div class="content">
+						<h4>Informations sur son book</h4>
+						<div class="text">
+							<div>
+								{{ book.user.getProfession() }}
+								({{ book.user.getExperience() }})
+							</div>
+							<div>{{ book.user.address.getLocation() }}</div>
+							<div>
+								{% if book.getShowVisitorCounter %}
+									{{ book.user.getStatistics | length }}
+									{{ (book.user.getStatistics | length > 1) ? 'visites':'visite'}}
+								{% endif %}
+								{{ book.user.getImages | length }}
+								{{ (book.user.getImages | length > 1) ? 'publications':'publication'}}
+								{{ galleries | length }}
+								{{ (galleries | length > 1) ? 'galeries':'galerie'}}</div>
+							<div>Mis à jour {{ book.user.updatedAt | ago }}</div>
+							<div>
+								Abonnés :
+								{{ (followBack < 0 ) ? '0': followBack | length }}
+							</div>
+							<div>
+								Abonnements :
+								{{ (book.user.getFollows()) ? '0': book.user.getFollows() | length }}
+							</div>
+
+							{% if book.user.getAbout() %}
+								<blockquote>
+									<p>
+										{{ book.user.getAbout() | raw }}
+									</p>
+								</blockquote>
+							{% endif %}
+						</div>
+
+						{% if book.user.social.getWebsite() %}
+							<h4>Site web</h4>
+							<div class="text">
+								<a href="{{ book.user.social.getWebsite() }}" target="_blank">
+									{{ book.user.social.getWebsite() }}
+								</a>
+							</div>
+						{% endif %}
+
+						<h4>Autres</h4>
+						{% if book.user.profession.getSlug() == "modele" %}
+							<div class="text">
+								<ul class="list-items">
+									{% if book.user.physical.getSize() %}
+										<li>Taille :
+											{{ book.user.physical.getSize() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getWeight() %}
+										<li>Poids :
+											{{ book.user.physical.getWeight() }}
+											kg
+										</li>
+									{% endif %}
+									{% if book.user.physical.getHip() %}
+										<li>Tour de hanche :
+											{{ book.user.physical.getHip() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getChest() %}
+										<li>chest :
+											{{ book.user.physical.getChest() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getConfection() %}
+										<li>Confection :
+											{{ book.user.physical.getConfection() }}</li>
+									{% endif %}
+									{% if book.user.physical.getPointure() %}
+										<li>Pointure :
+											{{ book.user.physical.getPointure() }}</li>
+									{% endif %}
+									{% if book.user.physical.getChestSize() %}
+										<li>Tour de poitrine :
+											{{ book.user.physical.getChestSize() }}</li>
+									{% endif %}
+									{% if book.user.physical.getWaistSize() %}
+										<li>Tour de taille :
+											{{ book.user.physical.getWaistSize() }}</li>
+									{% endif %}
+									{% if book.user.physical.getChestHeight() %}
+										<li>Hauteur de poitrine :
+											{{ book.user.physical.getChestHeight() }}</li>
+									{% endif %}
+									{% if book.user.physical.getHeightBust() %}
+										<li>Hauteur devant du buste :
+											{{ book.user.physical.getHeightBust() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getBackHeight() %}
+										<li>Hauteur du dos :
+											{{ book.user.physical.getBackHeight() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getShoulderWidth() %}
+										<li>Largeur de l'épaule :
+											{{ book.user.physical.getShoulderWidth() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getArmLength() %}
+										<li>Longueur du bras :
+											{{ book.user.physical.getArmLength() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getArmsTurn() %}
+										<li>Tour du bras :
+											{{ book.user.physical.getArmsTurn() }}
+											cm
+										</li>
+									{% endif %}
+									{% if book.user.physical.getRoundNeck() %}
+										<li>Tour du cou :
+											{{ book.user.physical.getRoundNeck() }}
+											cm
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+						{% endif %}
+
+						{% if book.user.profession.getSlug() == "photographe" %}
+							<div class="text">
+								<ul class="list-items">
+									{% if book.user.physical.getApnCamera() %}
+										<li>Appareil photo :
+											{{ book.user.physical.getApnCamera() }}
+										</li>
+									{% endif %}
+
+									{% if book.user.physical.getApnLenses() %}
+										<li>Objectif(s) :
+											{{ book.user.physical.getApnLenses() }}
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+						{% endif %}
+
+						{% if book.getStylePhotos() %}
+							<p>Style de photos :
+								{{ stylePhoto }}</p>
+						{% endif %}
+
+						<div class="button-wrap">
+							<a href="{{ path('portfolio_contact', { name : book.name }) }}" class="a-btn-2 button">Contact</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

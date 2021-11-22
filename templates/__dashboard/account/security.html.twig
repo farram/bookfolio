@@ -1,0 +1,37 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card">
+				<div class="card-body">
+					{{ form_start(form, {'attr': {'class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+					<h3 class="mb-3 mt-0">{{"Mot de passe" | trans}}</h3>
+					<hr>
+					<p class="text-muted">
+						{{'Vous pouvez changer votre mot de passe à tout moment ! Cependant, par sécurité, nous vous demandons de saisir le mot de passe actuel de votre compte afin de poursuivre.'|trans}}
+					</p>
+					<div class="row">
+						{{ forms.input(form.oldPassword,'',{class:'col-lg-12'}) }}
+						{{ forms.input(form.plainPassword,'',{class:'col-lg-12'}) }}
+						{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+
+			<div class="card p-3">
+				<a class="btn-link text-danger" href="{{ path('account_delete') }}" role="button">
+					{{"Supprimer votre compte" | trans}}
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

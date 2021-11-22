@@ -1,0 +1,21 @@
+{% if app.user.hasActiveSubscription %}
+	<div class="card p-3 border">
+		<i class="fe-alert-circle font-28 text-danger"></i>
+		<h4 class="text-dark">{{"Quota atteint !" | trans}}</h4>
+		<p>
+			{{"Votre compte sera recrédité dès le mois prochain." | trans}}<br>
+			{{"Toute fois, si vous ne souhaitez pas patienter, vous avez toujours la possibilité de changer votre offre d'abonnement qui vous permettra de publier plus de photos." | trans}}
+		</p>
+		<a href="{{ path('account_pricing') }}" class="btn btn-custom text-white">{{"Consulter nos offres" | trans}}</a>
+	</div>
+{% else %}
+	<div class="card p-3 border">
+		<i class="fe-alert-circle font-28 text-danger"></i>
+		<h4 class="text-dark">{{"Quota atteint !" | trans}}</h4>
+		<p>
+			{{"L'offre que vous avez choisi, ne vous permets pas de créer plus de " ~ avalableCreditService.avalableGallery ~ " galeries." | trans}}<br>
+			{{"Si vous souhaitez en créer d'avantage, vous pouvez changer votre offre d'abonnement en cliquant ci-dessous." | trans}}
+		</p>
+		<a href="{{ path('account_pricing') }}" class="btn btn-custom text-white">{{"Consulter nos offres" | trans}}</a>
+	</div>
+{% endif %}

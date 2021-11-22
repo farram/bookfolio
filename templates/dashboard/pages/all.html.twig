@@ -1,0 +1,119 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Vos pages | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+
+	{% if pages.getTotalItemCount > 0 %}
+
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex flex-wrap flex-stack mb-6">
+					<h3 class="fw-bolder my-2">{{ pages.getTotalItemCount }}
+						{% if pages.getTotalItemCount > 1 %}
+							pages
+						{% else %}
+							page
+						{% endif %}
+					</h3>
+					<div class="d-flex my-2">
+						<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">{{"Ajouter une nouvelle page" | trans}}</a>
+					</div>
+				</div>
+				<div class="row g-6 g-xl-9 mb-6 mb-xl-9">
+					{% for page in pages %}
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="card border h-100">
+								<div class="card-body justify-content-center text-center flex-column p-8">
+									<a href="{{ url('pages_show', { id: page.id }) }}" class="text-gray-800 text-hover-primary d-flex flex-column">
+										<div class="symbol symbol-75px mb-5">
+											<img src="{{ asset('assets/dashboard/media/svg/files/file_page.svg') }}" alt="{{ page.title }}"/>
+										</div>
+										<div class="fs-5 fw-bolder mb-2">{{ page.title }}</div>
+									</a>
+									<div class="fs-7 fw-bold text-gray-400 mb-2">{{ page.createdAt | ago }}</div>
+									{% if page.isActive %}
+										<span class="badge badge-light-success" data-bs-toggle="tooltip" data-bs-placement="top" title="{{"Cette page est visible sur votre book" | trans}}">{{"Publiée" | trans}}</span>
+									{% else %}
+										<span class="badge badge-light-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="{{"Cette page n'est pas visible sur votre book" | trans}}">{{"Non publiée" | trans}}</span>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{"Aucune page !" | trans}}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{"Vous avez aucune page pour l'instant !" | trans}}
+						<br/>{{"Les prochaines pages que vous publierez sur votre book, s'afficheront ici." | trans}}</p>
+					<a href="#" class="btn btn-primary btn-hover-rise" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">{{"Ajouter une page" | trans}}</a>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	<div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered mw-650px">
+			<div class="modal-content">
+				{{ form_start(form, {'attr': {'id':'kt_modal_add_customer_form','class':'form needs-validation','novalidate': 'novalidate'}}) }}
+				<div class="modal-header" id="kt_modal_add_customer_header">
+					<h2 class="fw-bolder">{{"Ajout d'une nouvelle page"}}</h2>
+					<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+						<span class="svg-icon svg-icon-1">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+								<g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+									<rect fill="#000000" x="0" y="7" width="16" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1"/>
+								</g>
+							</svg>
+						</span>
+					</div>
+				</div>
+				<div class="modal-body py-10 px-lg-17">
+
+					<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+						<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+								<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+								<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+								<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+							</svg>
+						</span>
+						<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+							<div class="mb-3 mb-md-0 fw-bold">
+								<div class="fs-6 text-gray-700 pe-7">
+									{{"Lorsque vous créez une nouvelle page, celle-ci est par défaut désactiver. Une fois le titre saisi, vous serez redirigé vers la nouvelle page créée et vous aurez la possibilité de la remplir, puis la publier." | trans}}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+						<div class="fv-row mb-7">
+							{{ form_label(form.title, 'Saisissez le titre de la page', {'label_attr': {'class': 'fs-6 fw-bold mb-2'}})  }}
+							{{ form_widget(form.title, {'attr': {'class': 'form-control form-control-solid'}}) }}
+							{{ form_errors(form.title) }}
+							{{ form_help(form.title) }}
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer flex-center">
+					<button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">{{"Annuler" | trans}}</button>
+					<button type="submit" class="btn btn-primary">
+						{{"Ajouter la page" | trans}}
+					</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

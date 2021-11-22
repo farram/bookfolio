@@ -1,0 +1,101 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{gallery.getName()}}
+	- Bookfolio
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': gallery.getName()} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/galleries_side_bar.html.twig' with {'galleries': galleries} %}
+			{% if cover %}
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card p-3 text-center">
+							<div class="text-start">
+								<h5 class="header-title text-start mb-3">{{ 'Photo de couverture'| trans }}</h5>
+								<img class="card-img img-fluid" src="{{ cover.imagePath | imagine_filter('thumbnail_card') }}" alt="{{ cover.getTitle() }}">
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{% include 'dashboard/partial/_subscription.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div id="gallery" data-folder="{{ gallery.getId() }}">
+				<div class="card p-3">
+					<div class="p-3">
+						<h3 class="mb-2 mt-0">{{gallery.getName()}}
+							({{ images| length }})</h3>
+						<hr>
+						<small class="text-muted">{{ 'Créee' | trans }}
+							{{ gallery.getCreatedAt() | ago}}
+							-
+							{{"Mise à jour" | trans}}
+							{{ gallery.getUpdatedAt() | ago}}
+							|
+							{{ gallery.getGalleryViews() | length}}
+							{% if gallery.getGalleryViews()|length > 1 %}
+								{{"vues" | trans}}
+							{% else %}
+								{{"vue" | trans}}
+							{% endif %}
+						</small>
+						{% if gallery.description %}
+							<p class="mt-2 mb-2">{{ gallery.description }}</p>
+						{% else %}
+							<p class="text-muted">{{"Aucune description" | trans}}</p>
+						{% endif %}
+
+						{% if gallery.isProtect %}
+							<div class="card p-3 border bg-gradient-warning border-danger">
+								<div class="card-body p-0">
+									<h5 class="card-title">{{"Protégée par un mot de passe" | trans}}</h5>
+									{{"Vous avez protégé cette galerie avec un mot de passe."}}
+									<br>{{"Seules les personnes ayant ce mot de passe peuvent y accéder." | trans}}
+								</div>
+							</div>
+						{% endif %}
+
+						<div>
+							<a href="{{ path('galleries_edit', {'slug': gallery.getSlug()}) }}" class="btn btn-primary btn-md text-white mt-0">{{"Modifier la galerie" | trans}}</a>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-12">
+
+								{% if images| length > 0%}
+									<p class="text-muted">
+										{{"Vous pouvez réorganiser les photos de votre galerie. Il vous suffit de cliquer sur l'icon" | trans}}
+										<i class='fe-move'></i>
+										{{ "(sans relâcher) et faites-la glisser à l’emplacement souhaité." | trans}}
+									</p>
+								{% endif %}
+								{% if avalableCreditService.canPublishImages %}
+									<input type="file" name="files" class="gallery_media">
+								{% else %}
+									{% include 'dashboard/partial/alert/credit_images.html.twig' %}
+									<input type="file" name="files" class="gallery_media" disabled="">
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	<script src="{{ asset('assets/js/dashboard/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/js/dashboard/fileuploader.js') }}"></script>
+{% endblock javascripts %}

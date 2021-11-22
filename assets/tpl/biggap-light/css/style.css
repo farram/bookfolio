@@ -1,0 +1,15 @@
+.descr p {
+    margin-bottom: 30px;
+}
+
+.top-banner.center_content .title {
+    margin-bottom: 0px;
+}
+
+.portfolio .item {
+    height: 175px;
+}
+
+.pt-0 {
+    padding-top: 0;
+}

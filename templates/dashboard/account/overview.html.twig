@@ -1,0 +1,515 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% include 'dashboard/partial/profile_head.html.twig' %}
+	<div class="row gy-5 g-xl-10">
+		<div class="col-6">
+			<div class="card mb-5 mb-xl-10">
+				<div class="card-header">
+					<div class="card-title m-0">
+						<h3 class="fw-bolder m-0">{{"Informations" | trans}}</h3>
+					</div>
+					<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+				</div>
+				<div class="card-body p-9">
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Nom" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800">{{app.user.lastname}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Prénom" | trans}}</label>
+						<div class="col-lg-8 fv-row">
+							<span class="fw-bold text-gray-800 fs-6">{{app.user.firstname}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Adresse e-mail" | trans}}
+							<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="{{"Restera confidentielle" | trans}}"></i>
+						</label>
+						<div class="col-lg-8 d-flex align-items-center">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.email}}</span>
+							<span class="badge badge-success">{{"Verifié" | trans}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Votre profession" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.profession}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Votre expérience" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.experience}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="card mb-5 mb-xl-10">
+				<div class="card-header">
+					<div class="card-title m-0">
+						<h3 class="fw-bolder m-0">{{"Adresse postale" | trans}}</h3>
+					</div>
+					<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+				</div>
+				<div class="card-body p-9">
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Adresse complète" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800">{{app.user.address.fullAddress}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Rue" | trans}}</label>
+						<div class="col-lg-8 fv-row">
+							<span class="fw-bold text-gray-800 fs-6">{{app.user.address.route}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Ville" | trans}}
+						</label>
+						<div class="col-lg-8 d-flex align-items-center">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.address.locality}}</span>
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Région" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.address.adminstrativeArea}}</span>
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Code postal" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">{{app.user.address.postalCode}}</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Présentation" | trans}}</h3>
+			</div>
+			<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+		</div>
+		<div class="card-body p-9">
+			<div class="row mb-7">
+				<div class="col-lg-12">
+					{% if app.user.about %}
+						<span class="fw-bolder fs-6 text-gray-800">{{app.user.about | raw}}</span>
+					{% else %}
+						<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+							<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+									<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+									<rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+									<rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+								</svg>
+							</span>
+							<div class="d-flex flex-stack flex-grow-1">
+								<div class="fw-bold">
+									<h4 class="text-gray-900 fw-bolder">{{"Aucune présentation" | trans}}</h4>
+									<div class="fs-6 text-gray-700">Donnez un aperçu aux visiteurs de votre book de qui vous êtes.
+										<a class="fw-bolder" href="{{ path('account_settings') }}">{{"Ajouter une présentation" | trans}}</a>.</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row gy-5 g-xl-10">
+		<div class="col-12">
+			<div class="card mb-5 mb-xl-10">
+				<div class="card-header">
+					<div class="card-title m-0">
+						<h3 class="fw-bolder m-0">{{"Physique" | trans}}</h3>
+					</div>
+					<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+				</div>
+				<div class="card-body p-9">
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Origine ethnique" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">
+								{% if app.user.physical and app.user.physical.ethnicity %}
+									{{ app.user.physical.ethnicity.title }}
+								{% else %}
+									--
+								{% endif %}
+							</span>
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Couleur de vos cheveux" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">
+								{% if app.user.physical and app.user.physical.hairColor %}
+									{{app.user.physical.hairColor.title}}
+								{% else %}
+									--
+								{% endif %}
+							</span>
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Couleur de vos yeux" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">
+								{% if app.user.physical and app.user.physical.eyesColor %}
+									{{app.user.physical.eyesColor.title}}
+								{% else %}
+									--
+								{% endif %}
+							</span>
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Genre" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">
+								{% if app.user.physical and app.user.physical.gender %}
+									{{app.user.physical.gender.title}}
+								{% else %}
+									--
+								{% endif %}
+							</span>
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Date de naissance" | trans}}</label>
+						<div class="col-lg-8">
+							<span class="fw-bolder fs-6 text-gray-800 me-2">
+								{% if app.user.physical and app.user.physical %}
+									{{app.user.physical.birthday}}
+								{% else %}
+									--
+								{% endif %}
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row gy-5 g-xl-10">
+		<div class="col-12">
+			{% if app.user.profession.getSlug() == "modeles" %}
+				<div class="card mb-5 mb-xl-10">
+					<div class="card-header">
+						<div class="card-title m-0">
+							<h3 class="fw-bolder m-0">{{"Mensurations" | trans}}</h3>
+						</div>
+						<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+					</div>
+					<div class="card-body p-9">
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Taille" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.size}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Poids" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.weight}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Tour de hanche" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.hip}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"chest" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.chest}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Confection" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.confection}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Pointure" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.pointure}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Tour de poitrine" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.chestSize}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Tour de taille" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.waistSize}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Hauteur de poitrine" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.chestHeight}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Hauteur devant du buste" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.heightBust}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Hauteur du dos" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.backHeight}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Largeur de l\'épaule" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.shoulderWidth}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Longueur du bras" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.armLength}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Tour du bras" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.armsTurn}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Tour du cou" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.roundNeck}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+
+					</div>
+				</div>
+			{% else %}
+				<div class="card mb-5 mb-xl-10">
+					<div class="card-header">
+						<div class="card-title m-0">
+							<h3 class="fw-bolder m-0">{{"Matériels" | trans}}</h3>
+						</div>
+						<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+					</div>
+					<div class="card-body p-9">
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Appareil photo" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.apnCamera}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+						<div class="row mb-7">
+							<label class="col-lg-4 fw-bold text-muted">{{"Objectif(s)" | trans}}</label>
+							<div class="col-lg-8">
+								{% if app.user.physical %}
+									{{app.user.physical.apnLenses}}
+								{% else %}
+									--
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="row gy-5 g-xl-10">
+		<div class="col-12">
+			<div class="card mb-5 mb-xl-10">
+				<div class="card-header">
+					<div class="card-title m-0">
+						<h3 class="fw-bolder m-0">{{"Réseau sociaux" | trans}}</h3>
+					</div>
+					<a href="{{ path('account_settings') }}" class="btn btn-primary btn-hover-rise align-self-center">{{"Modifier" | trans}}</a>
+				</div>
+				<div class="card-body p-9">
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Instagram" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.instagram %}
+								<a href="{{app.user.social.instagram}}" target="_blank">{{app.user.social.instagram}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Instagram" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.facebook %}
+								<a href="{{app.user.social.facebook}}" target="_blank">{{app.user.social.facebook}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Facebook" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.twitter %}
+								<a href="{{app.user.social.twitter}}" target="_blank">{{app.user.social.twitter}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Linkedin" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.linkedin %}
+								<a href="{{app.user.social.linkedin}}" target="_blank">{{app.user.social.linkedin}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Tumblr" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.tumblr %}
+								<a href="{{app.user.social.tumblr}}" target="_blank">{{app.user.social.tumblr}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Pinterest" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.pinterest %}
+								<a href="{{app.user.social.pinterest}}" target="_blank">{{app.user.social.pinterest}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Skype" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.skype %}
+								<a href="{{app.user.social.skype}}" target="_blank">{{app.user.social.skype}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+					<div class="row mb-7">
+						<label class="col-lg-4 fw-bold text-muted">{{"Site web" | trans}}</label>
+						<div class="col-lg-8">
+							{% if app.user.social.website %}
+								<a href="{{app.user.social.website}}" target="_blank">{{app.user.social.website}}</a>
+							{% else %}
+								--
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/dashboard/geolocate.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

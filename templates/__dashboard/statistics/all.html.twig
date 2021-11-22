@@ -1,0 +1,180 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Statistiques de visites  | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					{{ wo_render_breadcrumbs({separator: '', listId: 'breadcrumbs'}) }}
+				</div>
+				<h4 class="page-title">{{ 'Statistiques de visites'| trans }}</h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card p-3">
+
+				<h4 class="mt-0 font-16">{{"Aujourd'hui" | trans}}</h4>
+				<h2 class="text-blue my-3 text-center">
+					<span>
+						{{ todayCount }}
+					</span>
+				</h2>
+				<p class="text-muted mb-0">{{"Hier" | trans}}
+					:
+					{{ yesterdayCount }}
+					<span class="float-end">
+						{% set count = todayCount - yesterdayCount %}
+						{% set icon = null %}
+						{% if count %}
+							{% if todayCount > yesterdayCount %}
+								<i class="fa fa-caret-up text-success mr-1"></i>
+							{% else %}
+								<i class="fa fa-caret-down text-danger mr-1"></i>
+							{% endif %}
+							{{ count }}
+						{% else %}
+							0
+						{% endif %}
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="card p-3">
+
+				<h4 class="mt-0 font-16">{{"Ce mois" | trans}}</h4>
+				<h2 class="text-blue my-3 text-center">
+					<span>{{ thisMonthCount }}</span>
+				</h2>
+				<p class="text-muted mb-0">
+					{{"Le mois dernier" | trans}}
+					:
+					{{ lastMonthCount }}
+					<span class="float-end">
+						{% set count = thisMonthCount - lastMonthCount %}
+						{% set icon = null %}
+						{% if count %}
+							{% if thisMonthCount > lastMonthCount %}
+								<i class="fa fa-caret-up text-success mr-1"></i>
+							{% else %}
+								<i class="fa fa-caret-down text-danger mr-1"></i>
+							{% endif %}
+							{{ count }}
+						{% else %}
+							+ 0%
+						{% endif %}
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="card p-3">
+
+				<h4 class="mt-0 font-16">{{"Cette année" | trans}}</h4>
+				<h2 class="text-blue my-3 text-center">
+					<span>{{ thisYearCount }}</span>
+				</h2>
+				<p class="text-muted mb-0">
+					{{"L'année dernière" | trans}}
+					:
+					{{ lastYearCount }}
+					<span class="float-end">
+						{% set count = thisYearCount - lastYearCount %}
+						{% set icon = null %}
+						{% if count %}
+							{% if thisYearCount > lastYearCount %}
+								<i class="fa fa-caret-up text-success mr-1"></i>
+							{% else %}
+								<i class="fa fa-caret-down text-danger mr-1"></i>
+							{% endif %}
+							{{ count }}
+						{% else %}
+							+ 0%
+						{% endif %}
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="card p-3">
+
+				<h4 class="mt-0 font-16">{{"Total des visites" | trans}}</h4>
+				<h2 class="text-blue my-3 text-center">
+					<span>{{ app.user.getStatistics() | length }}</span>
+				</h2>
+				<p class="text-muted mb-0">Total :
+					{{ app.user.getStatistics() | length }}
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card p-3">
+				<h4 class="page-title">
+					{{"Depuis le"| trans}}
+					{{ 'now'| date_modify('first day of this month') | format_date('full', locale='fr') }}</h4>
+				{% if thisMonth | length > 1 %}
+					<div id="div_chart"></div>
+				{% else %}
+					<div class="row">
+						<div class="col-6">
+							<div class="alert alert-info">{{"Aucune donnée pour l'instant. Revenez un peu plus tard ..." | trans}}</div>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+
+			<div class="card p-3">
+				<h4 class="page-title mb-0">
+					{{"Cette année" | trans}}
+				</h4>
+				<p class="font-16 mb-4">{{"Classé par mois depuis le" | trans}}
+					{{ 'now'| date_modify('first day of this year') | format_date('full', locale='fr') }}</p>
+				{% if thisYear | length > 0 %}
+					<div id="div_chart_year"></div>
+				{% else %}
+					<div class="row">
+						<div class="col-6">
+							<div class="alert alert-info">{{"Aucune donnée pour l'instant. Revenez un peu plus tard ..." | trans}}</div>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+
+			<div class="card p-3">
+				<h4 class="page-title mb-0">
+					{{"L'année dernière" | trans}}
+				</h4>
+				<p class="font-16 mb-4">{{"Classé par mois depuis le" | trans}}
+					{{ 'now'| date_modify('first day of last year') | format_date('full', locale='fr') }}</p>
+				{% if lastYear | length > 0 %}
+					<div id="div_chart_last_year"></div>
+				{% else %}
+					<div class="row">
+						<div class="col-6">
+							<div class="alert alert-info">{{"Aucune donnée pour l'instant. Revenez un peu plus tard ..." | trans}}</div>
+						</div>
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">{{ gc_draw(chartThisMonth, 'div_chart') }}{{ gc_draw(chartThisYear, 'div_chart_year') }}{{ gc_draw(chartLastYear, 'div_chart_last_year') }}
+	</script>
+{% endblock %}

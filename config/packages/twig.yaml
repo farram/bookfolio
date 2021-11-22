@@ -1,0 +1,16 @@
+twig:
+    default_path: "%kernel.project_dir%/templates"
+    paths:
+        "assets/styles": styles
+    form_themes:
+        [
+            "bootstrap_4_layout.html.twig",
+            "bootstrap_5_layout.html.twig",
+            "@TetranzSelect2Entity/Form/fields.html.twig",
+            '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        ]
+    globals:
+        locales: "%app.locales%"
+        imageHelper: "@ImageHelper"
+        avalableCreditService: '@App\Service\AvalableCreditService'
+        planService: '@App\Service\PlanService'

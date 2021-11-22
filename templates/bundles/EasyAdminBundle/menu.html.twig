@@ -1,0 +1,72 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+
+<div class="aside-menu flex-column-fluid">
+	<div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
+		<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true"> {% block main_menu_before %}{% endblock %}
+			{% block main_menu %}
+				{% for menuItem in ea.mainMenu.items %}
+					{% if menuItem.hasSubItems %}
+						{% block menu_item_sub_items %}
+							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+								<span class="menu-link">
+									{{ _self.render_menu_item(menuItem) }}
+									<span class="menu-arrow"></span>
+								</span>
+								<div class="menu-sub menu-sub-accordion">
+									{% for menuSubItem in menuItem.subItems %}
+										{% block menu_subitem %}
+											<div class="menu-item">
+												<a class="menu-link" href="{{ menuSubItem.linkUrl }}">
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<span class="menu-title">{{ menuSubItem.label|raw }}</span>
+												</a>
+											</div>
+										{% endblock menu_subitem %}
+									{% endfor %}
+								</div>
+							</div>
+						{% endblock menu_item_sub_items %}
+					{% else %}
+						{% block menu_item %}
+							<div class="menu-item">
+								<span class="menu-link">
+									{{ _self.render_menu_item(menuItem) }}
+								</span>
+							</div>
+						{% endblock menu_item %}
+					{% endif %}
+				{% endfor %}
+			{% endblock main_menu %}
+		</div>
+		{% block main_menu_after %}{% endblock %}
+	</div>
+</div>
+
+
+{% macro render_menu_item(item) %}
+	{% if item.isMenuSection %}
+		{% if item.icon is not empty %}
+			<i class="{{ item.icon }}"></i>
+		{% endif %}
+		<span class="{{ item.cssClass }}">{{ item.label|raw }}</span>
+	{% else %}
+		{% if not item.hasSubItems %}
+			<a href="{{ item.linkUrl }}" class="{{ item.cssClass }}" target="{{ item.linkTarget }}" rel="{{ item.linkRel }}" referrerpolicy="origin-when-cross-origin">
+				{% if item.icon is not empty %}
+					<i class="{{ item.icon }}"></i>
+				{% endif %}
+				{{ item.label|raw }}
+			</a>
+		{% else %}
+			<span class="{{ item.cssClass }}" target="{{ item.linkTarget }}" rel="{{ item.linkRel }}" referrerpolicy="origin-when-cross-origin">
+				{% if item.icon is not empty %}
+					<i class="{{ item.icon }}"></i>
+				{% endif %}
+				<span class="menu-title">{{ item.label|raw }}</span>
+			</span>
+		{% endif %}
+
+	{% endif %}
+{% endmacro %}

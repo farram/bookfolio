@@ -1,0 +1,16 @@
+{% if (lastInbox.favorites == true) %}
+	<a href="{{ path('dashboard_social_inbox_remove_favorites', { uuid: lastInbox.uuid }) }}" class="btn btn-sm btn-light waves-effect" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
+		<i class="mdi mdi-star-outline text-warning font-18"></i>
+	</a>
+{% else %}
+	<a href="{{ path('dashboard_social_inbox_make_favorites', { uuid: lastInbox.uuid }) }}" class="btn btn-sm btn-light waves-effect" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">
+		<i class="mdi mdi-star-outline font-18"></i>
+	</a>
+{% endif %}
+
+<a href="#" class="btn btn-sm btn-light waves-effect">
+	<i class="mdi mdi-alert-circle-outline font-18"></i>
+</a>
+<a href="#" class="btn btn-sm btn-light waves-effect">
+	<i class="mdi mdi-trash-can-outline font-18"></i>
+</a>

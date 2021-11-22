@@ -1,0 +1,86 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+
+{% block title %}
+	Contact -
+	{{ book.title ? book.title : book.user.fullname }}
+{% endblock %}
+
+{% block description %}
+	Contact -
+	{{ book.description | raw }}
+	-
+	{{ book.user.fullname }}
+{% endblock %}
+
+{% block body %}
+	<div class="container no-padd">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="title">Contact</h3>
+				<p class="text">Veuillez utiliser le formulaire ci-dessous pour me contacter.</p>
+				{{ form_start(form, {'attr': {'id':'contactform','class':'','novalidate': 'novalidate'}}) }}
+
+				<div class="contact-form">
+					<div class="row">
+						<div class="col-lg-6 margin-lg-10b">
+							{{ form_widget(form.name, {'attr': {'placeholder': "Votre nom et prénom", 'tabindex':"1"}}
+							) }}
+							<div class="text-danger">
+								{{ form_errors(form.name) }}
+							</div>
+						</div>
+						<div class="col-lg-6 margin-lg-10b">
+							{{ form_widget(form.society, {'attr': {'placeholder': "Votre société (facultatif)", 'tabindex':"2"}}
+							) }}
+							<div class="text-danger">
+								{{ form_errors(form.society) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-6 margin-lg-10b">
+							{{ form_widget(form.email, {'attr': {'placeholder': "Votre adresse e-mail", 'tabindex':"3"}}
+							) }}
+							<div class="text-danger">
+								{{ form_errors(form.email) }}
+							</div>
+						</div>
+						<div class="col-lg-6 margin-lg-10b">
+							{{ form_widget(form.phone, {'attr': {'placeholder': "Numéro de téléphone (facultatif)", 'tabindex':"4"}}
+							) }}
+							<div class="text-danger">
+								{{ form_errors(form.phone) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12 margin-lg-10b">
+							{{ form_widget(form.message, {'attr': {'placeholder': "Votre message", 'tabindex':"5"}}
+							) }}
+							<div class="text-danger">
+								{{ form_errors(form.message) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12 margin-lg-10t">
+
+							{{ form_widget(form.recaptcha) }}
+						</div>
+					</div>
+
+					<div class="input-wrapper clearfix">
+						<input type="submit" id="submit" value="Envoyer"/>
+					</div>
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

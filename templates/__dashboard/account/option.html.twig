@@ -1,0 +1,41 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}
+	{{'Notifications mail | Bookfolio'|trans}}
+{% endblock %}
+
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card">
+				<div class="card-body">
+					{{ form_start(form, {'attr': {'class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+					<h3 class="mb-3 mt-0">{{"Notifications mail" | trans}}</h3>
+					<hr>
+					<h5 class="mb-3">{{"Recevoir un mail lorsque quelqu'un" | trans}}
+						:</h5>
+
+					<div class="row">
+						{{ forms.checkbox(form.contactPublishMedias, {class:'col-lg-12'}) }}
+						{{ forms.checkbox(form.contactShareMessage, {class:'col-lg-12'}) }}
+						{{ forms.checkbox(form.contactSendPrivateMessage, {class:'col-lg-12'}) }}
+						{{ forms.checkbox(form.commentImage, {class:'col-lg-12'}) }}
+						{{ forms.checkbox(form.follow, {class:'col-lg-12'}) }}
+					</div>
+
+					{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+
+
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

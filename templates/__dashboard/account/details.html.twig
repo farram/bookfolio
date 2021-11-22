@@ -1,0 +1,142 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+{% import "dashboard/partial/forms.html.twig" as forms %}
+<div class="row">
+	<div class="col-lg-3">
+		{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+	</div>
+	<div class="col-lg-9">
+		<div id="settings">
+			<div class="card">
+				<div class="card-body">
+					{{ form_start(profileForm, {'attr': {'class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="mb-3 mt-0">{{"Informations" | trans}}</h3>
+							<hr>
+
+						</div>
+
+						{{ forms.input(profileForm.lastname,'Nom' | trans,{class:'col-lg-4'}) }}
+						{{ forms.input(profileForm.firstname,'Prénom' | trans,{class:'col-lg-4'}) }}
+						{{ forms.input(profileForm.email,'Adresse e-mail' | trans,{class:'col-lg-4'}) }}
+						{{ forms.input(profileForm.profession,'Quelle est votre passion ?' | trans,{class:'col-lg-6'}) }}
+						{{ forms.input(profileForm.experience,'Votre expérience ?' | trans,{class:'col-lg-6'}) }}
+
+						{{ forms.input(profileForm.about,'Présentez-vous en quelques mots' | trans,{class:'col-lg-12'}) }}
+						{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+
+					</div>
+
+					{{ form_end(profileForm) }}
+				</div>
+
+			</div>
+
+
+			<div class="card">
+				{{ form_start(addressForm, {'attr': {'id':'address','class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+				<h3 class="mb-3 mt-0">{{"Adresse postale" | trans}}</h3>
+				<hr>
+				<div class="row">
+					{{ forms.inputGoogle(addressForm.fullAddress,'Dans quelle ville habitez-vous ?' | trans,{class:'col-lg-12',id:'autocomplete'}) }}
+					<div class="col-lg-12">
+						<div class="alert alert-info">
+							{{ "Les informations ci-dessous n'apparaîtrons pas sur le site. Elles restent confidentielles ! Nous les utilisons uniquement pour de la recherche avancée." | trans}}
+						</div>
+					</div>
+					{{ forms.inputGoogle(addressForm.route,'Rue' | trans,{class:'col-lg-4',id:'route'}) }}
+					{{ forms.inputGoogle(addressForm.locality,'Ville' | trans,{class:'col-lg-4',id:'locality'}) }}
+					{{ forms.inputGoogle(addressForm.adminstrative_area,'Région' | trans,{class:'col-lg-4',id:'administrative_area_level_1'}) }}
+					{{ forms.inputGoogle(addressForm.country,'Pays' | trans,{class:'col-lg-4',id:'country'}) }}
+					{{ forms.inputGoogle(addressForm.postalCode,'Code postal' | trans,{class:'col-lg-4',id:'postal_code'}) }}
+					{{ forms.buttonSubmit({class:'col-lg-12'}) }}
+				</div>
+				{{ form_end(addressForm) }}
+			</div>
+			<div class="card">
+				{{ form_start(physicalForm, {'attr': {'id':'physique','class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+				<h3 class="mb-3 mt-0">{{"Physique" | trans}}</h3>
+				<hr>
+				<div class="row">
+					{{ forms.input(physicalForm.ethnicity,'Origine ethnique' | trans,{class:'col-lg-4'}) }}
+					{{ forms.input(physicalForm.hairColor,'Couleur de vos cheveux' | trans,{class:'col-lg-4'}) }}
+					{{ forms.input(physicalForm.eyesColor,'Couleur de vos yeux' | trans,{class:'col-lg-4'}) }}
+					{{ forms.input(physicalForm.gender,'Genre' | trans,{class:'col-lg-6'}) }}
+					{{ forms.input(physicalForm.birthday,'Date de naissance' | trans,{class:'col-lg-6'}) }}
+					{% if app.user.profession.getSlug() == "modeles" %}
+						<div class="col-lg-12">
+							<div class="card mt-3 mb-1 shadow border">
+								<div class="p-3">
+									<h4 class="mb-3">{{"Mensurations" | trans}}</h4>
+									<div class="alert alert-info">
+										{{"Uniquement des chiffres et sans espaces ni caractères spéciaux." | trans}}
+									</div>
+									<div class="row">
+										{{ forms.inputAppend(physicalForm.size,'Taille' | trans,{class:'col-lg-3',unit:'cm'}) }}
+										{{ forms.inputAppend(physicalForm.weight,'Poids' | trans,{class:'col-lg-3',unit:'kg'}) }}
+										{{ forms.inputAppend(physicalForm.hip,'Tour de hanche' | trans,{class:'col-lg-3',unit:'cm'}) }}
+										{{ forms.inputAppend(physicalForm.chest,'chest' | trans,{class:'col-lg-3',unit:'cm'}) }}
+										{{ forms.input(physicalForm.confection,'Confection' | trans,{class:'col-lg-3'}) }}
+										{{ forms.input(physicalForm.pointure,'Pointure' | trans,{class:'col-lg-3'}) }}
+										{{ forms.input(physicalForm.chestSize,'Tour de poitrine' | trans,{class:'col-lg-3'}) }}
+										{{ forms.input(physicalForm.waistSize,'Tour de taille' | trans,{class:'col-lg-3'}) }}
+										{{ forms.input(physicalForm.chestHeight,'Hauteur de poitrine' | trans,{class:'col-lg-3'}) }}
+										{{ forms.inputAppend(physicalForm.heightBust,'Hauteur devant du buste' | trans,{class:'col-lg-4',unit:'cm'}) }}
+										{{ forms.inputAppend(physicalForm.backHeight,'Hauteur du dos' | trans,{class:'col-lg-4',unit:'cm'}) }}
+										{{ forms.inputAppend(physicalForm.shoulderWidth,'Largeur de l\'épaule' | trans,{class:'col-lg-4',unit:'cm'}) }}                                    
+                                    {{ forms.inputAppend(physicalForm.armLength,'Longueur du bras' | trans,{class:'col-lg-4',unit:'cm'}) }}
+                                    {{ forms.inputAppend(physicalForm.armsTurn,'Tour du bras' | trans,{class:'col-lg-4',unit:'cm'}) }}
+                                    {{ forms.inputAppend(physicalForm.roundNeck,'Tour du cou' | trans,{class:'col-lg-4',unit:'cm'}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if app.user.profession.getSlug() == "photographe" %}
+                    
+                    <div class="col-lg-12">
+                    <h3 class="mb-3 mt-0">Matériels</h3>
+                        <div class="row">                            
+                            {{ forms.input(physicalForm.apnCamera,'Appareil photo' | trans,{class:'col-lg-6'}) }}
+                            {{ forms.input(physicalForm.apnLenses,'Objectif(s)' | trans,{class:'col-lg-6'}) }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {{ forms.buttonSubmit({class:'col-lg-12'}) }}
+                </div>
+            </div>
+            {{ form_end(physicalForm) }}
+            
+            <div class="card">
+                {{ form_start(socialForm, {'attr': {'id':'social','class':'p-3 needs-validation','novalidate': 'novalidate'}}) }}
+                <h3 class="mb-3 mt-0">{{"Réseau sociaux" | trans}}</h3>
+                <hr>
+                <div class="row">
+                    {{ forms.inputPrependIcon(socialForm.instagram,'Instagram',{class:'col-lg-6',icon:'mdi mdi-instagram'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.facebook,'Facebook',{class:'col-lg-6',icon:'mdi mdi-facebook'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.twitter,'Twitter',{class:'col-lg-6',icon:'mdi mdi-twitter'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.linkedin,'Linkedin',{class:'col-lg-6',icon:'mdi mdi-linkedin'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.tumblr,'Tumblr',{class:'col-lg-6',icon:'fab fa-tumblr-square pb-1'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.pinterest,'Pinterest',{class:'col-lg-6',icon:'mdi mdi-pinterest'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.skype,'Skype',{class:'col-lg-6',icon:'mdi mdi-skype'}) }}   
+                    {{ forms.inputPrependIcon(socialForm.website,'Site web' | trans,{class:'col-lg-6',icon:'mdi mdi-earth'}) }}                     
+                    {{ forms.buttonSubmit({class:'col-lg-12'}) }}
+                </div>
+                {{ form_end(socialForm) }}
+            </div>
+        </div> 
+    </div>
+</div> 
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/dashboard/geolocate.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

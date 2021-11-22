@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Le coin des petites annonces sur Book-folio.fr" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-ece09f3b698f-64cec474" class="content6-headline-grid">
+					<div id="w-node-ece09f3b6990-64cec474" class="content6-headline-wrap">
+						<h1 class="text-center top-clear">{{"Le coin des petites annonces" | trans}}</h1>
+						<h6 class="text-center top-clear">{{"Retrouvez l'intégralité des annonces postées par les artistes de la communauté Bookfolio. Vous avez un nouveau projet ?" | trans}}
+						</h6>
+						<a href="{{ path('annonce_add') }}" class="link-line">Postez une annonce</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid blog1-grid">
+				<div id="w-node-461589a4832a-64cec474" class="w-dyn-list">
+					<div class="blog1-grid w-dyn-items">
+
+						{% for annonce in annonces %}
+							<div id="w-node-461589a4832c-64cec474" class="collection-item w-dyn-item">
+								<div>
+									<a href="{{ path('front_annonces_show', {'slug':annonce.slug}) }}" class="link-block-7 w-inline-block">
+										<div class="label black-label label-annonce">
+											{% if annonce.type == 1 %}
+												{{"Je recherche une collaboration" | trans}}
+											{% else %}
+												{{"Je recherche un projet rémunérer" | trans}}
+											{% endif %}
+										</div>
+									</a>
+									<a href="{{ path('front_annonces_show', {'slug':annonce.slug}) }}" class="w-inline-block">
+										<h4 class="subtitle-annonce">
+											{{annonce.title}}
+										</h4>
+									</a>
+									<div class="user-wrapper">
+										<div class="user-profile">
+											<a href="{{ path('portfolio_index', {'name':annonce.user.book.name}) }}" target="_blank" class="w-inline-block"><img width="40" src="{{ annonce.user.getAvatar() | imagine_filter('avatar') }}" alt="{{annonce.user.fullname}}" class="image-2 photo-profil-small"></a>
+										</div>
+										<div class="user-infos">
+											<a href="{{ path('portfolio_index', {'name':annonce.user.book.name}) }}" target="_blank" class="user-link">{{annonce.user.fullname}}</a>
+											<p class="text-label user-label">
+												{{annonce.createdAt | ago}}
+											</p>
+										</div>
+									</div>
+									<div class="paragraph-70 text-start">
+										{{annonce.description | raw}}
+									</div>
+									<div class="blog1-button-wrap">
+										<a data-w-id="8be7544f-7c26-d975-eac4-8e6db1aab016" href="{{ path('front_annonces_show', {'slug':annonce.slug}) }}" class="button-small w-inline-block">
+											<div class="button-label">{{"Lire l'annonce" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Lire l'annonce" | trans}}" class="button-arrow"></a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="blog1-divider"></div>
+
+					<div class="text-center">
+						{{ knp_pagination_render(annonces, null, {}, {'align': 'center','size': 'medium','rounded': false,}) }}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.title %}
+		{{ book.title }}
+	{% else %}
+		{{ book.user.fullname }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	okok
+{% endblock %}

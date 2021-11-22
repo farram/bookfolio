@@ -1,0 +1,49 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Ajouter des photos'| trans}}
+	| Bookfolio
+{% endblock %}
+{% block body %}
+
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Ajouter des photos'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="card p-3 p-3">
+				<div class="row">
+					{{ forms.input(form.gallery,'',{class:'col-lg-12'}) }}
+					{{ forms.input(form.imageFile,'',{class:'col-lg-12'}) }}
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="card p-3">
+				<h4 class="mb-3">Options</h4>
+				<div class="row">
+					{{ forms.checkbox(form.isNSFW,{class:'col-lg-12'}) }}
+					{{ forms.checkbox(form.isHome,{class:'col-lg-12'}) }}
+					{{ forms.checkbox(form.isGallery,{class:'col-lg-12'}) }}
+					{{ forms.checkbox(form.allowFavorites,{class:'col-lg-12'}) }}
+					{{ forms.checkbox(form.allowLikes,{class:'col-lg-12'}) }}
+					{{ forms.checkbox(form.allowComments,{class:'col-lg-12'}) }}
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="card p-3">
+				<div class="text-center">
+					<button type="submit" class="btn btn-md btn-primary btn-lg waves-effect waves-light mt-2">{{"Publier sur mon book" | trans}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+{% endblock javascripts %}

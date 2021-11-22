@@ -1,0 +1,177 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Créer une galerie' | trans}}
+	| Bookfolio
+{% endblock %}
+{% block body %}
+	<div class="row g-6 g-xl-9">
+		<div class="col-lg-12">
+			{{ form_start(form, {'attr': {'class':'needs-validation','autocomplete':'off','novalidate': 'novalidate'}}) }}
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title fs-3 fw-bolder">{{"Créer une nouvelle galerie" | trans}}</div>
+				</div>
+				<div class="card-body">
+
+					{% if avalableCreditService.canAddGalleries %}
+						<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+							<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+									<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+									<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+									<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+								</svg>
+							</span>
+							<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+								<div class="mb-3 mb-md-0 fw-bold">
+									<div class="fs-6 text-gray-700 pe-7">
+										{% set count = avalableCreditService.avalableGalleriesRemaining %}
+										{{ count|pluralize('Vous pouvez encore publier {} galerie ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}), 'Vous pouvez encore publier {} galeries ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}) | trans) |raw}}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						{{ block("notice_limit_galleries", "dashboard/partial/alert/notice.html.twig") }}
+					{% endif %}
+
+					<div class="row mb-8">
+						<div class="col-xl-3">
+							{{ form_label(form.name, 'Nom de la galerie' | trans, {'label_attr': {'class': 'fs-6 fw-bold mt-2 mb-3'}})  }}
+						</div>
+						<div class="col-lg-8 fv-row">
+							{% if avalableCreditService.canAddGalleries %}
+								{{ form_widget(form.name, {'attr': {'class': 'form-control form-control-solid'}}) }}
+							{% else %}
+								{{ form_widget(form.name, {'attr': {'disabled': 'disabled','class': 'form-control form-control-solid'}}) }}
+							{% endif %}
+							{{ form_errors(form.name) }}
+							{{ form_help(form.name) }}
+						</div>
+					</div>
+
+					<div class="row mb-8">
+						<div class="col-xl-3">
+							{{ form_label(form.description, 'Description de la galerie (facultatif)' | trans, {'label_attr': {'class': 'fs-6 fw-bold mt-2 mb-3'}})  }}
+						</div>
+						<div class="col-lg-8 fv-row">
+							{% if avalableCreditService.canAddGalleries %}
+								{{ form_widget(form.description, {'attr': {'class': 'form-control form-control-solid'}}) }}
+							{% else %}
+								{{ form_widget(form.description, {'attr': {'disabled': 'disabled','class': 'form-control form-control-solid'}}) }}
+							{% endif %}
+							{{ form_errors(form.description) }}
+							{{ form_help(form.description) }}
+						</div>
+					</div>
+
+
+					<div class="row mb-8">
+						<div class="col-xl-3">
+							<div class="col-xl-3">
+								<div class="fs-6 fw-bold mt-2 mb-3">{{"Visibilité" | trans}}</div>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="d-flex fw-bold h-100">
+								<div class="form-check-custom form-check-solid">
+									{% if avalableCreditService.canAddGalleries %}
+										{{ form_widget(form.isActive, {'attr': {'class': 'form-check-input'}}) }}
+									{% else %}
+										{{ form_widget(form.isActive, {'attr': {'disabled': 'disabled','class': 'form-check-input'}}) }}
+									{% endif %}
+									{{ form_errors(form.isActive) }}
+									{{ form_help(form.isActive) }}
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="border-bottom border-gray-300 border-bottom-dashed"></div>
+
+					<div class="row mb-8 mt-8">
+						<div class="col-xl-3">
+							<div class="col-xl-8">
+								<div class="fs-6 fw-bold mt-2 mb-3">{{"Confidentialité" | trans}}</div>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="d-flex fw-bold h-100">
+								<div class="form-check-custom form-check-solid">
+									{% if app.user.hasActiveSubscription %}
+										{% if avalableCreditService.canAddGalleries %}
+											{{ form_widget(form.isProtect, {'attr': {'class': 'form-check-input'}}) }}
+										{% else %}
+											{{ form_widget(form.isProtect, {'attr': {'disabled': 'disabled','class': 'form-check-input'}}) }}
+										{% endif %}
+										{{ form_errors(form.isActive) }}
+										{{ form_help(form.isActive) }}
+										{{ form_errors(form.isProtect) }}
+										{{ form_help(form.isProtect) }}
+									{% else %}
+										{{ form_widget(form.isProtect, {'attr': {'disabled': 'disabled','class': 'form-check-input'}}) }}
+										<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed mt-6 p-6 mb-10">
+											<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+												<div class="mb-3 mb-md-0 fw-bold">
+													<div class="fs-6 text-gray-700 pe-7">
+														{% set count = avalableCreditService.remaining %}
+														{{"Cette fonctionnalité est disponible uniquement pour les formules Awesome ou Pro." | trans}}
+														<br>
+														<a href="#" data-bs-toggle="modal" role="button" data-bs-target="#kt_modal_upgrade_plan">{{"Changez votre formule"}}</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="protectPassword">
+						<div class="row mb-8">
+							<div class="col-xl-3">
+								{{ form_label(form.passwordHash, 'Saisissez un mot de passe' | trans, {'label_attr': {'class': 'fs-6 fw-bold mt-2 mb-3'}})  }}
+							</div>
+							<div class="col-lg-8 fv-row">
+								{% if avalableCreditService.canAddGalleries %}
+									{{ form_widget(form.passwordHash, {'attr': {'class': 'form-control form-control-solid'}}) }}
+								{% else %}
+									{{ form_widget(form.passwordHash, {'attr': {'disabled': 'disabled','class': 'form-control form-control-solid'}}) }}
+								{% endif %}
+								{{ form_errors(form.passwordHash) }}
+								{{ form_help(form.passwordHash) }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer d-flex justify-content-end py-6">
+					{% if avalableCreditService.canAddGalleries %}
+						<button type="submit" class="btn btn-primary btn-hover-rise">{{"Enregistrer" | trans}}</button>
+					{% else %}
+						<button type="submit" class="btn btn-primary disabled">{{"Enregistrer" | trans}}</button>
+					{% endif %}
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$('#addGalleryForm').attr('autocomplete', 'off');
+let tagArr = document.getElementsByTagName("input");
+for (let i = 0; i < tagArr.length; i++) {
+tagArr[i].autocomplete = 'off';
+}
+$('#protectPassword').css('display', 'none');
+function displayPassword() {
+if ($('#gallery_form_isProtect').prop('checked')) {
+$('#protectPassword').css('display', 'block');
+} else {
+$('#protectPassword').css('display', 'none');
+}
+}
+	</script>
+{% endblock javascripts %}

@@ -1,0 +1,30 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{{ page.getTitle() }}
+	-
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	{{ page.getTitle() }}
+	-
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container inner">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="title">
+					{{ page.getTitle() }}
+				</h3>
+				<div class="text">
+					<p>{{ page.getContent() | raw }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Et vous, que pensez-vous de Bookfolio ? | Book-folio.fr" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-104e5012" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-104e5012" class="content6-headline-wrap mb0">
+						<div class="size1-text">{{"Et vous, que pensez-vous de Bookfolio ?" | trans}}</div>
+						<p class="paragraph-70 text-center">{{"Vous avez utilisé Bookfolio et souhaitez partager votre expérience."| trans}}<br>{{"Nous serons heureux de publier votre avis !" | trans}}</p>
+					</div>
+					<div id="w-node-6b143b24dfb5-104e5012">
+						{{ form_start(form, {'attr': {'class':'cta7-form-wrap needs-validation','novalidate': 'novalidate'}}) }}
+						<div class="w-row">
+							<div class="column-6 w-col w-col-12">
+								<div class="input-field">
+									{{ form_widget(form.message, { 'attr': {'placeholder':'Saisissez votre message ici','class' : 'text-area w-input','rows' : '3', 'cols' : '200' }}
+									) }}
+								</div>
+							</div>
+						</div>
+
+						<button type="submit" class="button-small w-button mt-2" name="comment-button">Publier maintenant</button>
+
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

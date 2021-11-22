@@ -1,0 +1,90 @@
+{% extends 'base_metronic.html.twig' %}
+{% use "bootstrap_base_layout.html.twig" %}
+{% block title %}
+	{{"Bookfolio - Annuaire des books | Suite de la création de book en ligne" | trans}}
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex flex-column flex-lg-row-fluid py-10">
+		<div class="d-flex flex-center flex-column flex-column-fluid">
+			<div class="w-lg-600px p-10 p-lg-15 mx-auto">
+				{{ form_start(registrationForm, {'attr': {'class':'form w-100','novalidate': 'novalidate'}}) }}
+				<input autocomplete="false" name="hidden" type="text" class="hidden">
+				<div class="mb-10 text-center">
+					<h1 class="text-dark mb-3">{{"Encore une chose..." | trans}}</h1>
+					<div class="text-gray-400 fw-bold fs-4">{{"Donnez-nous quelques précisions sur vous et vous pourrez commencer à utiliser votre book." | trans}}
+					</div>
+				</div>
+
+				<div class="row fv-row mb-7">
+					<div class="col-xl-6">
+						{{ form_label(registrationForm.lastname, 'Nom' | trans, {'label_attr': {'class': 'form-label fw-bolder text-dark fs-6'}})  }}
+						{{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(registrationForm.lastname) }}
+						{{ form_help(registrationForm.lastname) }}
+					</div>
+
+					<div class="col-xl-6">
+						{{ form_label(registrationForm.firstname, 'Prénom' | trans, {'label_attr': {'class': 'form-label fw-bolder text-dark fs-6'}})  }}
+						{{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(registrationForm.firstname) }}
+						{{ form_help(registrationForm.firstname) }}
+					</div>
+
+				</div>
+				<div class="fv-row mb-7">
+					{{ form_label(registrationForm.fullAdresse,'Où habitez-vous ?' | trans, {'label_attr': {'class': 'form-label fw-bolder text-dark fs-6'}})  }}
+					{{ form_widget(registrationForm.fullAdresse, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+					{{ form_errors(registrationForm.fullAdresse) }}
+					{{ form_help(registrationForm.fullAdresse) }}
+					{{ form_row(registrationForm.route, { 'id': 'route'}) }}
+					{{ form_row(registrationForm.locality, { 'id': 'locality' }) }}
+					{{ form_row(registrationForm.adminstrativeArea, { 'id': 'administrative_area_level_1' }) }}
+					{{ form_row(registrationForm.country, { 'id': 'country' }) }}
+					{{ form_row(registrationForm.postalCode, { 'id': 'postal_code' }) }}
+				</div>
+
+				<div class="fv-row mb-7">
+					{{ form_label(registrationForm.username,'Quel sera l\'adresse de votre book ?' | trans, {'label_attr': {'class': 'form-label fw-bolder text-dark fs-6'}})  }}
+					<div class="input-group input-group-solid">
+						<span class="input-group-text" id="basic-addon1">http://</span>
+						{{ form_widget(registrationForm.username, {'attr': {' aria-describedby':'basic-addon1','class': 'form-control form-control-lg form-control-solid'}}) }}
+						<span class="input-group-text" id="basic-addon2">.book-folio.fr</span>
+					</div>
+					{{ form_errors(registrationForm.username) }}
+					{{ form_help(registrationForm.username) }}
+				</div>
+
+				<div class="fv-row mb-7">
+					{{ form_label(registrationForm.avatar,'Choisissez la photo principale de votre book' | trans, {'label_attr': {'class': 'form-label fw-bolder text-dark fs-6'}})  }}
+					{{ form_widget(registrationForm.avatar, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+					{{ form_errors(registrationForm.avatar) }}
+					{{ form_help(registrationForm.avatar) }}
+				</div>
+
+				<div class="text-center">
+					<button type="submit" class="btn btn-lg btn-primary">
+						{{"C'est parti !" | trans}}
+					</button>
+				</div>
+				{{ form_end(registrationForm) }}
+			</div>
+		</div>
+		<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
+			<div class="d-flex flex-center fw-bold fs-6">
+				<a href="{{ path('cgu') }}" class="text-muted text-hover-primary px-2" target="_blank">{{"CGU" | trans}}</a>
+				<a href="{{ path('politicy') }}" class="text-muted text-hover-primary px-2" target="_blank">{{"Politique de confidentialité" | trans}}</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		let token = '{{ token }}';
+	</script>
+	<script src="{{ asset('assets/js/front/avatar_script.js') }}"></script>
+	<script src="{{ asset('assets/js/front/geolocate.js') }}" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="rSWmi1r" resname="label.form.empty_value">
+        <source>label.form.empty_value</source>
+        <target>__label.form.empty_value</target>
+      </trans-unit>
+      <trans-unit id="xxVfXla" resname="user.anonymous">
+        <source>user.anonymous</source>
+        <target>__user.anonymous</target>
+      </trans-unit>
+      <trans-unit id="odDw0du" resname="action.search">
+        <source>action.search</source>
+        <target>__action.search</target>
+      </trans-unit>
+      <trans-unit id="Rd0n9wc" resname="filter.title">
+        <source>filter.title</source>
+        <target>__filter.title</target>
+      </trans-unit>
+      <trans-unit id="EThXKJ7" resname="action.entity_actions">
+        <source>action.entity_actions</source>
+        <target>__action.entity_actions</target>
+      </trans-unit>
+      <trans-unit id=".Mt52Jq" resname="datagrid.no_results">
+        <source>datagrid.no_results</source>
+        <target>__datagrid.no_results</target>
+      </trans-unit>
+      <trans-unit id="oZzSf3Q" resname="datagrid.hidden_results">
+        <source>datagrid.hidden_results</source>
+        <target>__datagrid.hidden_results</target>
+      </trans-unit>
+      <trans-unit id="4J45.H4" resname="login_page.username">
+        <source>login_page.username</source>
+        <target>__login_page.username</target>
+      </trans-unit>
+      <trans-unit id="V56_FDR" resname="login_page.password">
+        <source>login_page.password</source>
+        <target>__login_page.password</target>
+      </trans-unit>
+      <trans-unit id="W0jkiQG" resname="login_page.sign_in">
+        <source>login_page.sign_in</source>
+        <target>__login_page.sign_in</target>
+      </trans-unit>
+      <trans-unit id="r2IGHZo" resname="user.logged_in_as">
+        <source>user.logged_in_as</source>
+        <target>__user.logged_in_as</target>
+      </trans-unit>
+      <trans-unit id="MSZG2W6" resname="delete_modal.title">
+        <source>delete_modal.title</source>
+        <target>__delete_modal.title</target>
+      </trans-unit>
+      <trans-unit id="nGU95PH" resname="delete_modal.content">
+        <source>delete_modal.content</source>
+        <target>__delete_modal.content</target>
+      </trans-unit>
+      <trans-unit id="Qj1ElaL" resname="action.cancel">
+        <source>action.cancel</source>
+        <target>__action.cancel</target>
+      </trans-unit>
+      <trans-unit id="hTKWQ6g" resname="action.delete">
+        <source>action.delete</source>
+        <target>__action.delete</target>
+      </trans-unit>
+      <trans-unit id="oQ9WL.E" resname="batch_action_modal.title">
+        <source>batch_action_modal.title</source>
+        <target>__batch_action_modal.title</target>
+      </trans-unit>
+      <trans-unit id="RHee8F4" resname="batch_action_modal.content">
+        <source>batch_action_modal.content</source>
+        <target>__batch_action_modal.content</target>
+      </trans-unit>
+      <trans-unit id="62SZ8Mz" resname="batch_action_modal.action">
+        <source>batch_action_modal.action</source>
+        <target>__batch_action_modal.action</target>
+      </trans-unit>
+      <trans-unit id="5YZoOIF" resname="filter.button.clear">
+        <source>filter.button.clear</source>
+        <target>__filter.button.clear</target>
+      </trans-unit>
+      <trans-unit id="DDfIL9s" resname="filter.button.apply">
+        <source>filter.button.apply</source>
+        <target>__filter.button.apply</target>
+      </trans-unit>
+      <trans-unit id="nVUMu1k" resname="paginator.results">
+        <source>paginator.results</source>
+        <target>__paginator.results</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

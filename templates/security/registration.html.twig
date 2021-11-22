@@ -1,0 +1,45 @@
+{% extends 'empty.html.twig' %}
+
+{% block body %}
+	<div class="utility-page-form">
+		<a href="{{ path('index') }}" class="link-block-5 w-inline-block">
+			<img src="{{ asset('assets/img/logo-fr.png') }}" width="100" alt="" class="logo-login">
+		</a>
+		<div class="content6-headline-wrap headline-login">
+			<h3 class="heading-8">Hey ! Qui êtes-vous ?</h3>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-danger" role="alert">{{ message }}</div>
+			{% endfor %}
+		</div>
+
+		<div class="cta7-form w-form">
+			<div class="form-row">
+				{{ form_start(form, {'attr': {'class':'needs-validation','novalidate': 'novalidate'}}) }}
+
+				<div class="w-col w-col-12">
+					<div class="text-start mb-3">
+						{{ form_widget(form.type_compte,{'attr': {'class':'w-select'}}
+						) }}
+						{{ form_errors(form.type_compte) }}
+					</div>
+				</div>
+
+
+				<div class="w-col w-col-12 mb-2">
+					<small class="text-start help-block">
+						En vous inscrivant, vous indiquez être majeur et accepter les
+						<a href="#">CGU</a>
+						et la politique de protection des données personnelles.
+					</small>
+				</div>
+
+				<div class="w-col w-col-12 mb-2">
+					<button type="submit" class="button-small form-centered-button w-button">Inscription</button>
+				</div>
+				{{ form_end(form) }}
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

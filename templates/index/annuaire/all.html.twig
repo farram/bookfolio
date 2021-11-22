@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Annuaire de book photo. Parcourir les meilleurs books photo en ligne" | trans }}
+{% endblock %}
+{% block body %}
+	<div id="type-book" class="wrapper m0-100">
+		<div class="section mobile-only">
+			<div data-delay="0" class="dropdown w-dropdown">
+				<div class="dropdown-toggle w-dropdown-toggle">
+					<div class="icon-3 w-icon-dropdown-toggle"></div>
+					<div class="size4-text">{{"Annuaire des books" | trans}}</div>
+				</div>
+				<nav class="dropdown-list w-dropdown-list">
+					<div class="w-dyn-list">
+						{{ list|join | raw }}
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid product5-grid">
+				<div id="w-node-7281d808904a-612a1c64" class="product5-nav-wrap">
+					<div class="product5-nav-items-wrap">
+						<h1 class="heading-title">{{"Annuaire des books" | trans}}</h1>
+						<div class="product5-nav-lists">
+							<ul>
+								<li>
+									<a href="{{ path('front_annuaire_new_book') }}" class="product5-category-link product5-all-items">Nouveaux books</a>
+								</li>
+							</ul>
+							<hr class="separator">
+							<div class="w-dyn-list">
+								{{ list|join | raw }}
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div id="w-node-bcf4afb35c10-612a1c64">
+					<div class="w-dyn-list">
+						<div class="product5-feed-grid w-dyn-items">
+							{% cache "users_annuaire_12a" ttl(3600) %}
+							{% for user in users %}
+								<div id="w-node-7281d8089065-612a1c64" class="w-dyn-item">
+									<div class="div-block-4 user-card">
+										<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="link-block w-inline-block">
+											<div class="author-picture image-user" style="background-image: url('{{ user.avatar }}');"></div>
+										</a>
+
+										<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="link-block-2 w-inline-block">
+											<div class="size4-text size4-bottom-clear" title="{{user.fullname}}">
+												{{user.fullname}}
+											</div>
+										</a>
+										<a href="#" class="link-block-2 w-inline-block">
+											<div class="size6-text size6-top-clear" title="{{user.profession}}">
+												{{user.profession}}
+											</div>
+										</a>
+										<p class="paragraph-70 paragraph70-bottom-clear" title="{{user.address.location}}">
+											{{user.address.location}}
+										</p>
+										<p class="paragraph-70">
+											{{ user.countImages | raw }}
+											&nbsp/&nbsp
+											{{ user.countGalleries | raw }}
+										</p>
+										<a data-w-id="c249d0e8-c721-094b-4a01-beffae3e1483" href="{{ path('portfolio_index', {'name':user.book.name}) }}" class="button-text button-left w-inline-block">
+											<div class="button-label text-dark">{{"Explorer le book" | trans}}</div><img src="{{ asset('assets/img/arrow-dark2x.svg') }}" alt="" class="button-arrow"></a>
+									</div>
+
+								</div>
+							{% endfor %}
+							{% endcache %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'emails/emailBaseFoundation.html.twig' %}
+{% block content %}
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-12 large-4 columns first">
+					<table>
+						<tr>
+							<th>
+								<center data-parsed="">
+									<a href="{{ url('media_show', {'id': image.galleryId,'mediaId':image.id}) }}">
+										<img src="{{image.path}}" title="{{image.title}}" align="center" class="float-center">
+									</a>
+								</center>
+							</th>
+						</tr>
+					</table>
+				</th>
+				<th class="small-12 first large-8 columns last">
+					<table>
+						<tr>
+							<th>
+								<h2>{{sender.fullname}}
+									{{"a commenté votre photo" | trans}}
+								</h2>
+								<table class="button large">
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<td>
+														<a href="{{ url('media_show', {'id': image.galleryId,'mediaId':image.id}) }}">Voir</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</th>
+						</tr>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<table class="spacer">
+		<tbody>
+			<tr>
+				<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-6 large-6 columns first last">
+					<table>
+						<tbody>
+							<tr>
+								<th>
+									<table class="callout">
+										<tbody>
+											<tr>
+												<th class="callout-inner">
+													<p>{{comment}}</p>
+												</th>
+												<th class="expander"></th>
+											</tr>
+										</tbody>
+									</table>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-12 large-2 columns first">
+					<table>
+						<tr>
+							<th>
+								<center data-parsed="">
+									<a href="{{sender.url}}" target="_blank" rel="noopener noreferrer">
+										<img src="{{sender.avatar}}" align="center" class="float-center">
+									</a>
+								</center>
+							</th>
+						</tr>
+					</table>
+				</th>
+				<th class="small-12 first large-10 columns last">
+					<table>
+						<tr>
+							<th>
+								<h4>
+									<a href="{{sender.url}}" target="_blank" rel="noopener noreferrer">{{sender.fullname}}</a>
+								</h4>
+								<h6 class="mb-0">{{sender.profession}}</h6>
+								<p class="text-flet">
+									{{sender.location}}
+								</p>
+							</th>
+						</tr>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Galeries | Bookfolio' | trans }}
+{% endblock %}
+{% block body %}
+{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Galeries (' ~ galleries|length ~ ')' | trans } %}
+<div class="row">
+	<div class="col-lg-3">
+		{% include 'dashboard/partial/galleries_side_bar.html.twig' with {'galleries': galleries} %}
+		{% include 'dashboard/partial/_subscription.html.twig' %}
+	</div>
+	<div class="col-lg-9">
+		<div id="vue-folders">
+			<go-top bg-color="#36b5aa" src="{{ asset('assets/img/icon-backtotop.png') }}" :size="50" :has-outline="false"></go-top>
+			<div class="card p-3">
+				<div class="p-3">
+					<h3 class="mb-2 mt-0">{{ 'Toutes vos galeries' | trans }}</h3>
+					<hr>
+					<div class="row">
+						<div class="col-lg-12">
+							{% if galleries %}
+								<div class="text-start">
+									<p class="text-muted">
+										{{ 'Déplacer, glisser et déposer pour réorganiser vos galeries.' | trans}}<br>
+										{{"Seules les galeries ayant du contenu seront visibles sur votre book." | trans}}
+									</p>
+								</div>
+								<div class="row" id="app-galleries"></div>
+							{% else %}
+								<div class="col-12">
+									<div class="row justify-content-md-center">
+										<div class="col-7 text-center">
+											<h4 class="mb-0 text-center">{{'Vous n\'avez pas encore de galerie.'| trans }}</h4>
+                                    <h5 class="mt-1"> Créez des galeries pour classer et partager vos photos.</h5>
+                                    <a href="{{ path('galleries_add') }}" class="mt-2 d-inline-block text-center btn btn-primary-color waves-effect waves-light">{{'Créer une galerie'| trans}} </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>                    
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Suggestions des books à suivre | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': "Suggestions des books à suivre" | trans} %}
+	<div class="row">
+		<div class="col-12">
+			<div id="app-annuaire-suggested"></div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

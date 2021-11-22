@@ -1,0 +1,56 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% include 'dashboard/partial/profile_head.html.twig' %}
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Notifications mail" | trans}}</h3>
+			</div>
+		</div>
+		{{ form_start(form, {'attr': {'class':'form needs-validation','novalidate': 'novalidate'}}) }}
+		<div class="card-body border-top px-9 py-9">
+
+			{{ form_label(form.contactPublishMedias, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+			{{ form_errors(form.contactPublishMedias) }}
+			{{ form_widget(form.contactPublishMedias, {'attr': {'class': 'form-check-input me-3'}}) }}
+			{{ form_help(form.contactPublishMedias) }}
+			<div class="separator separator-dashed my-6"></div>
+
+			{{ form_label(form.contactShareMessage, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+			{{ form_errors(form.contactShareMessage) }}
+			{{ form_widget(form.contactShareMessage, {'attr': {'class': 'form-check-input me-3'}}) }}
+			{{ form_help(form.contactShareMessage) }}
+			<div class="separator separator-dashed my-6"></div>
+
+			{{ form_label(form.contactSendPrivateMessage, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+			{{ form_errors(form.contactSendPrivateMessage) }}
+			{{ form_widget(form.contactSendPrivateMessage, {'attr': {'class': 'form-check-input me-3'}}) }}
+			{{ form_help(form.contactSendPrivateMessage) }}
+			<div class="separator separator-dashed my-6"></div>
+
+			{{ form_label(form.commentImage, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+			{{ form_errors(form.commentImage) }}
+			{{ form_widget(form.commentImage, {'attr': {'class': 'form-check-input me-3'}}) }}
+			{{ form_help(form.commentImage) }}
+			<div class="separator separator-dashed my-6"></div>
+
+			{{ form_label(form.follow, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+			{{ form_errors(form.follow) }}
+			{{ form_widget(form.follow, {'attr': {'class': 'form-check-input me-3'}}) }}
+			{{ form_help(form.follow) }}
+
+
+		</div>
+		<div class="card-footer d-flex justify-content-end py-6 px-9">
+			<button type="submit" class="btn btn-hover-rise btn-primary px-6">{{"Enregistrer" | trans}}</button>
+		</div>
+		{{ form_end(form) }}
+
+	</div>
+{% endblock %}

@@ -1,0 +1,523 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Votre compte | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+	{% include 'dashboard/partial/profile_head.html.twig' %}
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Informations" | trans}}</h3>
+			</div>
+		</div>
+		<div id="kt_account_profile_details" class="collapse show">
+
+			{{ form_start(profileForm, {'attr': {'class':'form needs-validation','novalidate': 'novalidate'}}) }}
+			<div class="card-body border-top p-9">
+				<div class="row mb-6">
+					{{ form_label(profileForm.lastname, 'Nom complet', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-lg-6 fv-row">
+								{{ form_widget(profileForm.lastname, {'attr': {'class': 'form-control form-control-lg form-control-solid mb-3 mb-lg-0'}}) }}
+								{{ form_errors(profileForm.lastname) }}
+								{{ form_help(profileForm.lastname) }}
+							</div>
+							<div class="col-lg-6 fv-row">
+								{{ form_widget(profileForm.firstname, {'attr': {'class': 'form-control form-control-lg form-control-solid mb-3 mb-lg-0'}}) }}
+								{{ form_errors(profileForm.firstname) }}
+								{{ form_help(profileForm.firstname) }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-6">
+					{{ form_label(profileForm.email, 'Adresse e-mail', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(profileForm.email, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(profileForm.email) }}
+						{{ form_help(profileForm.email) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(profileForm.profession, 'Profession', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(profileForm.profession, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(profileForm.profession) }}
+						{{ form_help(profileForm.profession) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(profileForm.experience, 'Experience', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(profileForm.experience, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(profileForm.experience) }}
+						{{ form_help(profileForm.experience) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(profileForm.about, 'Présentez-vous en quelques mots', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(profileForm.about, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(profileForm.about) }}
+						{{ form_help(profileForm.about) }}
+					</div>
+				</div>
+			</div>
+			<div class="card-footer d-flex justify-content-end py-6 px-9">
+				<button type="submit" class="btn btn-primary btn-hover-rise" id="kt_account_profile_details_submit">{{"Enregistrer" | trans}}</button>
+			</div>
+			{{ form_end(profileForm) }}
+		</div>
+	</div>
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_address" aria-expanded="true" aria-controls="kt_account_profile_details">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Adresse postale" | trans}}</h3>
+			</div>
+		</div>
+
+		<div id="kt_account_profile_address" class="collapse show">
+			{{ form_start(addressForm, {'attr': {'id':'address','class':'form needs-validation','novalidate': 'novalidate'}}) }}
+			<div class="card-body border-top p-9">
+				<div class="row mb-6">
+					{{ form_label(addressForm.fullAddress, 'Dans quelle ville habitez-vous ?', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.fullAddress, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(addressForm.fullAddress) }}
+						{{ form_help(addressForm.fullAddress) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(addressForm.route, 'Rue', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.route, {'attr': {'class': 'form-control form-control-lg form-control-solid','id':'route'}}) }}
+						{{ form_errors(addressForm.route) }}
+						{{ form_help(addressForm.route) }}
+					</div>
+				</div>
+
+
+				<div class="row mb-6">
+					{{ form_label(addressForm.locality, 'Ville', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.locality, {'attr': {'class': 'form-control form-control-lg form-control-solid','id':'locality'}}) }}
+						{{ form_errors(addressForm.locality) }}
+						{{ form_help(addressForm.locality) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(addressForm.adminstrative_area, 'Région', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.adminstrative_area, {'attr': {'class': 'form-control form-control-lg form-control-solid','id':'administrative_area_level_1'}}) }}
+						{{ form_errors(addressForm.adminstrative_area) }}
+						{{ form_help(addressForm.adminstrative_area) }}
+					</div>
+				</div>
+
+
+				<div class="row mb-6">
+					{{ form_label(addressForm.country, 'Pays', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.country, {'attr': {'class': 'form-control form-control-lg form-control-solid','id':'country'}}) }}
+						{{ form_errors(addressForm.country) }}
+						{{ form_help(addressForm.country) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(addressForm.postalCode, 'Code postal', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(addressForm.postalCode, {'attr': {'class': 'form-control form-control-lg form-control-solid','id':'postal_code'}}) }}
+						{{ form_errors(addressForm.postalCode) }}
+						{{ form_help(addressForm.postalCode) }}
+					</div>
+				</div>
+			</div>
+			<div class="card-footer d-flex justify-content-end py-6 px-9">
+				<button type="submit" class="btn btn-primary btn-hover-rise" id="kt_account_profile_details_submit">{{"Enregistrer" | trans}}</button>
+			</div>
+			{{ form_end(addressForm) }}
+		</div>
+	</div>
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_physique" aria-expanded="true" aria-controls="kt_account_profile_details">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Physique" | trans}}</h3>
+			</div>
+		</div>
+		<div id="kt_account_profile_physique" class="collapse show">
+			{{ form_start(physicalForm, {'attr': {'id':'physique','class':'form needs-validation','novalidate': 'novalidate'}}) }}
+			<div class="card-body border-top p-9">
+				<div class="">
+
+					<div class="row mb-6">
+						{{ form_label(physicalForm.ethnicity, 'Origine ethnique' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{{ form_widget(physicalForm.ethnicity, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{{ form_errors(physicalForm.ethnicity) }}
+							{{ form_help(physicalForm.ethnicity) }}
+						</div>
+					</div>
+
+					<div class="row mb-6">
+						{{ form_label(physicalForm.hairColor, 'Couleur de vos cheveux' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{{ form_widget(physicalForm.hairColor, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{{ form_errors(physicalForm.hairColor) }}
+							{{ form_help(physicalForm.hairColor) }}
+						</div>
+					</div>
+
+					<div class="row mb-6">
+						{{ form_label(physicalForm.eyesColor, 'Couleur de vos yeux' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{{ form_widget(physicalForm.eyesColor, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{{ form_errors(physicalForm.eyesColor) }}
+							{{ form_help(physicalForm.eyesColor) }}
+						</div>
+					</div>
+
+					<div class="row mb-6">
+						{{ form_label(physicalForm.gender, 'Genre' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{{ form_widget(physicalForm.gender, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{{ form_errors(physicalForm.gender) }}
+							{{ form_help(physicalForm.gender) }}
+						</div>
+					</div>
+
+					<div class="row mb-6">
+						{{ form_label(physicalForm.birthday, 'Date de naissance' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+						<div class="col-lg-8 fv-row">
+							{{ form_widget(physicalForm.birthday, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+							{{ form_errors(physicalForm.birthday) }}
+							{{ form_help(physicalForm.birthday) }}
+						</div>
+					</div>
+
+					{% if app.user.profession.getSlug() == "modeles" %}
+						<h3 class="mb-5">{{"Mensurations" | trans}}</h3>
+						<div class="card card-dashed h-xl-100 p-6">
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.size, 'Taille' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.size, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.size) }}
+											{{ form_help(physicalForm.size) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.weight, 'Poids' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.weight, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.weight) }}
+											{{ form_help(physicalForm.weight) }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.hip, 'Tour de hanche' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.hip, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.hip) }}
+											{{ form_help(physicalForm.hip) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.chest, 'chest' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.chest, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.chest) }}
+											{{ form_help(physicalForm.chest) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.confection, 'Confection' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.confection, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.confection) }}
+											{{ form_help(physicalForm.confection) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.pointure, 'Pointure' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.pointure, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.pointure) }}
+											{{ form_help(physicalForm.pointure) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.chestSize, 'Tour de poitrine' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.chestSize, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.chestSize) }}
+											{{ form_help(physicalForm.chestSize) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.waistSize, 'Tour de taille' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.waistSize, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.waistSize) }}
+											{{ form_help(physicalForm.waistSize) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.chestHeight, 'Hauteur de poitrine' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.chestHeight, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.chestHeight) }}
+											{{ form_help(physicalForm.chestHeight) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.heightBust, 'Hauteur devant du buste' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.heightBust, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.heightBust) }}
+											{{ form_help(physicalForm.heightBust) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.backHeight, 'Hauteur du dos' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.backHeight, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.backHeight) }}
+											{{ form_help(physicalForm.backHeight) }}
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.shoulderWidth, "Largeur de l'épaule" | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.shoulderWidth, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.shoulderWidth) }}
+											{{ form_help(physicalForm.shoulderWidth) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.roundNeck, 'Tour du cou' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.roundNeck, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.roundNeck) }}
+											{{ form_help(physicalForm.roundNeck) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.armLength, 'Longueur du bras' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.armLength, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.armLength) }}
+											{{ form_help(physicalForm.armLength) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.armsTurn, 'Tour du bras' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.armsTurn, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.armsTurn) }}
+											{{ form_help(physicalForm.armsTurn) }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+
+
+					{% if app.user.profession.getSlug() == "photographes" %}
+						<h3 class="mb-5">{{"Matériels" | trans}}</h3>
+						<div class="card card-dashed h-xl-100 p-6">
+							<div class="row mb-6">
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.apnCamera, 'Appareil photo' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.apnCamera, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.apnCamera) }}
+											{{ form_help(physicalForm.apnCamera) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										{{ form_label(physicalForm.apnLenses, 'Objectif(s)' | trans, {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+										<div class="col-lg-8 fv-row">
+											{{ form_widget(physicalForm.apnLenses, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+											{{ form_errors(physicalForm.apnLenses) }}
+											{{ form_help(physicalForm.apnLenses) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					{% endif %}
+
+
+				</div>
+			</div>
+			<div class="card-footer d-flex justify-content-end py-6 px-9">
+				<button type="submit" class="btn btn-primary btn-hover-rise" id="kt_account_profile_details_submit">{{"Enregistrer" | trans}}</button>
+			</div>
+			{{ form_end(physicalForm) }}
+		</div>
+	</div>
+
+	<div class="card mb-5 mb-xl-10">
+		<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_social" aria-expanded="true" aria-controls="kt_account_profile_details">
+			<div class="card-title m-0">
+				<h3 class="fw-bolder m-0">{{"Réseau sociaux" | trans}}</h3>
+			</div>
+		</div>
+		<div id="kt_account_profile_social" class="collapse show">
+			{{ form_start(socialForm, {'attr': {'id':'social','class':'form needs-validation','novalidate': 'novalidate'}}) }}
+			<div class="card-body border-top p-9">
+				<div class="row mb-6">
+					{{ form_label(socialForm.facebook, 'Facebook', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.facebook, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.facebook) }}
+						{{ form_help(socialForm.facebook) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.instagram, 'Instagram', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.instagram, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.instagram) }}
+						{{ form_help(socialForm.instagram) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.tumblr, 'Tumblr', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.tumblr, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.tumblr) }}
+						{{ form_help(socialForm.tumblr) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.twitter, 'Twitter', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.twitter, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.twitter) }}
+						{{ form_help(socialForm.twitter) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.pinterest, 'Pinterest', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.pinterest, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.pinterest) }}
+						{{ form_help(socialForm.pinterest) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.linkedin, 'Linkedin', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.linkedin, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.linkedin) }}
+						{{ form_help(socialForm.linkedin) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.skype, 'Skype', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.skype, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.skype) }}
+						{{ form_help(socialForm.skype) }}
+					</div>
+				</div>
+
+				<div class="row mb-6">
+					{{ form_label(socialForm.website, 'Site web', {'label_attr': {'class': 'col-lg-4 col-form-label fw-bold fs-6'}})  }}
+					<div class="col-lg-8 fv-row">
+						{{ form_widget(socialForm.website, {'attr': {'class': 'form-control form-control-lg form-control-solid'}}) }}
+						{{ form_errors(socialForm.website) }}
+						{{ form_help(socialForm.website) }}
+					</div>
+				</div>
+
+			</div>
+			<div class="card-footer d-flex justify-content-end py-6 px-9">
+				<button type="submit" class="btn btn-primary btn-hover-rise" id="kt_account_profile_details_submit">{{"Enregistrer" | trans}}</button>
+			</div>
+			{{ form_end(socialForm) }}
+		</div>
+	</div>
+
+{% endblock  %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/dashboard/geolocate_settings.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARh0uWHZeZXgSbMuJvsQ5IH5jK33VCdHY&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock javascripts %}

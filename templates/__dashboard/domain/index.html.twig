@@ -1,0 +1,37 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Configuration de votre book - Nom de domaine | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Configuration de votre book'|trans} %}
+	{% import "dashboard/partial/forms.html.twig" as forms %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/book_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+			<div class="card p-3">
+				<div class="p-3">
+					<h3 class="mb-2 mt-0">{{ 'Nom de domaine' | trans }}</h3>
+					<p class="mb-3">
+						Votre book est pour le moment accessible via l'url http://{{ app.user.book.getName()}}.book-folio.fr.<br>Il vous est désormais possible de réserver votre propre nom de domaine. En effet nous proposons ce service pour que vous puissiez choisir vous même votre nom de site (url) et ceci pour une durée de 1 an. Votre book sera donc accessible via l'adresse (url) que vous aurez créée.
+					</p>
+					{{ form_start(form, {'action': path('domain_check'),'attr': {'class':' needs-validation'}}) }}
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="form-group">
+								{{ form_label(form.url, 'Quel nom de domaine souhaitez-vous pour votre book ? '|trans, {'label_attr': {'class': 'text-dark mb-2'}})  }}
+								{{ form_widget(form.url, {'help': 'foobar'}) }}
+								{{ form_help(form.url) }}
+							</div>
+						</div>
+						{{ forms.buttonSubmitCustomText({class:'col-lg-12', text:'Continuer'}) }}
+					</div>
+					{{ form_end(form) }}
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

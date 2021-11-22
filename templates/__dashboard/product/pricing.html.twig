@@ -1,0 +1,91 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Nos offres | Bookfolio'|trans}}
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Nos offres'|trans} %}
+	<div class="row justify-content-center">
+		<div class="col-xl-10">
+			{% if plans %}
+				<div class="row my-3">
+					{% for plan in plans %}
+						<div class="col-md-4">
+							<div class="card card-pricing">
+								<div class="card-body text-center">
+									<p class=" fw-bold mb-0">{{ plan.planName | capitalize}}</p>
+									<h2 class="card-pricing-price text-primary pt-1">{{ plan.getTotal() }}€
+										<span class="d-block mt-1">
+											{% if plan.planPrice == 0 %}
+												Gratuit à vie
+											{% else %}
+												Tous les 3 mois
+											{% endif %}
+										</span>
+									</h2>
+									{% if plan.planPrice == 0 %}
+										<p class="text-muted mb-0">{{"Gratuit pour toujours si vous ne souhaitez pas plus d'avantages." | trans}}</p>
+									{% else %}
+										<p class="text-muted mb-0">{{"Abonnement de 3 mois renouvelable automatiquement." | trans}}</p>
+									{% endif %}
+									{% if plan.planDetails %}
+										<div class="table-responsive">
+											<table class="table mb-0 mt-2">
+												<tbody>
+													{% for details in plan.planDetails %}
+														<tr>
+															<td class="text-start text-dark">{{ details.feature.getTitle()}}</td>
+															<td class="text-start">
+																<strong>
+																	{% if details.value is null %}
+																		{{"Illimité" | trans}}
+																	{% elseif details.value == 'yes' %}
+																		<i class="fe-check text-success font-20"></i>
+																	{% elseif details.value == 'no' %}
+																		<i class="fe-x text-danger font-20"></i>
+																	{% else %}
+																		{{ details.value }}
+																	{% endif %}
+																</strong>
+															</td>
+														</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									{% endif %}
+									<div class="d-grid gap-2">
+										{% if app.user.subscription %}
+											{% if plan.getIdPriceApi == app.user.subscription.stripePlanId %}
+												<a href="#" role="button" aria-disabled="true" class="mr-0 btn d-block btn-lg disabled {% if plan.Ishighlight %}btn-light{% else %}btn-custom text-white{% endif %}">
+													<i class="mdi mdi-check mr-1"></i>
+													{{"Votre offre actuelle"| trans}}</a>
+											{% else %}
+												{% if plan.planPrice == 0 %}
+													<a href="#" class="btn d-block btn-primary waves-effect waves-light mt-4 mb-2 btn-lg">{{"Choisir cette offre"| trans}}
+													</a>
+												{% else %}
+													<a href="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApi }) }}" class="btn d-block btn-primary waves-effect waves-light mt-4 mb-2 btn-lg">{{"Choisir cette offre"| trans}}
+													</a>
+												{% endif %}
+											{% endif %}
+										{% else %}
+											{% if plan.planPrice == 0 %}
+												<a href="#" role="button" aria-disabled="true" class="btn d-block btn-primary waves-effect waves-light mt-4 mb-2 btn-lg disabled">
+													<i class="mdi mdi-check mr-1"></i>
+													{{"Votre offre actuelle"| trans}}
+												</a>
+											{% else %}
+												<a href="{{ path('dashboard_order_add_subscription_to_cart', { 'planId': plan.getIdPriceApi }) }}" class="btn d-block btn-primary waves-effect waves-light mt-4 mb-2 btn-lg">{{"Choisir cette offre"| trans}}
+												</a>
+											{% endif %}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>{% endblock %}

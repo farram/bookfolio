@@ -1,0 +1,25 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	Vidéos -
+	{{ book.getTitle() ? book.getTitle() : book.user.getFullname() }}
+{% endblock %}
+
+{% block description %}
+	Vidéos -
+	{{ book.getDescription() | raw }}
+	-
+	{{ book.user.getFullname() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container no-padd">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="title">Vidéos ({{ videos | length }})</h3>
+			</div>
+			<div id="portfolioVideo"></div>
+		</div>
+	</div>
+
+{% endblock %}

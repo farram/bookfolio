@@ -1,0 +1,27 @@
+<div class="card p-3 text-center">
+	{% if (current_path == "dashboard_social_inbox_all") %}
+		<h4 class="mb-0 text-center">{{'Aucun nouveau message.'| trans }}</h4>
+		<h5 class="mt-1 text-muted">
+			{{"Les messages envoyés depuis votre book s'afficheront ici." | trans}}
+		</h5>
+	{% else %}
+		{% if (current_path == "dashboard_social_inbox_favorites") %}
+			<h4 class="mb-0 text-center">{{'Aucun message favoris.'| trans }}</h4>
+			<h5 class="mt-1 text-muted">
+				{{"Les messages favoris s'afficheront ici." | trans}}
+			</h5>
+		{% else %}
+			{% if (current_path == "dashboard_social_inbox_sent") %}
+				<h4 class="mb-0 text-center">{{'Aucun message envoyé.'| trans }}</h4>
+				<h5 class="mt-1 text-muted">
+					{{"Les messages envoyés depuis Bookfolio s'afficheront ici." | trans}}
+				</h5>
+			{% else %}
+				<h4 class="mb-0 text-center">{{'Aucun message supprimé.'| trans }}</h4>
+				<h5 class="mt-1 text-muted">
+					{{"Les messages supprimés s'afficheront ici durant une période de 30 jours." | trans}}
+				</h5>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+</div>

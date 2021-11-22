@@ -1,0 +1,217 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Annuaire de book photo en ligne, création gratuit de portfolio." | trans }}
+{% endblock %}
+{% block body %}
+	<div class="hero6 hero-img" style="background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(24, 24, 29, 0.45)), to(rgba(24, 24, 29, 0.45))), url('{% if cover %} {{cover.path}} {% else %} {% endif %} ');">
+		<div class="section">
+			<div class="w-layout-grid hero6-grid">
+				<div id="w-node-b4580e2811e3-d1ff2247" class="hero6-content">
+					<div class="hero6-text">
+						<h1 data-w-id="c1fda414-5fa6-0930-85b0-8918d55aa5a5" style="opacity:0">
+							<span>{{"Bienvenue sur Bookfolio" | trans}},
+							</span>
+							{{"la plate-forme de création de book photo et portfolio en ligne." | trans}}</h1>
+						<div data-w-id="41a3b539-8f17-21f7-4879-05c419d8da08" style="opacity:0" class="text-block-3">{{"Créez gratuitement votre book photo en ligne en quelques secondes." | trans}}</div>
+					</div>
+					{% if not app.user %}
+						<a data-w-id="b494c067-f9f8-65e5-8165-e6e153a26ad6" style="opacity:0" href="{{ path('app_register') }}" class="button-large outline-button-large w-inline-block" title="{{"Créez votre book gratuitement" | trans}}">
+							<div class="text-block-4">{{"Créez votre book" | trans }}</div><img src="{{ asset('assets/img/arrow-dark2x.svg') }}" alt="{{"Créez votre book gratuitement" | trans}}" class="button-arrow">
+						</a>
+					{% else %}
+						<a data-w-id="b494c067-f9f8-65e5-8165-e6e153a26ad6" style="opacity:0" href="{{ path('dashboard_index') }}" class="button-large outline-button-large w-inline-block" title="{{"Mon tableau de bord" | trans}}">
+							<div class="text-block-4">{{"Mon tableau de bord" | trans}}</div>
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% if cover %}
+			<a href="{{ path('portfolio_index', {'name':cover.user.book.name}) }}" target="_blank" class="w-inline-block">
+				<div class="text-block-2">{{"Crédits photo" | trans}}
+					:
+					{{cover.user.fullname}}</div>
+			</a>
+		{% endif %}
+	</div>
+
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid headline-grid">
+				<div id="w-node-4a95e54217ba-d1ff2247">
+					<h2 class="heading-5 top-clear">{{"Pourquoi choisir Bookfolio ?" | trans}}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content36-grid raisons">
+				<div id="w-node-a6c8868f75ae-d1ff2247"><img src="{{ asset('assets/img/icon-free.png') }}" width="70" alt="{{"100% gratuit" | trans}}" class="content28-logo">
+					<div class="size4-text">{{"100% gratuit" | trans}}<br></div>
+					<p class="paragraph-70">{{"Vous n’avez rien à payer pour profiter de nos services. Bookfolio est entièrement gratuit. Promis, ça ne changera pas !" | trans}}<br></p>
+				</div>
+				<div id="w-node-a6c8868f75b8-d1ff2247"><img src="{{ asset('assets/img/icon-speed.png') }}" width="70" alt="{{"Simple et rapide" | trans}}" class="content28-logo">
+					<div class="size4-text">{{"Simple et rapide" | trans}}<br></div>
+					<p class="paragraph-70">{{"Choisissez un template, ajoutez vos photos, publiez votre book. Tout simplement." | trans}}</p>
+				</div>
+				<div id="w-node-a6c8868f75c2-d1ff2247"><img src="{{ asset('assets/img/paperdesk.png') }}" width="70" alt="{{"Annuaire complet" | trans}}" class="content28-logo">
+					<div class="size4-text">{{"Annuaire complet" | trans}}<br></div>
+					<p class="paragraph-70">{{"Parcourez l’annuaire, et prenez contact avec d’autres artistes pour débuter une belle collaboration." | trans}}</p>
+				</div>
+			</div>
+			<div class="w-layout-grid content36-grid raisons">
+				<a href="{{ path('avantages') }}" id="w-node-734b034eb7ff-d1ff2247" data-w-id="df11fe3b-2979-7100-f0e7-d33810fb44bd" class="button-small button-raison w-inline-block">
+					<div class="button-label">{{"Voir tous les avantages" | trans}}</div><img src="{{ asset('assets/img/arrow2x.svg') }}" alt="{{"Voir tous les avantages" | trans}}" class="button-arrow"></a>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid headline-grid">
+				<div id="w-node-18c5e427f60d-d1ff2247" class="div-block-5">
+					<div class="text-label">{{"Un annuaire complet, riche et varié" | trans}}</div>
+					<h2 class="heading-4 top-clear">{{"Annuaire des books photo en ligne" | trans}}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if users %}
+		<div class="wrapper m50-100">
+			<div class="section">
+				<div data-w-id="9e1ce6cb-ff08-7df0-fa45-eb99d3b1de15" style="opacity:0" class="collection-list-wrapper-2 w-dyn-list">
+					<div class="product4-grid w-dyn-items">
+						{% cache "users_home_a" ttl(3600) %}
+						{% for user in users %}
+							<div id="w-node-eb99d3b1de17-d1ff2247" class="w-dyn-item">
+								<div class="div-block-4 user-card">
+									<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="link-block w-inline-block">
+										<div class="author-picture image-user" style="background-image: url('{{ user.avatar }}');"></div>
+									</a>
+
+									<a href="{{ path('portfolio_index', {'name':user.book.name}) }}" target="_blank" class="link-block-2 w-inline-block">
+										<div class="size4-text size4-bottom-clear" title="{{user.fullname}}">
+											{{user.fullname}}
+										</div>
+									</a>
+									<a href="<?php echo $model->getUrlType();?>" class="link-block-2 w-inline-block">
+										<div class="size6-text size6-top-clear" title="{{user.profession}}">
+											{{user.profession}}
+										</div>
+									</a>
+									<p class="paragraph-70 paragraph70-bottom-clear" title="{{user.address.location}}">
+										{{user.address.location}}
+									</p>
+									<p class="paragraph-70">
+										{{ user.countImages | raw }}
+										&nbsp/&nbsp
+										{{ user.countGalleries | raw }}
+									</p>
+									<a data-w-id="c249d0e8-c721-094b-4a01-beffae3e1483" href="{{ path('portfolio_index', {'name':user.book.name}) }}" class="button-text button-left w-inline-block">
+										<div class="button-label text-dark">{{"Explorer le book" | trans}}</div><img src="{{ asset('assets/img/arrow-dark2x.svg') }}" alt="" class="button-arrow"></a>
+								</div>
+
+							</div>
+						{% endfor %}
+						{% endcache %}
+					</div>
+				</div>
+				<div class="w-layout-grid content16-grid">
+					<a href="{{ path('front_annuaire') }}" id="w-node-d33810fb44bd-d1ff2247" data-w-id="df11fe3b-2979-7100-f0e7-d33810fb44bd" class="button-small button-annuaire w-inline-block" title="Voir l'annuaire complet">
+						<div class="button-label">{{"Voir l'annuaire complet" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Voir l'annuaire complet" | trans}}" class="button-arrow"></a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="wrapper m0-100">
+		<div class="section">
+			<div class="w-layout-grid content16-grid"><img src="{{ asset('assets/img/illu_passion.png') }}" id="w-node-1716e6cb3bf4-d1ff2247" alt="Destiné aux passionnés de la photographie">
+				<div id="w-node-1716e6cb3bf5-d1ff2247" class="content16-left-column">
+					<div data-w-id="f3451e3f-06ff-89fa-65e3-1716e6cb3bf6" style="opacity:0" class="content16-headline-wrap">
+						<h2 class="heading-6">{{"Si vous aimez les clichés, vous allez adorer Bookfolio" | trans}}</h2>
+						<p class="paragraph-70">{{"Vous êtes photographe, modèle, comédien(ne) etc. ? Vous êtes au bon endroit ! Montrez vos photos, exposez vos galeries, révélez votre talent." | trans}}</p>
+					</div>
+					{% if not app.user %}
+						<a href="{{ path('app_register') }}" data-w-id="f3451e3f-06ff-89fa-65e3-1716e6cb3bfb" style="opacity:0" class="button-small show-button w-inline-block" title="{{"Créez votre book photo gratuitement" | trans}}">
+							<div class="button-label">{{"Créez votre book photo  gratuitement" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Créez votre book photo gratuitement" | trans}}" class="button-arrow"></a>
+					{% else %}
+						<a href="{{ path('front_annuaire') }}" data-w-id="f3451e3f-06ff-89fa-65e3-1716e6cb3bfb" style="opacity:0" class="button-small show-button w-inline-block" title="{{"Consulter l'annuaire" | trans}}">
+							<div class="button-label">{{"Consulter l'annuaire" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Consulter l'annuaire des books" | trans}}" class="button-arrow"></a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper m0-100">
+		<div class="section">
+			<div class="w-layout-grid content16-grid"><img src="{{ asset('assets/img/illu_esthetique.png')}}" id="w-node-bd09bf8d4ef9-d1ff2247" alt="Votre book 100% esthétique,100% plaisir !">
+				<div id="w-node-bd09bf8d4efa-d1ff2247" class="content16-left-column">
+					<div data-w-id="2e0780a9-a79d-9199-9644-bd09bf8d4efb" style="opacity:0" class="content16-headline-wrap">
+						<h2 class="heading-7">{{"De beaux albums pour votre seul plaisir" | trans}}</h2>
+						<p class="paragraph-70">{{"Grâce à nos templates, mettez en valeur la beauté de votre art. Choisissez parmi nos différents modèles celui qui saura sublimer vos photos. Il y en a sûrement un qui vous correspond !" | trans}}</p>
+					</div>
+					<a href="{{ path('designs') }}" data-w-id="2e0780a9-a79d-9199-9644-bd09bf8d4f01" style="opacity:0" class="button-small show-button w-inline-block" title="{{"Voir tous les templates" | trans}}">
+						<div class="button-label">{{"Voir tous les templates" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Voir tous les templates" | trans}}" class="button-arrow"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if testimonials %}
+		<div class="wrapper m0-100 testimonial-bg">
+			<div class="section">
+				<div class="w-layout-grid content25-grid">
+					<div id="w-node-4623239d345e-d1ff2247">
+						<div class="text-label">{{"Vous hésitez encore ?" | trans}}</div>
+						<h2 class="heading-4 top-clear">{{"Nos ambassadeurs sauront peut-être vous convaincre." | trans}}</h2>
+					</div>
+					<div id="w-node-76a63157edb3-d1ff2247" class="testimonial w-dyn-list">
+						<div class="w-dyn-items w-row">
+							{% for testimonial in testimonials %}
+								<div class="collection-item-4 w-dyn-item w-col w-col-4">
+									<div class="content25-item">
+										<a href="{{ path('portfolio_index', {'name':testimonial.user.book.name}) }}" target="_blank" class="w-inline-block">
+											<p class="size4-text size4-bottom-clear">
+												{{testimonial.user.fullname}}
+											</p>
+										</a>
+										<p class="size3-text text-start">{{testimonial.content | raw}}</p>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					<a href="{{ path('avis') }}" id="w-node-3b6c05a2c6c0-d1ff2247" data-w-id="c8566a74-afe6-a817-63a7-3b6c05a2c6c0" class="button-small display w-inline-block" title="{{"Lire tous les avis" | trans}}">
+						<div class="button-label">{{"Lire tous les avis" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Lire tous les avis" | trans}}" class="button-arrow"></a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="wrapper m0-50">
+		<div class="section">
+			<div class="w-layout-grid headline-grid">
+				<div id="w-node-b575f04fc64e-d1ff2247">
+					<div class="text-label">{{"Inspiration" | trans}}<br></div>
+					<h2 class="top-clear">{{"Nos coups de cœur" | trans}}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper m0-50">
+		<div id="front_images_home"></div>
+		<div class="section">
+			<div class="content">
+				<a data-w-id="aacbf08c-2bce-2acb-ed44-d25568c91b1b" href="{{ path('inspiration') }}" class="button-small button-inspiration w-inline-block" title="{{"Voir tous les coups de cœur" | trans}}">
+					<div class="button-label">{{"Voir tous les coups de cœur" | trans}}</div><img src="{{ asset('assets/img/Arrow2x.svg') }}" alt="{{"Voir tous les coups de cœur" | trans}}" class="button-arrow"></a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Vos notifications | Bookfolio" | trans }}
+{% endblock %}
+{% block body %}
+	{% if notifications %}
+		<div class="card mt-5 mt-xxl-8">
+			<div class="card-body">
+				<div class="tab-content">
+					<div id="kt_activity_today" class="card-body p-0 tab-pane fade show active" role="tabpanel" aria-labelledby="kt_activity_today_tab">
+						<div class="timeline">
+							<div id="app-notifications"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="card">
+			<div class="card-body p-0">
+				<div class="card-px text-center py-20 my-10">
+					<h2 class="fs-2x fw-bolder mb-10">{{"Aucune notification !" | trans}}</h2>
+					<p class="text-gray-400 fs-4 fw-bold mb-10">
+						{{"Vous avez aucune notification pour l'instant !" | trans}}
+						<br/>{{"Les prochaines notifications s'afficheront ici." | trans}}</p>
+				</div>
+				<div class="text-center px-4">
+					<img class="mw-100 mh-300px" alt="" src="{{ asset('assets/dashboard/media/illustrations/alert-2.png') }}"/>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

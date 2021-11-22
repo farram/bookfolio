@@ -1,0 +1,40 @@
+{% extends 'portfolio/' ~ design ~'/base.html.twig' %}
+
+{% block title %}
+	{% if book.title %}
+		{{ book.title }}
+	{% else %}
+		{{ book.user.fullname }}
+		- Accueil
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<section class="section-holder section-home31 alignc">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<h2 class="section-title margin-b10">{{ book.user.fullname }}</h2>
+					<h5 class="section-title margin-b32">{{ book.user.profession }}
+						({{ book.user.experience }})<br>{{ book.user.address.location }}</h5>
+					{% if book.user.about %}
+						<p>
+							{{ book.user.about | raw }}
+						</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section-holder">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="port-masonry port-masonry-3cols">
+						<div id="app-media-home"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

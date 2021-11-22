@@ -1,0 +1,152 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{'Ajouter des photos'| trans}}
+	| Bookfolio
+{% endblock %}
+{% block body %}
+
+	{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="card card-flush pt-3 mb-5 mb-lg-10">
+				<div class="card-header">
+					<div class="card-title">
+						<h2 class="fw-bolder">{{"Ajouter des photos" | trans}}</h2>
+					</div>
+				</div>
+				<div class="card-body pt-0">
+					{% if avalableCreditService.canPublishImages %}
+						<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed h-lg-100 p-6 mb-10">
+							<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+									<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+									<rect x="11" y="17" width="7" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+									<rect x="11" y="9" width="2" height="2" rx="1" transform="rotate(-90 11 9)" fill="black"/>
+								</svg>
+							</span>
+							<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+								<div class="mb-3 mb-md-0 fw-bold">
+									<div class="fs-6 text-gray-700 pe-7">
+										{% set count = avalableCreditService.remaining %}
+										{{ count|pluralize('Vous pouvez encore ajouter {} photo sur votre book ce mois-ci avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}), 'Vous pouvez encore ajouter {} photos ce mois-ci sur votre book avec votre %formule%'|trans({'%formule%': '<a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan"> ' ~ ' formule.'|trans ~ '</a>'}) | trans) |raw}}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						{{ block("notice_limit_images", "dashboard/partial/alert/notice.html.twig") }}
+					{% endif %}
+
+					{{ form_label(form.gallery, 'Dans quelle galerie souhaitez-vous ajouter vos photos ?' | trans, {'label_attr': {'class': 'form-label fs-6 fw-bolder mb-3'}})  }}
+
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.gallery, {'attr': {'class': 'form-control form-control-solid'}}) }}
+					{% else %}
+						{{ form_widget(form.gallery, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid'}}) }}
+					{% endif %}
+
+
+					{{ form_errors(form.gallery) }}
+					{{ form_help(form.gallery) }}
+
+					<div class="mt-10">
+						{% if avalableCreditService.canPublishImages %}
+							{{ form_widget(form.imageFile, {'attr': {'class': 'form-control form-control-solid'}}) }}
+						{% else %}
+							{{ form_widget(form.imageFile, {'attr': {'disabled':'disabled','class': 'form-control form-control-solid'}}) }}
+						{% endif %}
+						{{ form_errors(form.imageFile) }}
+						{{ form_help(form.imageFile) }}
+					</div>
+				</div>
+				<div class="card-footer text-end">
+					{% if avalableCreditService.canPublishImages %}
+						<button type="submit" class="btn btn-md btn-primary btn-hover-rise">{{"Publier sur mon book" | trans}}</button>
+					{% else %}
+						<button type="submit" class="btn btn-md btn-primary disabled">{{"Publier sur mon book" | trans}}</button>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="card card-flush pt-3 mb-5 mb-lg-10">
+				<div class="card-header">
+					<div class="card-title mb-0">
+						<h2 class="fw-bolder">{{"Options" | trans}}</h2>
+					</div>
+				</div>
+
+				<div class="card-body">
+					{{ form_label(form.isNSFW, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.isNSFW) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.isNSFW, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.isNSFW, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.isNSFW) }}
+					<div class="separator separator-dashed my-6"></div>
+
+					{{ form_label(form.isHome, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.isHome) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.isHome, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.isHome, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.isHome) }}
+					<div class="separator separator-dashed my-6"></div>
+
+					{{ form_label(form.isGallery, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.isGallery) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.isGallery, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.isGallery, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.isGallery) }}
+					<div class="separator separator-dashed my-6"></div>
+
+					{{ form_label(form.allowFavorites, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.allowFavorites) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.allowFavorites, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.allowFavorites, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.allowFavorites) }}
+					<div class="separator separator-dashed my-6"></div>
+
+					{{ form_label(form.allowLikes, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.allowLikes) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.allowLikes, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.allowLikes, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.allowLikes) }}
+					<div class="separator separator-dashed my-6"></div>
+
+					{{ form_label(form.allowComments, {'label_attr': {'class': 'fw-bolder fs-5 mb-0'}})  }}
+					{{ form_errors(form.allowComments) }}
+					{% if avalableCreditService.canPublishImages %}
+						{{ form_widget(form.allowComments, {'attr': {'class': 'form-check-input me-3'}}) }}
+					{% else %}
+						{{ form_widget(form.allowComments, {'attr': {'disabled':'disabled','class': 'form-check-input me-3'}}) }}
+					{% endif %}
+					{{ form_help(form.allowComments) }}
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/dashboard/js/jquery.fileuploader.min.js') }}"></script>
+	<script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
+{% endblock javascripts %}

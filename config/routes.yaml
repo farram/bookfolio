@@ -1,0 +1,361 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# config/routes.yaml
+
+#portfolio_index:
+    #path: /accueil
+    #host: "{name}.%base_host%"
+    #controller: App\Controller\PortfolioController::BookIndex
+    #defaults:
+        #subdomain: ([a-zA-Z.]+)
+    
+
+user_list_experience:
+    path: /get-experience-from-metier
+    controller: App\Controller\SecurityController::listExperienceOfMetier
+    methods: GET
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing-sf4.xml"
+
+delete_gallery:
+    path: /gallery/{id}/delete
+    controller: App\Controller\GalleryController::deleteGallery
+    options:
+        expose: true
+
+delete_image:
+    path: /image/{id}/delete
+    controller: App\Controller\ImageController::deleteImage
+    options:
+        expose: true
+
+reorder_images:
+    path: /gallery/{id}/order/{list}
+    controller: App\Controller\ImageController::orderImages
+    options:
+        expose: true
+
+preload_images:
+    path: /gallery/{id}/medias
+    controller: App\Controller\ImageController::preloadImages
+    options:
+        expose: true
+
+sort_images:
+    path: /gallery/{id}/medias/sort
+    controller: App\Controller\ImageController::sortImages
+    options:
+        expose: true
+
+remove_image:
+    path: /gallery/{id}/media/{mediaId}/remove
+    controller: App\Controller\ImageController::removeImages
+    options:
+        expose: true
+
+add_image:
+    path: /gallery/{id}/medias/add
+    controller: App\Controller\ImageController::addImages
+    options:
+        expose: true
+
+rename_images:
+    path: /gallery/{folderId}/medias/rename/{name}/id/{id}/title/{title}
+    controller: App\Controller\ImageController::renameImages
+    options:
+        expose: true
+
+main_image:
+    path: /gallery/{galleryId}/medias/main/{name}/id/{id}
+    controller: App\Controller\ImageController::mainImage
+    options:
+        expose: true
+
+json_designs:
+    path: /dashboard/designs/json/{page}
+    controller: App\Controller\DesignController::all
+    options:
+        expose: true
+
+json_annuaire:
+    path: /dashboard/annuaire/json/{page}
+    controller: App\Controller\AnnuaireController::jsonAnnuaire
+    options:
+        expose: true
+
+json_annuaire_suggested:
+    path: /dashboard/annuaire/suggested/json/{page}
+    controller: App\Controller\AnnuaireController::jsonAnnuaireSuggested
+    options:
+        expose: true
+
+annuaire_notsuggested:
+    path: /dashboard/annuaire/notsuggested/{uuid}
+    controller: App\Controller\AnnuaireController::notsuggested
+    methods: GET|HEAD
+    options:
+        expose: true
+
+json_galleries:
+    path: /galleries/json/{page}
+    controller: App\Controller\GalleryController::jsonGalleries
+    options:
+        expose: true
+
+json_experience:
+    path: /experience/type/{type}
+    controller: App\Controller\DashboardController::jsonExperience
+    options:
+        expose: true
+
+add_follow:
+    path: /follow/user/{username}
+    controller: App\Controller\FollowController::AddFollow
+    options:
+        expose: true
+
+remove_follow:
+    path: /follow/unfollow/user/{username}
+    controller: App\Controller\FollowController::RemoveFollow
+    options:
+        expose: true
+
+portfolio_setviewmedias:
+    path: /media/{image}/view
+    controller: App\Controller\PortfolioController::SetviewMedias
+    options:
+        expose: true
+
+portfolio_medias:
+    path: /{name}/medias/{page}
+    controller: App\Controller\PortfolioController::Medias
+    options:
+        expose: true
+
+portfolio_videos:
+    path: /{name}/videos/{page}
+    controller: App\Controller\PortfolioController::Videos
+    options:
+        expose: true
+
+image_all_json:
+    path: /dashboard/images/json/{page}
+    controller: App\Controller\ImageController::AllJson
+    options:
+        expose: true
+
+images_order:
+    path: /dashboard/images/reorder/
+    controller: App\Controller\ImageController::Reorder
+    options:
+        expose: true
+
+portfolio_medias_from_gallery:
+    path: /{name}/gallery/{slug}/{page}
+    controller: App\Controller\PortfolioController::ImagesFromGallery
+    options:
+        expose: true
+
+order_galleries:
+    path: /galleries/order/{list}
+    controller: App\Controller\DashboardController::GalleriesOrder
+    options:
+        expose: true
+
+dashboard_new_books:
+    path: /users/new/
+    controller: App\Controller\DashboardController::NewBooks
+    options:
+        expose: true
+
+short_suggest_book_to_follow:
+    path: /follow/suggest/all
+    controller: App\Controller\FollowController::ShortSuggestBooksToFollow
+    options:
+        expose: true
+
+dashboard_feed_medias:
+    path: /feed/{page}
+    controller: App\Controller\DashboardController::FeedMedias
+    options:
+        expose: true
+
+dashboard_set_like_media:
+    path: /like/{action}/image/{image}
+    controller: App\Controller\DashboardController::LikeMedia
+    options:
+        expose: true
+
+dashboard_comment_media:
+    path: /feed/media/{media}/comment/{comment}
+    controller: App\Controller\DashboardController::FeedMedias
+    options:
+        expose: true
+
+dashboard_short_annonces:
+    path: /dashboard/annonces/all/{page}
+    controller: App\Controller\AnnoncesController::ShortAnnonces
+    options:
+        expose: true
+
+never_suggest_book:
+    path: /neverSuggest/user/{uuid}
+    controller: App\Controller\AnnuaireController::NeverSuggestBook
+    options:
+        expose: true
+
+dashboard_api_notifications:
+    path: /dashboard/notifications/{page}/dispComments/{showComments}/dispLikes/{showLikes}/dispFollows/{showFollows}
+    controller: App\Controller\DashboardController::ApiNotifications
+    options:
+        expose: true
+
+dashboard_social_inbox_remove:
+    path: /inbox/remove/{uuid}
+    controller: App\Controller\DashboardController::InboxRemove
+    options:
+        expose: true
+
+dashboard_inbox_card_user:
+    path: /inbox/card/user/{uuid}
+    controller: App\Controller\DashboardController::InboxCardUser
+    options:
+        expose: true
+
+json_followers:
+    path: /followers/json/{page}
+    controller: App\Controller\FollowController::jsonFollowers
+    options:
+        expose: true
+
+relation_add_notify:
+    path: /addnotify/user/{username}
+    controller: App\Controller\FollowController::AddNotify
+    options:
+        expose: true
+
+relation_remove_notify:
+    path: /removenotify/user/{username}
+    controller: App\Controller\FollowController::RemoveNotify
+    options:
+        expose: true
+
+relation_send_message_contact:
+    path: /send/message/user/{uuid}/message/{message}
+    controller: App\Controller\FollowController::SendMessage
+    options:
+        expose: true
+
+json_following:
+    path: /following/json/{page}
+    controller: App\Controller\FollowController::jsonFollowing
+    options:
+        expose: true
+
+dashboard_post_comment_media:
+    path: /post/comment/media
+    controller: App\Controller\ImageController::postCommentMedia
+    options:
+        expose: true
+
+dashboard_delete_comment_media:
+    path: /delete/comment/media
+    controller: App\Controller\DashboardController::deleteCommentMedia
+    options:
+        expose: true
+
+dashboard_get_comment_media:
+    path: /comment/media/{image}/{page}
+    controller: App\Controller\DashboardController::commentMedia
+    options:
+        expose: true
+
+annonces_last_post:
+    path: /dashboard/annonce/last/{page}
+    controller: App\Controller\AnnoncesController::jsonLast
+    options:
+        expose: true
+
+get_likes_media:
+    path: /media/likes/{imageId}
+    controller: App\Controller\ImageController::jsonLikesMedia
+    options:
+        expose: true
+
+json_result_search:
+    path: /r/{search}/{page}
+    controller: App\Controller\SearchController::resultSearchJson
+    options:
+        expose: true
+
+release_short:
+    path: /release/short/{page}
+    controller: App\Controller\ReleaseController::short
+    options:
+        expose: true
+
+front_images_home:
+    path: /images/home/{page}
+    controller: App\Controller\FrontController::ImagesHome
+    options:
+        expose: true
+
+image_inspiration:
+    path: /images/inspiration/{page}
+    controller: App\Controller\FrontController::ImagesInspiration
+    options:
+        expose: true
+
+json_type_artist:
+    path: /annuaire/json/profession/{slug}/{page}
+    controller: App\Controller\AnnuaireController::jsonAnnuaireFilterByProfession
+    options:
+        expose: true
+
+# ADMIN
+json_admin_last_images:
+    path: /admin/last/images
+    controller: App\Controller\Admin\DashboardController::JsonLastImages
+    options:
+        expose: true
+
+json_admin_signup_recently:
+    path: /admin/signup/recently
+    controller: App\Controller\Admin\DashboardController::JsonSignupRecently
+    options:
+        expose: true
+
+json_admin_profile_galleries:
+    path: /admin/galleries/user/{uuid}/{page}
+    controller: App\Controller\Admin\DashboardController::JsonLastGalleries
+    options:
+        expose: true
+
+upload_avatar_register:
+    path: upload/avatar/{token}
+    controller: App\Controller\SecurityController::AjaxUploadAvatar
+    options:
+        expose: true
+
+oauth_check:
+  path: /oauth/check/{service}
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+
+connect_facebook_check:
+    path: /oauth/check/{service}
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+
+connect_google_check:
+    path: /oauth/check/{service}
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+
+search_post_bar:
+    path: /search/post/{query}
+    controller: App\Controller\SearchController::PostSearchBar
+    options:
+        expose: true

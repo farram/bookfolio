@@ -1,0 +1,124 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}
+	{{"Finalisation de la commande" | trans}}
+	| Bookfolio
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://js.stripe.com/v3/"></script>
+	{{ parent() }}
+	<script>
+		const planId = '{{ cart.subscriptionPlan.planId }}';
+const sessionId = '{{ stripe_public_key }}'
+	</script>
+	<script src="{{ asset('assets/js/dashboard/subscription_manage.js') }}" defer></script>
+
+
+	{{ include('dashboard/order/_creditCardFormJavaScript.html.twig') }}
+
+	<script>
+		jQuery(document).ready(function () {
+$('.js-show-code-form').on('click', function (e) {
+e.preventDefault();
+
+$('.js-code-form').show();
+})
+});
+	</script>
+{% endblock %}
+{% block body %}
+	{% include 'dashboard/partial/page_title.html.twig' with {'title': 'Votre compte'|trans} %}
+
+	<div class="row">
+		<div class="col-lg-3">
+			{% include 'dashboard/partial/profile_side_bar.html.twig' %}
+		</div>
+		<div class="col-lg-9">
+
+			<div class="card p-3">
+				<div class="text-start">
+					<h3 class="mb-3">{{ 'Finalisation de la commande' | trans }}
+					</h3>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-12">
+								<ul class="list-group mb-3">
+									{% if cart.subscriptionPlan %}
+										<li class="list-group-item d-flex justify-content-between lh-condensed">
+											<div>
+												<h5 class="my-0">Offre</h5>
+												<small class="text-muted">{{ cart.subscriptionPlan.name }}</small>
+											</div>
+											<span class="text-muted">{{ cart.subscriptionPlan.price / 100 }}
+												€</span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between lh-condensed">
+											<div>
+												<h5 class="my-0">Type</h5>
+												<small class="text-muted">{{"Abonnement de 3 mois renouvelable" | trans}}</small>
+											</div>
+
+										</li>
+									{% endif %}
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>{{"Total (EUR)" | trans}}</span>
+										<strong class="font-22 text-blue">{{ cart.totalWithDiscount / 100 }}
+											€</strong>
+									</li>
+								</ul>
+								<div class="mb-2">
+									<button id="checkout" class="btn btn-custom text-white">Subscribe</button>
+									<button class="btn btn-sm btn-custom text-white js-show-code-form">
+										{{"J'ai un bon de réduction" | trans}}
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="js-code-form" style="display: none;">
+							<form action="{{ path('order_add_coupon') }}" method="POST" class="card">
+								<div class="input-group">
+									<input type="text" name="code" autocomplete="off" class="form-control" placeholder="Coupon Code"/>
+									<div class="input-group-append">
+										<button type="submit" class="btn btn-custom text-white">Valider</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12">
+								<div class="card p-3 border mt-2">
+									{% if cart.totalWithDiscount > 0 %}
+										{% set price = cart.totalWithDiscount / 100 %}
+										{{ include('dashboard/order/_cardForm.html.twig', {buttonText: 'Payer ' ~ price ~ '€'}) }}
+									{% else %}
+										<form action="" method="POST">
+											<button type="submit" class="btn btn-lg btn-danger">
+												Checkout for Free!
+											</button>
+										</form>
+									{% endif %}
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="card p-3 border">
+							<p>
+								{{"Aucune information bancaire n'est stockée sur les serveurs de Bookfolio."}}
+							</p>
+							<p>{{"Les données sont envoyées de manière sécurisée au service de paiement en ligne."}}</p>
+							<p>{{"Le service est géré et sécurisé par STRIPE (https://stripe.com)" | trans}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

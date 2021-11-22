@@ -1,0 +1,109 @@
+{% extends 'emails/emailBaseFoundation.html.twig' %}
+{% block content %}
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-12 large-12 columns first last">
+					<table>
+						<tbody>
+							<tr>
+								<th>
+									<h4 class="text-center">
+										Hey
+										{{receiver.firstname}},</h4>
+									<h5 class="text-center">
+										{{sender.firstname}}
+										{{"a répondu à votre annonce" | trans}}
+									</h5>
+								</th>
+								<th class="expander"></th>
+							</tr>
+						</tbody>
+					</table>
+					<hr>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-12 large-4 columns first">
+					<table>
+						<tr>
+							<th>
+								<center data-parsed="">
+									<a href="{{ url('portfolio_index', {'name':sender.book.name}) }}">
+										<img src="{{sender.avatar}}" title="{{sender.fullname}}" align="center" class="float-center">
+									</a>
+								</center>
+							</th>
+						</tr>
+					</table>
+				</th>
+				<th class="small-12 first large-8 columns last">
+					<table>
+						<tr>
+							<th>
+								<h5>{{sender.fullname}}</h5>
+								<h6 class="mb-0">{{sender.profession}}</h6>
+								<p class="text-flet">
+									{{sender.location}}
+								</p>
+							</th>
+						</tr>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<table class="spacer">
+		<tbody>
+			<tr>
+				<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="row">
+		<tbody>
+			<tr>
+				<th class="small-6 large-6 columns first last">
+					<table>
+						<tbody>
+							<tr>
+								<th>
+									<table class="callout">
+										<tbody>
+											<tr>
+												<th class="callout-inner">
+													<p>{{comment | raw}}</p>
+												</th>
+												<th class="expander"></th>
+											</tr>
+										</tbody>
+									</table>
+									<table class="button small">
+										<tr>
+											<td>
+												<table>
+													<tr>
+														<td>
+															<a href="{{ url('front_annonces_show', {'slug':reaction.annonce.slug}) }}">{{"Répondre à " | trans}}
+
+																{{sender.fullname}}</a>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

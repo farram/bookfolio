@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{"Quelques bonnes raisons de nous faire confiance" | trans }}
+{% endblock %}
+{% block body %}
+	<div class="wrapper">
+		<div class="section">
+			<div class="w-layout-grid content6-grid">
+				<div id="w-node-7c0094a6f1d0-eb4cd929" class="content6-headline-grid">
+					<div id="w-node-7c0094a6f1d1-eb4cd929" class="content6-headline-wrap">
+						<h1 class="text-center">{{"Quelques bonnes raisons de nous faire confiance !" | trans}}</h1>
+						<p class="paragraph-70 text-center">{{"Bookfolio est une plate-forme de création de book et portfolio en ligne. Vous êtes comédien, modèle, photographe ou encore illustrateur ? Créez votre propre book pour faire découvrir vos photos et illustrations. Et c’est gratuit !" | trans}}<br></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper m0-100">
+		<div class="section">
+			<div class="w-layout-grid blog1-grid">
+				<div id="w-node-33182ce6f5e0-eb4cd929" class="w-dyn-list">
+					<div class="blog1-grid w-dyn-items">
+
+						{% for avantage in avantages %}
+							<div id="w-node-33182ce6f5e2-eb4cd929" class="collection-item w-dyn-item">
+								<div class="div-block-18">
+									<img width="50" src="{{avantage.icon}}" alt="{{avantage.title}}" class="image-5">
+									<h4 class="subtitle-annonce normal" title="{{avantage.title}}">{{avantage.title}}</h4>
+									<div class="paragraph-70 text-start">
+										{{avantage.description | raw}}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if not app.user %}
+		<div class="wrapper">
+			<div class="section">
+				<div class="w-layout-grid content6-grid">
+					<div id="w-node-15c3113337c1-eb4cd929" class="content6-headline-grid">
+						<div id="w-node-15c3113337c2-eb4cd929" class="content6-headline-wrap">
+							<h2 class="text-center">Envie de nous rejoindre ?</h2>
+							<p class="paragraph-70 text-center">Créez gratuitement votre book en ligne en quelques secondes.<br></p>
+							<a data-w-id="39b74612-18ea-63a9-c3bb-0171435b99db" href="<?php echo Yii::$app->getUrlManager()->createUrl(['signup']);?>" class="button-small show-button w-inline-block">
+								<div class="button-label">Créer votre book</div><img src="/assets/layout/Arrow2x.svg" alt="" class="button-arrow"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

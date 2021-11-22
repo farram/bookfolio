@@ -1,0 +1,12 @@
+{{ form_start(form, {'action': path('search_index'),'attr': {'class':'app-search','novalidate': 'novalidate'}}) }}
+<div class="app-search-box dropdown">
+	<div class="input-group">
+		{{ form_widget(form.username, {'attr': {'class': 'form-control','placeholder':'Rechercher'}}) }}
+		<div class="input-group-append">
+			<button class="btn" type="submit">
+				<i class="fe-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+{{ form_end(form) }}

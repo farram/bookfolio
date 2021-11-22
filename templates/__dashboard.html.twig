@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			{% block title %}
+				{{"Bienvenue sur Bookfolio" | trans}}
+			{% endblock %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="" name="description"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
+
+		{% block stylesheets %}
+			<link href="{{ asset('assets/dashboard/css/config/default/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet"/>
+			<link href="{{ asset('assets/dashboard/css/config/default/app.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet"/>
+			<link href="{{ asset('assets/dashboard/css/config/default/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet"/>
+			<link href="{{ asset('assets/dashboard/css/config/default/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet"/>
+			<link href="{{ asset('assets/dashboard/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
+			{{ encore_entry_link_tags('dashboard') }}
+		{% endblock %}
+	</head>
+
+	<body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+		{% set current_path = app.request.get('_route') %}
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+		<div id="wrapper">
+			<div class="navbar-custom">
+				<div class="container-fluid">
+					<ul class="list-unstyled topnav-menu float-end mb-0">
+						<li class="d-none d-lg-block">
+							{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+						</li>
+						<li class="dropdown d-inline-block d-lg-none">
+							<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<i class="fe-search noti-icon"></i>
+							</a>
+							<div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
+								<form class="p-3">
+									<input type="text" class="form-control" placeholder="Search ..." aria-label="">
+								</form>
+							</div>
+						</li>
+						<li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+							<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="{{ asset('assets/img/flags/'~app.request.locale~'.jpg') }}" alt="{{app.request.locale}}" height="16">
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								{% for locale in locales %}
+									<a href="{{ path('change_locale', {'locale':locale}) }}" class="dropdown-item {% if locale == app.request.locale %} active {% endif %}">
+										<img src="{{ asset('assets/img/flags/'~locale~'.jpg') }}" alt="{{locale}}" class="me-1" height="12">
+										<span class="align-middle">{{locale}}</span>
+									</a>
+								{% endfor %}
+							</div>
+						</li>
+
+						<li class="dropdown notification-list topbar-dropdown">
+							<a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<i class="fe-bell noti-icon"></i>
+								{% if app.user.getNotifications | length > 0 %}
+									<span class="badge badge-danger rounded-circle noti-icon-badge">
+										{{ app.user.getNotifications | length }}
+									</span>
+								{% endif %}
+							</a>
+							<div class="dropdown-menu dropdown-menu-end dropdown-lg">
+
+								<div class="dropdown-item noti-title">
+									<h5 class="m-0">
+										{{"Vos notifications" | trans}}
+									</h5>
+								</div>
+
+								{% if app.user.getNotifications | length > 0 %}
+									<div class="noti-scroll" data-simplebar="init">
+										<div class="simplebar-wrapper" style="margin: 0px;">
+											<div class="simplebar-height-auto-observer-wrapper">
+												<div class="simplebar-height-auto-observer"></div>
+											</div>
+											<div class="simplebar-mask">
+												<div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+													<div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
+														<div class="simplebar-content" style="padding: 0px;">
+
+															{% for notication in app.user.getNotifications %}
+																<a href="{{ path('dashboard_notifications') }}" class="dropdown-item notify-item">
+																	<div class="notify-icon {{ notication.event.getColor() }}">
+																		<i class="{{ notication.event.getIcon() }}"></i>
+																	</div>
+																	<p class="notify-details">
+																		{{ notication.userWhoFiredEvent.fullname }}
+																		{{ notication.event.text }}.
+																		<small class="text-muted">{{ notication.createdAt | ago }}</small>
+																	</p>
+																</a>
+															{% endfor %}
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+										</div>
+										<div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+											<div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+										</div>
+										<div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+											<div class="simplebar-scrollbar" style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);"></div>
+										</div>
+									</div>
+								{% else %}
+									<div class="alert text-center">
+										<h5>{{"Vous avez lu toutes les notifications" | trans}}</h5>
+										<small>{{"Nous vous enverrons une notification lorsque vous aurez de nouveaux abonnés, des likes et des commentaires." | trans}}</small>
+									</div>
+								{% endif %}
+
+								<a href="{{ path('dashboard_notifications') }}" class="dropdown-item text-center text-primary notify-item notify-all">
+									{{"Toutes les notifications" | trans}}
+									<i class="fe-arrow-right"></i>
+								</a>
+
+							</div>
+						</li>
+
+						<li class="dropdown notification-list topbar-dropdown">
+							<a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="{{ app.user.avatar | imagine_filter('avatar') }}" alt="{{ app.user.firstname }}" class="rounded-circle">
+								<span class="pro-user-name ms-1">
+									{{ app.user.firstname | capitalize }}
+									<i class="mdi mdi-chevron-down"></i>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+								<a target="_blank" href="{{ path('portfolio_index', {'name':app.user.book.name}) }}" class="dropdown-item notify-item">
+									<i class="fe-eye icon-dual"></i>
+									<span>{{"Votre book" | trans}}</span>
+								</a>
+
+								<a href="{{ path('dashboard_manage_book_details') }}" class="dropdown-item notify-item">
+									<i class="fe-settings icon-dual"></i>
+									<span>{{"Configurer votre book" | trans}}</span>
+								</a>
+
+								<a href="{{ path('account_details') }}" class="dropdown-item notify-item ">
+									<i class="fe-user icon-dual"></i>
+									<span>{{'Votre compte'| trans}}</span>
+								</a>
+
+								<a href="{{ path('account_pricing') }}" class="dropdown-item notify-item ">
+									<i class="fe-star icon-dual"></i>
+									<span>{{'Nos offres'| trans}}</span>
+								</a>
+
+								<div class="dropdown-divider"></div>
+								{% if is_granted('ROLE_ADMIN') %}
+									<a href="{{ path('admin') }}" class="dropdown-item notify-item text-danger">
+										<i class="fe-user"></i>
+										<span>{{"Administration" | trans}}</span>
+									</a>
+									<div class="dropdown-divider"></div>
+								{% endif %}
+
+								<a href="{{ path('app_logout') }}" class="dropdown-item notify-item">
+									<i class="fe-log-out icon-dual"></i>
+									<span>{{'Se déconnecter'| trans}}</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+
+
+					<div class="logo-box">
+						<a href="{{ path('index') }}" class="logo logo-dark text-center">
+							<span class="logo-sm">
+								<img src="{{ asset('assets/img/logotype_white_90.png') }}" alt="Bookfolio" height="22">
+							</span>
+							<span class="logo-lg">
+								<img src="{{ asset('assets/img/logo-w.png') }}" alt="Bookfolio" height="20">
+							</span>
+						</a>
+
+						<a href="{{ path('index') }}" class="logo logo-light text-center">
+							<span class="logo-sm">
+								<img src="{{ asset('assets/img/logotype_white_90.png') }}" alt="Bookfolio" height="22">
+							</span>
+							<span class="logo-lg">
+								<img src="{{ asset('assets/img/logo-w.png') }}" alt="Bookfolio" height="30">
+							</span>
+						</a>
+					</div>
+
+					<ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+						<li>
+							<button class="button-menu-mobile waves-effect waves-light">
+								<i class="fe-menu"></i>
+							</button>
+						</li>
+
+						<li>
+							<a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+								<div class="lines">
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+			<div class="left-side-menu">
+				<div class="h-100" data-simplebar>
+					<div class="user-box text-center">
+						<img src="{{ app.user.avatar | imagine_filter('avatar') }}" alt="{{ app.user.firstname }}" title="{{ app.user.firstname }}" class="rounded-circle avatar-md">
+						<a target="_blank" href="{{ path('portfolio_index', {'name':app.user.book.name}) }}" class="text-dark h5 mt-2 mb-1 d-block">{{ app.user.firstname | capitalize }}</a>
+						<p class="text-muted">{{ app.user.profession}}</p>
+					</div>
+
+					<div id="sidebar-menu">
+						<ul id="side-menu">
+							<li>
+								<a href="{{ path('dashboard_index') }}">
+									<i data-feather="home" class="icon-dual"></i>
+									<span>
+										{{ 'Tableau de bord'|trans }}
+									</span>
+								</a>
+							</li>
+
+							<li class="{% if (current_path == "account_security") or (current_path == "account_options") or (current_path == "account_billing") or (current_path == "order_checkout") %}menuitem-active{% endif %}">
+								<a href="{{ path('account_details') }}">
+									<i data-feather="user" class="icon-dual"></i>
+									<span>
+										{{'Votre compte' |trans}}
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#sidebarDiscover" data-bs-toggle="collapse">
+									<i data-feather="book" class="icon-dual"></i>
+									<span>
+										{{'Découvrir'|trans}}
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<div class="collapse" id="sidebarDiscover">
+									<ul class="nav-second-level">
+										<li>
+											<a href="{{ path('annuaire_dashboard') }}">{% trans %}L'annuaire{% endtrans %}</a>
+										</li>
+										<li>
+											<a href="{{ path('annuaire_suggested') }}">{% trans %}Suggestion des books{% endtrans %}</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="menu-title mt-2">{% trans %}Gestion de votre book{% endtrans %}</li>
+							<li class="{% if (current_path == "dashboard_manage_book_details") or (current_path == "manage_book_design") %}menuitem-active{% endif %}">
+								<a href="{{ path('dashboard_manage_book_details') }}">
+									<i data-feather="settings" class="icon-dual"></i>
+									<span>
+										{% trans %}Configuration{% endtrans %}
+									</span>
+								</a>
+							</li>
+							<li class="{% if (current_path == "galleries_show") or (current_path == "galleries_edit") %}menuitem-active{% endif %}">
+								<a href="#sidebarFolders" data-bs-toggle="collapse">
+									<i data-feather="folder" class="icon-dual"></i>
+									<span>
+										{% trans %}Galeries{% endtrans %}
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<div class="collapse" id="sidebarFolders">
+									<ul class="nav-second-level">
+										<li>
+											<a href="{{ path('galleries_index') }}">{{"Toutes vos galeries" | trans}}</a>
+										</li>
+										<li>
+											<a href="{{ path('galleries_add') }}">
+												{{'Créer une galerie'| trans}}
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#userMedias" data-bs-toggle="collapse">
+									<i data-feather="image" class="icon-dual"></i>
+									<span>
+										{{"Photos" | trans}}
+									</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<div class="collapse" id="userMedias">
+									<ul class="nav-second-level">
+										<li>
+											<a href="{{ path('image_all') }}">{{"Toutes vos photos" | trans}}</a>
+										</li>
+										<li>
+											<a href="{{ path('image_add') }}">{{"Ajouter" | trans}}</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="{{ path('videos_all') }}">
+									<i data-feather="video" class="icon-dual"></i>
+									<span>
+										{{"Vidéos" | trans}}
+									</span>
+								</a>
+							</li>
+
+							<li class="{% if (current_path == "pages_show") %}menuitem-active{% endif %}">
+								<a href="{{ path('pages_all') }}">
+									<i data-feather="file" class="icon-dual"></i>
+									<span>
+										{{"Pages" | trans}}
+									</span>
+								</a>
+							</li>
+
+							<li class="{% if (current_path == "guestbook_online") %}menuitem-active{% endif %}">
+								<a href="{{ path('guestbook_offline') }}">
+									<i data-feather="book-open" class="icon-dual"></i>
+									<span>
+										{{"Livre d'or" | trans}}
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="{{ path('statistics_all') }}">
+									<i data-feather="bar-chart" class="icon-dual"></i>
+									<span>
+										{{"Statistiques" | trans}}
+									</span>
+								</a>
+							</li>
+
+							<li class="menu-title mt-2">{% trans %}Social{% endtrans %}</li>
+
+
+							<li class="{% if (current_path == "inbox_favorites") or (current_path == "inbox_sent") or (current_path == "inbox_trash") or (current_path == "inbox_show") or (current_path == "inbox_favoris_show") %}menuitem-active{% endif %}">
+								<a href="{{ path('inbox_all') }}">
+									<i data-feather="message-square" class="icon-dual"></i>
+									{% if app.user.unreadinboxes | length > 0 %}
+										<span class="badge badge-danger badge-pill float-right">{{ app.user.unreadinboxes | length }}</span>
+									{% endif %}
+									<span>
+										{{ 'Messagerie' | trans }}
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="{{ path('annonce_all') }}">
+									<i data-feather="clipboard" class="icon-dual"></i>
+									<span>
+										{{ 'Vos annonces' | trans }}
+									</span>
+								</a>
+							</li>
+
+							<li class="{% if (current_path == "relation_following") %}menuitem-active{% endif %}">
+								<a href="{{ path('relation_followers') }}">
+									<i data-feather="users" class="icon-dual"></i>
+									<span>
+										{{ 'Relations' | trans }}
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+			<div class="content-page">
+				<div class="content pt-0 pe-3 ps-3">
+					<div class="container-fluid pb-3">
+						{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+							<div class="row">
+								<div class="col-12">
+									<div class="card p-3 bg-soft-info mt-4" style="margin-bottom: 0;">
+										You are currently switched to this user.
+										<a href="{{ path('dashboard_index', {'_switch_user': '_exit'}) }}" class="text-blue">Exit Impersonation</a>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						{% block body %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rightbar-overlay"></div>
+		{% block javascripts %}
+			<script src="{{ asset('assets/js/dashboard/v2/js/vendor.min.js') }}"></script>
+			<script src="{{ asset('assets/js/dashboard/v2/js/app.min.js') }}"></script>
+			<script src="{{ asset('assets/js/dashboard/geolocate.js') }}"></script>
+			<script src="{{ asset('assets/js/dashboard/sweet-alert.min.js') }}"></script>
+			{{ encore_entry_script_tags('dashboard') }}
+		{% endblock %}
+	</body>
+</html>
